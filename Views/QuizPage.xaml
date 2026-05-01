@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LearnJP.ViewModels"
+             x:Class="LearnJP.Views.QuizPage"
+             x:Name="QuizPageRoot"
+             x:DataType="vm:QuizViewModel"
+             Title="Quiz">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="14">
+
+        <VerticalStackLayout Grid.Row="0" Spacing="4">
+            <Label Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" />
+            <Label Text="{Binding CriterionLabel}" FontSize="13" TextColor="{StaticResource Primary}" FontAttributes="Bold" />
+        </VerticalStackLayout>
+
+        <Border Grid.Row="1"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 18"
+                Padding="20">
+            <Grid RowDefinitions="*,Auto,Auto,Auto" RowSpacing="10">
+                <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                    <Label Text="{Binding PromptFurigana}"
+                           IsVisible="{Binding HasFurigana}"
+                           FontSize="18"
+                           TextColor="{StaticResource MutedText}"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Prompt}"
+                           FontSize="56"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+
+                <Button Grid.Row="1"
+                        Text="🔊  Hear it again"
+                        Clicked="OnSpeakClicked"
+                        Style="{StaticResource PrimaryButton}"
+                        HorizontalOptions="Center"
+                        WidthRequest="220" />
+
+                <Label Grid.Row="2"
+                       Text="{Binding HintLabel}"
+                       Style="{StaticResource MutedLabel}"
+                       HorizontalOptions="Center" />
+
+                <Label Grid.Row="3"
+                       Text="{Binding StreakLabel}"
+                       Style="{StaticResource MutedLabel}"
+                       HorizontalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" RowDefinitions="Auto,Auto" RowSpacing="10">
+            <CollectionView Grid.Row="0"
+                            ItemsSource="{Binding Options}"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:QuizOptionVm">
+                        <Button Text="{Binding Text}"
+                                BackgroundColor="{Binding BackgroundColor}"
+                                TextColor="{Binding TextColor}"
+                                CornerRadius="14"
+                                HeightRequest="64"
+                                FontSize="20"
+                                Clicked="OnOptionClicked" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Grid.Row="1"
+                    Text="Skip ▶"
+                    BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
+                    TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                    CornerRadius="12"
+                    HeightRequest="44"
+                    Clicked="OnSkipClicked" />
+        </Grid>
+
+        <ActivityIndicator Grid.Row="0" Grid.RowSpan="3"
+                          IsRunning="{Binding IsLoading}"
+                          IsVisible="{Binding IsLoading}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center" />
+    </Grid>
+
+</ContentPage>

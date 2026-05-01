@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:LearnJP.Views"
+       x:Class="LearnJP.AppShell"
+       Shell.FlyoutBehavior="Disabled"
+       Title="LearnJP">
+
+    <TabBar>
+        <ShellContent Title="Quiz" ContentTemplate="{DataTemplate views:QuizPage}" Route="quiz" />
+        <ShellContent Title="Progress" ContentTemplate="{DataTemplate views:ProgressPage}" Route="progress" />
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings" />
+    </TabBar>
+
+</Shell>

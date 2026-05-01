@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LearnJP.ViewModels"
+             x:Class="LearnJP.Views.ProgressPage"
+             x:DataType="vm:ProgressViewModel"
+             Title="Progress">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16" RowSpacing="10">
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 16"
+                Padding="16">
+            <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,Auto" RowSpacing="4">
+                <Label Grid.ColumnSpan="4" Text="{Binding Summary}" Style="{StaticResource HeadlineLabel}" />
+                <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                    <Label Text="Total" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Total}" FontSize="22" FontAttributes="Bold" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                    <Label Text="Seen" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Seen}" FontSize="22" FontAttributes="Bold" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1" Grid.Column="2">
+                    <Label Text="Known" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Known}" FontSize="22" FontAttributes="Bold" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1" Grid.Column="3">
+                    <Label Text="Mastered" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Mastered}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource Success}" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Rows}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="6" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:WordProgressRow">
+                    <Border StrokeThickness="0"
+                            BackgroundColor="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="12,8">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="2">
+                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Display}" FontSize="20" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding OverallText}" FontAttributes="Bold" TextColor="{Binding OverallColor}" />
+                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Reading}" Style="{StaticResource MutedLabel}" />
+                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding Meaning}" />
+                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding CriterionBreakdown}" FontSize="11" TextColor="{StaticResource MutedText}" HorizontalOptions="End" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
+            <Button Grid.Column="0" Text="Refresh" Style="{StaticResource PrimaryButton}" Command="{Binding RefreshCommand}" />
+            <Button Grid.Column="1" Text="Reset progress" Command="{Binding ResetCommand}"
+                    BackgroundColor="{StaticResource Danger}" TextColor="White" CornerRadius="12" HeightRequest="48" />
+        </Grid>
+    </Grid>
+</ContentPage>

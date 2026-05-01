@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LearnJP.ViewModels"
+             x:Class="LearnJP.Views.SettingsPage"
+             x:DataType="vm:SettingsViewModel"
+             Title="Settings">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            <Label Text="Display" Style="{StaticResource HeadlineLabel}" />
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="12">
+                <Label Grid.Row="0" Grid.Column="0" Text="Romaji-only mode" VerticalOptions="Center" />
+                <Switch Grid.Row="0" Grid.Column="1" IsToggled="{Binding RomajiOnly}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Always show furigana" VerticalOptions="Center" />
+                <Switch Grid.Row="1" Grid.Column="1" IsToggled="{Binding ForceFurigana}" />
+            </Grid>
+
+            <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />
+
+            <Label Text="Audio" Style="{StaticResource HeadlineLabel}" />
+            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" RowSpacing="12">
+                <Label Grid.Column="0" Text="Speak Japanese aloud" VerticalOptions="Center" />
+                <Switch Grid.Column="1" IsToggled="{Binding TtsEnabled}" />
+            </Grid>
+
+            <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />
+
+            <Label Text="About" Style="{StaticResource HeadlineLabel}" />
+            <Label Text="LearnJP — adaptive Japanese vocabulary practice. Continuous testing across multiple proficiency criteria." />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,106 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+*.binlog
+
+# Visual Studio user / cache files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Rider / VS Code
+.idea/
+.vscode/
+*.DotSettings.user
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!**/[Pp]ackages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# MSBuild
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+*.cache
+
+# .NET / Roslyn
+*.pdb
+*.dll.config
+*.exe.config
+
+# MAUI / mobile
+*.apk
+*.aab
+*.ipa
+*.app
+*.dSYM.zip
+*.dSYM/
+Resources/Raw/.DS_Store
+Platforms/Android/Resources/Resource.designer.cs
+Platforms/Android/obj/
+Platforms/iOS/obj/
+Platforms/MacCatalyst/obj/
+Platforms/Windows/obj/
+
+# WinUI / Windows App SDK
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.appxupload
+AppPackages/
+BundleArtifacts/
+GeneratedArtifacts/
+
+# Xamarin Hot Restart
+.mtouch
+*.bak
+*.swp
+
+# JetBrains ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local user data the app may write next to the project during dev
+proficiency.json
+*.local.json
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+secrets.json
+
+# Diagnostic dumps
+*.dmp
+*.hdmp
+*.mdmp

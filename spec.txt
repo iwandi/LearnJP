@@ -1,0 +1,39 @@
+Language : c#
+Platfrom : Windows, Android, iOS
+Framework : .NET MAUI
+
+Goal:
+Japanise multible chose vocabulary learnign app.
+
+- Single mode, no training and test jsut continues testing
+- Display japanise in Kanji, Hiragana, Karakana and furigana.
+- Display as Romaji only as a option.
+- Always vocalize Japanise words by voice to reinforce learning by listening.
+- Track the uses profishiency per word to lean.
+- Less profishiency simpler multible chise
+-- Less options
+-- Known words as false option
+-- Desitnct words as false options
+-- Word in Hiragana over Kanji.
+-- Furigana for Kanjia
+- More profishiency harder choices
+-- More options
+-- Less to no already known words as fales option
+-- Simular words as false options
+-- Word written in Kanji 
+-- No Furigana
+- Dificulty not fixed into modes but a flexible on profishiency
+- Tracking of varius profishiency cratiria
+-- Japanise to English understanding
+-- Differentiation from simular sounding words in japanise
+-- Differentiation from simular meaning words in japanise
+-- More well fitting cratiria can be applyed.
+- The test smaples and chaks the profishiency over these cratiria to understand if the word is fully understood
+- Variation of hard and easy questions
+- Continues testing
+- Japnase to English and English to Japanise testing at the same time
+- a page to check on the current progress.
+
+Base japanise to learn
+- Top 1000 used words in japanise by usage
+- N5 profishiency word pool
