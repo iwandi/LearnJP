@@ -53,6 +53,7 @@ public sealed class QuizViewModel : BaseViewModel
     private bool _isAnswered;
     private bool _isLoading;
     private bool _showPromptSpeakButton;
+    private bool _countForProficiency = true;
     private CancellationTokenSource? _autoAdvanceCts;
 
     public ObservableCollection<QuizOptionVm> Options { get; } = new();
@@ -64,6 +65,7 @@ public sealed class QuizViewModel : BaseViewModel
     public bool IsAnswered { get => _isAnswered; private set => SetProperty(ref _isAnswered, value); }
     public bool IsLoading { get => _isLoading; private set => SetProperty(ref _isLoading, value); }
     public bool ShowPromptSpeakButton { get => _showPromptSpeakButton; private set => SetProperty(ref _showPromptSpeakButton, value); }
+    public bool CountForProficiency { get => _countForProficiency; set => SetProperty(ref _countForProficiency, value); }
 
     public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings)
     {
@@ -120,8 +122,11 @@ public sealed class QuizViewModel : BaseViewModel
                 if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
         }
 
-        try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
-        catch { /* best effort */ }
+        if (_countForProficiency)
+        {
+            try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
+            catch { /* best effort */ }
+        }
 
         // Always read the Japanese after answering — covers EN→JP direction too.
         _ = _tts.SpeakJapaneseAsync(_current.TtsText);
@@ -143,8 +148,11 @@ public sealed class QuizViewModel : BaseViewModel
         foreach (var o in Options)
             if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
 
-        try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, false); }
-        catch { /* best effort */ }
+        if (_countForProficiency)
+        {
+            try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, false); }
+            catch { /* best effort */ }
+        }
 
         _ = _tts.SpeakJapaneseAsync(_current.TtsText);
 

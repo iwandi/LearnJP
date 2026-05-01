@@ -9,7 +9,17 @@
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="14">
 
-        <Label Grid.Row="0" Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" />
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="10">
+            <Label Grid.Column="0" Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+            <Grid Grid.Column="1"
+                  ColumnDefinitions="Auto,Auto"
+                  ColumnSpacing="6"
+                  HorizontalOptions="End"
+                  VerticalOptions="Center">
+                <Label Grid.Column="0" Text="Track" Style="{StaticResource MutedLabel}" VerticalOptions="Center" HorizontalOptions="End" />
+                <Switch Grid.Column="1" IsToggled="{Binding CountForProficiency}" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="50" MinimumWidthRequest="0" />
+            </Grid>
+        </Grid>
 
         <Border Grid.Row="1"
                 StrokeThickness="0"
