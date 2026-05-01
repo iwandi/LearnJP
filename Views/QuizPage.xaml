@@ -9,17 +9,14 @@
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="14">
 
-        <VerticalStackLayout Grid.Row="0" Spacing="4">
-            <Label Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" />
-            <Label Text="{Binding CriterionLabel}" FontSize="13" TextColor="{StaticResource Primary}" FontAttributes="Bold" />
-        </VerticalStackLayout>
+        <Label Grid.Row="0" Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" />
 
         <Border Grid.Row="1"
                 StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 18"
                 Padding="20">
-            <Grid RowDefinitions="*,Auto,Auto,Auto" RowSpacing="10">
+            <Grid RowDefinitions="*,Auto" RowSpacing="10">
                 <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
                     <Label Text="{Binding PromptFurigana}"
                            IsVisible="{Binding HasFurigana}"
@@ -36,19 +33,10 @@
                 <Button Grid.Row="1"
                         Text="🔊  Hear it again"
                         Clicked="OnSpeakClicked"
+                        IsVisible="{Binding ShowPromptSpeakButton}"
                         Style="{StaticResource PrimaryButton}"
                         HorizontalOptions="Center"
                         WidthRequest="220" />
-
-                <Label Grid.Row="2"
-                       Text="{Binding HintLabel}"
-                       Style="{StaticResource MutedLabel}"
-                       HorizontalOptions="Center" />
-
-                <Label Grid.Row="3"
-                       Text="{Binding StreakLabel}"
-                       Style="{StaticResource MutedLabel}"
-                       HorizontalOptions="Center" />
             </Grid>
         </Border>
 
@@ -61,24 +49,46 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="vm:QuizOptionVm">
-                        <Button Text="{Binding Text}"
-                                BackgroundColor="{Binding BackgroundColor}"
-                                TextColor="{Binding TextColor}"
-                                CornerRadius="14"
-                                HeightRequest="64"
-                                FontSize="20"
-                                Clicked="OnOptionClicked" />
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6">
+                            <Button Grid.Column="0"
+                                    Text="{Binding Text}"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    TextColor="{Binding TextColor}"
+                                    CornerRadius="14"
+                                    HeightRequest="64"
+                                    FontSize="20"
+                                    Clicked="OnOptionClicked" />
+                            <Button Grid.Column="1"
+                                    Text="🔊"
+                                    IsVisible="{Binding ShowSpeakButton}"
+                                    BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
+                                    TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                                    CornerRadius="14"
+                                    HeightRequest="64"
+                                    WidthRequest="56"
+                                    FontSize="22"
+                                    Clicked="OnOptionSpeakClicked" />
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button Grid.Row="1"
-                    Text="Skip ▶"
-                    BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
-                    TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
-                    CornerRadius="12"
-                    HeightRequest="44"
-                    Clicked="OnSkipClicked" />
+            <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="8">
+                <Button Grid.Column="0"
+                        Text="I don't know"
+                        BackgroundColor="{AppThemeBinding Light=#FFE4D2, Dark=#3A2A1F}"
+                        TextColor="{AppThemeBinding Light=#7A4A1A, Dark=#FFB86B}"
+                        CornerRadius="12"
+                        HeightRequest="44"
+                        Clicked="OnDontKnowClicked" />
+                <Button Grid.Column="1"
+                        Text="Skip ▶"
+                        BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
+                        TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                        CornerRadius="12"
+                        HeightRequest="44"
+                        Clicked="OnSkipClicked" />
+            </Grid>
         </Grid>
 
         <ActivityIndicator Grid.Row="0" Grid.RowSpan="3"

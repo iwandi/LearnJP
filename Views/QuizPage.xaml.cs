@@ -30,7 +30,15 @@ public partial class QuizPage : ContentPage
             await _vm.SelectOptionAsync(opt);
     }
 
+    private async void OnOptionSpeakClicked(object? sender, EventArgs e)
+    {
+        if (sender is Button { BindingContext: QuizOptionVm opt })
+            await _vm.SpeakOptionAsync(opt);
+    }
+
     private async void OnSkipClicked(object? sender, EventArgs e) => await _vm.SkipAsync();
+
+    private async void OnDontKnowClicked(object? sender, EventArgs e) => await _vm.DontKnowAsync();
 
     private async void OnSpeakClicked(object? sender, EventArgs e) => await _vm.SpeakCurrentAsync();
 }

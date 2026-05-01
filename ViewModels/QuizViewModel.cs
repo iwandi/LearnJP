@@ -7,9 +7,13 @@ namespace LearnJP.ViewModels;
 public sealed class QuizOptionVm : BaseViewModel
 {
     private string _state = "idle"; // idle | correct | wrong | revealed
+
     public required QuestionOption Source { get; init; }
+    public required bool IsJapaneseSide { get; init; }
+
     public string Text => Source.DisplayText;
     public string State { get => _state; set => SetProperty(ref _state, value); }
+    public bool ShowSpeakButton => IsJapaneseSide;
 
     public Color BackgroundColor => State switch
     {
@@ -34,7 +38,6 @@ public sealed class QuizOptionVm : BaseViewModel
 
 public sealed class QuizViewModel : BaseViewModel
 {
-    // Time the colored feedback stays on screen before auto-advancing.
     private static readonly TimeSpan FeedbackCorrect = TimeSpan.FromMilliseconds(700);
     private static readonly TimeSpan FeedbackWrong   = TimeSpan.FromMilliseconds(1600);
 
@@ -47,14 +50,9 @@ public sealed class QuizViewModel : BaseViewModel
     private string _prompt = "";
     private string? _promptFurigana;
     private string _directionLabel = "";
-    private string _criterionLabel = "";
-    private string _hintLabel = "";
-    private string _streakLabel = "";
     private bool _isAnswered;
     private bool _isLoading;
-    private int _streak;
-    private int _sessionAnswered;
-    private int _sessionCorrect;
+    private bool _showPromptSpeakButton;
     private CancellationTokenSource? _autoAdvanceCts;
 
     public ObservableCollection<QuizOptionVm> Options { get; } = new();
@@ -63,13 +61,9 @@ public sealed class QuizViewModel : BaseViewModel
     public string? PromptFurigana { get => _promptFurigana; private set { SetProperty(ref _promptFurigana, value); OnPropertyChanged(nameof(HasFurigana)); } }
     public bool HasFurigana => !string.IsNullOrEmpty(_promptFurigana);
     public string DirectionLabel { get => _directionLabel; private set => SetProperty(ref _directionLabel, value); }
-    public string CriterionLabel { get => _criterionLabel; private set => SetProperty(ref _criterionLabel, value); }
-    public string HintLabel { get => _hintLabel; private set => SetProperty(ref _hintLabel, value); }
-    public string StreakLabel { get => _streakLabel; private set => SetProperty(ref _streakLabel, value); }
     public bool IsAnswered { get => _isAnswered; private set => SetProperty(ref _isAnswered, value); }
     public bool IsLoading { get => _isLoading; private set => SetProperty(ref _isLoading, value); }
-    public int SessionAnswered { get => _sessionAnswered; private set => SetProperty(ref _sessionAnswered, value); }
-    public int SessionCorrect { get => _sessionCorrect; private set => SetProperty(ref _sessionCorrect, value); }
+    public bool ShowPromptSpeakButton { get => _showPromptSpeakButton; private set => SetProperty(ref _showPromptSpeakButton, value); }
 
     public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings)
     {
@@ -96,15 +90,14 @@ public sealed class QuizViewModel : BaseViewModel
             Prompt = q.Prompt;
             PromptFurigana = q.PromptFurigana;
             DirectionLabel = q.Direction == QuestionDirection.JapaneseToEnglish ? "Japanese → English" : "English → Japanese";
-            CriterionLabel = q.Criterion.Display();
-            HintLabel = $"Proficiency {q.TargetProficiencyAtAsk:0}%";
+            ShowPromptSpeakButton = q.Direction == QuestionDirection.JapaneseToEnglish;
 
+            var optionsAreJapanese = q.Direction == QuestionDirection.EnglishToJapanese;
             Options.Clear();
             foreach (var o in q.Options)
-                Options.Add(new QuizOptionVm { Source = o });
+                Options.Add(new QuizOptionVm { Source = o, IsJapaneseSide = optionsAreJapanese });
 
             IsAnswered = false;
-            UpdateStreakLabel();
 
             if (q.Direction == QuestionDirection.JapaneseToEnglish)
                 _ = _tts.SpeakJapaneseAsync(q.TtsText);
@@ -130,11 +123,7 @@ public sealed class QuizViewModel : BaseViewModel
         try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
         catch { /* best effort */ }
 
-        SessionAnswered++;
-        if (correct) { SessionCorrect++; _streak++; } else { _streak = 0; }
-        UpdateStreakLabel();
-
-        // Always read the Japanese after answering.
+        // Always read the Japanese after answering — covers EN→JP direction too.
         _ = _tts.SpeakJapaneseAsync(_current.TtsText);
 
         await ScheduleAutoAdvance(correct ? FeedbackCorrect : FeedbackWrong);
@@ -146,10 +135,33 @@ public sealed class QuizViewModel : BaseViewModel
         await LoadNextAsync();
     }
 
+    public async Task DontKnowAsync()
+    {
+        if (IsAnswered || _current is null) return;
+        IsAnswered = true;
+
+        foreach (var o in Options)
+            if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
+
+        try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, false); }
+        catch { /* best effort */ }
+
+        _ = _tts.SpeakJapaneseAsync(_current.TtsText);
+
+        await ScheduleAutoAdvance(FeedbackWrong);
+    }
+
     public async Task SpeakCurrentAsync()
     {
         if (_current is null) return;
         try { await _tts.SpeakJapaneseAsync(_current.TtsText); } catch { /* ignore */ }
+    }
+
+    public async Task SpeakOptionAsync(QuizOptionVm opt)
+    {
+        var kana = opt.Source.Word.Kana;
+        if (string.IsNullOrWhiteSpace(kana)) return;
+        try { await _tts.SpeakJapaneseAsync(kana); } catch { /* ignore */ }
     }
 
     private async Task ScheduleAutoAdvance(TimeSpan delay)
@@ -170,11 +182,5 @@ public sealed class QuizViewModel : BaseViewModel
     {
         try { _autoAdvanceCts?.Cancel(); } catch { /* ignore */ }
         _autoAdvanceCts = null;
-    }
-
-    private void UpdateStreakLabel()
-    {
-        var pct = SessionAnswered == 0 ? 0 : (int)Math.Round(100.0 * SessionCorrect / SessionAnswered);
-        StreakLabel = $"Session: {SessionCorrect}/{SessionAnswered} ({pct}%) · Streak {_streak}";
     }
 }
