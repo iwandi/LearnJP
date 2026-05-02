@@ -15,6 +15,7 @@ public sealed class SettingsService : ISettingsService
     private const string KeyAzureEnVoice  = "settings.azure_en_voice";
     private const string KeySystemVolume  = "settings.system_volume";
     private const string KeyAzureVolume   = "settings.azure_volume";
+    private const string KeyActiveTag     = "settings.active_tag_filter";
 
     private readonly Dictionary<string, object> _fallback = new();
     private bool _preferencesAvailable = true;
@@ -84,5 +85,11 @@ public sealed class SettingsService : ISettingsService
     {
         get => Math.Clamp(Read(KeyAzureVolume, 1.0), 0.0, 1.0);
         set => Write(KeyAzureVolume, Math.Clamp(value, 0.0, 1.0));
+    }
+
+    public string ActiveTagFilter
+    {
+        get => Read(KeyActiveTag, string.Empty);
+        set => Write(KeyActiveTag, value ?? string.Empty);
     }
 }

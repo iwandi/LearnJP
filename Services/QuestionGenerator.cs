@@ -22,8 +22,15 @@ public sealed class QuestionGenerator : IQuestionGenerator
         await _vocab.EnsureLoadedAsync();
         await _store.LoadAsync();
 
-        var pool = _vocab.All;
-        if (pool.Count < 4) return null;
+        IReadOnlyList<Word> pool = _vocab.All;
+        var tag = (_settings.ActiveTagFilter ?? string.Empty).Trim();
+        if (tag.Length > 0)
+        {
+            var filtered = pool.Where(w => w.Tags.Contains(tag, StringComparer.OrdinalIgnoreCase)).ToList();
+            // Need at least one target plus one distractor.
+            if (filtered.Count >= 2) pool = filtered;
+        }
+        if (pool.Count < 2) return null;
 
         var target = strategy switch
         {
@@ -209,7 +216,10 @@ public sealed class QuestionGenerator : IQuestionGenerator
     {
         if (count <= 0) return new();
 
-        var candidates = pool.Where(w => w.Id != target.Id).ToList();
+        var targetCategory = CategoryOf(target);
+        var candidates = pool
+            .Where(w => w.Id != target.Id && CategoryOf(w) == targetCategory)
+            .ToList();
 
         // Score every candidate by suitability for this criterion + proficiency level.
         var scored = candidates
@@ -348,6 +358,20 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private static double SamePosBonus(Word a, Word b) =>
         !string.IsNullOrEmpty(a.PartOfSpeech) &&
         string.Equals(a.PartOfSpeech, b.PartOfSpeech, StringComparison.OrdinalIgnoreCase) ? 25.0 : 0.0;
+
+    /// <summary>
+    /// Hiragana / katakana entries form their own pool: kana words only contrast with other kana,
+    /// and general vocabulary never gets a kana glyph as a distractor.
+    /// </summary>
+    private enum WordCategory { Kana, General }
+
+    private static WordCategory CategoryOf(Word w)
+    {
+        if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return WordCategory.Kana;
+        if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return WordCategory.Kana;
+        if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return WordCategory.Kana;
+        return WordCategory.General;
+    }
 
     private List<QuestionOption> BuildOptions(Word target, List<Word> distractors, QuestionDirection dir)
     {

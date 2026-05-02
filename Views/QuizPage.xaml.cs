@@ -22,6 +22,7 @@ public partial class QuizPage : ContentPage
             _firstLoad = false;
             await _vm.LoadNextAsync();
         }
+        await _vm.SyncActiveFilterAsync();
     }
 
     private async void OnOptionClicked(object? sender, EventArgs e)

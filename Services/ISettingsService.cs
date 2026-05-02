@@ -19,4 +19,7 @@ public interface ISettingsService
     double SystemTtsVolume { get; set; }
     /// <summary>0.0 .. 1.0. Applied at playback, not synthesis (so the cache stays voice-only).</summary>
     double AzureTtsVolume { get; set; }
+
+    /// <summary>Active tag-based pool filter. Empty / null = no filter.</summary>
+    string ActiveTagFilter { get; set; }
 }

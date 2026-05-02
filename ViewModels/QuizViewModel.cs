@@ -75,6 +75,29 @@ public sealed class QuizViewModel : BaseViewModel
     public bool CountForProficiency { get => _countForProficiency; set => SetProperty(ref _countForProficiency, value); }
     public LearningStrategy SelectedStrategy { get => _selectedStrategy; set => SetProperty(ref _selectedStrategy, value); }
 
+    private string _activeFilterDisplay = "";
+    public string ActiveFilterDisplay { get => _activeFilterDisplay; private set { SetProperty(ref _activeFilterDisplay, value); OnPropertyChanged(nameof(HasActiveFilter)); } }
+    public bool HasActiveFilter => !string.IsNullOrEmpty(_activeFilterDisplay);
+
+    private string _lastSeenFilter = string.Empty;
+
+    /// <summary>
+    /// Called from the page's OnAppearing — picks up tag-filter changes made on the Filter tab
+    /// and forces a fresh question if the filter changed.
+    /// </summary>
+    public async Task SyncActiveFilterAsync()
+    {
+        var current = (_settings.ActiveTagFilter ?? string.Empty).Trim();
+        ActiveFilterDisplay = string.IsNullOrEmpty(current) ? string.Empty : $"Filter: {current}";
+
+        if (!string.Equals(current, _lastSeenFilter, StringComparison.OrdinalIgnoreCase))
+        {
+            _lastSeenFilter = current;
+            // Don't trigger a fresh load on the very first appearance — OnAppearing already does that.
+            if (_current is not null) await LoadNextAsync();
+        }
+    }
+
     public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds)
     {
         _gen = gen;

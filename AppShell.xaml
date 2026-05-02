@@ -8,6 +8,7 @@
 
     <TabBar>
         <ShellContent Title="Quiz" ContentTemplate="{DataTemplate views:QuizPage}" Route="quiz" />
+        <ShellContent Title="Filter" ContentTemplate="{DataTemplate views:TagFilterPage}" Route="filter" />
         <ShellContent Title="Progress" ContentTemplate="{DataTemplate views:ProgressPage}" Route="progress" />
         <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings" />
     </TabBar>
