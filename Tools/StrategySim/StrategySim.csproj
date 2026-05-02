@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>LearnJP.Tools.StrategySim</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Reuse the production sources so the sim stays in lockstep with the algorithm. -->
+    <Compile Include="..\..\Models\Word.cs"               Link="Models\Word.cs" />
+    <Compile Include="..\..\Models\WordProficiency.cs"    Link="Models\WordProficiency.cs" />
+    <Compile Include="..\..\Models\Question.cs"           Link="Models\Question.cs" />
+    <Compile Include="..\..\Models\ProficiencyCriterion.cs" Link="Models\ProficiencyCriterion.cs" />
+    <Compile Include="..\..\Models\LearningStrategy.cs"   Link="Models\LearningStrategy.cs" />
+    <Compile Include="..\..\Models\TtsProvider.cs"        Link="Models\TtsProvider.cs" />
+    <Compile Include="..\..\Services\IQuestionGenerator.cs"   Link="Services\IQuestionGenerator.cs" />
+    <Compile Include="..\..\Services\IVocabularyService.cs"   Link="Services\IVocabularyService.cs" />
+    <Compile Include="..\..\Services\IProficiencyStore.cs"    Link="Services\IProficiencyStore.cs" />
+    <Compile Include="..\..\Services\ISettingsService.cs"     Link="Services\ISettingsService.cs" />
+    <Compile Include="..\..\Services\QuestionGenerator.cs"    Link="Services\QuestionGenerator.cs" />
+    <!-- The production ITtsService isn't pulled in (depends on MAUI) — neither is needed here. -->
+  </ItemGroup>
+
+</Project>
