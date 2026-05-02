@@ -43,27 +43,42 @@
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 18"
                 Padding="20">
-            <Grid RowDefinitions="*,Auto" RowSpacing="10">
-                <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
-                    <Label Text="{Binding PromptFurigana}"
-                           IsVisible="{Binding HasFurigana}"
-                           FontSize="18"
-                           TextColor="{StaticResource MutedText}"
-                           HorizontalTextAlignment="Center" />
-                    <Label Text="{Binding Prompt}"
-                           FontSize="56"
-                           FontAttributes="Bold"
-                           HorizontalTextAlignment="Center"
-                           LineBreakMode="WordWrap" />
-                </VerticalStackLayout>
+            <Grid>
+                <Grid RowDefinitions="*,Auto" RowSpacing="10">
+                    <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
+                        <Label Text="{Binding PromptFurigana}"
+                               IsVisible="{Binding HasFurigana}"
+                               FontSize="18"
+                               TextColor="{StaticResource MutedText}"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Prompt}"
+                               FontSize="56"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               LineBreakMode="WordWrap" />
+                    </VerticalStackLayout>
 
-                <Button Grid.Row="1"
-                        Text="🔊  Hear it again"
-                        Clicked="OnSpeakClicked"
-                        IsVisible="{Binding ShowPromptSpeakButton}"
-                        Style="{StaticResource PrimaryButton}"
-                        HorizontalOptions="Center"
-                        WidthRequest="220" />
+                    <Button Grid.Row="1"
+                            Text="🔊  Hear it again"
+                            Clicked="OnSpeakClicked"
+                            IsVisible="{Binding ShowPromptSpeakButton}"
+                            Style="{StaticResource PrimaryButton}"
+                            HorizontalOptions="Center"
+                            WidthRequest="220" />
+                </Grid>
+
+                <Button Text="{Binding ReinforceButtonText}"
+                        Clicked="OnReinforceClicked"
+                        ToolTipProperties.Text="Toggle this word's reinforcement focus"
+                        FontSize="20"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        Padding="0"
+                        CornerRadius="22"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"
+                        TextColor="{StaticResource Primary}" />
             </Grid>
         </Border>
 

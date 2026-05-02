@@ -79,6 +79,23 @@ public sealed class QuizViewModel : BaseViewModel
     public string ActiveFilterDisplay { get => _activeFilterDisplay; private set { SetProperty(ref _activeFilterDisplay, value); OnPropertyChanged(nameof(HasActiveFilter)); } }
     public bool HasActiveFilter => !string.IsNullOrEmpty(_activeFilterDisplay);
 
+    private bool _isCurrentReinforced;
+    public bool IsCurrentReinforced
+    {
+        get => _isCurrentReinforced;
+        private set { SetProperty(ref _isCurrentReinforced, value); OnPropertyChanged(nameof(ReinforceButtonText)); }
+    }
+    public string ReinforceButtonText => _isCurrentReinforced ? "★" : "☆";
+
+    public async Task ToggleReinforcedAsync()
+    {
+        if (_current is null) return;
+        var newState = !IsCurrentReinforced;
+        IsCurrentReinforced = newState;
+        try { await _store.SetReinforcedAsync(_current.Target.Id, newState); }
+        catch { /* best effort */ }
+    }
+
     private string _lastSeenFilter = string.Empty;
 
     /// <summary>
@@ -132,6 +149,7 @@ public sealed class QuizViewModel : BaseViewModel
                 Options.Add(new QuizOptionVm { Source = o, IsJapaneseSide = optionsAreJapanese });
 
             IsAnswered = false;
+            IsCurrentReinforced = _store.Get(q.Target.Id).IsReinforced;
 
             if (q.Direction == QuestionDirection.JapaneseToEnglish)
                 _ = _tts.SpeakJapaneseAsync(q.TtsText);

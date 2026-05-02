@@ -67,6 +67,16 @@ public sealed class ProficiencyStore : IProficiencyStore
 
     public IEnumerable<WordProficiency> All() => _byWord.Values;
 
+    public async Task SetReinforcedAsync(string wordId, bool reinforced)
+    {
+        var p = Get(wordId);
+        if (p.IsReinforced == reinforced) return;
+        p.IsReinforced = reinforced;
+        // When pinning, make it due immediately so it surfaces on the next pick.
+        if (reinforced) p.NextDueAtTurn = _turnsAsked;
+        await SaveAsync();
+    }
+
     public async Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct)
     {
         var p = Get(wordId);

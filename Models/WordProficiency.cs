@@ -26,6 +26,10 @@ public sealed class WordProficiency
     [JsonPropertyName("nextDueAtTurn")]
     public int NextDueAtTurn { get; set; }
 
+    /// <summary>Manually pinned for reinforcement — picker treats it as always-overdue with max weight.</summary>
+    [JsonPropertyName("isReinforced")]
+    public bool IsReinforced { get; set; }
+
     public double GetScore(ProficiencyCriterion c) =>
         Scores.TryGetValue(c, out var v) ? v : 0.0;
 

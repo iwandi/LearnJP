@@ -42,4 +42,6 @@ public partial class QuizPage : ContentPage
     private async void OnDontKnowClicked(object? sender, EventArgs e) => await _vm.DontKnowAsync();
 
     private async void OnSpeakClicked(object? sender, EventArgs e) => await _vm.SpeakCurrentAsync();
+
+    private async void OnReinforceClicked(object? sender, EventArgs e) => await _vm.ToggleReinforcedAsync();
 }

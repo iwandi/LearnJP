@@ -87,6 +87,12 @@ public sealed class QuestionGenerator : IQuestionGenerator
         {
             if (w.Id == _lastWordId) continue;
             var p = _store.Get(w.Id);
+            if (p.IsReinforced)
+            {
+                // Pinned words always go in the due bucket with maximum weight.
+                due.Add((w, 60.0));
+                continue;
+            }
             if (p.TotalSeen == 0) { unseen.Add(w); continue; }
             var overdue = turn - p.NextDueAtTurn;
             if (overdue >= 0)
@@ -132,12 +138,15 @@ public sealed class QuestionGenerator : IQuestionGenerator
         {
             var w = pool[i];
             if (w.Id == _lastWordId) { weights[i] = 0.05; total += 0.05; continue; }
-            var p = _store.Get(w.Id).Overall;
+            var prof = _store.Get(w.Id);
+            var p = prof.Overall;
             // Newer/lower-proficiency words get higher weight; mastered words still rotate.
             var weight = Math.Max(0.05, 1.0 - (p / 100.0));
             // Slightly favor higher-frequency vocabulary when proficiency is similar.
             var freqBoost = w.FrequencyRank == int.MaxValue ? 1.0 : 1.0 + (1.0 / Math.Sqrt(w.FrequencyRank + 1));
             weight *= freqBoost;
+            // Pinned reinforcement override: dominate the weight so it surfaces frequently.
+            if (prof.IsReinforced) weight = Math.Max(weight, 5.0);
             weights[i] = weight;
             total += weight;
         }
