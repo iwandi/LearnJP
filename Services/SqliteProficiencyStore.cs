@@ -18,6 +18,13 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
     private readonly SemaphoreSlim _gate = new(1, 1);
     private readonly Dictionary<string, WordProficiency> _cache = new(StringComparer.Ordinal);
     private readonly Dictionary<(string Target, string Picked), int> _confusions = new();
+    private readonly Dictionary<string, FsrsState> _fsrs = new(StringComparer.Ordinal);
+
+    // Running aggregates of correct-answer response time (across all criteria), persisted to
+    // the meta table. Used to z-score the next answer for FSRS time→grade mapping.
+    private long _timeCount;
+    private double _timeSum;
+    private double _timeSumSq;
 
     private string? _dbPath;
     private bool _loaded;
@@ -71,6 +78,41 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
                     while (rd.Read())
                         _confusions[(rd.GetString(0), rd.GetString(1))] = rd.GetInt32(2);
                 }
+
+                // FSRS state for every word that has any review history. Cheap to keep in
+                // memory since we need it on every pick under the FSRS strategy.
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT word_id, stability, difficulty, last_review_utc FROM fsrs_state";
+                    using var rd = cmd.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        _fsrs[rd.GetString(0)] = new FsrsState
+                        {
+                            Stability = rd.GetDouble(1),
+                            Difficulty = rd.GetDouble(2),
+                            LastReviewUtc = DateTime.Parse(rd.GetString(3), null, System.Globalization.DateTimeStyles.RoundtripKind)
+                        };
+                    }
+                }
+
+                // Running response-time aggregates.
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT key, value FROM meta WHERE key IN ('time_count','time_sum','time_sumsq')";
+                    using var rd = cmd.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        var k = rd.GetString(0);
+                        var v = rd.GetString(1);
+                        switch (k)
+                        {
+                            case "time_count": _timeCount = long.Parse(v); break;
+                            case "time_sum":   _timeSum   = double.Parse(v, System.Globalization.CultureInfo.InvariantCulture); break;
+                            case "time_sumsq": _timeSumSq = double.Parse(v, System.Globalization.CultureInfo.InvariantCulture); break;
+                        }
+                    }
+                }
             }
 
             await TryImportLegacyJsonAsync();
@@ -112,35 +154,43 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
 
     private static void EnsureSchema(SqliteConnection conn)
     {
-        using var cmd = conn.CreateCommand();
-        cmd.CommandText = @"
-            CREATE TABLE IF NOT EXISTS proficiency_meta (
-                word_id           TEXT PRIMARY KEY,
-                last_seen_utc     TEXT,
-                total_seen        INTEGER NOT NULL DEFAULT 0,
-                total_correct     INTEGER NOT NULL DEFAULT 0,
-                next_due_at_turn  INTEGER NOT NULL DEFAULT 0,
-                is_reinforced     INTEGER NOT NULL DEFAULT 0
-            );
-            CREATE TABLE IF NOT EXISTS proficiency_scores (
-                word_id   TEXT NOT NULL,
-                criterion INTEGER NOT NULL,
-                score     REAL NOT NULL,
-                attempts  INTEGER NOT NULL,
-                PRIMARY KEY (word_id, criterion)
-            );
-            CREATE TABLE IF NOT EXISTS confusions (
-                target_id TEXT NOT NULL,
-                picked_id TEXT NOT NULL,
-                count     INTEGER NOT NULL,
-                PRIMARY KEY (target_id, picked_id)
-            );
-            CREATE INDEX IF NOT EXISTS confusions_target ON confusions(target_id);
-            CREATE TABLE IF NOT EXISTS meta (
-                key   TEXT PRIMARY KEY,
-                value TEXT NOT NULL
-            );";
-        cmd.ExecuteNonQuery();
+        using (var cmd = conn.CreateCommand())
+        {
+            cmd.CommandText = @"
+                CREATE TABLE IF NOT EXISTS proficiency_meta (
+                    word_id           TEXT PRIMARY KEY,
+                    last_seen_utc     TEXT,
+                    total_seen        INTEGER NOT NULL DEFAULT 0,
+                    total_correct     INTEGER NOT NULL DEFAULT 0,
+                    next_due_at_turn  INTEGER NOT NULL DEFAULT 0,
+                    is_reinforced     INTEGER NOT NULL DEFAULT 0
+                );
+                CREATE TABLE IF NOT EXISTS proficiency_scores (
+                    word_id   TEXT NOT NULL,
+                    criterion INTEGER NOT NULL,
+                    score     REAL NOT NULL,
+                    attempts  INTEGER NOT NULL,
+                    PRIMARY KEY (word_id, criterion)
+                );
+                CREATE TABLE IF NOT EXISTS confusions (
+                    target_id TEXT NOT NULL,
+                    picked_id TEXT NOT NULL,
+                    count     INTEGER NOT NULL,
+                    PRIMARY KEY (target_id, picked_id)
+                );
+                CREATE INDEX IF NOT EXISTS confusions_target ON confusions(target_id);
+                CREATE TABLE IF NOT EXISTS fsrs_state (
+                    word_id         TEXT PRIMARY KEY,
+                    stability       REAL NOT NULL,
+                    difficulty      REAL NOT NULL,
+                    last_review_utc TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS meta (
+                    key   TEXT PRIMARY KEY,
+                    value TEXT NOT NULL
+                );";
+            cmd.ExecuteNonQuery();
+        }
     }
 
     public WordProficiency Get(string wordId)
@@ -256,12 +306,28 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
         await PersistWordAsync(p);
     }
 
-    public async Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct)
+    public async Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct, int elapsedMs = 0)
     {
         var p = Get(wordId);
         p.RecordResult(criterion, correct);
         _turnsAsked++;
         p.NextDueAtTurn = _turnsAsked + ComputeInterval(p.Overall, correct);
+
+        // FSRS update — uses the elapsed time z-score to derive a 4-level grade.
+        var now = DateTime.UtcNow;
+        var grade = Fsrs.GradeFromTime(correct, ZScoreFromMs(elapsedMs));
+        var prevState = _fsrs.TryGetValue(wordId, out var existing) ? existing : default;
+        var newState = Fsrs.Update(prevState, grade, now);
+        _fsrs[wordId] = newState;
+
+        // Update response-time stats — only count correct answers; wrong answers correlate
+        // with hesitation in a way that would skew the mean upward.
+        if (correct && elapsedMs > 0)
+        {
+            _timeCount++;
+            _timeSum   += elapsedMs;
+            _timeSumSq += (double)elapsedMs * elapsedMs;
+        }
 
         await _gate.WaitAsync();
         try
@@ -269,17 +335,65 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
             using var conn = OpenConnection();
             using var tx = conn.BeginTransaction();
             UpsertWordLocked(conn, tx, p);
+            UpsertFsrsLocked(conn, tx, wordId, newState);
             using (var cmd = conn.CreateCommand())
             {
                 cmd.Transaction = tx;
-                cmd.CommandText = "INSERT INTO meta(key, value) VALUES($k, $v) ON CONFLICT(key) DO UPDATE SET value = excluded.value";
-                cmd.Parameters.AddWithValue("$k", TurnsMetaKey);
-                cmd.Parameters.AddWithValue("$v", _turnsAsked.ToString());
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = @"
+                    INSERT INTO meta(key, value) VALUES($k, $v) ON CONFLICT(key) DO UPDATE SET value = excluded.value;";
+                void SetMeta(string key, string value)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("$k", key);
+                    cmd.Parameters.AddWithValue("$v", value);
+                    cmd.ExecuteNonQuery();
+                }
+                SetMeta(TurnsMetaKey, _turnsAsked.ToString());
+                SetMeta("time_count", _timeCount.ToString());
+                SetMeta("time_sum",   _timeSum.ToString("R", System.Globalization.CultureInfo.InvariantCulture));
+                SetMeta("time_sumsq", _timeSumSq.ToString("R", System.Globalization.CultureInfo.InvariantCulture));
             }
             tx.Commit();
         }
         finally { _gate.Release(); }
+    }
+
+    private double ZScoreFromMs(int elapsedMs)
+    {
+        // Need at least a small sample before z-scoring; otherwise treat as "Good".
+        if (elapsedMs <= 0 || _timeCount < 8) return 0;
+        var mean = _timeSum / _timeCount;
+        var variance = (_timeSumSq / _timeCount) - mean * mean;
+        var stddev = variance > 0 ? Math.Sqrt(variance) : 0;
+        if (stddev < 1) return 0;
+        return (elapsedMs - mean) / stddev;
+    }
+
+    private static void UpsertFsrsLocked(SqliteConnection conn, SqliteTransaction tx, string wordId, FsrsState s)
+    {
+        if (!s.HasState) return;
+        using var cmd = conn.CreateCommand();
+        cmd.Transaction = tx;
+        cmd.CommandText = @"
+            INSERT INTO fsrs_state (word_id, stability, difficulty, last_review_utc)
+            VALUES ($id, $s, $d, $t)
+            ON CONFLICT(word_id) DO UPDATE SET
+                stability = excluded.stability,
+                difficulty = excluded.difficulty,
+                last_review_utc = excluded.last_review_utc;";
+        cmd.Parameters.AddWithValue("$id", wordId);
+        cmd.Parameters.AddWithValue("$s", s.Stability);
+        cmd.Parameters.AddWithValue("$d", s.Difficulty);
+        cmd.Parameters.AddWithValue("$t", s.LastReviewUtc!.Value.ToString("o"));
+        cmd.ExecuteNonQuery();
+    }
+
+    public FsrsState GetFsrsState(string wordId) =>
+        _fsrs.TryGetValue(wordId, out var s) ? s : default;
+
+    public IEnumerable<(string WordId, FsrsState State)> AllFsrsStates()
+    {
+        foreach (var (id, s) in _fsrs) yield return (id, s);
     }
 
     public Task SaveAsync() => Task.CompletedTask; // every mutation persists immediately
@@ -304,11 +418,15 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
         {
             _cache.Clear();
             _confusions.Clear();
+            _fsrs.Clear();
             _turnsAsked = 0;
+            _timeCount = 0;
+            _timeSum = 0;
+            _timeSumSq = 0;
 
             using var conn = OpenConnection();
             using var tx = conn.BeginTransaction();
-            foreach (var table in new[] { "proficiency_scores", "proficiency_meta", "confusions", "meta" })
+            foreach (var table in new[] { "proficiency_scores", "proficiency_meta", "confusions", "fsrs_state", "meta" })
             {
                 using var cmd = conn.CreateCommand();
                 cmd.Transaction = tx;

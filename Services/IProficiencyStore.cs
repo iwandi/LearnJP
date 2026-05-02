@@ -10,7 +10,17 @@ public interface IProficiencyStore
     IEnumerable<WordProficiency> All();
     /// <summary>Monotonic counter incremented for every recorded answer.</summary>
     int TurnsAsked { get; }
-    Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct);
+    /// <summary>
+    /// Records a review. <paramref name="elapsedMs"/> is the time the user spent on the
+    /// question (click — start). 0 / negative = no-data, treated as "Good" by FSRS.
+    /// </summary>
+    Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct, int elapsedMs = 0);
+
+    /// <summary>FSRS state for this word; returns the empty state if the word hasn't been reviewed.</summary>
+    FsrsState GetFsrsState(string wordId);
+
+    /// <summary>Per-word FSRS state for every word that has any review history.</summary>
+    IEnumerable<(string WordId, FsrsState State)> AllFsrsStates();
     Task SetReinforcedAsync(string wordId, bool reinforced);
     Task ResetAsync();
 

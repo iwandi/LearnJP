@@ -61,13 +61,47 @@ internal sealed class MemoryProficiencyStore : IProficiencyStore
 
     public IEnumerable<WordProficiency> All() => _byWord.Values;
 
-    public Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct)
+    public Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct, int elapsedMs = 0)
     {
         var p = Get(wordId);
         p.RecordResult(criterion, correct);
         _turns++;
         p.NextDueAtTurn = _turns + ComputeInterval(p.Overall, correct, _intervalCap);
+
+        // FSRS state update — z-score from the running response-time aggregates.
+        var grade = Fsrs.GradeFromTime(correct, ZScoreFromMs(elapsedMs));
+        var prev = _fsrsStates.TryGetValue(wordId, out var existing) ? existing : default;
+        _fsrsStates[wordId] = Fsrs.Update(prev, grade, DateTime.UtcNow);
+
+        if (correct && elapsedMs > 0)
+        {
+            _timeCount++;
+            _timeSum += elapsedMs;
+            _timeSumSq += (double)elapsedMs * elapsedMs;
+        }
         return Task.CompletedTask;
+    }
+
+    private readonly Dictionary<string, FsrsState> _fsrsStates = new(StringComparer.Ordinal);
+    private long _timeCount;
+    private double _timeSum, _timeSumSq;
+
+    private double ZScoreFromMs(int elapsedMs)
+    {
+        if (elapsedMs <= 0 || _timeCount < 8) return 0;
+        var mean = _timeSum / _timeCount;
+        var variance = (_timeSumSq / _timeCount) - mean * mean;
+        var stddev = variance > 0 ? Math.Sqrt(variance) : 0;
+        if (stddev < 1) return 0;
+        return (elapsedMs - mean) / stddev;
+    }
+
+    public FsrsState GetFsrsState(string wordId) =>
+        _fsrsStates.TryGetValue(wordId, out var s) ? s : default;
+
+    public IEnumerable<(string WordId, FsrsState State)> AllFsrsStates()
+    {
+        foreach (var (id, s) in _fsrsStates) yield return (id, s);
     }
 
     public Task SetReinforcedAsync(string wordId, bool reinforced)

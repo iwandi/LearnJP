@@ -32,6 +32,10 @@ public sealed class Question
     /// <summary>True when the picker drew this word from the strategy's active focus set.</summary>
     public bool IsInReinforcementSet { get; init; }
 
+    /// <summary>UTC timestamp captured when the question was generated. Subtracted from the
+    /// click time to derive the user's response latency, which feeds the FSRS time→grade map.</summary>
+    public DateTime StartedUtc { get; init; } = DateTime.UtcNow;
+
     /// <summary>
     /// True when this pick was forced by the proficiency-validation pass — i.e. a word with
     /// high proficiency that the user has historically confused, surfaced again to confirm the

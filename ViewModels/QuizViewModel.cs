@@ -256,7 +256,8 @@ public sealed class QuizViewModel : BaseViewModel
 
         if (_settings.CountForProficiency)
         {
-            try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
+            var elapsedMs = (int)Math.Max(0, (DateTime.UtcNow - _current.StartedUtc).TotalMilliseconds);
+            try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct, elapsedMs); }
             catch { /* best effort */ }
             if (!correct)
             {

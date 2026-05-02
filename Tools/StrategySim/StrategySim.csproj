@@ -21,6 +21,7 @@
     <Compile Include="..\..\Services\IProficiencyStore.cs"    Link="Services\IProficiencyStore.cs" />
     <Compile Include="..\..\Services\ISettingsService.cs"     Link="Services\ISettingsService.cs" />
     <Compile Include="..\..\Services\QuestionGenerator.cs"    Link="Services\QuestionGenerator.cs" />
+    <Compile Include="..\..\Services\Fsrs.cs"                 Link="Services\Fsrs.cs" />
     <!-- The production ITtsService isn't pulled in (depends on MAUI) — neither is needed here. -->
   </ItemGroup>
 

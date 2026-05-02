@@ -5,7 +5,8 @@ public enum LearningStrategy
     Neutral,
     Spaced,
     QuickReview,
-    WeakFocus
+    WeakFocus,
+    Fsrs
 }
 
 public static class LearningStrategyExtensions
@@ -16,6 +17,7 @@ public static class LearningStrategyExtensions
         LearningStrategy.Spaced      => "Spaced (turn-based)",
         LearningStrategy.QuickReview => "Quick review (known)",
         LearningStrategy.WeakFocus   => "Weak focus (drill)",
+        LearningStrategy.Fsrs        => "FSRS (retrievability-targeted)",
         _ => s.ToString()
     };
 }
