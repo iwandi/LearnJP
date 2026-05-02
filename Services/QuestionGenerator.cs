@@ -44,6 +44,12 @@ public sealed class QuestionGenerator : IQuestionGenerator
             // Need at least one target plus one distractor.
             if (filtered.Count >= 2) pool = filtered;
         }
+        else
+        {
+            // No filter active: exclude hiragana/katakana from general vocabulary practice.
+            // Kana drills are only surfaced when the user explicitly filters for them.
+            pool = pool.Where(w => CategoryOf(w) != WordCategory.Kana).ToList();
+        }
         if (pool.Count < 2) return null;
 
         var target = strategy switch
