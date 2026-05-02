@@ -31,4 +31,11 @@ public sealed class Question
     public required double TargetProficiencyAtAsk { get; init; }
     /// <summary>True when the picker drew this word from the strategy's active focus set.</summary>
     public bool IsInReinforcementSet { get; init; }
+
+    /// <summary>
+    /// True when this pick was forced by the proficiency-validation pass — i.e. a word with
+    /// high proficiency that the user has historically confused, surfaced again to confirm the
+    /// score is real. The distractor bias guarantees the top confuser appears in the options.
+    /// </summary>
+    public bool IsValidation { get; init; }
 }

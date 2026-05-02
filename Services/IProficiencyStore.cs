@@ -27,4 +27,10 @@ public interface IProficiencyStore
     /// per-question distractor scorer.
     /// </summary>
     IReadOnlyList<(string PickedId, int Count)> GetTopConfusersFor(string targetId, int limit);
+
+    /// <summary>
+    /// Set of word ids that have at least one recorded confusion against them. Used by the
+    /// validation pass to enumerate eligible re-test candidates without scanning every pair.
+    /// </summary>
+    IReadOnlyCollection<string> GetConfusedTargetIds();
 }

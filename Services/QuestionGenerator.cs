@@ -27,6 +27,12 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
     public IReadOnlyList<Word> CurrentNewTermFrontier { get; private set; } = Array.Empty<Word>();
 
+    // Probability that any given pick is hijacked by the validation pass: a high-proficiency
+    // word with logged confusions surfaced to confirm the score is real. The distractor bias
+    // already pulls the top confuser into the option set, so the user gets a real test.
+    public static double ValidationPickProbability = 0.08;
+    private const double ValidationProficiencyFloor = 75.0;
+
     /// <summary>
     /// Sort key for FrequencyRank: real ranks are positive (smaller = more common). Both 0 and
     /// int.MaxValue are sentinel "no data" markers from the source vocabulary / cleaner, so they
@@ -82,7 +88,18 @@ public sealed class QuestionGenerator : IQuestionGenerator
             .Take(NewTermFrontierSize)
             .ToList();
 
-        var target = strategy switch
+        // Validation pass: with a small probability, override the strategy and surface a
+        // high-proficiency word the user has historically confused. Catches over-rated words
+        // before they slip out of rotation entirely.
+        Word? target = null;
+        bool isValidation = false;
+        if (_rng.NextDouble() < ValidationPickProbability)
+        {
+            target = PickValidationTarget(pool);
+            isValidation = target is not null;
+        }
+
+        target ??= strategy switch
         {
             LearningStrategy.Spaced      => PickTargetSpaced(pool),
             LearningStrategy.QuickReview => PickTargetQuickReview(pool),
@@ -115,8 +132,29 @@ public sealed class QuestionGenerator : IQuestionGenerator
             TtsText = ttsText,
             TtsLocaleTag = ttsLocale,
             TargetProficiencyAtAsk = prof.Overall,
-            IsInReinforcementSet = IsInActiveFocusSet(strategy, target.Id)
+            IsInReinforcementSet = IsInActiveFocusSet(strategy, target.Id),
+            IsValidation = isValidation
         };
+    }
+
+    /// <summary>
+    /// Picks a high-proficiency word with logged confusions so the validation pass can verify
+    /// the score is real. Returns null if no pool word qualifies.
+    /// </summary>
+    private Word? PickValidationTarget(IReadOnlyList<Word> pool)
+    {
+        var confused = _store.GetConfusedTargetIds();
+        if (confused.Count == 0) return null;
+
+        var candidates = new List<Word>();
+        foreach (var w in pool)
+        {
+            if (w.Id == _lastWordId) continue;
+            if (!confused.Contains(w.Id)) continue;
+            if (_store.Get(w.Id).Overall < ValidationProficiencyFloor) continue;
+            candidates.Add(w);
+        }
+        return candidates.Count == 0 ? null : candidates[_rng.Next(candidates.Count)];
     }
 
     /// <summary>

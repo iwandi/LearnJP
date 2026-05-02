@@ -106,6 +106,13 @@ internal sealed class MemoryProficiencyStore : IProficiencyStore
         return hits.Count > limit ? hits.GetRange(0, limit) : hits;
     }
 
+    public IReadOnlyCollection<string> GetConfusedTargetIds()
+    {
+        var s = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var (t, _) in _confusions.Keys) s.Add(t);
+        return s;
+    }
+
     // Mirrors ProficiencyStore.ComputeInterval — keep in sync. The cap is parameterised here
     // (production hard-codes 250) so the simulator can sweep it.
     private static int ComputeInterval(double overall, bool correct, int cap)

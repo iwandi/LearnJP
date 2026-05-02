@@ -352,6 +352,13 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
         return hits.Count > limit ? hits.GetRange(0, limit) : hits;
     }
 
+    public IReadOnlyCollection<string> GetConfusedTargetIds()
+    {
+        var s = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var (t, _) in _confusions.Keys) s.Add(t);
+        return s;
+    }
+
     /// <summary>Mirrors the original ProficiencyStore.ComputeInterval — kept identical.</summary>
     private static int ComputeInterval(double overall, bool correct)
     {
