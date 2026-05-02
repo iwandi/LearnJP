@@ -47,7 +47,6 @@ public sealed class TagFilterViewModel : BaseViewModel
     {
         await _vocab.EnsureLoadedAsync();
 
-        // Build a map: tag -> count, sorted by count desc then alphabetic.
         var counts = new Dictionary<string, int>(StringComparer.Ordinal);
         foreach (var w in _vocab.All)
         {
@@ -58,7 +57,10 @@ public sealed class TagFilterViewModel : BaseViewModel
             }
         }
 
-        var ordered = counts
+        // Tags pinned to the top of the list (after "no filter") regardless of count.
+        var pinned = new[] { "hiragana", "katakana" };
+        var rest = counts
+            .Where(kv => !pinned.Contains(kv.Key, StringComparer.OrdinalIgnoreCase))
             .OrderByDescending(kv => kv.Value)
             .ThenBy(kv => kv.Key, StringComparer.Ordinal)
             .ToList();
@@ -71,7 +73,18 @@ public sealed class TagFilterViewModel : BaseViewModel
             WordCount = _vocab.All.Count,
             IsNoFilter = true
         });
-        foreach (var (tag, count) in ordered)
+        foreach (var p in pinned)
+        {
+            if (!counts.TryGetValue(p, out var c)) continue;
+            Tags.Add(new TagOption
+            {
+                Tag = p,
+                Display = $"{p}  ·  {c}",
+                WordCount = c,
+                IsNoFilter = false
+            });
+        }
+        foreach (var (tag, count) in rest)
         {
             Tags.Add(new TagOption
             {

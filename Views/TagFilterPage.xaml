@@ -25,11 +25,34 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="vm:TagOption">
-                    <Border StrokeThickness="0"
-                            BackgroundColor="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}"
+                    <Border x:Name="RowBorder"
+                            StrokeThickness="0"
                             StrokeShape="RoundRectangle 10"
                             Padding="14,10">
-                        <Label Text="{Binding Display}" FontSize="16" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor"
+                                                Value="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Label Text="{Binding Display}"
+                               FontSize="16">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference RowBorder}, Path=BackgroundColor}" Value="{StaticResource Primary}">
+                                    <Setter Property="TextColor" Value="White" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
