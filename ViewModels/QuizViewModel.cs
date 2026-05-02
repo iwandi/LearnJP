@@ -178,7 +178,9 @@ public sealed class QuizViewModel : BaseViewModel
             _isInActiveFocusSet = q.IsInReinforcementSet;
             RefreshReinforceState();
 
-            if (q.Direction == QuestionDirection.JapaneseToEnglish)
+            // Kana drills skip the initial auto-TTS (the prompt is the pronunciation),
+            // but still vocalise after the answer is revealed.
+            if (q.Direction == QuestionDirection.JapaneseToEnglish && !IsKanaWord(q.Target))
                 _ = _tts.SpeakJapaneseAsync(q.TtsText);
         }
         finally { IsLoading = false; }
@@ -248,6 +250,18 @@ public sealed class QuizViewModel : BaseViewModel
         _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText);
 
         await ScheduleAutoAdvance(FeedbackWrong);
+    }
+
+    /// <summary>
+    /// Hiragana / katakana entries: their prompt and answer are the pronunciation itself,
+    /// so any auto-TTS would speak the answer aloud. Manual speak buttons stay enabled.
+    /// </summary>
+    private static bool IsKanaWord(Word w)
+    {
+        if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return true;
+        if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return true;
+        if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return true;
+        return false;
     }
 
     public async Task SpeakCurrentAsync()
