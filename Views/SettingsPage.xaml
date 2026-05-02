@@ -2,19 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:LearnJP.ViewModels"
+             xmlns:models="clr-namespace:LearnJP.Models"
              x:Class="LearnJP.Views.SettingsPage"
              x:DataType="vm:SettingsViewModel"
              Title="Settings">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="18">
+
             <Label Text="Display" Style="{StaticResource HeadlineLabel}" />
             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="12">
                 <Label Grid.Row="0" Grid.Column="0" Text="Romaji-only mode" VerticalOptions="Center" />
-                <Switch Grid.Row="0" Grid.Column="1" IsToggled="{Binding RomajiOnly}" />
+                <Switch Grid.Row="0" Grid.Column="1" IsToggled="{Binding RomajiOnly}" HorizontalOptions="End" WidthRequest="50" />
 
                 <Label Grid.Row="1" Grid.Column="0" Text="Always show furigana" VerticalOptions="Center" />
-                <Switch Grid.Row="1" Grid.Column="1" IsToggled="{Binding ForceFurigana}" />
+                <Switch Grid.Row="1" Grid.Column="1" IsToggled="{Binding ForceFurigana}" HorizontalOptions="End" WidthRequest="50" />
             </Grid>
 
             <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />
@@ -22,8 +24,29 @@
             <Label Text="Audio" Style="{StaticResource HeadlineLabel}" />
             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" RowSpacing="12">
                 <Label Grid.Column="0" Text="Speak Japanese aloud" VerticalOptions="Center" />
-                <Switch Grid.Column="1" IsToggled="{Binding TtsEnabled}" />
+                <Switch Grid.Column="1" IsToggled="{Binding TtsEnabled}" HorizontalOptions="End" WidthRequest="50" />
             </Grid>
+
+            <Label Text="TTS provider" Style="{StaticResource MutedLabel}" />
+            <Picker ItemsSource="{Binding TtsProviders}"
+                    SelectedItem="{Binding SelectedTtsProvider}" />
+
+            <VerticalStackLayout Spacing="10" IsVisible="{Binding IsAzureSelected}">
+                <Label Text="Azure subscription key" Style="{StaticResource MutedLabel}" />
+                <Entry Text="{Binding AzureSpeechKey}" IsPassword="True" Placeholder="paste your key here" />
+
+                <Label Text="Azure region" Style="{StaticResource MutedLabel}" />
+                <Entry Text="{Binding AzureSpeechRegion}" Placeholder="e.g. westeurope, eastus" />
+
+                <Label Text="Japanese voice" Style="{StaticResource MutedLabel}" />
+                <Entry Text="{Binding AzureJapaneseVoice}" Placeholder="ja-JP-NanamiNeural" />
+
+                <Label Text="English voice" Style="{StaticResource MutedLabel}" />
+                <Entry Text="{Binding AzureEnglishVoice}" Placeholder="en-US-JennyNeural" />
+
+                <Label Style="{StaticResource MutedLabel}"
+                       Text="Common JP voices: ja-JP-NanamiNeural, ja-JP-KeitaNeural, ja-JP-AoiNeural, ja-JP-DaichiNeural, ja-JP-MayuNeural, ja-JP-NaokiNeural, ja-JP-ShioriNeural." />
+            </VerticalStackLayout>
 
             <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />
 

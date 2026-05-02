@@ -18,6 +18,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ITtsService, TtsService>();
         builder.Services.AddSingleton<ISoundService, SoundService>();
         builder.Services.AddSingleton<ISettingsService, SettingsService>();
+        builder.Services.AddSingleton<AzureTtsClient>();
 
         builder.Services.AddSingleton<QuizViewModel>();
         builder.Services.AddSingleton<ProgressViewModel>();

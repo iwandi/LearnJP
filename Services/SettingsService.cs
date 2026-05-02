@@ -1,11 +1,18 @@
+using LearnJP.Models;
+
 namespace LearnJP.Services;
 
 public sealed class SettingsService : ISettingsService
 {
-    private const string KeyRomaji = "settings.romaji_only";
-    private const string KeyTts = "settings.tts_enabled";
-    private const string KeyFurigana = "settings.force_furigana";
-    private const string KeyRate = "settings.tts_rate";
+    private const string KeyRomaji        = "settings.romaji_only";
+    private const string KeyTts           = "settings.tts_enabled";
+    private const string KeyFurigana      = "settings.force_furigana";
+    private const string KeyRate          = "settings.tts_rate";
+    private const string KeyTtsProvider   = "settings.tts_provider";
+    private const string KeyAzureKey      = "settings.azure_key";
+    private const string KeyAzureRegion   = "settings.azure_region";
+    private const string KeyAzureJaVoice  = "settings.azure_ja_voice";
+    private const string KeyAzureEnVoice  = "settings.azure_en_voice";
 
     private readonly Dictionary<string, object> _fallback = new();
     private bool _preferencesAvailable = true;
@@ -34,4 +41,34 @@ public sealed class SettingsService : ISettingsService
     public bool TtsEnabled      { get => Read(KeyTts,      true);  set => Write(KeyTts,      value); }
     public bool ForceFurigana   { get => Read(KeyFurigana, false); set => Write(KeyFurigana, value); }
     public double TtsRate       { get => Read(KeyRate,     0.9);   set => Write(KeyRate,     value); }
+
+    public TtsProvider TtsProvider
+    {
+        get => (TtsProvider)Read(KeyTtsProvider, (int)TtsProvider.System);
+        set => Write(KeyTtsProvider, (int)value);
+    }
+
+    public string AzureSpeechKey
+    {
+        get => Read(KeyAzureKey, string.Empty);
+        set => Write(KeyAzureKey, value ?? string.Empty);
+    }
+
+    public string AzureSpeechRegion
+    {
+        get => Read(KeyAzureRegion, "westeurope");
+        set => Write(KeyAzureRegion, value ?? string.Empty);
+    }
+
+    public string AzureJapaneseVoice
+    {
+        get => Read(KeyAzureJaVoice, "ja-JP-NanamiNeural");
+        set => Write(KeyAzureJaVoice, value ?? string.Empty);
+    }
+
+    public string AzureEnglishVoice
+    {
+        get => Read(KeyAzureEnVoice, "en-US-JennyNeural");
+        set => Write(KeyAzureEnVoice, value ?? string.Empty);
+    }
 }
