@@ -17,6 +17,13 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private readonly HashSet<string> _quickReviewSet = new(StringComparer.Ordinal);
     private readonly HashSet<string> _weakFocusSet = new(StringComparer.Ordinal);
 
+    // Active intake frontier for never-seen vocabulary. With ~1000 terms, letting all unseen
+    // words compete at full weight drowns out the words the user is actively learning, so the
+    // rotation stalls on a wide-but-shallow sweep. Instead, only the K most-common (lowest
+    // FrequencyRank) unseen words are "in scope" at any moment — once one is learned past the
+    // mastery floor, the next-most-common unseen word slides in.
+    private const int NewTermFrontierSize = 12;
+
     public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings)
     {
         _vocab = vocab;
@@ -111,12 +118,26 @@ public sealed class QuestionGenerator : IQuestionGenerator
                 background.Add((w, 0.15));                 // about-to-be-due, low weight
         }
 
+        // Restrict the unseen bucket to the active intake frontier (most-common words first),
+        // so a long tail of 900+ unseen entries can't drown out the words being learned.
+        if (unseen.Count > NewTermFrontierSize)
+        {
+            unseen = unseen.OrderBy(w => w.FrequencyRank).Take(NewTermFrontierSize).ToList();
+        }
+
         // Prefer due words.
         if (due.Count > 0)
+        {
+            // Occasionally still mix in a frontier-new word so vocabulary keeps unlocking
+            // even when the schedule is full of overdue work; kept low so reinforcement wins.
+            if (unseen.Count > 0 && _rng.NextDouble() < 0.15)
+                return unseen[_rng.Next(unseen.Count)];
             return WeightedPick(due);
+        }
 
-        // Mix in some never-seen words so new vocabulary surfaces.
-        if (unseen.Count > 0 && (background.Count == 0 || _rng.NextDouble() < 0.7))
+        // Nothing due — pull from the frontier most of the time, otherwise sample a
+        // background "about-to-be-due" word for variety.
+        if (unseen.Count > 0 && (background.Count == 0 || _rng.NextDouble() < 0.5))
             return unseen[_rng.Next(unseen.Count)];
 
         if (background.Count > 0) return WeightedPick(background);
@@ -261,7 +282,16 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
     private Word? PickTarget(IReadOnlyList<Word> pool)
     {
-        // Weighted by inverse proficiency, with a small floor so mastered words still rotate in.
+        // Identify the active intake frontier: the K most-common unseen words. Only these
+        // compete for "new word" picks; other unseen words sit dormant at a tiny floor weight
+        // so they're occasionally surfaced but don't crowd out in-progress learning.
+        var frontier = new HashSet<string>(StringComparer.Ordinal);
+        var frontierCandidates = pool
+            .Where(w => _store.Get(w.Id).TotalSeen == 0)
+            .OrderBy(w => w.FrequencyRank)
+            .Take(NewTermFrontierSize);
+        foreach (var w in frontierCandidates) frontier.Add(w.Id);
+
         var weights = new double[pool.Count];
         double total = 0;
         for (int i = 0; i < pool.Count; i++)
@@ -270,13 +300,28 @@ public sealed class QuestionGenerator : IQuestionGenerator
             if (w.Id == _lastWordId) { weights[i] = 0.05; total += 0.05; continue; }
             var prof = _store.Get(w.Id);
             var p = prof.Overall;
-            // Newer/lower-proficiency words get higher weight; mastered words still rotate.
-            var weight = Math.Max(0.05, 1.0 - (p / 100.0));
-            // Slightly favor higher-frequency vocabulary when proficiency is similar.
-            var freqBoost = w.FrequencyRank == int.MaxValue ? 1.0 : 1.0 + (1.0 / Math.Sqrt(w.FrequencyRank + 1));
-            weight *= freqBoost;
+            double weight;
+            if (prof.TotalSeen == 0)
+            {
+                // Unseen: full weight only inside the frontier; otherwise dormant.
+                if (frontier.Contains(w.Id))
+                {
+                    var freqBoost = w.FrequencyRank == int.MaxValue ? 1.0 : 1.0 + (1.0 / Math.Sqrt(w.FrequencyRank + 1));
+                    weight = 0.8 * freqBoost; // ~1.0–1.6
+                }
+                else
+                {
+                    weight = 0.02;
+                }
+            }
+            else
+            {
+                // Seen: dominate while learning, taper as proficiency climbs, never zero.
+                // 5.0 at Overall=0 (drilling a word that keeps slipping), 1.0 at Overall=100.
+                weight = 1.0 + 4.0 * Math.Max(0.0, 1.0 - (p / 100.0));
+            }
             // Pinned reinforcement override: dominate the weight so it surfaces frequently.
-            if (prof.IsReinforced) weight = Math.Max(weight, 5.0);
+            if (prof.IsReinforced) weight = Math.Max(weight, 8.0);
             weights[i] = weight;
             total += weight;
         }
