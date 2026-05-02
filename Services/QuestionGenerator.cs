@@ -40,7 +40,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         _settings = settings;
     }
 
-    public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Neutral)
+    public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Spaced)
     {
         await _vocab.EnsureLoadedAsync();
         await _store.LoadAsync();
