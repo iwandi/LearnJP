@@ -1,4 +1,116 @@
-[
+[  
+  {"id":"h-001","kanji":"あ","kana":"あ","romaji":"a","meanings":["a"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-002","kanji":"い","kana":"い","romaji":"i","meanings":["i"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-003","kanji":"う","kana":"う","romaji":"u","meanings":["u"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-004","kanji":"え","kana":"え","romaji":"e","meanings":["e"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-005","kanji":"お","kana":"お","romaji":"o","meanings":["o"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-006","kanji":"か","kana":"か","romaji":"ka","meanings":["ka"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-007","kanji":"き","kana":"き","romaji":"ki","meanings":["ki"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-008","kanji":"く","kana":"く","romaji":"ku","meanings":["ku"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-009","kanji":"け","kana":"け","romaji":"ke","meanings":["ke"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-010","kanji":"こ","kana":"こ","romaji":"ko","meanings":["ko"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-011","kanji":"さ","kana":"さ","romaji":"sa","meanings":["sa"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-012","kanji":"し","kana":"し","romaji":"shi","meanings":["shi"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-013","kanji":"す","kana":"す","romaji":"su","meanings":["su"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-014","kanji":"せ","kana":"せ","romaji":"se","meanings":["se"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-015","kanji":"そ","kana":"そ","romaji":"so","meanings":["so"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-016","kanji":"た","kana":"た","romaji":"ta","meanings":["ta"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-017","kanji":"ち","kana":"ち","romaji":"chi","meanings":["chi"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-018","kanji":"つ","kana":"つ","romaji":"tsu","meanings":["tsu"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-019","kanji":"て","kana":"て","romaji":"te","meanings":["te"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-020","kanji":"と","kana":"と","romaji":"to","meanings":["to"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-021","kanji":"な","kana":"な","romaji":"na","meanings":["na"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-022","kanji":"に","kana":"に","romaji":"ni","meanings":["ni"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-023","kanji":"ぬ","kana":"ぬ","romaji":"nu","meanings":["nu"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-024","kanji":"ね","kana":"ね","romaji":"ne","meanings":["ne"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-025","kanji":"の","kana":"の","romaji":"no","meanings":["no"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-026","kanji":"は","kana":"は","romaji":"ha","meanings":["ha"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-027","kanji":"ひ","kana":"ひ","romaji":"hi","meanings":["hi"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-028","kanji":"ふ","kana":"ふ","romaji":"fu","meanings":["fu"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-029","kanji":"へ","kana":"へ","romaji":"he","meanings":["he"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-030","kanji":"ほ","kana":"ほ","romaji":"ho","meanings":["ho"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-031","kanji":"ま","kana":"ま","romaji":"ma","meanings":["ma"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-032","kanji":"み","kana":"み","romaji":"mi","meanings":["mi"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-033","kanji":"む","kana":"む","romaji":"mu","meanings":["mu"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-034","kanji":"め","kana":"め","romaji":"me","meanings":["me"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-035","kanji":"も","kana":"も","romaji":"mo","meanings":["mo"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-036","kanji":"や","kana":"や","romaji":"ya","meanings":["ya"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-037","kanji":"ゆ","kana":"ゆ","romaji":"yu","meanings":["yu"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-038","kanji":"よ","kana":"よ","romaji":"yo","meanings":["yo"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-039","kanji":"ら","kana":"ら","romaji":"ra","meanings":["ra"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-040","kanji":"り","kana":"り","romaji":"ri","meanings":["ri"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-041","kanji":"る","kana":"る","romaji":"ru","meanings":["ru"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-042","kanji":"れ","kana":"れ","romaji":"re","meanings":["re"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-043","kanji":"ろ","kana":"ろ","romaji":"ro","meanings":["ro"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"h-044","kanji":"わ","kana":"わ","romaji":"wa","meanings":["wa"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-045","kanji":"を","kana":"を","romaji":"wo","meanings":["wo"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+  {"id":"h-046","kanji":"ん","kana":"ん","romaji":"n","meanings":["n"],"pos":"kana","tags":["hiragana"],"frequencyRank":0},
+
+  {"id":"k-001","kanji":"ア","kana":"ア","romaji":"a","meanings":["a"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-002","kanji":"イ","kana":"イ","romaji":"i","meanings":["i"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-003","kanji":"ウ","kana":"ウ","romaji":"u","meanings":["u"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-004","kanji":"エ","kana":"エ","romaji":"e","meanings":["e"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-005","kanji":"オ","kana":"オ","romaji":"o","meanings":["o"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-006","kanji":"カ","kana":"カ","romaji":"ka","meanings":["ka"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-007","kanji":"キ","kana":"キ","romaji":"ki","meanings":["ki"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-008","kanji":"ク","kana":"ク","romaji":"ku","meanings":["ku"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-009","kanji":"ケ","kana":"ケ","romaji":"ke","meanings":["ke"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-010","kanji":"コ","kana":"コ","romaji":"ko","meanings":["ko"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-011","kanji":"サ","kana":"サ","romaji":"sa","meanings":["sa"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-012","kanji":"シ","kana":"シ","romaji":"shi","meanings":["shi"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-013","kanji":"ス","kana":"ス","romaji":"su","meanings":["su"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-014","kanji":"セ","kana":"セ","romaji":"se","meanings":["se"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-015","kanji":"ソ","kana":"ソ","romaji":"so","meanings":["so"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-016","kanji":"タ","kana":"タ","romaji":"ta","meanings":["ta"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-017","kanji":"チ","kana":"チ","romaji":"chi","meanings":["chi"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-018","kanji":"ツ","kana":"ツ","romaji":"tsu","meanings":["tsu"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-019","kanji":"テ","kana":"テ","romaji":"te","meanings":["te"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-020","kanji":"ト","kana":"ト","romaji":"to","meanings":["to"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-021","kanji":"ナ","kana":"ナ","romaji":"na","meanings":["na"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-022","kanji":"ニ","kana":"ニ","romaji":"ni","meanings":["ni"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-023","kanji":"ヌ","kana":"ヌ","romaji":"nu","meanings":["nu"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-024","kanji":"ネ","kana":"ネ","romaji":"ne","meanings":["ne"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-025","kanji":"ノ","kana":"ノ","romaji":"no","meanings":["no"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-026","kanji":"ハ","kana":"ハ","romaji":"ha","meanings":["ha"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-027","kanji":"ヒ","kana":"ヒ","romaji":"hi","meanings":["hi"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-028","kanji":"フ","kana":"フ","romaji":"fu","meanings":["fu"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-029","kanji":"ヘ","kana":"ヘ","romaji":"he","meanings":["he"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-030","kanji":"ホ","kana":"ホ","romaji":"ho","meanings":["ho"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-031","kanji":"マ","kana":"マ","romaji":"ma","meanings":["ma"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-032","kanji":"ミ","kana":"ミ","romaji":"mi","meanings":["mi"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-033","kanji":"ム","kana":"ム","romaji":"mu","meanings":["mu"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-034","kanji":"メ","kana":"メ","romaji":"me","meanings":["me"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-035","kanji":"モ","kana":"モ","romaji":"mo","meanings":["mo"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-036","kanji":"ヤ","kana":"ヤ","romaji":"ya","meanings":["ya"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-037","kanji":"ユ","kana":"ユ","romaji":"yu","meanings":["yu"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-038","kanji":"ヨ","kana":"ヨ","romaji":"yo","meanings":["yo"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-039","kanji":"ラ","kana":"ラ","romaji":"ra","meanings":["ra"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-040","kanji":"リ","kana":"リ","romaji":"ri","meanings":["ri"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-041","kanji":"ル","kana":"ル","romaji":"ru","meanings":["ru"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-042","kanji":"レ","kana":"レ","romaji":"re","meanings":["re"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-043","kanji":"ロ","kana":"ロ","romaji":"ro","meanings":["ro"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
+  {"id":"k-044","kanji":"ワ","kana":"ワ","romaji":"wa","meanings":["wa"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-045","kanji":"ヲ","kana":"ヲ","romaji":"wo","meanings":["wo"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+  {"id":"k-046","kanji":"ン","kana":"ン","romaji":"n","meanings":["n"],"pos":"kana","tags":["katakana"],"frequencyRank":0},
+
   { "id": "n5-001", "kanji": "私",       "kana": "わたし",      "romaji": "watashi",   "meanings": ["I", "me"],                "pos": "pronoun", "tags": ["n5","pronoun","person"], "frequencyRank": 35 },
   { "id": "n5-002", "kanji": "あなた",   "kana": "あなた",      "romaji": "anata",     "meanings": ["you"],                    "pos": "pronoun", "tags": ["n5","pronoun","person"], "frequencyRank": 220 },
   { "id": "n5-003", "kanji": "彼",       "kana": "かれ",        "romaji": "kare",      "meanings": ["he", "boyfriend"],        "pos": "pronoun", "tags": ["n5","pronoun","person"], "frequencyRank": 90 },
