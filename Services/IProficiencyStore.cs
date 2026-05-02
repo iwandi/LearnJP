@@ -13,4 +13,18 @@ public interface IProficiencyStore
     Task RecordAsync(string wordId, ProficiencyCriterion criterion, bool correct);
     Task SetReinforcedAsync(string wordId, bool reinforced);
     Task ResetAsync();
+
+    /// <summary>
+    /// Records that the user picked <paramref name="pickedId"/> when the correct answer was
+    /// <paramref name="targetId"/>. Backs the confusion matrix used for distractor biasing
+    /// and (later) discrimination drills.
+    /// </summary>
+    Task RecordConfusionAsync(string targetId, string pickedId);
+
+    /// <summary>
+    /// Returns the words most often picked when <paramref name="targetId"/> was the correct
+    /// answer, ordered by descending count. Synchronous so it's cheap to call from the
+    /// per-question distractor scorer.
+    /// </summary>
+    IReadOnlyList<(string PickedId, int Count)> GetTopConfusersFor(string targetId, int limit);
 }

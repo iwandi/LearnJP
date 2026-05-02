@@ -82,7 +82,28 @@ internal sealed class MemoryProficiencyStore : IProficiencyStore
     {
         _byWord.Clear();
         _turns = 0;
+        _confusions.Clear();
         return Task.CompletedTask;
+    }
+
+    private readonly Dictionary<(string Target, string Picked), int> _confusions = new();
+
+    public Task RecordConfusionAsync(string targetId, string pickedId)
+    {
+        if (string.IsNullOrEmpty(targetId) || string.IsNullOrEmpty(pickedId)) return Task.CompletedTask;
+        var key = (targetId, pickedId);
+        _confusions[key] = _confusions.TryGetValue(key, out var c) ? c + 1 : 1;
+        return Task.CompletedTask;
+    }
+
+    public IReadOnlyList<(string PickedId, int Count)> GetTopConfusersFor(string targetId, int limit)
+    {
+        if (limit <= 0) return Array.Empty<(string, int)>();
+        var hits = new List<(string PickedId, int Count)>();
+        foreach (var ((t, p), n) in _confusions)
+            if (t == targetId) hits.Add((p, n));
+        hits.Sort((a, b) => b.Count.CompareTo(a.Count));
+        return hits.Count > limit ? hits.GetRange(0, limit) : hits;
     }
 
     // Mirrors ProficiencyStore.ComputeInterval — keep in sync. The cap is parameterised here

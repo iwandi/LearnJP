@@ -92,6 +92,8 @@ static async Task RunOne(RunConfig cfg)
         var pickIdx = bot.PickOptionIndex(q, rng);
         var correct = q.Options[pickIdx].IsCorrect;
         await store.RecordAsync(q.Target.Id, q.Criterion, correct);
+        if (!correct)
+            await store.RecordConfusionAsync(q.Target.Id, q.Options[pickIdx].Word.Id);
         analyzer.Record(new TurnRecord
         {
             Turn = turn,

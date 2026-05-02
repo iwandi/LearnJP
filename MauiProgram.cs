@@ -14,7 +14,7 @@ public static class MauiProgram
         builder.UseMauiApp<App>();
 
         builder.Services.AddSingleton<IVocabularyService, VocabularyService>();
-        builder.Services.AddSingleton<IProficiencyStore, ProficiencyStore>();
+        builder.Services.AddSingleton<IProficiencyStore, SqliteProficiencyStore>();
         builder.Services.AddSingleton<IQuestionGenerator, QuestionGenerator>();
         builder.Services.AddSingleton(AudioManager.Current);
         builder.Services.AddSingleton<ITtsService, TtsService>();

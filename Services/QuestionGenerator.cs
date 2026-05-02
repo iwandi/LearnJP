@@ -438,9 +438,16 @@ public sealed class QuestionGenerator : IQuestionGenerator
             .Where(w => w.Id != target.Id && CategoryOf(w) == targetCategory)
             .ToList();
 
+        // Pull the user's known confusions for this target so we can bias toward them —
+        // lifts whichever distractor the user has historically mistaken for this word.
+        var confusionByWordId = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var (id, n) in _store.GetTopConfusersFor(target.Id, 8))
+            confusionByWordId[id] = n;
+
         // Score every candidate by suitability for this criterion + proficiency level.
         var scored = candidates
-            .Select(w => (Word: w, Score: ScoreDistractor(w, target, criterion, overall)))
+            .Select(w => (Word: w, Score: ScoreDistractor(w, target, criterion, overall)
+                                          + (confusionByWordId.TryGetValue(w.Id, out var n) ? 40.0 + n * 5.0 : 0.0)))
             .OrderByDescending(t => t.Score)
             .ThenBy(_ => _rng.Next())
             .ToList();

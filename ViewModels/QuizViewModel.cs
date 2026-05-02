@@ -258,6 +258,11 @@ public sealed class QuizViewModel : BaseViewModel
         {
             try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
             catch { /* best effort */ }
+            if (!correct)
+            {
+                try { await _store.RecordConfusionAsync(_current.Target.Id, vm.Source.Word.Id); }
+                catch { /* best effort */ }
+            }
         }
 
         // Wait for the effect to finish (plus a small gap), then speak the JP — covers EN→JP too.
