@@ -11,7 +11,7 @@ var defaults = new RunConfig
 {
     VocabPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "Resources", "Raw", "vocabulary.json")),
     Bot = "learner",
-    Strategy = LearningStrategy.Spaced,
+    Strategy = LearningStrategy.Fsrs,
     // ~35 picks × 500-word pool ≈ 17,500. At 100 answers/day that's ~6 months of practice.
     Turns = 17500,
     Limit = null,
@@ -19,7 +19,7 @@ var defaults = new RunConfig
     Seed = 1234,
     CsvOut = null,
     All = false,
-    Frontier = QuestionGenerator.NewTermFrontierSize,
+    Frontier = 12,
     IntervalCap = 250,
     Sweep = null
 };
@@ -35,20 +35,46 @@ if (!File.Exists(cfg.VocabPath))
 
 if (cfg.Sweep is { } sweep)
 {
-    foreach (var run in BuildSweep(cfg, sweep, FrontierSweep, IntervalCapSweep))
-        await RunOne(run);
+    var runs = BuildSweep(cfg, sweep, FrontierSweep, IntervalCapSweep).ToList();
+    await RunInParallel(runs);
 }
 else if (cfg.All)
 {
-    foreach (var s in new[] { LearningStrategy.Neutral, LearningStrategy.Spaced })
-    foreach (var b in BuildAllBots())
-        await RunOne(cfg with { Strategy = s, Bot = b });
+    var runs = (
+        from s in new[] { LearningStrategy.Neutral, LearningStrategy.Spaced, LearningStrategy.Fsrs }
+        from b in BuildAllBots()
+        select cfg with { Strategy = s, Bot = b }
+    ).ToList();
+    await RunInParallel(runs);
 }
 else
 {
-    await RunOne(cfg);
+    Console.Write(await RunOne(cfg));
 }
 return 0;
+
+static async Task RunInParallel(IList<RunConfig> runs)
+{
+    // Cap to processor count so a 30-run sweep doesn't oversubscribe; preserves input order
+    // when printing so the output stays diff-friendly across re-runs.
+    var degree = Math.Max(1, Environment.ProcessorCount);
+    var sem = new SemaphoreSlim(degree, degree);
+    var outputs = new string[runs.Count];
+    var tasks = new Task[runs.Count];
+    for (int i = 0; i < runs.Count; i++)
+    {
+        var idx = i;
+        var run = runs[i];
+        tasks[i] = Task.Run(async () =>
+        {
+            await sem.WaitAsync();
+            try { outputs[idx] = await RunOne(run); }
+            finally { sem.Release(); }
+        });
+    }
+    await Task.WhenAll(tasks);
+    foreach (var o in outputs) Console.Write(o);
+}
 
 static IEnumerable<RunConfig> BuildSweep(RunConfig basis, string sweep, int[] frontiers, int[] caps)
 {
@@ -69,17 +95,17 @@ static bool IsKana(Word w) =>
     w.Tags.Contains("hiragana") ||
     w.Tags.Contains("katakana");
 
-static async Task RunOne(RunConfig cfg)
+static async Task<string> RunOne(RunConfig cfg)
 {
-    // Apply tunables for this run. NewTermFrontierSize is process-global static — fine for
-    // the sim's serial runner; would need locking if we ever ran sweeps in parallel.
-    QuestionGenerator.NewTermFrontierSize = cfg.Frontier;
-
     var rng = new Random(cfg.Seed);
     var vocab = new MemoryVocabularyService(cfg.VocabPath, cfg.Limit);
     var store = new MemoryProficiencyStore(cfg.IntervalCap);
     var settings = new MemorySettingsService { SelectedLearningStrategy = cfg.Strategy };
-    var gen = new QuestionGenerator(vocab, store, settings);
+    var gen = new QuestionGenerator(vocab, store, settings)
+    {
+        // Per-instance tunables — safe to set distinct values across parallel runs.
+        NewTermFrontierSize = cfg.Frontier
+    };
 
     await vocab.EnsureLoadedAsync();
     var bot = ResolveBot(cfg.Bot, id => store.Get(id).Overall);
@@ -109,14 +135,15 @@ static async Task RunOne(RunConfig cfg)
     // so the analyzer should report against the *eligible* pool only.
     var eligible = vocab.All.Where(w => !IsKana(w)).ToList();
     var tunables = $"frontier={cfg.Frontier} cap={cfg.IntervalCap}";
-    analyzer.Print(store, eligible, bot.Name, cfg.Strategy, tunables);
+    var rendered = analyzer.Render(store, eligible, bot.Name, cfg.Strategy, tunables);
     if (cfg.CsvOut is { } path)
     {
         var fileName = Path.GetFileNameWithoutExtension(path) + "-" + bot.Name + "-" + cfg.Strategy + Path.GetExtension(path);
         var full = Path.Combine(Path.GetDirectoryName(path) ?? ".", fileName);
         analyzer.DumpCsv(full);
-        Console.WriteLine($"  csv               : {full}");
+        rendered += $"  csv               : {full}\n";
     }
+    return rendered;
 }
 
 static IAnswerBot ResolveBot(string name, Func<string, double> proficiencyOf)
@@ -169,7 +196,7 @@ static RunConfig ParseArgs(string[] args, RunConfig def)
                 Console.WriteLine("Options:");
                 Console.WriteLine("  --vocab PATH      Path to vocabulary.json (default: project Resources/Raw)");
                 Console.WriteLine("  --bot NAME        random|always-right|always-wrong|learner|chance-0.50|streak-5  (default: learner)");
-                Console.WriteLine("  --strategy NAME   Neutral|Spaced|QuickReview|WeakFocus  (default: Spaced)");
+                Console.WriteLine("  --strategy NAME   Neutral|Spaced|QuickReview|WeakFocus|Fsrs  (default: Fsrs)");
                 Console.WriteLine("  --turns N         Question count (default: 17500 — ~6mo at 100/day)");
                 Console.WriteLine("  --limit N         Cap pool to first N words (default: full)");
                 Console.WriteLine("  --seed N          RNG seed for repeatability (default: 1234)");

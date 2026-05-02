@@ -173,6 +173,6 @@ internal sealed class MemorySettingsService : ISettingsService
     public double AzureTtsVolume { get; set; } = 1.0;
     public IReadOnlyList<string> ActiveIncludeTags { get; set; } = Array.Empty<string>();
     public IReadOnlyList<string> ActiveExcludeTags { get; set; } = Array.Empty<string>();
-    public LearningStrategy SelectedLearningStrategy { get; set; } = LearningStrategy.Spaced;
+    public LearningStrategy SelectedLearningStrategy { get; set; } = LearningStrategy.Fsrs;
     public bool CountForProficiency { get; set; } = true;
 }

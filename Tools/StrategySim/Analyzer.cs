@@ -27,8 +27,16 @@ internal sealed class Analyzer
             _firstReachedKnown[r.WordId] = r.Turn;
     }
 
-    public void Print(IProficiencyStore store, IReadOnlyList<Word> pool, string botName, LearningStrategy strategy, string? tunables = null)
+    public string Render(IProficiencyStore store, IReadOnlyList<Word> pool, string botName, LearningStrategy strategy, string? tunables = null)
     {
+        var sw = new StringWriter();
+        Print(store, pool, botName, strategy, tunables, sw);
+        return sw.ToString();
+    }
+
+    public void Print(IProficiencyStore store, IReadOnlyList<Word> pool, string botName, LearningStrategy strategy, string? tunables = null, TextWriter? writer = null)
+    {
+        writer ??= Console.Out;
         var totalTurns = _records.Count;
         var correct = _records.Count(r => r.Correct);
 
@@ -55,15 +63,15 @@ internal sealed class Analyzer
         // Average frontier size over the run + how often it actually changed members.
         var avgFrontier = _records.Count > 0 ? _records.Average(r => r.FrontierSize) : 0;
 
-        Console.WriteLine();
+        writer.WriteLine();
         var suffix = string.IsNullOrEmpty(tunables) ? "" : $" / {tunables}";
-        Console.WriteLine($"=== {botName} / {strategy} / pool={pool.Count}{suffix} ===");
-        Console.WriteLine($"  turns asked       : {totalTurns}");
-        Console.WriteLine($"  accuracy          : {(totalTurns == 0 ? 0 : 100.0 * correct / totalTurns):F1}%  ({correct}/{totalTurns})");
-        Console.WriteLine($"  pool state        : unseen={unseen}  struggling={struggling}  learning={learning}  known={known}  mastered={mastered}");
-        Console.WriteLine($"  picks per word    : mean(all)={pickMeanAll:F1}  mean(touched)={pickMeanTouched:F1}  p50={pickP50}  p90={pickP90}  max={pickMax}  unique-touched={_picksPerWord.Count}");
-        Console.WriteLine($"  turns→known(≥60)  : reached={_firstReachedKnown.Count}/{pool.Count}  p50={ttkP50}  p90={ttkP90}");
-        Console.WriteLine($"  avg frontier size : {avgFrontier:F1}");
+        writer.WriteLine($"=== {botName} / {strategy} / pool={pool.Count}{suffix} ===");
+        writer.WriteLine($"  turns asked       : {totalTurns}");
+        writer.WriteLine($"  accuracy          : {(totalTurns == 0 ? 0 : 100.0 * correct / totalTurns):F1}%  ({correct}/{totalTurns})");
+        writer.WriteLine($"  pool state        : unseen={unseen}  struggling={struggling}  learning={learning}  known={known}  mastered={mastered}");
+        writer.WriteLine($"  picks per word    : mean(all)={pickMeanAll:F1}  mean(touched)={pickMeanTouched:F1}  p50={pickP50}  p90={pickP90}  max={pickMax}  unique-touched={_picksPerWord.Count}");
+        writer.WriteLine($"  turns→known(≥60)  : reached={_firstReachedKnown.Count}/{pool.Count}  p50={ttkP50}  p90={ttkP90}");
+        writer.WriteLine($"  avg frontier size : {avgFrontier:F1}");
     }
 
     public void DumpCsv(string path)
