@@ -1,40 +1,99 @@
 using System.Diagnostics;
-
-#if WINDOWS
-using System.Runtime.InteropServices;
-#endif
+using Plugin.Maui.Audio;
 
 namespace LearnJP.Services;
 
 public sealed class SoundService : ISoundService
 {
+    private readonly IAudioManager _audioManager;
     private readonly object _gate = new();
     private readonly Dictionary<SoundEffect, byte[]> _wavCache = new();
+    private readonly Dictionary<SoundEffect, EffectPlayer> _effectPlayers = new();
+    private readonly HashSet<TransientPlayer> _activeTransients = new();
 
-#if WINDOWS
-    private const uint SND_ASYNC  = 0x0001;
-    private const uint SND_MEMORY = 0x0004;
-    private const uint SND_NODEFAULT = 0x0002;
-
-    [DllImport("winmm.dll", SetLastError = true, CharSet = CharSet.Auto)]
-    private static extern bool PlaySound(byte[]? lpszSound, IntPtr hModule, uint dwFlags);
-#endif
+    public SoundService(IAudioManager audioManager) { _audioManager = audioManager; }
 
     public TimeSpan Play(SoundEffect effect)
     {
         try
         {
-#if WINDOWS
-            PlayWav(GetOrBuild(effect));
-#else
-            _ = effect;
-#endif
+            var ep = GetOrCreateEffectPlayer(effect);
+            if (ep is not null)
+            {
+                try { if (ep.Player.IsPlaying) ep.Player.Stop(); } catch { /* ignore */ }
+                try { ep.Player.Volume = 1.0; } catch { /* ignore */ }
+                ep.Player.Play();
+            }
+        }
+        catch (Exception ex) { Debug.WriteLine($"[Sound] Play({effect}) failed: {ex.Message}"); }
+        return DurationOf(effect);
+    }
+
+    public void PlayWav(byte[] wavBytes, double volume = 1.0)
+    {
+        if (wavBytes is null || wavBytes.Length == 0) return;
+        try
+        {
+            // Each WAV gets its own player + stream; releasing the player tears down the stream too.
+            var stream = new MemoryStream(wavBytes, writable: false);
+            var player = _audioManager.CreatePlayer(stream);
+            try { player.Volume = Math.Clamp(volume, 0.0, 1.0); } catch { /* ignore */ }
+
+            var transient = new TransientPlayer(player, stream);
+            lock (_gate) _activeTransients.Add(transient);
+
+            player.PlaybackEnded += (_, _) => Cleanup(transient);
+            player.Play();
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"[Sound] {ex.GetType().Name}: {ex.Message}");
+            Debug.WriteLine($"[Sound] PlayWav failed: {ex.GetType().Name}: {ex.Message}");
         }
-        return DurationOf(effect);
+    }
+
+    private void Cleanup(TransientPlayer t)
+    {
+        // Dispose() can synchronously raise PlaybackEnded on some platforms — guard against re-entry.
+        if (Interlocked.Exchange(ref t.Cleaned, 1) != 0) return;
+        lock (_gate) _activeTransients.Remove(t);
+        try { t.Player.Dispose(); } catch { /* ignore */ }
+        try { t.Stream.Dispose(); } catch { /* ignore */ }
+    }
+
+    private EffectPlayer? GetOrCreateEffectPlayer(SoundEffect effect)
+    {
+        lock (_gate)
+        {
+            if (_effectPlayers.TryGetValue(effect, out var existing)) return existing;
+            try
+            {
+                var wav = GetOrBuildWav(effect);
+                var stream = new MemoryStream(wav, writable: false);
+                var player = _audioManager.CreatePlayer(stream);
+                var ep = new EffectPlayer(player, stream);
+                _effectPlayers[effect] = ep;
+                return ep;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[Sound] CreatePlayer({effect}) failed: {ex.GetType().Name}: {ex.Message}");
+                return null;
+            }
+        }
+    }
+
+    private byte[] GetOrBuildWav(SoundEffect effect)
+    {
+        if (_wavCache.TryGetValue(effect, out var cached)) return cached;
+        var wav = effect switch
+        {
+            SoundEffect.Click   => BuildTone(880, 60,  0.30, 0.005),
+            SoundEffect.Correct => BuildTwoTone(660, 990, 90, 110, 0.45),
+            SoundEffect.Wrong   => BuildTwoTone(360, 200, 120, 180, 0.45),
+            _ => BuildTone(440, 80, 0.3, 0.005)
+        };
+        _wavCache[effect] = wav;
+        return wav;
     }
 
     private static TimeSpan DurationOf(SoundEffect effect) => effect switch
@@ -44,72 +103,6 @@ public sealed class SoundService : ISoundService
         SoundEffect.Wrong   => TimeSpan.FromMilliseconds(300),
         _                   => TimeSpan.FromMilliseconds(80)
     };
-
-    public void PlayWav(byte[] wavBytes, double volume = 1.0)
-    {
-#if WINDOWS
-        if (wavBytes.Length == 0) return;
-        var clamped = Math.Clamp(volume, 0.0, 1.0);
-        var toPlay = clamped >= 0.999 ? wavBytes : ScaleWav16BitPcm(wavBytes, clamped);
-        _ = Task.Run(() =>
-        {
-            try { PlaySound(toPlay, IntPtr.Zero, SND_MEMORY | SND_ASYNC | SND_NODEFAULT); }
-            catch (Exception ex) { Debug.WriteLine($"[Sound] PlaySound failed: {ex.Message}"); }
-        });
-#else
-        _ = wavBytes; _ = volume;
-#endif
-    }
-
-    /// <summary>
-    /// Returns a fresh WAV byte buffer with the audio data section scaled by <paramref name="volume"/>.
-    /// Walks the RIFF chunk list to locate the "data" chunk so non-canonical headers are handled.
-    /// </summary>
-    private static byte[] ScaleWav16BitPcm(byte[] wav, double volume)
-    {
-        var copy = (byte[])wav.Clone();
-        if (copy.Length < 44) return copy;
-        // RIFF header: bytes 0..11 ("RIFF" size "WAVE"). Chunks start at offset 12.
-        int p = 12;
-        int dataStart = -1;
-        int dataSize = 0;
-        while (p + 8 <= copy.Length)
-        {
-            var id = System.Text.Encoding.ASCII.GetString(copy, p, 4);
-            var size = BitConverter.ToInt32(copy, p + 4);
-            if (id == "data") { dataStart = p + 8; dataSize = size; break; }
-            p += 8 + size + (size & 1); // chunks are word-aligned
-        }
-        if (dataStart < 0) return copy;
-        int end = Math.Min(copy.Length, dataStart + dataSize);
-        for (int i = dataStart; i + 1 < end; i += 2)
-        {
-            short sample = BitConverter.ToInt16(copy, i);
-            int scaled = (int)Math.Round(sample * volume);
-            if (scaled > short.MaxValue) scaled = short.MaxValue;
-            else if (scaled < short.MinValue) scaled = short.MinValue;
-            copy[i]     = (byte)(scaled & 0xFF);
-            copy[i + 1] = (byte)((scaled >> 8) & 0xFF);
-        }
-        return copy;
-    }
-
-    private byte[] GetOrBuild(SoundEffect effect)
-    {
-        lock (_gate)
-        {
-            if (_wavCache.TryGetValue(effect, out var cached)) return cached;
-            var wav = effect switch
-            {
-                SoundEffect.Click   => BuildTone(880, 60,  0.30, 0.005),
-                SoundEffect.Correct => BuildTwoTone(660, 990, 90, 110, 0.45),
-                SoundEffect.Wrong   => BuildTwoTone(360, 200, 120, 180, 0.45),
-                _ => BuildTone(440, 80, 0.3, 0.005)
-            };
-            _wavCache[effect] = wav;
-            return wav;
-        }
-    }
 
     private static byte[] BuildTwoTone(int hz1, int hz2, int ms1, int ms2, double amp)
     {
@@ -179,5 +172,16 @@ public sealed class SoundService : ISoundService
         bw.Write(bytes);
         bw.Flush();
         return ms.ToArray();
+    }
+
+    private sealed record EffectPlayer(IAudioPlayer Player, MemoryStream Stream);
+
+    private sealed class TransientPlayer
+    {
+        public IAudioPlayer Player { get; }
+        public MemoryStream Stream { get; }
+        public int Cleaned;
+        public TransientPlayer(IAudioPlayer player, MemoryStream stream)
+        { Player = player; Stream = stream; }
     }
 }

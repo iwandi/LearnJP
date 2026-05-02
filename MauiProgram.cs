@@ -2,6 +2,7 @@ using LearnJP.Services;
 using LearnJP.ViewModels;
 using LearnJP.Views;
 using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 
 namespace LearnJP;
 
@@ -15,6 +16,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IVocabularyService, VocabularyService>();
         builder.Services.AddSingleton<IProficiencyStore, ProficiencyStore>();
         builder.Services.AddSingleton<IQuestionGenerator, QuestionGenerator>();
+        builder.Services.AddSingleton(AudioManager.Current);
         builder.Services.AddSingleton<ITtsService, TtsService>();
         builder.Services.AddSingleton<ISoundService, SoundService>();
         builder.Services.AddSingleton<ISettingsService, SettingsService>();
