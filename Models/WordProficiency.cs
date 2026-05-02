@@ -22,6 +22,10 @@ public sealed class WordProficiency
     [JsonPropertyName("totalCorrect")]
     public int TotalCorrect { get; set; }
 
+    /// <summary>Global turn counter at which this word becomes a candidate again under spaced-repetition strategies.</summary>
+    [JsonPropertyName("nextDueAtTurn")]
+    public int NextDueAtTurn { get; set; }
+
     public double GetScore(ProficiencyCriterion c) =>
         Scores.TryGetValue(c, out var v) ? v : 0.0;
 

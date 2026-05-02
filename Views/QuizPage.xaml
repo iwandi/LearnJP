@@ -9,9 +9,9 @@
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="14">
 
-        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="10">
-            <Label Grid.Column="0" Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
-            <Grid Grid.Column="1"
+        <Grid Grid.Row="0" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" ColumnSpacing="10" RowSpacing="6">
+            <Label Grid.Row="0" Grid.Column="0" Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+            <Grid Grid.Row="0" Grid.Column="1"
                   ColumnDefinitions="Auto,Auto"
                   ColumnSpacing="6"
                   HorizontalOptions="End"
@@ -19,6 +19,13 @@
                 <Label Grid.Column="0" Text="Track" Style="{StaticResource MutedLabel}" VerticalOptions="Center" HorizontalOptions="End" />
                 <Switch Grid.Column="1" IsToggled="{Binding CountForProficiency}" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="50" MinimumWidthRequest="0" />
             </Grid>
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Strategy" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+            <Picker Grid.Row="1" Grid.Column="1"
+                    ItemsSource="{Binding Strategies}"
+                    SelectedItem="{Binding SelectedStrategy}"
+                    HorizontalOptions="End"
+                    MinimumWidthRequest="180" />
         </Grid>
 
         <Border Grid.Row="1"

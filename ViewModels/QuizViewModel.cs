@@ -57,10 +57,13 @@ public sealed class QuizViewModel : BaseViewModel
     private bool _isLoading;
     private bool _showPromptSpeakButton;
     private bool _countForProficiency = true;
+    private LearningStrategy _selectedStrategy = LearningStrategy.Neutral;
     private CancellationTokenSource? _autoAdvanceCts;
     private Task _ttsTask = Task.CompletedTask;
 
     public ObservableCollection<QuizOptionVm> Options { get; } = new();
+    public ObservableCollection<LearningStrategy> Strategies { get; } =
+        new(Enum.GetValues<LearningStrategy>());
 
     public string Prompt { get => _prompt; private set => SetProperty(ref _prompt, value); }
     public string? PromptFurigana { get => _promptFurigana; private set { SetProperty(ref _promptFurigana, value); OnPropertyChanged(nameof(HasFurigana)); } }
@@ -70,6 +73,7 @@ public sealed class QuizViewModel : BaseViewModel
     public bool IsLoading { get => _isLoading; private set => SetProperty(ref _isLoading, value); }
     public bool ShowPromptSpeakButton { get => _showPromptSpeakButton; private set => SetProperty(ref _showPromptSpeakButton, value); }
     public bool CountForProficiency { get => _countForProficiency; set => SetProperty(ref _countForProficiency, value); }
+    public LearningStrategy SelectedStrategy { get => _selectedStrategy; set => SetProperty(ref _selectedStrategy, value); }
 
     public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds)
     {
@@ -86,7 +90,7 @@ public sealed class QuizViewModel : BaseViewModel
         IsLoading = true;
         try
         {
-            var q = await _gen.NextAsync();
+            var q = await _gen.NextAsync(_selectedStrategy);
             if (q is null)
             {
                 Prompt = "No vocabulary loaded.";

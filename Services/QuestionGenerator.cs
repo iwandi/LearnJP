@@ -17,7 +17,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         _settings = settings;
     }
 
-    public async Task<Question?> NextAsync()
+    public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Neutral)
     {
         await _vocab.EnsureLoadedAsync();
         await _store.LoadAsync();
@@ -25,7 +25,11 @@ public sealed class QuestionGenerator : IQuestionGenerator
         var pool = _vocab.All;
         if (pool.Count < 4) return null;
 
-        var target = PickTarget(pool);
+        var target = strategy switch
+        {
+            LearningStrategy.Spaced => PickTargetSpaced(pool),
+            _ => PickTarget(pool)
+        };
         if (target is null) return null;
 
         var prof = _store.Get(target.Id);
@@ -53,6 +57,63 @@ public sealed class QuestionGenerator : IQuestionGenerator
             TtsLocaleTag = ttsLocale,
             TargetProficiencyAtAsk = prof.Overall
         };
+    }
+
+    /// <summary>
+    /// Turn-based spaced repetition. A word becomes a candidate when the global turn counter
+    /// reaches its <see cref="WordProficiency.NextDueAtTurn"/>. Among candidates, more-overdue
+    /// words win; never-seen words come in if no due words remain. Distractor selection is unchanged
+    /// (still drawn from the full vocabulary), so the option list does not telegraph the focus set.
+    /// </summary>
+    private Word? PickTargetSpaced(IReadOnlyList<Word> pool)
+    {
+        var turn = _store.TurnsAsked;
+
+        // Bucket 1: due words, weighted by overdue-ness.
+        var due = new List<(Word w, double weight)>();
+        // Bucket 2: never-seen words (no schedule yet); used when nothing is due.
+        var unseen = new List<Word>();
+        // Bucket 3: a tiny background mix of upcoming words so the schedule doesn't ossify.
+        var background = new List<(Word w, double weight)>();
+
+        foreach (var w in pool)
+        {
+            if (w.Id == _lastWordId) continue;
+            var p = _store.Get(w.Id);
+            if (p.TotalSeen == 0) { unseen.Add(w); continue; }
+            var overdue = turn - p.NextDueAtTurn;
+            if (overdue >= 0)
+                due.Add((w, 1.0 + Math.Min(overdue, 50))); // cap so a long pause doesn't dominate
+            else if (-overdue <= 5)
+                background.Add((w, 0.15));                 // about-to-be-due, low weight
+        }
+
+        // Prefer due words.
+        if (due.Count > 0)
+            return WeightedPick(due);
+
+        // Mix in some never-seen words so new vocabulary surfaces.
+        if (unseen.Count > 0 && (background.Count == 0 || _rng.NextDouble() < 0.7))
+            return unseen[_rng.Next(unseen.Count)];
+
+        if (background.Count > 0) return WeightedPick(background);
+
+        // Fallback: just pick the lowest-proficiency word we know.
+        return pool.OrderBy(w => _store.Get(w.Id).Overall).ThenBy(_ => _rng.Next()).FirstOrDefault();
+    }
+
+    private Word WeightedPick(List<(Word w, double weight)> items)
+    {
+        double total = items.Sum(t => t.weight);
+        if (total <= 0) return items[_rng.Next(items.Count)].w;
+        var r = _rng.NextDouble() * total;
+        double acc = 0;
+        foreach (var (w, weight) in items)
+        {
+            acc += weight;
+            if (r <= acc) return w;
+        }
+        return items[^1].w;
     }
 
     private Word? PickTarget(IReadOnlyList<Word> pool)

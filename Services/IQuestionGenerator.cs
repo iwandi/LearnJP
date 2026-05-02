@@ -4,5 +4,5 @@ namespace LearnJP.Services;
 
 public interface IQuestionGenerator
 {
-    Task<Question?> NextAsync();
+    Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Neutral);
 }
