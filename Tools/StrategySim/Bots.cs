@@ -51,6 +51,30 @@ internal sealed class ChanceBot : IAnswerBot
 }
 
 /// <summary>
+/// Locks in a word after K exposures: every time the bot sees a particular word for the first
+/// K-1 times it answers wrong; from the K-th encounter onward it answers right. Models the
+/// "I needed to see it a few times before it stuck" learner profile that pure probability
+/// bots can't reproduce.
+/// </summary>
+internal sealed class StreakBot : IAnswerBot
+{
+    private readonly int _k;
+    private readonly Dictionary<string, int> _seen = new(StringComparer.Ordinal);
+    public StreakBot(int k) { _k = Math.Max(1, k); }
+    public string Name => $"streak-{_k}";
+
+    public int PickOptionIndex(Question q, Random rng)
+    {
+        var id = q.Target.Id;
+        var n = _seen[id] = _seen.TryGetValue(id, out var c) ? c + 1 : 1;
+        if (n >= _k) return AlwaysRightBot.IndexOfCorrect(q);
+        var wrong = new List<int>();
+        for (int i = 0; i < q.Options.Count; i++) if (!q.Options[i].IsCorrect) wrong.Add(i);
+        return wrong.Count == 0 ? 0 : wrong[rng.Next(wrong.Count)];
+    }
+}
+
+/// <summary>
 /// Models a learner: the chance of answering correctly is a function of the word's current
 /// proficiency. At proficiency 0 the bot guesses (1/options); at 100 it's correct ~99% of
 /// the time. Useful for validating that a strategy actually drives proficiency upward over
