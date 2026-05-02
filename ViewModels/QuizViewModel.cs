@@ -122,7 +122,7 @@ public sealed class QuizViewModel : BaseViewModel
         catch { /* best effort */ }
     }
 
-    private string _lastSeenFilter = string.Empty;
+    private string _lastSeenFilterKey = string.Empty;
     private bool? _lastSeenRomajiOnly;
     private bool? _lastSeenForceFurigana;
 
@@ -132,8 +132,10 @@ public sealed class QuizViewModel : BaseViewModel
     /// </summary>
     public async Task SyncActiveFilterAsync()
     {
-        var currentFilter = (_settings.ActiveTagFilter ?? string.Empty).Trim();
-        ActiveFilterDisplay = string.IsNullOrEmpty(currentFilter) ? string.Empty : $"Filter: {currentFilter}";
+        var include = _settings.ActiveIncludeTags;
+        var exclude = _settings.ActiveExcludeTags;
+        ActiveFilterDisplay = BuildFilterDisplay(include, exclude);
+        var filterKey = string.Join("|", include) + "::" + string.Join("|", exclude);
 
         var currentStrategy = _settings.SelectedLearningStrategy;
         var currentRomaji = _settings.RomajiOnly;
@@ -146,7 +148,7 @@ public sealed class QuizViewModel : BaseViewModel
             (_lastSeenForceFurigana is { } f && f != currentForceFurigana);
 
         var changed =
-            !string.Equals(currentFilter, _lastSeenFilter, StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(filterKey, _lastSeenFilterKey, StringComparison.Ordinal) ||
             currentStrategy != _selectedStrategy ||
             displayChanged;
 
@@ -155,7 +157,7 @@ public sealed class QuizViewModel : BaseViewModel
 
         if (changed)
         {
-            _lastSeenFilter = currentFilter;
+            _lastSeenFilterKey = filterKey;
             // Mirror SelectedStrategy without re-triggering its setter side-effects.
             if (_selectedStrategy != currentStrategy)
             {
@@ -164,6 +166,15 @@ public sealed class QuizViewModel : BaseViewModel
             }
             if (_current is not null) await LoadNextAsync();
         }
+    }
+
+    private static string BuildFilterDisplay(IReadOnlyList<string> include, IReadOnlyList<string> exclude)
+    {
+        if (include.Count == 0 && exclude.Count == 0) return string.Empty;
+        var parts = new List<string>();
+        if (include.Count > 0) parts.Add("+" + string.Join(",", include));
+        if (exclude.Count > 0) parts.Add("−" + string.Join(",", exclude));
+        return "Filter: " + string.Join("  ", parts);
     }
 
     public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds)

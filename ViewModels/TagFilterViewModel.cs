@@ -4,39 +4,66 @@ using LearnJP.Services;
 
 namespace LearnJP.ViewModels;
 
-public sealed class TagOption
+public sealed class TagOption : BaseViewModel
 {
+    private bool _isIncluded;
+    private bool _isExcluded;
+
     public required string Tag { get; init; }       // empty for "no filter"
     public required string Display { get; init; }
     public required int WordCount { get; init; }
     public required bool IsNoFilter { get; init; }
+    public bool IsNotNoFilter => !IsNoFilter;
+
+    public bool IsIncluded
+    {
+        get => _isIncluded;
+        set { if (SetProperty(ref _isIncluded, value)) { OnPropertyChanged(nameof(IncludeButtonColor)); OnPropertyChanged(nameof(IncludeButtonTextColor)); } }
+    }
+
+    public bool IsExcluded
+    {
+        get => _isExcluded;
+        set { if (SetProperty(ref _isExcluded, value)) { OnPropertyChanged(nameof(ExcludeButtonColor)); OnPropertyChanged(nameof(ExcludeButtonTextColor)); } }
+    }
+
+    public Color IncludeButtonColor => _isIncluded
+        ? Color.FromArgb("#4CAF7A")
+        : (Application.Current?.RequestedTheme == AppTheme.Dark ? Color.FromArgb("#2A2A40") : Color.FromArgb("#E2E4F0"));
+
+    public Color IncludeButtonTextColor => _isIncluded
+        ? Colors.White
+        : (Application.Current?.RequestedTheme == AppTheme.Dark ? Colors.White : Color.FromArgb("#1A1A2E"));
+
+    public Color ExcludeButtonColor => _isExcluded
+        ? Color.FromArgb("#E5556B")
+        : (Application.Current?.RequestedTheme == AppTheme.Dark ? Color.FromArgb("#2A2A40") : Color.FromArgb("#E2E4F0"));
+
+    public Color ExcludeButtonTextColor => _isExcluded
+        ? Colors.White
+        : (Application.Current?.RequestedTheme == AppTheme.Dark ? Colors.White : Color.FromArgb("#1A1A2E"));
 }
 
 public sealed class TagFilterViewModel : BaseViewModel
 {
     private readonly IVocabularyService _vocab;
     private readonly ISettingsService _settings;
-    private TagOption? _selected;
 
     public ObservableCollection<TagOption> Tags { get; } = new();
 
-    public TagOption? SelectedTag
+    public string ActiveFilterDisplay
     {
-        get => _selected;
-        set
+        get
         {
-            if (SetProperty(ref _selected, value) && value is not null)
-            {
-                _settings.ActiveTagFilter = value.IsNoFilter ? string.Empty : value.Tag;
-                OnPropertyChanged(nameof(ActiveFilterDisplay));
-            }
+            var inc = _settings.ActiveIncludeTags;
+            var exc = _settings.ActiveExcludeTags;
+            if (inc.Count == 0 && exc.Count == 0) return "No filter — drawing from the full vocabulary.";
+            var parts = new List<string>();
+            if (inc.Count > 0) parts.Add("+ " + string.Join(", ", inc));
+            if (exc.Count > 0) parts.Add("− " + string.Join(", ", exc));
+            return "Filter: " + string.Join("   ", parts);
         }
     }
-
-    public string ActiveFilterDisplay =>
-        string.IsNullOrEmpty(_settings.ActiveTagFilter)
-            ? "No filter — drawing from the full vocabulary."
-            : $"Filter: {_settings.ActiveTagFilter}";
 
     public ObservableCollection<LearningStrategy> Strategies { get; } =
         new(Enum.GetValues<LearningStrategy>());
@@ -56,6 +83,38 @@ public sealed class TagFilterViewModel : BaseViewModel
     {
         _vocab = vocab;
         _settings = settings;
+    }
+
+    public void ToggleInclude(TagOption opt)
+    {
+        if (opt.IsNoFilter) { ClearAll(); return; }
+        // Include and exclude are mutually exclusive: turning one on disables the other.
+        opt.IsIncluded = !opt.IsIncluded;
+        if (opt.IsIncluded) opt.IsExcluded = false;
+        Persist();
+    }
+
+    public void ToggleExclude(TagOption opt)
+    {
+        if (opt.IsNoFilter) { ClearAll(); return; }
+        opt.IsExcluded = !opt.IsExcluded;
+        if (opt.IsExcluded) opt.IsIncluded = false;
+        Persist();
+    }
+
+    public void ClearAll()
+    {
+        foreach (var t in Tags) { t.IsIncluded = false; t.IsExcluded = false; }
+        _settings.ActiveIncludeTags = Array.Empty<string>();
+        _settings.ActiveExcludeTags = Array.Empty<string>();
+        OnPropertyChanged(nameof(ActiveFilterDisplay));
+    }
+
+    private void Persist()
+    {
+        _settings.ActiveIncludeTags = Tags.Where(t => t.IsIncluded).Select(t => t.Tag).ToList();
+        _settings.ActiveExcludeTags = Tags.Where(t => t.IsExcluded).Select(t => t.Tag).ToList();
+        OnPropertyChanged(nameof(ActiveFilterDisplay));
     }
 
     public async Task RefreshAsync()
@@ -80,11 +139,14 @@ public sealed class TagFilterViewModel : BaseViewModel
             .ThenBy(kv => kv.Key, StringComparer.Ordinal)
             .ToList();
 
+        var include = new HashSet<string>(_settings.ActiveIncludeTags, StringComparer.OrdinalIgnoreCase);
+        var exclude = new HashSet<string>(_settings.ActiveExcludeTags, StringComparer.OrdinalIgnoreCase);
+
         Tags.Clear();
         Tags.Add(new TagOption
         {
             Tag = string.Empty,
-            Display = "(no filter — full vocabulary)",
+            Display = "(no filter — clear all)",
             WordCount = _vocab.All.Count,
             IsNoFilter = true
         });
@@ -96,7 +158,9 @@ public sealed class TagFilterViewModel : BaseViewModel
                 Tag = p,
                 Display = $"{p}  ·  {c}",
                 WordCount = c,
-                IsNoFilter = false
+                IsNoFilter = false,
+                IsIncluded = include.Contains(p),
+                IsExcluded = exclude.Contains(p)
             });
         }
         foreach (var (tag, count) in rest)
@@ -106,16 +170,12 @@ public sealed class TagFilterViewModel : BaseViewModel
                 Tag = tag,
                 Display = $"{tag}  ·  {count}",
                 WordCount = count,
-                IsNoFilter = false
+                IsNoFilter = false,
+                IsIncluded = include.Contains(tag),
+                IsExcluded = exclude.Contains(tag)
             });
         }
 
-        // Reflect persisted selection back into the picker.
-        var current = _settings.ActiveTagFilter ?? string.Empty;
-        _selected = Tags.FirstOrDefault(o => o.IsNoFilter
-            ? string.IsNullOrEmpty(current)
-            : string.Equals(o.Tag, current, StringComparison.OrdinalIgnoreCase));
-        OnPropertyChanged(nameof(SelectedTag));
         OnPropertyChanged(nameof(ActiveFilterDisplay));
     }
 }

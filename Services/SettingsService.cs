@@ -15,7 +15,8 @@ public sealed class SettingsService : ISettingsService
     private const string KeyAzureEnVoice  = "settings.azure_en_voice";
     private const string KeySystemVolume  = "settings.system_volume";
     private const string KeyAzureVolume   = "settings.azure_volume";
-    private const string KeyActiveTag     = "settings.active_tag_filter";
+    private const string KeyIncludeTags   = "settings.include_tags";
+    private const string KeyExcludeTags   = "settings.exclude_tags";
     private const string KeyStrategy      = "settings.learning_strategy";
     private const string KeyTrackProf     = "settings.count_for_proficiency";
 
@@ -89,10 +90,28 @@ public sealed class SettingsService : ISettingsService
         set => Write(KeyAzureVolume, Math.Clamp(value, 0.0, 1.0));
     }
 
-    public string ActiveTagFilter
+    public IReadOnlyList<string> ActiveIncludeTags
     {
-        get => Read(KeyActiveTag, string.Empty);
-        set => Write(KeyActiveTag, value ?? string.Empty);
+        get => DecodeTagList(Read(KeyIncludeTags, string.Empty));
+        set => Write(KeyIncludeTags, EncodeTagList(value));
+    }
+
+    public IReadOnlyList<string> ActiveExcludeTags
+    {
+        get => DecodeTagList(Read(KeyExcludeTags, string.Empty));
+        set => Write(KeyExcludeTags, EncodeTagList(value));
+    }
+
+    private static IReadOnlyList<string> DecodeTagList(string raw)
+    {
+        if (string.IsNullOrWhiteSpace(raw)) return Array.Empty<string>();
+        return raw.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+    }
+
+    private static string EncodeTagList(IReadOnlyList<string>? tags)
+    {
+        if (tags is null || tags.Count == 0) return string.Empty;
+        return string.Join(",", tags.Where(t => !string.IsNullOrWhiteSpace(t)).Select(t => t.Trim()));
     }
 
     public LearningStrategy SelectedLearningStrategy

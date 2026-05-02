@@ -46,19 +46,30 @@ public sealed class QuestionGenerator : IQuestionGenerator
         await _store.LoadAsync();
 
         IReadOnlyList<Word> pool = _vocab.All;
-        var tag = (_settings.ActiveTagFilter ?? string.Empty).Trim();
-        if (tag.Length > 0)
-        {
-            var filtered = pool.Where(w => w.Tags.Contains(tag, StringComparer.OrdinalIgnoreCase)).ToList();
-            // Need at least one target plus one distractor.
-            if (filtered.Count >= 2) pool = filtered;
-        }
-        else
-        {
-            // No filter active: exclude hiragana/katakana from general vocabulary practice.
-            // Kana drills are only surfaced when the user explicitly filters for them.
-            pool = pool.Where(w => CategoryOf(w) != WordCategory.Kana).ToList();
-        }
+        var include = _settings.ActiveIncludeTags ?? Array.Empty<string>();
+        var exclude = _settings.ActiveExcludeTags ?? Array.Empty<string>();
+        var includeSet = new HashSet<string>(include, StringComparer.OrdinalIgnoreCase);
+        var excludeSet = new HashSet<string>(exclude, StringComparer.OrdinalIgnoreCase);
+
+        // Kana stays excluded from general practice unless the user explicitly opts in via
+        // the include list — matches the prior "no filter excludes kana" behaviour.
+        bool kanaAllowed = includeSet.Contains("hiragana") || includeSet.Contains("katakana");
+
+        IEnumerable<Word> filteredEnum = pool;
+        if (includeSet.Count > 0)
+            filteredEnum = filteredEnum.Where(w => w.Tags.Any(t => includeSet.Contains(t)));
+        if (excludeSet.Count > 0)
+            filteredEnum = filteredEnum.Where(w => !w.Tags.Any(t => excludeSet.Contains(t)));
+        if (!kanaAllowed)
+            filteredEnum = filteredEnum.Where(w => CategoryOf(w) != WordCategory.Kana);
+
+        var filtered = filteredEnum.ToList();
+        // Need at least one target plus one distractor — fall back to the default
+        // (kana-excluded) pool if the user's filter yields too few hits.
+        pool = filtered.Count >= 2
+            ? filtered
+            : _vocab.All.Where(w => CategoryOf(w) != WordCategory.Kana).ToList();
+
         if (pool.Count < 2) return null;
 
         // Compute the active new-term frontier once per call so consumers (e.g. TTS prefetch)

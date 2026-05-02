@@ -31,42 +31,56 @@
 
         <CollectionView Grid.Row="2"
                         ItemsSource="{Binding Tags}"
-                        SelectionMode="Single"
-                        SelectedItem="{Binding SelectedTag, Mode=TwoWay}">
+                        SelectionMode="None">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="4" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="vm:TagOption">
-                    <Border x:Name="RowBorder"
-                            StrokeThickness="0"
-                            StrokeShape="RoundRectangle 10"
-                            Padding="14,10">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal">
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor"
-                                                Value="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                                <VisualState x:Name="Selected">
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Label Text="{Binding Display}"
-                               FontSize="16">
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference RowBorder}, Path=BackgroundColor}" Value="{StaticResource Primary}">
-                                    <Setter Property="TextColor" Value="White" />
-                                    <Setter Property="FontAttributes" Value="Bold" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                    </Border>
+                    <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="6" Padding="0,2">
+                        <Border Grid.Column="0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 10"
+                                BackgroundColor="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}"
+                                Padding="14,10">
+                            <Label Text="{Binding Display}"
+                                   FontSize="16"
+                                   VerticalOptions="Center" />
+                        </Border>
+                        <Button Grid.Column="1"
+                                Text="+"
+                                IsVisible="{Binding IsNotNoFilter}"
+                                BackgroundColor="{Binding IncludeButtonColor}"
+                                TextColor="{Binding IncludeButtonTextColor}"
+                                CornerRadius="10"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="44"
+                                HeightRequest="44"
+                                Padding="0"
+                                Clicked="OnIncludeClicked" />
+                        <Button Grid.Column="2"
+                                Text="−"
+                                IsVisible="{Binding IsNotNoFilter}"
+                                BackgroundColor="{Binding ExcludeButtonColor}"
+                                TextColor="{Binding ExcludeButtonTextColor}"
+                                CornerRadius="10"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="44"
+                                HeightRequest="44"
+                                Padding="0"
+                                Clicked="OnExcludeClicked" />
+                        <Button Grid.Column="1" Grid.ColumnSpan="2"
+                                Text="Clear"
+                                IsVisible="{Binding IsNoFilter}"
+                                BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
+                                TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                                CornerRadius="10"
+                                HeightRequest="44"
+                                Padding="14,0"
+                                Clicked="OnIncludeClicked" />
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

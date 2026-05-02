@@ -20,8 +20,11 @@ public interface ISettingsService
     /// <summary>0.0 .. 1.0. Applied at playback, not synthesis (so the cache stays voice-only).</summary>
     double AzureTtsVolume { get; set; }
 
-    /// <summary>Active tag-based pool filter. Empty / null = no filter.</summary>
-    string ActiveTagFilter { get; set; }
+    /// <summary>Tags that words must match (any-of) to enter the pool. Empty = no include constraint.</summary>
+    IReadOnlyList<string> ActiveIncludeTags { get; set; }
+
+    /// <summary>Tags that disqualify a word from the pool (any-of). Empty = no exclude constraint.</summary>
+    IReadOnlyList<string> ActiveExcludeTags { get; set; }
 
     /// <summary>Persisted target-picking strategy.</summary>
     LearningStrategy SelectedLearningStrategy { get; set; }

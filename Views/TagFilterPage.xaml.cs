@@ -18,4 +18,14 @@ public partial class TagFilterPage : ContentPage
         base.OnAppearing();
         await _vm.RefreshAsync();
     }
+
+    private void OnIncludeClicked(object? sender, EventArgs e)
+    {
+        if (sender is Button { BindingContext: TagOption opt }) _vm.ToggleInclude(opt);
+    }
+
+    private void OnExcludeClicked(object? sender, EventArgs e)
+    {
+        if (sender is Button { BindingContext: TagOption opt }) _vm.ToggleExclude(opt);
+    }
 }
