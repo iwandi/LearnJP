@@ -43,6 +43,10 @@ internal sealed class Analyzer
         var pickP50 = picks.Count > 0 ? picks[picks.Count / 2] : 0;
         var pickP90 = picks.Count > 0 ? picks[Math.Min(picks.Count - 1, picks.Count * 9 / 10)] : 0;
         var pickMax = picks.Count > 0 ? picks[^1] : 0;
+        // Average over the *full eligible pool*, not just touched words — matches the user
+        // intuition "if I answer N times, how many picks does each word get on average?".
+        var pickMeanAll = pool.Count > 0 ? (double)totalTurns / pool.Count : 0;
+        var pickMeanTouched = picks.Count > 0 ? picks.Average() : 0;
 
         var ttk = _firstReachedKnown.Values.OrderBy(v => v).ToList();
         var ttkP50 = ttk.Count > 0 ? ttk[ttk.Count / 2].ToString() : "n/a";
@@ -56,7 +60,7 @@ internal sealed class Analyzer
         Console.WriteLine($"  turns asked       : {totalTurns}");
         Console.WriteLine($"  accuracy          : {(totalTurns == 0 ? 0 : 100.0 * correct / totalTurns):F1}%  ({correct}/{totalTurns})");
         Console.WriteLine($"  pool state        : unseen={unseen}  struggling={struggling}  learning={learning}  known={known}  mastered={mastered}");
-        Console.WriteLine($"  picks per word    : p50={pickP50}  p90={pickP90}  max={pickMax}  unique-touched={_picksPerWord.Count}");
+        Console.WriteLine($"  picks per word    : mean(all)={pickMeanAll:F1}  mean(touched)={pickMeanTouched:F1}  p50={pickP50}  p90={pickP90}  max={pickMax}  unique-touched={_picksPerWord.Count}");
         Console.WriteLine($"  turns→known(≥60)  : reached={_firstReachedKnown.Count}/{pool.Count}  p50={ttkP50}  p90={ttkP90}");
         Console.WriteLine($"  avg frontier size : {avgFrontier:F1}");
     }

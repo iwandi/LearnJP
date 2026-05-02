@@ -8,7 +8,8 @@ var defaults = new RunConfig
     VocabPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "Resources", "Raw", "vocabulary.json")),
     Bot = "learner",
     Strategy = LearningStrategy.Spaced,
-    Turns = 2000,
+    // ~35 picks × 500-word pool ≈ 17,500. At 100 answers/day that's ~6 months of practice.
+    Turns = 17500,
     Limit = null,
     ChanceP = 0.5,
     Seed = 1234,
@@ -37,7 +38,7 @@ else
 }
 return 0;
 
-static IEnumerable<string> BuildAllBots() => new[] { "random", "always-right", "always-wrong", "chance-0.25", "chance-0.50", "chance-0.75", "learner" };
+static IEnumerable<string> BuildAllBots() => new[] { "random", "always-right", "always-wrong", "chance-0.25", "chance-0.50", "chance-0.75", "learner", "streak-3", "streak-5" };
 
 static bool IsKana(Word w) =>
     w.Id.StartsWith("h-", StringComparison.Ordinal) ||
@@ -95,6 +96,11 @@ static IAnswerBot ResolveBot(string name, Func<string, double> proficiencyOf)
         var p = double.Parse(name["chance-".Length..], System.Globalization.CultureInfo.InvariantCulture);
         return new ChanceBot(p);
     }
+    if (name.StartsWith("streak-", StringComparison.OrdinalIgnoreCase))
+    {
+        var k = int.Parse(name["streak-".Length..]);
+        return new StreakBot(k);
+    }
     return name.ToLowerInvariant() switch
     {
         "random"        => new RandomBot(),
@@ -129,9 +135,9 @@ static RunConfig ParseArgs(string[] args, RunConfig def)
                 Console.WriteLine();
                 Console.WriteLine("Options:");
                 Console.WriteLine("  --vocab PATH      Path to vocabulary.json (default: project Resources/Raw)");
-                Console.WriteLine("  --bot NAME        random|always-right|always-wrong|learner|chance-0.50  (default: learner)");
+                Console.WriteLine("  --bot NAME        random|always-right|always-wrong|learner|chance-0.50|streak-5  (default: learner)");
                 Console.WriteLine("  --strategy NAME   Neutral|Spaced|QuickReview|WeakFocus  (default: Spaced)");
-                Console.WriteLine("  --turns N         Question count (default: 2000)");
+                Console.WriteLine("  --turns N         Question count (default: 17500 — ~6mo at 100/day)");
                 Console.WriteLine("  --limit N         Cap pool to first N words (default: full)");
                 Console.WriteLine("  --seed N          RNG seed for repeatability (default: 1234)");
                 Console.WriteLine("  --csv PATH        Write per-turn dump to PATH (filename gets bot+strategy suffix)");
