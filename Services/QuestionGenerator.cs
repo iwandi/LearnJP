@@ -22,15 +22,15 @@ public sealed class QuestionGenerator : IQuestionGenerator
     // rotation stalls on a wide-but-shallow sweep. Instead, only the K most-common (lowest
     // FrequencyRank) unseen words are "in scope" at any moment — once one is learned past the
     // mastery floor, the next-most-common unseen word slides in.
-    // Public-static (not const) so the strategy simulator can sweep it; production never writes.
-    public static int NewTermFrontierSize = 12;
+    // Instance-scoped so the strategy simulator can sweep it without trampling parallel runs.
+    public int NewTermFrontierSize { get; set; } = 12;
 
     public IReadOnlyList<Word> CurrentNewTermFrontier { get; private set; } = Array.Empty<Word>();
 
     // Probability that any given pick is hijacked by the validation pass: a high-proficiency
     // word with logged confusions surfaced to confirm the score is real. The distractor bias
     // already pulls the top confuser into the option set, so the user gets a real test.
-    public static double ValidationPickProbability = 0.08;
+    public double ValidationPickProbability { get; set; } = 0.08;
     private const double ValidationProficiencyFloor = 75.0;
 
     /// <summary>
@@ -47,7 +47,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         _settings = settings;
     }
 
-    public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Spaced)
+    public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Fsrs)
     {
         await _vocab.EnsureLoadedAsync();
         await _store.LoadAsync();

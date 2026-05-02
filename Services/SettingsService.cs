@@ -116,7 +116,7 @@ public sealed class SettingsService : ISettingsService
 
     public LearningStrategy SelectedLearningStrategy
     {
-        get => (LearningStrategy)Read(KeyStrategy, (int)LearningStrategy.Spaced);
+        get => (LearningStrategy)Read(KeyStrategy, (int)LearningStrategy.Fsrs);
         set => Write(KeyStrategy, (int)value);
     }
 

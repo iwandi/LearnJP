@@ -184,7 +184,7 @@ public sealed class QuizViewModel : BaseViewModel
         _tts = tts;
         _settings = settings;
         _sounds = sounds;
-        try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Spaced; }
+        try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Fsrs; }
     }
 
     public async Task LoadNextAsync()
