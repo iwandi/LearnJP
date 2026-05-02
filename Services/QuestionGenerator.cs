@@ -26,6 +26,13 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
     public IReadOnlyList<Word> CurrentNewTermFrontier { get; private set; } = Array.Empty<Word>();
 
+    /// <summary>
+    /// Sort key for FrequencyRank: real ranks are positive (smaller = more common). Both 0 and
+    /// int.MaxValue are sentinel "no data" markers from the source vocabulary / cleaner, so they
+    /// must sort *last* — otherwise unranked words masquerade as the most common.
+    /// </summary>
+    private static int FrequencyOrderKey(int rank) => rank <= 0 ? int.MaxValue : rank;
+
     public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings)
     {
         _vocab = vocab;
@@ -56,9 +63,10 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         // Compute the active new-term frontier once per call so consumers (e.g. TTS prefetch)
         // can warm caches for the words about to surface.
+        // Lower FrequencyRank = more common; rank 0 / MaxValue means "no data" and is sorted last.
         CurrentNewTermFrontier = pool
             .Where(w => _store.Get(w.Id).TotalSeen == 0)
-            .OrderBy(w => w.FrequencyRank)
+            .OrderBy(w => FrequencyOrderKey(w.FrequencyRank))
             .Take(NewTermFrontierSize)
             .ToList();
 
@@ -136,9 +144,10 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         // Restrict the unseen bucket to the active intake frontier (most-common words first),
         // so a long tail of 900+ unseen entries can't drown out the words being learned.
+        // FrequencyOrderKey treats 0 / MaxValue as "no data" so they sort last, not first.
         if (unseen.Count > NewTermFrontierSize)
         {
-            unseen = unseen.OrderBy(w => w.FrequencyRank).Take(NewTermFrontierSize).ToList();
+            unseen = unseen.OrderBy(w => FrequencyOrderKey(w.FrequencyRank)).Take(NewTermFrontierSize).ToList();
         }
 
         // Prefer due words.
@@ -317,7 +326,8 @@ public sealed class QuestionGenerator : IQuestionGenerator
                 // Unseen: full weight only inside the frontier; otherwise dormant.
                 if (frontier.Contains(w.Id))
                 {
-                    var freqBoost = w.FrequencyRank == int.MaxValue ? 1.0 : 1.0 + (1.0 / Math.Sqrt(w.FrequencyRank + 1));
+                    var key = FrequencyOrderKey(w.FrequencyRank);
+                    var freqBoost = key == int.MaxValue ? 1.0 : 1.0 + (1.0 / Math.Sqrt(key + 1));
                     weight = 0.8 * freqBoost; // ~1.0–1.6
                 }
                 else
