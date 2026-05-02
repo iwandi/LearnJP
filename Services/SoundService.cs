@@ -20,7 +20,7 @@ public sealed class SoundService : ISoundService
     private static extern bool PlaySound(byte[]? lpszSound, IntPtr hModule, uint dwFlags);
 #endif
 
-    public void Play(SoundEffect effect)
+    public TimeSpan Play(SoundEffect effect)
     {
         try
         {
@@ -34,7 +34,16 @@ public sealed class SoundService : ISoundService
         {
             Debug.WriteLine($"[Sound] {ex.GetType().Name}: {ex.Message}");
         }
+        return DurationOf(effect);
     }
+
+    private static TimeSpan DurationOf(SoundEffect effect) => effect switch
+    {
+        SoundEffect.Click   => TimeSpan.FromMilliseconds(60),
+        SoundEffect.Correct => TimeSpan.FromMilliseconds(200),
+        SoundEffect.Wrong   => TimeSpan.FromMilliseconds(300),
+        _                   => TimeSpan.FromMilliseconds(80)
+    };
 
     public void PlayWav(byte[] wavBytes)
     {

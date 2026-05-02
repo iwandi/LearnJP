@@ -40,6 +40,8 @@ public sealed class QuizViewModel : BaseViewModel
 {
     private static readonly TimeSpan FeedbackCorrect = TimeSpan.FromMilliseconds(700);
     private static readonly TimeSpan FeedbackWrong   = TimeSpan.FromMilliseconds(1600);
+    // Small silent gap between an effect ending and TTS starting so they don't blur.
+    private static readonly TimeSpan PostEffectPause = TimeSpan.FromMilliseconds(120);
 
     private readonly IQuestionGenerator _gen;
     private readonly IProficiencyStore _store;
@@ -56,6 +58,7 @@ public sealed class QuizViewModel : BaseViewModel
     private bool _showPromptSpeakButton;
     private bool _countForProficiency = true;
     private CancellationTokenSource? _autoAdvanceCts;
+    private Task _ttsTask = Task.CompletedTask;
 
     public ObservableCollection<QuizOptionVm> Options { get; } = new();
 
@@ -115,7 +118,7 @@ public sealed class QuizViewModel : BaseViewModel
         IsAnswered = true;
 
         var correct = vm.Source.IsCorrect;
-        _sounds.Play(correct ? SoundEffect.Correct : SoundEffect.Wrong);
+        var effectDuration = _sounds.Play(correct ? SoundEffect.Correct : SoundEffect.Wrong);
         vm.State = correct ? "correct" : "wrong";
         vm.RaiseColors();
 
@@ -131,10 +134,21 @@ public sealed class QuizViewModel : BaseViewModel
             catch { /* best effort */ }
         }
 
-        // Always read the Japanese after answering — covers EN→JP direction too.
-        _ = _tts.SpeakJapaneseAsync(_current.TtsText);
+        // Wait for the effect to finish (plus a small gap), then speak the JP — covers EN→JP too.
+        var ttsText = _current.TtsText;
+        _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, ttsText);
 
         await ScheduleAutoAdvance(correct ? FeedbackCorrect : FeedbackWrong);
+    }
+
+    private async Task SpeakAfterAsync(TimeSpan delay, string text)
+    {
+        try
+        {
+            if (delay > TimeSpan.Zero) await Task.Delay(delay);
+            await _tts.SpeakJapaneseAsync(text);
+        }
+        catch { /* ignore */ }
     }
 
     public async Task SkipAsync()
@@ -148,7 +162,7 @@ public sealed class QuizViewModel : BaseViewModel
     {
         if (IsAnswered || _current is null) return;
         IsAnswered = true;
-        _sounds.Play(SoundEffect.Wrong);
+        var effectDuration = _sounds.Play(SoundEffect.Wrong);
 
         foreach (var o in Options)
             if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
@@ -159,7 +173,7 @@ public sealed class QuizViewModel : BaseViewModel
             catch { /* best effort */ }
         }
 
-        _ = _tts.SpeakJapaneseAsync(_current.TtsText);
+        _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText);
 
         await ScheduleAutoAdvance(FeedbackWrong);
     }
@@ -167,16 +181,16 @@ public sealed class QuizViewModel : BaseViewModel
     public async Task SpeakCurrentAsync()
     {
         if (_current is null) return;
-        _sounds.Play(SoundEffect.Click);
-        try { await _tts.SpeakJapaneseAsync(_current.TtsText); } catch { /* ignore */ }
+        var effectDuration = _sounds.Play(SoundEffect.Click);
+        await SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText);
     }
 
     public async Task SpeakOptionAsync(QuizOptionVm opt)
     {
         var kana = opt.Source.Word.Kana;
         if (string.IsNullOrWhiteSpace(kana)) return;
-        _sounds.Play(SoundEffect.Click);
-        try { await _tts.SpeakJapaneseAsync(kana); } catch { /* ignore */ }
+        var effectDuration = _sounds.Play(SoundEffect.Click);
+        await SpeakAfterAsync(effectDuration + PostEffectPause, kana);
     }
 
     private async Task ScheduleAutoAdvance(TimeSpan delay)
@@ -186,7 +200,11 @@ public sealed class QuizViewModel : BaseViewModel
         var token = _autoAdvanceCts.Token;
         try
         {
-            await Task.Delay(delay, token);
+            // Wait for both the visual feedback delay and the queued TTS to finish.
+            var feedback = Task.Delay(delay, token);
+            try { await Task.WhenAll(feedback, _ttsTask); }
+            catch (OperationCanceledException) { return; }
+
             if (!token.IsCancellationRequested)
                 await LoadNextAsync();
         }
