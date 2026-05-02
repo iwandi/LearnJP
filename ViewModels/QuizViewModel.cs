@@ -45,6 +45,7 @@ public sealed class QuizViewModel : BaseViewModel
     private readonly IProficiencyStore _store;
     private readonly ITtsService _tts;
     private readonly ISettingsService _settings;
+    private readonly ISoundService _sounds;
 
     private Question? _current;
     private string _prompt = "";
@@ -67,12 +68,13 @@ public sealed class QuizViewModel : BaseViewModel
     public bool ShowPromptSpeakButton { get => _showPromptSpeakButton; private set => SetProperty(ref _showPromptSpeakButton, value); }
     public bool CountForProficiency { get => _countForProficiency; set => SetProperty(ref _countForProficiency, value); }
 
-    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings)
+    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds)
     {
         _gen = gen;
         _store = store;
         _tts = tts;
         _settings = settings;
+        _sounds = sounds;
     }
 
     public async Task LoadNextAsync()
@@ -113,6 +115,7 @@ public sealed class QuizViewModel : BaseViewModel
         IsAnswered = true;
 
         var correct = vm.Source.IsCorrect;
+        _sounds.Play(correct ? SoundEffect.Correct : SoundEffect.Wrong);
         vm.State = correct ? "correct" : "wrong";
         vm.RaiseColors();
 
@@ -136,6 +139,7 @@ public sealed class QuizViewModel : BaseViewModel
 
     public async Task SkipAsync()
     {
+        _sounds.Play(SoundEffect.Click);
         CancelAutoAdvance();
         await LoadNextAsync();
     }
@@ -144,6 +148,7 @@ public sealed class QuizViewModel : BaseViewModel
     {
         if (IsAnswered || _current is null) return;
         IsAnswered = true;
+        _sounds.Play(SoundEffect.Wrong);
 
         foreach (var o in Options)
             if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
@@ -162,6 +167,7 @@ public sealed class QuizViewModel : BaseViewModel
     public async Task SpeakCurrentAsync()
     {
         if (_current is null) return;
+        _sounds.Play(SoundEffect.Click);
         try { await _tts.SpeakJapaneseAsync(_current.TtsText); } catch { /* ignore */ }
     }
 
@@ -169,6 +175,7 @@ public sealed class QuizViewModel : BaseViewModel
     {
         var kana = opt.Source.Word.Kana;
         if (string.IsNullOrWhiteSpace(kana)) return;
+        _sounds.Play(SoundEffect.Click);
         try { await _tts.SpeakJapaneseAsync(kana); } catch { /* ignore */ }
     }
 

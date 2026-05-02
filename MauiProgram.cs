@@ -16,6 +16,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IProficiencyStore, ProficiencyStore>();
         builder.Services.AddSingleton<IQuestionGenerator, QuestionGenerator>();
         builder.Services.AddSingleton<ITtsService, TtsService>();
+        builder.Services.AddSingleton<ISoundService, SoundService>();
         builder.Services.AddSingleton<ISettingsService, SettingsService>();
 
         builder.Services.AddSingleton<QuizViewModel>();
