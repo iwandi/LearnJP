@@ -123,10 +123,12 @@ public sealed class QuizViewModel : BaseViewModel
     }
 
     private string _lastSeenFilter = string.Empty;
+    private bool? _lastSeenRomajiOnly;
+    private bool? _lastSeenForceFurigana;
 
     /// <summary>
-    /// Called from the page's OnAppearing — picks up tag-filter and strategy changes made on
-    /// the Filter tab and forces a fresh question if either changed.
+    /// Called from the page's OnAppearing — picks up tag-filter, strategy, and display-mode
+    /// changes made on other tabs and forces a fresh question if any of them changed.
     /// </summary>
     public async Task SyncActiveFilterAsync()
     {
@@ -134,9 +136,22 @@ public sealed class QuizViewModel : BaseViewModel
         ActiveFilterDisplay = string.IsNullOrEmpty(currentFilter) ? string.Empty : $"Filter: {currentFilter}";
 
         var currentStrategy = _settings.SelectedLearningStrategy;
+        var currentRomaji = _settings.RomajiOnly;
+        var currentForceFurigana = _settings.ForceFurigana;
+
+        // Display-mode settings affect prompt rendering inside QuestionGenerator, so a change
+        // requires re-running BuildPrompt on a fresh question to surface the new mode.
+        var displayChanged =
+            (_lastSeenRomajiOnly is { } r && r != currentRomaji) ||
+            (_lastSeenForceFurigana is { } f && f != currentForceFurigana);
+
         var changed =
             !string.Equals(currentFilter, _lastSeenFilter, StringComparison.OrdinalIgnoreCase) ||
-            currentStrategy != _selectedStrategy;
+            currentStrategy != _selectedStrategy ||
+            displayChanged;
+
+        _lastSeenRomajiOnly = currentRomaji;
+        _lastSeenForceFurigana = currentForceFurigana;
 
         if (changed)
         {
