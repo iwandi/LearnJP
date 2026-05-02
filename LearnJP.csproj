@@ -32,6 +32,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<!-- Out-of-band tooling lives under Tools\; don't pull it into the MAUI app build. -->
+		<Compile Remove="Tools\**" />
+		<MauiAsset Remove="Tools\**" />
+		<MauiXaml Remove="Tools\**" />
+		<None Remove="Tools\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#1f1f3a" />
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#1f1f3a" BaseSize="128,128" />
 
