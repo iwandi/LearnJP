@@ -16,6 +16,10 @@ public sealed class TtsService : ITtsService
     private bool _localesLoaded;
     private bool _systemEngineDisabled;
 
+    // Texts already submitted for prefetch this session. Azure cache is persistent, but
+    // re-issuing 12 cache lookups every question is wasteful — this short-circuits them.
+    private readonly HashSet<string> _prefetchedJapanese = new(StringComparer.Ordinal);
+
     public TtsService(ISettingsService settings, ISoundService sounds, AzureTtsClient azure)
     {
         _settings = settings;
@@ -32,6 +36,33 @@ public sealed class TtsService : ITtsService
     public void Cancel()
     {
         try { _cts?.Cancel(); } catch { /* ignore */ }
+    }
+
+    public async Task PrefetchJapaneseAsync(IEnumerable<string> texts, CancellationToken ct = default)
+    {
+        if (texts is null) return;
+
+        bool ttsEnabled;
+        try { ttsEnabled = _settings.TtsEnabled; } catch { ttsEnabled = false; }
+        if (!ttsEnabled) return;
+
+        TtsProvider provider;
+        try { provider = _settings.TtsProvider; } catch { provider = TtsProvider.System; }
+        // Only Azure has a persistent cache to warm; system TTS goes straight to the OS engine.
+        if (provider != TtsProvider.Azure) return;
+
+        var voice = _settings.AzureJapaneseVoice;
+        foreach (var text in texts)
+        {
+            if (ct.IsCancellationRequested) return;
+            if (string.IsNullOrWhiteSpace(text)) continue;
+            lock (_prefetchedJapanese)
+            {
+                if (!_prefetchedJapanese.Add(text)) continue;
+            }
+            try { await _azure.SynthesizeAsync(text, "ja-JP", voice, ct); }
+            catch { /* best effort */ }
+        }
     }
 
     private async Task SpeakAsync(string text, string languagePrefix, CancellationToken ct)

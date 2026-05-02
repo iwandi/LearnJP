@@ -193,6 +193,15 @@ public sealed class QuizViewModel : BaseViewModel
             // but still vocalise after the answer is revealed.
             if (q.Direction == QuestionDirection.JapaneseToEnglish && !IsKanaWord(q.Target))
                 _ = _tts.SpeakJapaneseAsync(q.TtsText);
+
+            // Warm the TTS cache for the active "new term" frontier so when one of those
+            // words surfaces, the audio is already on disk instead of waiting on synthesis.
+            var frontierKana = _gen.CurrentNewTermFrontier
+                .Where(w => !IsKanaWord(w))
+                .Select(w => w.Kana)
+                .ToList();
+            if (frontierKana.Count > 0)
+                _ = _tts.PrefetchJapaneseAsync(frontierKana);
         }
         finally { IsLoading = false; }
     }

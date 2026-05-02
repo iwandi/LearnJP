@@ -24,6 +24,8 @@ public sealed class QuestionGenerator : IQuestionGenerator
     // mastery floor, the next-most-common unseen word slides in.
     private const int NewTermFrontierSize = 12;
 
+    public IReadOnlyList<Word> CurrentNewTermFrontier { get; private set; } = Array.Empty<Word>();
+
     public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings)
     {
         _vocab = vocab;
@@ -51,6 +53,14 @@ public sealed class QuestionGenerator : IQuestionGenerator
             pool = pool.Where(w => CategoryOf(w) != WordCategory.Kana).ToList();
         }
         if (pool.Count < 2) return null;
+
+        // Compute the active new-term frontier once per call so consumers (e.g. TTS prefetch)
+        // can warm caches for the words about to surface.
+        CurrentNewTermFrontier = pool
+            .Where(w => _store.Get(w.Id).TotalSeen == 0)
+            .OrderBy(w => w.FrequencyRank)
+            .Take(NewTermFrontierSize)
+            .ToList();
 
         var target = strategy switch
         {
@@ -288,15 +298,10 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
     private Word? PickTarget(IReadOnlyList<Word> pool)
     {
-        // Identify the active intake frontier: the K most-common unseen words. Only these
+        // Use the precomputed intake frontier: the K most-common unseen words. Only these
         // compete for "new word" picks; other unseen words sit dormant at a tiny floor weight
         // so they're occasionally surfaced but don't crowd out in-progress learning.
-        var frontier = new HashSet<string>(StringComparer.Ordinal);
-        var frontierCandidates = pool
-            .Where(w => _store.Get(w.Id).TotalSeen == 0)
-            .OrderBy(w => w.FrequencyRank)
-            .Take(NewTermFrontierSize);
-        foreach (var w in frontierCandidates) frontier.Add(w.Id);
+        var frontier = new HashSet<string>(CurrentNewTermFrontier.Select(w => w.Id), StringComparer.Ordinal);
 
         var weights = new double[pool.Count];
         double total = 0;
