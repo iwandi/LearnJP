@@ -81,6 +81,10 @@ public sealed class QuizViewModel : BaseViewModel
             if (SetProperty(ref _selectedStrategy, value))
             {
                 try { _settings.SelectedLearningStrategy = value; } catch { /* best effort */ }
+                // Mirror the filter behaviour: changing the strategy mid-session reloads the current
+                // term so the new strategy gets to pick. Skip on the very first assignment (binding
+                // wireup) — the page's OnAppearing handles the initial load.
+                if (_current is not null) _ = LoadNextAsync();
             }
         }
     }
@@ -89,20 +93,25 @@ public sealed class QuizViewModel : BaseViewModel
     public string ActiveFilterDisplay { get => _activeFilterDisplay; private set { SetProperty(ref _activeFilterDisplay, value); OnPropertyChanged(nameof(HasActiveFilter)); } }
     public bool HasActiveFilter => !string.IsNullOrEmpty(_activeFilterDisplay);
 
-    private bool _isCurrentReinforced;
-    public bool IsCurrentReinforced
+    private bool _isManuallyPinned;
+    private bool _isInActiveFocusSet;
+
+    public bool IsCurrentReinforced => _isManuallyPinned || _isInActiveFocusSet;
+    public string ReinforceButtonText => IsCurrentReinforced ? "★" : "☆";
+
+    private void RefreshReinforceState()
     {
-        get => _isCurrentReinforced;
-        private set { SetProperty(ref _isCurrentReinforced, value); OnPropertyChanged(nameof(ReinforceButtonText)); }
+        OnPropertyChanged(nameof(IsCurrentReinforced));
+        OnPropertyChanged(nameof(ReinforceButtonText));
     }
-    public string ReinforceButtonText => _isCurrentReinforced ? "★" : "☆";
 
     public async Task ToggleReinforcedAsync()
     {
         if (_current is null) return;
-        var newState = !IsCurrentReinforced;
-        IsCurrentReinforced = newState;
-        try { await _store.SetReinforcedAsync(_current.Target.Id, newState); }
+        // Tap always toggles the manual pin — focus-set membership is algorithm-controlled.
+        _isManuallyPinned = !_isManuallyPinned;
+        RefreshReinforceState();
+        try { await _store.SetReinforcedAsync(_current.Target.Id, _isManuallyPinned); }
         catch { /* best effort */ }
     }
 
@@ -160,7 +169,9 @@ public sealed class QuizViewModel : BaseViewModel
                 Options.Add(new QuizOptionVm { Source = o, IsJapaneseSide = optionsAreJapanese });
 
             IsAnswered = false;
-            IsCurrentReinforced = _store.Get(q.Target.Id).IsReinforced;
+            _isManuallyPinned = _store.Get(q.Target.Id).IsReinforced;
+            _isInActiveFocusSet = q.IsInReinforcementSet;
+            RefreshReinforceState();
 
             if (q.Direction == QuestionDirection.JapaneseToEnglish)
                 _ = _tts.SpeakJapaneseAsync(q.TtsText);

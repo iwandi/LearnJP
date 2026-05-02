@@ -10,6 +10,13 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private readonly Random _rng = new();
     private string? _lastWordId;
 
+    // Persistent focus sets per strategy. Sized to 18 so each word averages ≈18 picks
+    // between repeats — enough variety that "I just saw this 3 questions ago" can't telegraph
+    // the answer, but small enough to stay coherent within a session.
+    private const int FocusSetTargetSize = 18;
+    private readonly HashSet<string> _quickReviewSet = new(StringComparer.Ordinal);
+    private readonly HashSet<string> _weakFocusSet = new(StringComparer.Ordinal);
+
     public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings)
     {
         _vocab = vocab;
@@ -34,8 +41,10 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         var target = strategy switch
         {
-            LearningStrategy.Spaced => PickTargetSpaced(pool),
-            _ => PickTarget(pool)
+            LearningStrategy.Spaced      => PickTargetSpaced(pool),
+            LearningStrategy.QuickReview => PickTargetQuickReview(pool),
+            LearningStrategy.WeakFocus   => PickTargetWeakFocus(pool),
+            _                            => PickTarget(pool)
         };
         if (target is null) return null;
 
@@ -62,7 +71,8 @@ public sealed class QuestionGenerator : IQuestionGenerator
             Options = options,
             TtsText = ttsText,
             TtsLocaleTag = ttsLocale,
-            TargetProficiencyAtAsk = prof.Overall
+            TargetProficiencyAtAsk = prof.Overall,
+            IsInReinforcementSet = IsInActiveFocusSet(strategy, target.Id)
         };
     }
 
@@ -114,6 +124,126 @@ public sealed class QuestionGenerator : IQuestionGenerator
         // Fallback: just pick the lowest-proficiency word we know.
         return pool.OrderBy(w => _store.Get(w.Id).Overall).ThenBy(_ => _rng.Next()).FirstOrDefault();
     }
+
+    /// <summary>
+    /// Quickly cycles through words the user already knows. Maintains a persistent focus set of
+    /// ≈18 high-proficiency words and rotates through them by least-recently-seen, so the user
+    /// gets a meaningful sweep instead of the same 5 words on repeat.
+    /// </summary>
+    private Word? PickTargetQuickReview(IReadOnlyList<Word> pool)
+    {
+        EnsureQuickReviewSet(pool);
+
+        var candidates = pool
+            .Where(w => w.Id != _lastWordId && _quickReviewSet.Contains(w.Id))
+            .Select(w => (w, p: _store.Get(w.Id)))
+            .OrderBy(t => t.p.LastSeenUtc ?? DateTime.MinValue)
+            .ToList();
+
+        // Bias to the oldest 8 in the set so we sweep the whole set across ~18 picks
+        // without forming an obvious sequential pattern.
+        if (candidates.Count == 0) return PickTarget(pool);
+        var top = candidates.Take(8).ToList();
+        var items = new List<(Word w, double weight)>(top.Count);
+        for (int i = 0; i < top.Count; i++)
+            items.Add((top[i].w, top.Count - i));
+        return WeightedPick(items);
+    }
+
+    /// <summary>
+    /// Drills the weakest words to lift their proficiency. Maintains a persistent focus set of
+    /// ≈18 weak-or-new words; words "graduate" out as their overall climbs past 75, and fresh
+    /// weaknesses (or never-seen words) take their place automatically.
+    /// </summary>
+    private Word? PickTargetWeakFocus(IReadOnlyList<Word> pool)
+    {
+        EnsureWeakFocusSet(pool);
+
+        var candidates = pool
+            .Where(w => w.Id != _lastWordId && _weakFocusSet.Contains(w.Id))
+            .Select(w => (w, p: _store.Get(w.Id)))
+            .OrderBy(t => t.p.Overall)
+            .ThenBy(t => t.p.LastSeenUtc ?? DateTime.MinValue)
+            .ToList();
+
+        if (candidates.Count == 0) return PickTarget(pool);
+        var top = candidates.Take(10).ToList();
+        var items = new List<(Word w, double weight)>(top.Count);
+        for (int i = 0; i < top.Count; i++)
+            items.Add((top[i].w, top.Count - i));
+        return WeightedPick(items);
+    }
+
+    /// <summary>Refills the QuickReview focus set so it always holds ≈18 known words.</summary>
+    private void EnsureQuickReviewSet(IReadOnlyList<Word> pool)
+    {
+        var poolIds = new HashSet<string>(pool.Select(w => w.Id), StringComparer.Ordinal);
+        // Drop members that fall below the floor or leave the pool entirely.
+        _quickReviewSet.RemoveWhere(id =>
+            !poolIds.Contains(id) || _store.Get(id).Overall < 30.0);
+
+        if (_quickReviewSet.Count >= FocusSetTargetSize) return;
+
+        // Tiered threshold so the set fills even when the user hasn't built up many strong words.
+        foreach (var threshold in new[] { 70.0, 50.0, 30.0 })
+        {
+            var candidates = pool
+                .Where(w => !_quickReviewSet.Contains(w.Id))
+                .Select(w => (w, p: _store.Get(w.Id)))
+                .Where(t => t.p.TotalSeen > 0 && t.p.Overall >= threshold)
+                .OrderByDescending(t => t.p.Overall)
+                .ThenBy(_ => _rng.Next())
+                .ToList();
+            foreach (var (w, _) in candidates)
+            {
+                if (_quickReviewSet.Count >= FocusSetTargetSize) return;
+                _quickReviewSet.Add(w.Id);
+            }
+        }
+    }
+
+    /// <summary>Refills the WeakFocus set so it always holds ≈18 below-mastery (or new) words.</summary>
+    private void EnsureWeakFocusSet(IReadOnlyList<Word> pool)
+    {
+        var poolIds = new HashSet<string>(pool.Select(w => w.Id), StringComparer.Ordinal);
+        // Graduate words that have climbed past 75 — they're no longer "weak".
+        _weakFocusSet.RemoveWhere(id =>
+            !poolIds.Contains(id) || _store.Get(id).Overall >= 75.0);
+
+        if (_weakFocusSet.Count >= FocusSetTargetSize) return;
+
+        // First pass: weakest seen words.
+        var seenWeak = pool
+            .Where(w => !_weakFocusSet.Contains(w.Id))
+            .Select(w => (w, p: _store.Get(w.Id)))
+            .Where(t => t.p.TotalSeen > 0 && t.p.Overall < 75.0)
+            .OrderBy(t => t.p.Overall)
+            .ToList();
+        foreach (var (w, _) in seenWeak)
+        {
+            if (_weakFocusSet.Count >= FocusSetTargetSize) return;
+            _weakFocusSet.Add(w.Id);
+        }
+
+        // Pad with never-seen words so the drill keeps unlocking new vocabulary.
+        var unseen = pool
+            .Where(w => !_weakFocusSet.Contains(w.Id))
+            .Where(w => _store.Get(w.Id).TotalSeen == 0)
+            .OrderBy(_ => _rng.Next())
+            .ToList();
+        foreach (var w in unseen)
+        {
+            if (_weakFocusSet.Count >= FocusSetTargetSize) return;
+            _weakFocusSet.Add(w.Id);
+        }
+    }
+
+    private bool IsInActiveFocusSet(LearningStrategy strategy, string wordId) => strategy switch
+    {
+        LearningStrategy.QuickReview => _quickReviewSet.Contains(wordId),
+        LearningStrategy.WeakFocus   => _weakFocusSet.Contains(wordId),
+        _                            => false
+    };
 
     private Word WeightedPick(List<(Word w, double weight)> items)
     {
