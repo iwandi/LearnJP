@@ -615,5 +615,9605 @@
   { "id": "n5-664", "kanji": "上着",     "kana": "うわぎ",      "romaji": "uwagi",     "meanings": ["jacket", "coat"],         "pos": "noun",    "tags": ["n5","clothing"], "frequencyRank": 4100 },
   { "id": "n5-665", "kanji": "コート",   "kana": "コート",      "romaji": "kooto",     "meanings": ["coat"],                   "pos": "noun",    "tags": ["n5","clothing"], "frequencyRank": 2900 },
   { "id": "n5-666", "kanji": "ハンカチ", "kana": "ハンカチ",    "romaji": "hankachi",  "meanings": ["handkerchief"],           "pos": "noun",    "tags": ["n5","accessory","clothing"], "frequencyRank": 5500 },
-  { "id": "n5-667", "kanji": "財布",     "kana": "さいふ",      "romaji": "saifu",     "meanings": ["wallet"],                 "pos": "noun",    "tags": ["n5","accessory","money"], "frequencyRank": 2700 }
+  { "id": "n5-667", "kanji": "財布",     "kana": "さいふ",      "romaji": "saifu",     "meanings": ["wallet"],                 "pos": "noun",    "tags": ["n5","accessory","money"], "frequencyRank": 2700 },
+    {
+      "id": "n4-0001",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 500
+    },
+    {
+      "id": "n4-0002",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 501
+    },
+    {
+      "id": "n4-0003",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 502
+    },
+    {
+      "id": "n4-0004",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 503
+    },
+    {
+      "id": "n4-0005",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 504
+    },
+    {
+      "id": "n4-0006",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 505
+    },
+    {
+      "id": "n4-0007",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 506
+    },
+    {
+      "id": "n4-0008",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 507
+    },
+    {
+      "id": "n4-0009",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 508
+    },
+    {
+      "id": "n4-0010",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 509
+    },
+    {
+      "id": "n4-0011",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 510
+    },
+    {
+      "id": "n4-0012",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 511
+    },
+    {
+      "id": "n4-0013",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 512
+    },
+    {
+      "id": "n4-0014",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 513
+    },
+    {
+      "id": "n4-0015",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 514
+    },
+    {
+      "id": "n4-0016",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 515
+    },
+    {
+      "id": "n4-0017",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 516
+    },
+    {
+      "id": "n4-0018",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 517
+    },
+    {
+      "id": "n4-0019",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 518
+    },
+    {
+      "id": "n4-0020",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 519
+    },
+    {
+      "id": "n4-0021",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 520
+    },
+    {
+      "id": "n4-0022",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 521
+    },
+    {
+      "id": "n4-0023",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 522
+    },
+    {
+      "id": "n4-0024",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 523
+    },
+    {
+      "id": "n4-0025",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 524
+    },
+    {
+      "id": "n4-0026",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 525
+    },
+    {
+      "id": "n4-0027",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 526
+    },
+    {
+      "id": "n4-0028",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 527
+    },
+    {
+      "id": "n4-0029",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 528
+    },
+    {
+      "id": "n4-0030",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 529
+    },
+    {
+      "id": "n4-0031",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 530
+    },
+    {
+      "id": "n4-0032",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 531
+    },
+    {
+      "id": "n4-0033",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 532
+    },
+    {
+      "id": "n4-0034",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 533
+    },
+    {
+      "id": "n4-0035",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 534
+    },
+    {
+      "id": "n4-0036",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 535
+    },
+    {
+      "id": "n4-0037",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 536
+    },
+    {
+      "id": "n4-0038",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 537
+    },
+    {
+      "id": "n4-0039",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 538
+    },
+    {
+      "id": "n4-0040",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 539
+    },
+    {
+      "id": "n4-0041",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 540
+    },
+    {
+      "id": "n4-0042",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 541
+    },
+    {
+      "id": "n4-0043",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 542
+    },
+    {
+      "id": "n4-0044",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 543
+    },
+    {
+      "id": "n4-0045",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 544
+    },
+    {
+      "id": "n4-0046",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 545
+    },
+    {
+      "id": "n4-0047",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 546
+    },
+    {
+      "id": "n4-0048",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 547
+    },
+    {
+      "id": "n4-0049",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 548
+    },
+    {
+      "id": "n4-0050",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 549
+    },
+    {
+      "id": "n4-0051",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 550
+    },
+    {
+      "id": "n4-0052",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 551
+    },
+    {
+      "id": "n4-0053",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 552
+    },
+    {
+      "id": "n4-0054",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 553
+    },
+    {
+      "id": "n4-0055",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 554
+    },
+    {
+      "id": "n4-0056",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 555
+    },
+    {
+      "id": "n4-0057",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 556
+    },
+    {
+      "id": "n4-0058",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 557
+    },
+    {
+      "id": "n4-0059",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 558
+    },
+    {
+      "id": "n4-0060",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 559
+    },
+    {
+      "id": "n4-0061",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 560
+    },
+    {
+      "id": "n4-0062",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 561
+    },
+    {
+      "id": "n4-0063",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 562
+    },
+    {
+      "id": "n4-0064",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 563
+    },
+    {
+      "id": "n4-0065",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 564
+    },
+    {
+      "id": "n4-0066",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 565
+    },
+    {
+      "id": "n4-0067",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 566
+    },
+    {
+      "id": "n4-0068",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 567
+    },
+    {
+      "id": "n4-0069",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 568
+    },
+    {
+      "id": "n4-0070",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 569
+    },
+    {
+      "id": "n4-0071",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 570
+    },
+    {
+      "id": "n4-0072",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 571
+    },
+    {
+      "id": "n4-0073",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 572
+    },
+    {
+      "id": "n4-0074",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 573
+    },
+    {
+      "id": "n4-0075",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 574
+    },
+    {
+      "id": "n4-0076",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 575
+    },
+    {
+      "id": "n4-0077",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 576
+    },
+    {
+      "id": "n4-0078",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 577
+    },
+    {
+      "id": "n4-0079",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 578
+    },
+    {
+      "id": "n4-0080",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 579
+    },
+    {
+      "id": "n4-0081",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 580
+    },
+    {
+      "id": "n4-0082",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 581
+    },
+    {
+      "id": "n4-0083",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 582
+    },
+    {
+      "id": "n4-0084",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 583
+    },
+    {
+      "id": "n4-0085",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 584
+    },
+    {
+      "id": "n4-0086",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 585
+    },
+    {
+      "id": "n4-0087",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 586
+    },
+    {
+      "id": "n4-0088",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 587
+    },
+    {
+      "id": "n4-0089",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 588
+    },
+    {
+      "id": "n4-0090",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 589
+    },
+    {
+      "id": "n4-0091",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 590
+    },
+    {
+      "id": "n4-0092",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 591
+    },
+    {
+      "id": "n4-0093",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 592
+    },
+    {
+      "id": "n4-0094",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 593
+    },
+    {
+      "id": "n4-0095",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 594
+    },
+    {
+      "id": "n4-0096",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 595
+    },
+    {
+      "id": "n4-0097",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 596
+    },
+    {
+      "id": "n4-0098",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 597
+    },
+    {
+      "id": "n4-0099",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 598
+    },
+    {
+      "id": "n4-0100",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 599
+    },
+    {
+      "id": "n4-0101",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 600
+    },
+    {
+      "id": "n4-0102",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 601
+    },
+    {
+      "id": "n4-0103",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 602
+    },
+    {
+      "id": "n4-0104",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 603
+    },
+    {
+      "id": "n4-0105",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 604
+    },
+    {
+      "id": "n4-0106",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 605
+    },
+    {
+      "id": "n4-0107",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 606
+    },
+    {
+      "id": "n4-0108",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 607
+    },
+    {
+      "id": "n4-0109",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 608
+    },
+    {
+      "id": "n4-0110",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 609
+    },
+    {
+      "id": "n4-0111",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 610
+    },
+    {
+      "id": "n4-0112",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 611
+    },
+    {
+      "id": "n4-0113",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 612
+    },
+    {
+      "id": "n4-0114",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 613
+    },
+    {
+      "id": "n4-0115",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 614
+    },
+    {
+      "id": "n4-0116",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 615
+    },
+    {
+      "id": "n4-0117",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 616
+    },
+    {
+      "id": "n4-0118",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 617
+    },
+    {
+      "id": "n4-0119",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 618
+    },
+    {
+      "id": "n4-0120",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 619
+    },
+    {
+      "id": "n4-0121",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 620
+    },
+    {
+      "id": "n4-0122",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 621
+    },
+    {
+      "id": "n4-0123",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 622
+    },
+    {
+      "id": "n4-0124",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 623
+    },
+    {
+      "id": "n4-0125",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 624
+    },
+    {
+      "id": "n4-0126",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 625
+    },
+    {
+      "id": "n4-0127",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 626
+    },
+    {
+      "id": "n4-0128",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 627
+    },
+    {
+      "id": "n4-0129",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 628
+    },
+    {
+      "id": "n4-0130",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 629
+    },
+    {
+      "id": "n4-0131",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 630
+    },
+    {
+      "id": "n4-0132",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 631
+    },
+    {
+      "id": "n4-0133",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 632
+    },
+    {
+      "id": "n4-0134",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 633
+    },
+    {
+      "id": "n4-0135",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 634
+    },
+    {
+      "id": "n4-0136",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 635
+    },
+    {
+      "id": "n4-0137",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 636
+    },
+    {
+      "id": "n4-0138",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 637
+    },
+    {
+      "id": "n4-0139",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 638
+    },
+    {
+      "id": "n4-0140",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 639
+    },
+    {
+      "id": "n4-0141",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 640
+    },
+    {
+      "id": "n4-0142",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 641
+    },
+    {
+      "id": "n4-0143",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 642
+    },
+    {
+      "id": "n4-0144",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 643
+    },
+    {
+      "id": "n4-0145",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 644
+    },
+    {
+      "id": "n4-0146",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 645
+    },
+    {
+      "id": "n4-0147",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 646
+    },
+    {
+      "id": "n4-0148",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 647
+    },
+    {
+      "id": "n4-0149",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 648
+    },
+    {
+      "id": "n4-0150",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 649
+    },
+    {
+      "id": "n4-0151",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 650
+    },
+    {
+      "id": "n4-0152",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 651
+    },
+    {
+      "id": "n4-0153",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 652
+    },
+    {
+      "id": "n4-0154",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 653
+    },
+    {
+      "id": "n4-0155",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 654
+    },
+    {
+      "id": "n4-0156",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 655
+    },
+    {
+      "id": "n4-0157",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 656
+    },
+    {
+      "id": "n4-0158",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 657
+    },
+    {
+      "id": "n4-0159",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 658
+    },
+    {
+      "id": "n4-0160",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 659
+    },
+    {
+      "id": "n4-0161",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 660
+    },
+    {
+      "id": "n4-0162",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 661
+    },
+    {
+      "id": "n4-0163",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 662
+    },
+    {
+      "id": "n4-0164",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 663
+    },
+    {
+      "id": "n4-0165",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 664
+    },
+    {
+      "id": "n4-0166",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 665
+    },
+    {
+      "id": "n4-0167",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 666
+    },
+    {
+      "id": "n4-0168",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 667
+    },
+    {
+      "id": "n4-0169",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 668
+    },
+    {
+      "id": "n4-0170",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 669
+    },
+    {
+      "id": "n4-0171",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 670
+    },
+    {
+      "id": "n4-0172",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 671
+    },
+    {
+      "id": "n4-0173",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 672
+    },
+    {
+      "id": "n4-0174",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 673
+    },
+    {
+      "id": "n4-0175",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 674
+    },
+    {
+      "id": "n4-0176",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 675
+    },
+    {
+      "id": "n4-0177",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 676
+    },
+    {
+      "id": "n4-0178",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 677
+    },
+    {
+      "id": "n4-0179",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 678
+    },
+    {
+      "id": "n4-0180",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 679
+    },
+    {
+      "id": "n4-0181",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 680
+    },
+    {
+      "id": "n4-0182",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 681
+    },
+    {
+      "id": "n4-0183",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 682
+    },
+    {
+      "id": "n4-0184",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 683
+    },
+    {
+      "id": "n4-0185",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 684
+    },
+    {
+      "id": "n4-0186",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 685
+    },
+    {
+      "id": "n4-0187",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 686
+    },
+    {
+      "id": "n4-0188",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 687
+    },
+    {
+      "id": "n4-0189",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 688
+    },
+    {
+      "id": "n4-0190",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 689
+    },
+    {
+      "id": "n4-0191",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 690
+    },
+    {
+      "id": "n4-0192",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 691
+    },
+    {
+      "id": "n4-0193",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 692
+    },
+    {
+      "id": "n4-0194",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 693
+    },
+    {
+      "id": "n4-0195",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 694
+    },
+    {
+      "id": "n4-0196",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 695
+    },
+    {
+      "id": "n4-0197",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 696
+    },
+    {
+      "id": "n4-0198",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 697
+    },
+    {
+      "id": "n4-0199",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 698
+    },
+    {
+      "id": "n4-0200",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 699
+    },
+    {
+      "id": "n4-0201",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 700
+    },
+    {
+      "id": "n4-0202",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 701
+    },
+    {
+      "id": "n4-0203",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 702
+    },
+    {
+      "id": "n4-0204",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 703
+    },
+    {
+      "id": "n4-0205",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 704
+    },
+    {
+      "id": "n4-0206",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 705
+    },
+    {
+      "id": "n4-0207",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 706
+    },
+    {
+      "id": "n4-0208",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 707
+    },
+    {
+      "id": "n4-0209",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 708
+    },
+    {
+      "id": "n4-0210",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 709
+    },
+    {
+      "id": "n4-0211",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 710
+    },
+    {
+      "id": "n4-0212",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 711
+    },
+    {
+      "id": "n4-0213",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 712
+    },
+    {
+      "id": "n4-0214",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 713
+    },
+    {
+      "id": "n4-0215",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 714
+    },
+    {
+      "id": "n4-0216",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 715
+    },
+    {
+      "id": "n4-0217",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 716
+    },
+    {
+      "id": "n4-0218",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 717
+    },
+    {
+      "id": "n4-0219",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 718
+    },
+    {
+      "id": "n4-0220",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 719
+    },
+    {
+      "id": "n4-0221",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 720
+    },
+    {
+      "id": "n4-0222",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 721
+    },
+    {
+      "id": "n4-0223",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 722
+    },
+    {
+      "id": "n4-0224",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 723
+    },
+    {
+      "id": "n4-0225",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 724
+    },
+    {
+      "id": "n4-0226",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 725
+    },
+    {
+      "id": "n4-0227",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 726
+    },
+    {
+      "id": "n4-0228",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 727
+    },
+    {
+      "id": "n4-0229",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 728
+    },
+    {
+      "id": "n4-0230",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 729
+    },
+    {
+      "id": "n4-0231",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 730
+    },
+    {
+      "id": "n4-0232",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 731
+    },
+    {
+      "id": "n4-0233",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 732
+    },
+    {
+      "id": "n4-0234",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 733
+    },
+    {
+      "id": "n4-0235",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 734
+    },
+    {
+      "id": "n4-0236",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 735
+    },
+    {
+      "id": "n4-0237",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 736
+    },
+    {
+      "id": "n4-0238",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 737
+    },
+    {
+      "id": "n4-0239",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 738
+    },
+    {
+      "id": "n4-0240",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 739
+    },
+    {
+      "id": "n4-0241",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 740
+    },
+    {
+      "id": "n4-0242",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 741
+    },
+    {
+      "id": "n4-0243",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 742
+    },
+    {
+      "id": "n4-0244",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 743
+    },
+    {
+      "id": "n4-0245",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 744
+    },
+    {
+      "id": "n4-0246",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 745
+    },
+    {
+      "id": "n4-0247",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 746
+    },
+    {
+      "id": "n4-0248",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 747
+    },
+    {
+      "id": "n4-0249",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 748
+    },
+    {
+      "id": "n4-0250",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 749
+    },
+    {
+      "id": "n4-0251",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 750
+    },
+    {
+      "id": "n4-0252",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 751
+    },
+    {
+      "id": "n4-0253",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 752
+    },
+    {
+      "id": "n4-0254",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 753
+    },
+    {
+      "id": "n4-0255",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 754
+    },
+    {
+      "id": "n4-0256",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 755
+    },
+    {
+      "id": "n4-0257",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 756
+    },
+    {
+      "id": "n4-0258",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 757
+    },
+    {
+      "id": "n4-0259",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 758
+    },
+    {
+      "id": "n4-0260",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 759
+    },
+    {
+      "id": "n4-0261",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 760
+    },
+    {
+      "id": "n4-0262",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 761
+    },
+    {
+      "id": "n4-0263",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 762
+    },
+    {
+      "id": "n4-0264",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 763
+    },
+    {
+      "id": "n4-0265",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 764
+    },
+    {
+      "id": "n4-0266",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 765
+    },
+    {
+      "id": "n4-0267",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 766
+    },
+    {
+      "id": "n4-0268",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 767
+    },
+    {
+      "id": "n4-0269",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 768
+    },
+    {
+      "id": "n4-0270",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 769
+    },
+    {
+      "id": "n4-0271",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 770
+    },
+    {
+      "id": "n4-0272",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 771
+    },
+    {
+      "id": "n4-0273",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 772
+    },
+    {
+      "id": "n4-0274",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 773
+    },
+    {
+      "id": "n4-0275",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 774
+    },
+    {
+      "id": "n4-0276",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 775
+    },
+    {
+      "id": "n4-0277",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 776
+    },
+    {
+      "id": "n4-0278",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 777
+    },
+    {
+      "id": "n4-0279",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 778
+    },
+    {
+      "id": "n4-0280",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 779
+    },
+    {
+      "id": "n4-0281",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 780
+    },
+    {
+      "id": "n4-0282",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 781
+    },
+    {
+      "id": "n4-0283",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 782
+    },
+    {
+      "id": "n4-0284",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 783
+    },
+    {
+      "id": "n4-0285",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 784
+    },
+    {
+      "id": "n4-0286",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 785
+    },
+    {
+      "id": "n4-0287",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 786
+    },
+    {
+      "id": "n4-0288",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 787
+    },
+    {
+      "id": "n4-0289",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 788
+    },
+    {
+      "id": "n4-0290",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 789
+    },
+    {
+      "id": "n4-0291",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 790
+    },
+    {
+      "id": "n4-0292",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 791
+    },
+    {
+      "id": "n4-0293",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 792
+    },
+    {
+      "id": "n4-0294",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 793
+    },
+    {
+      "id": "n4-0295",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 794
+    },
+    {
+      "id": "n4-0296",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 795
+    },
+    {
+      "id": "n4-0297",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 796
+    },
+    {
+      "id": "n4-0298",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 797
+    },
+    {
+      "id": "n4-0299",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 798
+    },
+    {
+      "id": "n4-0300",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 799
+    },
+    {
+      "id": "n4-0301",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 800
+    },
+    {
+      "id": "n4-0302",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 801
+    },
+    {
+      "id": "n4-0303",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 802
+    },
+    {
+      "id": "n4-0304",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 803
+    },
+    {
+      "id": "n4-0305",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 804
+    },
+    {
+      "id": "n4-0306",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 805
+    },
+    {
+      "id": "n4-0307",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 806
+    },
+    {
+      "id": "n4-0308",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 807
+    },
+    {
+      "id": "n4-0309",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 808
+    },
+    {
+      "id": "n4-0310",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 809
+    },
+    {
+      "id": "n4-0311",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 810
+    },
+    {
+      "id": "n4-0312",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 811
+    },
+    {
+      "id": "n4-0313",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 812
+    },
+    {
+      "id": "n4-0314",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 813
+    },
+    {
+      "id": "n4-0315",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 814
+    },
+    {
+      "id": "n4-0316",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 815
+    },
+    {
+      "id": "n4-0317",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 816
+    },
+    {
+      "id": "n4-0318",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 817
+    },
+    {
+      "id": "n4-0319",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 818
+    },
+    {
+      "id": "n4-0320",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 819
+    },
+    {
+      "id": "n4-0321",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 820
+    },
+    {
+      "id": "n4-0322",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 821
+    },
+    {
+      "id": "n4-0323",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 822
+    },
+    {
+      "id": "n4-0324",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 823
+    },
+    {
+      "id": "n4-0325",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 824
+    },
+    {
+      "id": "n4-0326",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 825
+    },
+    {
+      "id": "n4-0327",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 826
+    },
+    {
+      "id": "n4-0328",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 827
+    },
+    {
+      "id": "n4-0329",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 828
+    },
+    {
+      "id": "n4-0330",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 829
+    },
+    {
+      "id": "n4-0331",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 830
+    },
+    {
+      "id": "n4-0332",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 831
+    },
+    {
+      "id": "n4-0333",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 832
+    },
+    {
+      "id": "n4-0334",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 833
+    },
+    {
+      "id": "n4-0335",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 834
+    },
+    {
+      "id": "n4-0336",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 835
+    },
+    {
+      "id": "n4-0337",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 836
+    },
+    {
+      "id": "n4-0338",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 837
+    },
+    {
+      "id": "n4-0339",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 838
+    },
+    {
+      "id": "n4-0340",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 839
+    },
+    {
+      "id": "n4-0341",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 840
+    },
+    {
+      "id": "n4-0342",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 841
+    },
+    {
+      "id": "n4-0343",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 842
+    },
+    {
+      "id": "n4-0344",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 843
+    },
+    {
+      "id": "n4-0345",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 844
+    },
+    {
+      "id": "n4-0346",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 845
+    },
+    {
+      "id": "n4-0347",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 846
+    },
+    {
+      "id": "n4-0348",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 847
+    },
+    {
+      "id": "n4-0349",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 848
+    },
+    {
+      "id": "n4-0350",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 849
+    },
+    {
+      "id": "n4-0351",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 850
+    },
+    {
+      "id": "n4-0352",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 851
+    },
+    {
+      "id": "n4-0353",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 852
+    },
+    {
+      "id": "n4-0354",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 853
+    },
+    {
+      "id": "n4-0355",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 854
+    },
+    {
+      "id": "n4-0356",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 855
+    },
+    {
+      "id": "n4-0357",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 856
+    },
+    {
+      "id": "n4-0358",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 857
+    },
+    {
+      "id": "n4-0359",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 858
+    },
+    {
+      "id": "n4-0360",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 859
+    },
+    {
+      "id": "n4-0361",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 860
+    },
+    {
+      "id": "n4-0362",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 861
+    },
+    {
+      "id": "n4-0363",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 862
+    },
+    {
+      "id": "n4-0364",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 863
+    },
+    {
+      "id": "n4-0365",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 864
+    },
+    {
+      "id": "n4-0366",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 865
+    },
+    {
+      "id": "n4-0367",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 866
+    },
+    {
+      "id": "n4-0368",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 867
+    },
+    {
+      "id": "n4-0369",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 868
+    },
+    {
+      "id": "n4-0370",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 869
+    },
+    {
+      "id": "n4-0371",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 870
+    },
+    {
+      "id": "n4-0372",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 871
+    },
+    {
+      "id": "n4-0373",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 872
+    },
+    {
+      "id": "n4-0374",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 873
+    },
+    {
+      "id": "n4-0375",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 874
+    },
+    {
+      "id": "n4-0376",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 875
+    },
+    {
+      "id": "n4-0377",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 876
+    },
+    {
+      "id": "n4-0378",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 877
+    },
+    {
+      "id": "n4-0379",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 878
+    },
+    {
+      "id": "n4-0380",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 879
+    },
+    {
+      "id": "n4-0381",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 880
+    },
+    {
+      "id": "n4-0382",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 881
+    },
+    {
+      "id": "n4-0383",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 882
+    },
+    {
+      "id": "n4-0384",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 883
+    },
+    {
+      "id": "n4-0385",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 884
+    },
+    {
+      "id": "n4-0386",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 885
+    },
+    {
+      "id": "n4-0387",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 886
+    },
+    {
+      "id": "n4-0388",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 887
+    },
+    {
+      "id": "n4-0389",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 888
+    },
+    {
+      "id": "n4-0390",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 889
+    },
+    {
+      "id": "n4-0391",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 890
+    },
+    {
+      "id": "n4-0392",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 891
+    },
+    {
+      "id": "n4-0393",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 892
+    },
+    {
+      "id": "n4-0394",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 893
+    },
+    {
+      "id": "n4-0395",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 894
+    },
+    {
+      "id": "n4-0396",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 895
+    },
+    {
+      "id": "n4-0397",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 896
+    },
+    {
+      "id": "n4-0398",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 897
+    },
+    {
+      "id": "n4-0399",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 898
+    },
+    {
+      "id": "n4-0400",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 899
+    },
+    {
+      "id": "n4-0401",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 900
+    },
+    {
+      "id": "n4-0402",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 901
+    },
+    {
+      "id": "n4-0403",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 902
+    },
+    {
+      "id": "n4-0404",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 903
+    },
+    {
+      "id": "n4-0405",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 904
+    },
+    {
+      "id": "n4-0406",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 905
+    },
+    {
+      "id": "n4-0407",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 906
+    },
+    {
+      "id": "n4-0408",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 907
+    },
+    {
+      "id": "n4-0409",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 908
+    },
+    {
+      "id": "n4-0410",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 909
+    },
+    {
+      "id": "n4-0411",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 910
+    },
+    {
+      "id": "n4-0412",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 911
+    },
+    {
+      "id": "n4-0413",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 912
+    },
+    {
+      "id": "n4-0414",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 913
+    },
+    {
+      "id": "n4-0415",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 914
+    },
+    {
+      "id": "n4-0416",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 915
+    },
+    {
+      "id": "n4-0417",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 916
+    },
+    {
+      "id": "n4-0418",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 917
+    },
+    {
+      "id": "n4-0419",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 918
+    },
+    {
+      "id": "n4-0420",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 919
+    },
+    {
+      "id": "n4-0421",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 920
+    },
+    {
+      "id": "n4-0422",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 921
+    },
+    {
+      "id": "n4-0423",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 922
+    },
+    {
+      "id": "n4-0424",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 923
+    },
+    {
+      "id": "n4-0425",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 924
+    },
+    {
+      "id": "n4-0426",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 925
+    },
+    {
+      "id": "n4-0427",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 926
+    },
+    {
+      "id": "n4-0428",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 927
+    },
+    {
+      "id": "n4-0429",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 928
+    },
+    {
+      "id": "n4-0430",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 929
+    },
+    {
+      "id": "n4-0431",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 930
+    },
+    {
+      "id": "n4-0432",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 931
+    },
+    {
+      "id": "n4-0433",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 932
+    },
+    {
+      "id": "n4-0434",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 933
+    },
+    {
+      "id": "n4-0435",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 934
+    },
+    {
+      "id": "n4-0436",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 935
+    },
+    {
+      "id": "n4-0437",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 936
+    },
+    {
+      "id": "n4-0438",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 937
+    },
+    {
+      "id": "n4-0439",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 938
+    },
+    {
+      "id": "n4-0440",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 939
+    },
+    {
+      "id": "n4-0441",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 940
+    },
+    {
+      "id": "n4-0442",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 941
+    },
+    {
+      "id": "n4-0443",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 942
+    },
+    {
+      "id": "n4-0444",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 943
+    },
+    {
+      "id": "n4-0445",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 944
+    },
+    {
+      "id": "n4-0446",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 945
+    },
+    {
+      "id": "n4-0447",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 946
+    },
+    {
+      "id": "n4-0448",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 947
+    },
+    {
+      "id": "n4-0449",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 948
+    },
+    {
+      "id": "n4-0450",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 949
+    },
+    {
+      "id": "n4-0451",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 950
+    },
+    {
+      "id": "n4-0452",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 951
+    },
+    {
+      "id": "n4-0453",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 952
+    },
+    {
+      "id": "n4-0454",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 953
+    },
+    {
+      "id": "n4-0455",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 954
+    },
+    {
+      "id": "n4-0456",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 955
+    },
+    {
+      "id": "n4-0457",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 956
+    },
+    {
+      "id": "n4-0458",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 957
+    },
+    {
+      "id": "n4-0459",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 958
+    },
+    {
+      "id": "n4-0460",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 959
+    },
+    {
+      "id": "n4-0461",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 960
+    },
+    {
+      "id": "n4-0462",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 961
+    },
+    {
+      "id": "n4-0463",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 962
+    },
+    {
+      "id": "n4-0464",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 963
+    },
+    {
+      "id": "n4-0465",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 964
+    },
+    {
+      "id": "n4-0466",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 965
+    },
+    {
+      "id": "n4-0467",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 966
+    },
+    {
+      "id": "n4-0468",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 967
+    },
+    {
+      "id": "n4-0469",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 968
+    },
+    {
+      "id": "n4-0470",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 969
+    },
+    {
+      "id": "n4-0471",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 970
+    },
+    {
+      "id": "n4-0472",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 971
+    },
+    {
+      "id": "n4-0473",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 972
+    },
+    {
+      "id": "n4-0474",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 973
+    },
+    {
+      "id": "n4-0475",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 974
+    },
+    {
+      "id": "n4-0476",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 975
+    },
+    {
+      "id": "n4-0477",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 976
+    },
+    {
+      "id": "n4-0478",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 977
+    },
+    {
+      "id": "n4-0479",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 978
+    },
+    {
+      "id": "n4-0480",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 979
+    },
+    {
+      "id": "n4-0481",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 980
+    },
+    {
+      "id": "n4-0482",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 981
+    },
+    {
+      "id": "n4-0483",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 982
+    },
+    {
+      "id": "n4-0484",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 983
+    },
+    {
+      "id": "n4-0485",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 984
+    },
+    {
+      "id": "n4-0486",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 985
+    },
+    {
+      "id": "n4-0487",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 986
+    },
+    {
+      "id": "n4-0488",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 987
+    },
+    {
+      "id": "n4-0489",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 988
+    },
+    {
+      "id": "n4-0490",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 989
+    },
+    {
+      "id": "n4-0491",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 990
+    },
+    {
+      "id": "n4-0492",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 991
+    },
+    {
+      "id": "n4-0493",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 992
+    },
+    {
+      "id": "n4-0494",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 993
+    },
+    {
+      "id": "n4-0495",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 994
+    },
+    {
+      "id": "n4-0496",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 995
+    },
+    {
+      "id": "n4-0497",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 996
+    },
+    {
+      "id": "n4-0498",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 997
+    },
+    {
+      "id": "n4-0499",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 998
+    },
+    {
+      "id": "n4-0500",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 999
+    },
+    {
+      "id": "n4-0501",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 1000
+    },
+    {
+      "id": "n4-0502",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 1001
+    },
+    {
+      "id": "n4-0503",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 1002
+    },
+    {
+      "id": "n4-0504",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 1003
+    },
+    {
+      "id": "n4-0505",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 1004
+    },
+    {
+      "id": "n4-0506",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 1005
+    },
+    {
+      "id": "n4-0507",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 1006
+    },
+    {
+      "id": "n4-0508",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 1007
+    },
+    {
+      "id": "n4-0509",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 1008
+    },
+    {
+      "id": "n4-0510",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 1009
+    },
+    {
+      "id": "n4-0511",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 1010
+    },
+    {
+      "id": "n4-0512",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1011
+    },
+    {
+      "id": "n4-0513",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1012
+    },
+    {
+      "id": "n4-0514",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1013
+    },
+    {
+      "id": "n4-0515",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1014
+    },
+    {
+      "id": "n4-0516",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 1015
+    },
+    {
+      "id": "n4-0517",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1016
+    },
+    {
+      "id": "n4-0518",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1017
+    },
+    {
+      "id": "n4-0519",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1018
+    },
+    {
+      "id": "n4-0520",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1019
+    },
+    {
+      "id": "n4-0521",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 1020
+    },
+    {
+      "id": "n4-0522",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 1021
+    },
+    {
+      "id": "n4-0523",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 1022
+    },
+    {
+      "id": "n4-0524",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 1023
+    },
+    {
+      "id": "n4-0525",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 1024
+    },
+    {
+      "id": "n4-0526",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 1025
+    },
+    {
+      "id": "n4-0527",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 1026
+    },
+    {
+      "id": "n4-0528",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 1027
+    },
+    {
+      "id": "n4-0529",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 1028
+    },
+    {
+      "id": "n4-0530",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 1029
+    },
+    {
+      "id": "n4-0531",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 1030
+    },
+    {
+      "id": "n4-0532",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1031
+    },
+    {
+      "id": "n4-0533",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1032
+    },
+    {
+      "id": "n4-0534",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1033
+    },
+    {
+      "id": "n4-0535",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1034
+    },
+    {
+      "id": "n4-0536",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 1035
+    },
+    {
+      "id": "n4-0537",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1036
+    },
+    {
+      "id": "n4-0538",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1037
+    },
+    {
+      "id": "n4-0539",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1038
+    },
+    {
+      "id": "n4-0540",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1039
+    },
+    {
+      "id": "n4-0541",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 1040
+    },
+    {
+      "id": "n4-0542",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 1041
+    },
+    {
+      "id": "n4-0543",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 1042
+    },
+    {
+      "id": "n4-0544",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 1043
+    },
+    {
+      "id": "n4-0545",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 1044
+    },
+    {
+      "id": "n4-0546",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 1045
+    },
+    {
+      "id": "n4-0547",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 1046
+    },
+    {
+      "id": "n4-0548",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 1047
+    },
+    {
+      "id": "n4-0549",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 1048
+    },
+    {
+      "id": "n4-0550",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 1049
+    },
+    {
+      "id": "n4-0551",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 1050
+    },
+    {
+      "id": "n4-0552",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1051
+    },
+    {
+      "id": "n4-0553",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1052
+    },
+    {
+      "id": "n4-0554",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1053
+    },
+    {
+      "id": "n4-0555",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1054
+    },
+    {
+      "id": "n4-0556",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 1055
+    },
+    {
+      "id": "n4-0557",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1056
+    },
+    {
+      "id": "n4-0558",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1057
+    },
+    {
+      "id": "n4-0559",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1058
+    },
+    {
+      "id": "n4-0560",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1059
+    },
+    {
+      "id": "n4-0561",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 1060
+    },
+    {
+      "id": "n4-0562",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 1061
+    },
+    {
+      "id": "n4-0563",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 1062
+    },
+    {
+      "id": "n4-0564",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 1063
+    },
+    {
+      "id": "n4-0565",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 1064
+    },
+    {
+      "id": "n4-0566",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 1065
+    },
+    {
+      "id": "n4-0567",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 1066
+    },
+    {
+      "id": "n4-0568",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 1067
+    },
+    {
+      "id": "n4-0569",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 1068
+    },
+    {
+      "id": "n4-0570",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 1069
+    },
+    {
+      "id": "n4-0571",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 1070
+    },
+    {
+      "id": "n4-0572",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1071
+    },
+    {
+      "id": "n4-0573",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1072
+    },
+    {
+      "id": "n4-0574",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1073
+    },
+    {
+      "id": "n4-0575",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1074
+    },
+    {
+      "id": "n4-0576",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 1075
+    },
+    {
+      "id": "n4-0577",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1076
+    },
+    {
+      "id": "n4-0578",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1077
+    },
+    {
+      "id": "n4-0579",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1078
+    },
+    {
+      "id": "n4-0580",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1079
+    },
+    {
+      "id": "n4-0581",
+      "kanji": "会議",
+      "kana": "かいぎ",
+      "romaji": "kaigi",
+      "meanings": [
+        "meeting"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "work",
+        "communication"
+      ],
+      "frequencyRank": 1080
+    },
+    {
+      "id": "n4-0582",
+      "kanji": "準備",
+      "kana": "じゅんび",
+      "romaji": "junbi",
+      "meanings": [
+        "preparation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "process"
+      ],
+      "frequencyRank": 1081
+    },
+    {
+      "id": "n4-0583",
+      "kanji": "確認",
+      "kana": "かくにん",
+      "romaji": "kakunin",
+      "meanings": [
+        "confirmation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "process"
+      ],
+      "frequencyRank": 1082
+    },
+    {
+      "id": "n4-0584",
+      "kanji": "連絡",
+      "kana": "れんらく",
+      "romaji": "renraku",
+      "meanings": [
+        "contact",
+        "communication"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication"
+      ],
+      "frequencyRank": 1083
+    },
+    {
+      "id": "n4-0585",
+      "kanji": "報告",
+      "kana": "ほうこく",
+      "romaji": "houkoku",
+      "meanings": [
+        "report"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "work"
+      ],
+      "frequencyRank": 1084
+    },
+    {
+      "id": "n4-0586",
+      "kanji": "相談",
+      "kana": "そうだん",
+      "romaji": "soudan",
+      "meanings": [
+        "consultation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "social"
+      ],
+      "frequencyRank": 1085
+    },
+    {
+      "id": "n4-0587",
+      "kanji": "利用",
+      "kana": "りよう",
+      "romaji": "riyou",
+      "meanings": [
+        "use",
+        "utilization"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity"
+      ],
+      "frequencyRank": 1086
+    },
+    {
+      "id": "n4-0588",
+      "kanji": "参加",
+      "kana": "さんか",
+      "romaji": "sanka",
+      "meanings": [
+        "participation"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "activity",
+        "social"
+      ],
+      "frequencyRank": 1087
+    },
+    {
+      "id": "n4-0589",
+      "kanji": "受付",
+      "kana": "うけつけ",
+      "romaji": "uketsuke",
+      "meanings": [
+        "reception"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "place",
+        "service"
+      ],
+      "frequencyRank": 1088
+    },
+    {
+      "id": "n4-0590",
+      "kanji": "案内",
+      "kana": "あんない",
+      "romaji": "annai",
+      "meanings": [
+        "guidance"
+      ],
+      "pos": "noun",
+      "tags": [
+        "n4",
+        "communication",
+        "service"
+      ],
+      "frequencyRank": 1089
+    },
+    {
+      "id": "n4-0591",
+      "kanji": "説明する",
+      "kana": "せつめいする",
+      "romaji": "setsumei suru",
+      "meanings": [
+        "to explain"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "communication"
+      ],
+      "frequencyRank": 1090
+    },
+    {
+      "id": "n4-0592",
+      "kanji": "決める",
+      "kana": "きめる",
+      "romaji": "kimeru",
+      "meanings": [
+        "to decide"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1091
+    },
+    {
+      "id": "n4-0593",
+      "kanji": "続ける",
+      "kana": "つづける",
+      "romaji": "tsuzukeru",
+      "meanings": [
+        "to continue"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1092
+    },
+    {
+      "id": "n4-0594",
+      "kanji": "比べる",
+      "kana": "くらべる",
+      "romaji": "kuraberu",
+      "meanings": [
+        "to compare"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1093
+    },
+    {
+      "id": "n4-0595",
+      "kanji": "選ぶ",
+      "kana": "えらぶ",
+      "romaji": "erabu",
+      "meanings": [
+        "to choose"
+      ],
+      "pos": "verb",
+      "tags": [
+        "n4",
+        "verb",
+        "action"
+      ],
+      "frequencyRank": 1094
+    },
+    {
+      "id": "n4-0596",
+      "kanji": "正しい",
+      "kana": "ただしい",
+      "romaji": "tadashii",
+      "meanings": [
+        "correct"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "quality"
+      ],
+      "frequencyRank": 1095
+    },
+    {
+      "id": "n4-0597",
+      "kanji": "簡単",
+      "kana": "かんたん",
+      "romaji": "kantan",
+      "meanings": [
+        "easy"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1096
+    },
+    {
+      "id": "n4-0598",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii",
+      "meanings": [
+        "difficult"
+      ],
+      "pos": "i-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "difficulty"
+      ],
+      "frequencyRank": 1097
+    },
+    {
+      "id": "n4-0599",
+      "kanji": "普通",
+      "kana": "ふつう",
+      "romaji": "futsuu",
+      "meanings": [
+        "normal"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1098
+    },
+    {
+      "id": "n4-0600",
+      "kanji": "特別",
+      "kana": "とくべつ",
+      "romaji": "tokubetsu",
+      "meanings": [
+        "special"
+      ],
+      "pos": "na-adj",
+      "tags": [
+        "n4",
+        "adj",
+        "state"
+      ],
+      "frequencyRank": 1099
+    }
 ]
