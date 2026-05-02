@@ -6,21 +6,30 @@ namespace LearnJP.Services;
 
 public sealed class AzureTtsClient : IDisposable
 {
+    private const string ProviderName = "azure";
+
     private readonly ISettingsService _settings;
+    private readonly ITtsCache _cache;
     private readonly HttpClient _http;
 
-    public AzureTtsClient(ISettingsService settings)
+    public AzureTtsClient(ISettingsService settings, ITtsCache cache)
     {
         _settings = settings;
+        _cache = cache;
         _http = new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
     }
 
     /// <summary>
     /// Returns a complete RIFF/WAV byte buffer (24kHz, 16-bit, mono PCM) for the given text,
-    /// or null on any failure (missing key, network, throttling, etc.).
+    /// served from cache when available. Returns null on any synthesis failure.
     /// </summary>
     public async Task<byte[]?> SynthesizeAsync(string text, string languageTag, string voiceName, CancellationToken ct = default)
     {
+        if (string.IsNullOrWhiteSpace(text)) return null;
+
+        var cached = await _cache.GetAsync(ProviderName, voiceName, languageTag, text, ct);
+        if (cached is { Length: > 64 }) return cached;
+
         var key = _settings.AzureSpeechKey;
         var region = _settings.AzureSpeechRegion;
         if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(region))
@@ -30,8 +39,6 @@ public sealed class AzureTtsClient : IDisposable
         }
 
         var endpoint = $"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1";
-
-        // SSML must escape XML-significant characters in the inner text.
         var safeText = System.Security.SecurityElement.Escape(text) ?? text;
         var ssml =
             $"<speak version='1.0' xml:lang='{languageTag}'>" +
@@ -54,7 +61,10 @@ public sealed class AzureTtsClient : IDisposable
                 return null;
             }
 
-            return await resp.Content.ReadAsByteArrayAsync(ct);
+            var bytes = await resp.Content.ReadAsByteArrayAsync(ct);
+            if (bytes.Length > 64)
+                await _cache.SetAsync(ProviderName, voiceName, languageTag, text, bytes, ct);
+            return bytes;
         }
         catch (OperationCanceledException) { return null; }
         catch (Exception ex)
