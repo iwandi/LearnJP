@@ -11,9 +11,19 @@ public sealed class QuizOptionVm : BaseViewModel
     public required QuestionOption Source { get; init; }
     public required bool IsJapaneseSide { get; init; }
 
-    public string Text => Source.DisplayText;
+    // Idle: just the prompted side. After answer (any non-idle state): show both
+    // JP and EN so the user can verify every distractor at a glance.
+    public string Text => State == "idle" ? Source.DisplayText : BuildRevealedText();
     public string State { get => _state; set => SetProperty(ref _state, value); }
     public bool ShowSpeakButton => IsJapaneseSide;
+
+    private string BuildRevealedText()
+    {
+        var w = Source.Word;
+        var jp = string.IsNullOrEmpty(w.Kanji) ? w.Kana
+                 : (w.Kanji == w.Kana ? w.Kanji : $"{w.Kanji} ({w.Kana})");
+        return $"{jp} — {w.PrimaryMeaning}";
+    }
 
     public Color BackgroundColor => State switch
     {
@@ -25,14 +35,15 @@ public sealed class QuizOptionVm : BaseViewModel
             : Color.FromArgb("#F2F3FB")
     };
 
-    public Color TextColor => State == "idle"
-        ? (Application.Current?.RequestedTheme == AppTheme.Dark ? Colors.White : Color.FromArgb("#1A1A2E"))
-        : Colors.White;
+    public Color TextColor => State is "correct" or "wrong" or "revealed"
+        ? Colors.White
+        : (Application.Current?.RequestedTheme == AppTheme.Dark ? Colors.White : Color.FromArgb("#1A1A2E"));
 
     public void RaiseColors()
     {
         OnPropertyChanged(nameof(BackgroundColor));
         OnPropertyChanged(nameof(TextColor));
+        OnPropertyChanged(nameof(Text));
     }
 }
 
@@ -202,6 +213,11 @@ public sealed class QuizViewModel : BaseViewModel
                 if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
         }
 
+        // Reveal both translations on every still-neutral option so the user can verify
+        // the distractors at a glance. "shown" keeps the neutral colour but flips the label.
+        foreach (var o in Options)
+            if (o.State == "idle") { o.State = "shown"; o.RaiseColors(); }
+
         if (_settings.CountForProficiency)
         {
             try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
@@ -240,6 +256,10 @@ public sealed class QuizViewModel : BaseViewModel
 
         foreach (var o in Options)
             if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
+
+        // Reveal both translations on every still-neutral option (distractors).
+        foreach (var o in Options)
+            if (o.State == "idle") { o.State = "shown"; o.RaiseColors(); }
 
         if (_settings.CountForProficiency)
         {
