@@ -4,46 +4,45 @@
              xmlns:vm="clr-namespace:LearnJP.ViewModels"
              x:Class="LearnJP.Views.QuizPage"
              x:Name="QuizPageRoot"
-             x:DataType="vm:QuizViewModel"
-             Title="Quiz">
+             x:DataType="vm:QuizViewModel">
 
-    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="14">
+    <Grid RowDefinitions="*,Auto" Padding="20" RowSpacing="14">
 
-        <Grid Grid.Row="0" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" ColumnSpacing="10" RowSpacing="6">
-            <Label Grid.Row="0" Grid.Column="0" Text="{Binding DirectionLabel}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
-            <Grid Grid.Row="0" Grid.Column="1"
-                  ColumnDefinitions="Auto,Auto"
-                  ColumnSpacing="6"
-                  HorizontalOptions="End"
-                  VerticalOptions="Center">
-                <Label Grid.Column="0" Text="Track" Style="{StaticResource MutedLabel}" VerticalOptions="Center" HorizontalOptions="End" />
-                <Switch Grid.Column="1" IsToggled="{Binding CountForProficiency}" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="50" MinimumWidthRequest="0" />
-            </Grid>
-
-            <Label Grid.Row="1" Grid.Column="0" Text="Strategy" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
-            <Picker Grid.Row="1" Grid.Column="1"
-                    ItemsSource="{Binding Strategies}"
-                    SelectedItem="{Binding SelectedStrategy}"
-                    HorizontalOptions="End"
-                    MinimumWidthRequest="180" />
-
-            <Border Grid.Row="2" Grid.ColumnSpan="2"
-                    IsVisible="{Binding HasActiveFilter}"
-                    StrokeThickness="0"
-                    BackgroundColor="{AppThemeBinding Light=#E8ECFF, Dark=#252544}"
-                    StrokeShape="RoundRectangle 8"
-                    Padding="10,4"
-                    HorizontalOptions="Start">
-                <Label Text="{Binding ActiveFilterDisplay}" FontSize="12" TextColor="{StaticResource Primary}" FontAttributes="Bold" />
-            </Border>
-        </Grid>
-
-        <Border Grid.Row="1"
+        <Border Grid.Row="0"
                 StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 18"
                 Padding="20">
             <Grid>
+                <!-- Filter chip pinned top-left of the prompt card -->
+                <Border IsVisible="{Binding HasActiveFilter}"
+                        StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#E8ECFF, Dark=#252544}"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="10,4"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start">
+                    <Label Text="{Binding ActiveFilterDisplay}"
+                           FontSize="12"
+                           TextColor="{StaticResource Primary}"
+                           FontAttributes="Bold" />
+                </Border>
+
+                <!-- Reinforcement star pinned top-right -->
+                <Button Text="{Binding ReinforceButtonText}"
+                        Clicked="OnReinforceClicked"
+                        ToolTipProperties.Text="Toggle this word's reinforcement focus"
+                        FontSize="20"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        Padding="0"
+                        CornerRadius="22"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"
+                        TextColor="{StaticResource Primary}" />
+
+                <!-- Prompt + replay -->
                 <Grid RowDefinitions="*,Auto" RowSpacing="10">
                     <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Spacing="2">
                         <Label Text="{Binding PromptFurigana}"
@@ -66,23 +65,10 @@
                             HorizontalOptions="Center"
                             WidthRequest="220" />
                 </Grid>
-
-                <Button Text="{Binding ReinforceButtonText}"
-                        Clicked="OnReinforceClicked"
-                        ToolTipProperties.Text="Toggle this word's reinforcement focus"
-                        FontSize="20"
-                        WidthRequest="44"
-                        HeightRequest="44"
-                        Padding="0"
-                        CornerRadius="22"
-                        HorizontalOptions="End"
-                        VerticalOptions="Start"
-                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"
-                        TextColor="{StaticResource Primary}" />
             </Grid>
         </Border>
 
-        <Grid Grid.Row="2" RowDefinitions="Auto,Auto" RowSpacing="10">
+        <Grid Grid.Row="1" RowDefinitions="Auto,Auto" RowSpacing="10">
             <CollectionView Grid.Row="0"
                             ItemsSource="{Binding Options}"
                             SelectionMode="None">
@@ -133,7 +119,7 @@
             </Grid>
         </Grid>
 
-        <ActivityIndicator Grid.Row="0" Grid.RowSpan="3"
+        <ActivityIndicator Grid.Row="0" Grid.RowSpan="2"
                           IsRunning="{Binding IsLoading}"
                           IsVisible="{Binding IsLoading}"
                           HorizontalOptions="Center"

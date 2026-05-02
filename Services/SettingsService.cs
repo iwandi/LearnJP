@@ -17,6 +17,7 @@ public sealed class SettingsService : ISettingsService
     private const string KeyAzureVolume   = "settings.azure_volume";
     private const string KeyActiveTag     = "settings.active_tag_filter";
     private const string KeyStrategy      = "settings.learning_strategy";
+    private const string KeyTrackProf     = "settings.count_for_proficiency";
 
     private readonly Dictionary<string, object> _fallback = new();
     private bool _preferencesAvailable = true;
@@ -98,5 +99,11 @@ public sealed class SettingsService : ISettingsService
     {
         get => (LearningStrategy)Read(KeyStrategy, (int)LearningStrategy.Neutral);
         set => Write(KeyStrategy, (int)value);
+    }
+
+    public bool CountForProficiency
+    {
+        get => Read(KeyTrackProf, true);
+        set => Write(KeyTrackProf, value);
     }
 }

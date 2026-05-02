@@ -25,4 +25,7 @@ public interface ISettingsService
 
     /// <summary>Persisted target-picking strategy.</summary>
     LearningStrategy SelectedLearningStrategy { get; set; }
+
+    /// <summary>When false, answers are not recorded against per-word proficiency (debugging).</summary>
+    bool CountForProficiency { get; set; }
 }

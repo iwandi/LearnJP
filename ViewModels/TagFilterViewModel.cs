@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using LearnJP.Models;
 using LearnJP.Services;
 
 namespace LearnJP.ViewModels;
@@ -36,6 +37,20 @@ public sealed class TagFilterViewModel : BaseViewModel
         string.IsNullOrEmpty(_settings.ActiveTagFilter)
             ? "No filter — drawing from the full vocabulary."
             : $"Filter: {_settings.ActiveTagFilter}";
+
+    public ObservableCollection<LearningStrategy> Strategies { get; } =
+        new(Enum.GetValues<LearningStrategy>());
+
+    public LearningStrategy SelectedStrategy
+    {
+        get => _settings.SelectedLearningStrategy;
+        set
+        {
+            if (_settings.SelectedLearningStrategy == value) return;
+            _settings.SelectedLearningStrategy = value;
+            OnPropertyChanged();
+        }
+    }
 
     public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings)
     {

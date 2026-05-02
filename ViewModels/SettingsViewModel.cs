@@ -28,6 +28,12 @@ public sealed class SettingsViewModel : BaseViewModel
         set { _settings.TtsEnabled = value; OnPropertyChanged(); }
     }
 
+    public bool CountForProficiency
+    {
+        get => _settings.CountForProficiency;
+        set { _settings.CountForProficiency = value; OnPropertyChanged(); }
+    }
+
     public bool ForceFurigana
     {
         get => _settings.ForceFurigana;

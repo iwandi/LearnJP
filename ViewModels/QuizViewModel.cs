@@ -52,11 +52,9 @@ public sealed class QuizViewModel : BaseViewModel
     private Question? _current;
     private string _prompt = "";
     private string? _promptFurigana;
-    private string _directionLabel = "";
     private bool _isAnswered;
     private bool _isLoading;
     private bool _showPromptSpeakButton;
-    private bool _countForProficiency = true;
     private LearningStrategy _selectedStrategy;
     private CancellationTokenSource? _autoAdvanceCts;
     private Task _ttsTask = Task.CompletedTask;
@@ -68,11 +66,9 @@ public sealed class QuizViewModel : BaseViewModel
     public string Prompt { get => _prompt; private set => SetProperty(ref _prompt, value); }
     public string? PromptFurigana { get => _promptFurigana; private set { SetProperty(ref _promptFurigana, value); OnPropertyChanged(nameof(HasFurigana)); } }
     public bool HasFurigana => !string.IsNullOrEmpty(_promptFurigana);
-    public string DirectionLabel { get => _directionLabel; private set => SetProperty(ref _directionLabel, value); }
     public bool IsAnswered { get => _isAnswered; private set => SetProperty(ref _isAnswered, value); }
     public bool IsLoading { get => _isLoading; private set => SetProperty(ref _isLoading, value); }
     public bool ShowPromptSpeakButton { get => _showPromptSpeakButton; private set => SetProperty(ref _showPromptSpeakButton, value); }
-    public bool CountForProficiency { get => _countForProficiency; set => SetProperty(ref _countForProficiency, value); }
     public LearningStrategy SelectedStrategy
     {
         get => _selectedStrategy;
@@ -118,18 +114,28 @@ public sealed class QuizViewModel : BaseViewModel
     private string _lastSeenFilter = string.Empty;
 
     /// <summary>
-    /// Called from the page's OnAppearing — picks up tag-filter changes made on the Filter tab
-    /// and forces a fresh question if the filter changed.
+    /// Called from the page's OnAppearing — picks up tag-filter and strategy changes made on
+    /// the Filter tab and forces a fresh question if either changed.
     /// </summary>
     public async Task SyncActiveFilterAsync()
     {
-        var current = (_settings.ActiveTagFilter ?? string.Empty).Trim();
-        ActiveFilterDisplay = string.IsNullOrEmpty(current) ? string.Empty : $"Filter: {current}";
+        var currentFilter = (_settings.ActiveTagFilter ?? string.Empty).Trim();
+        ActiveFilterDisplay = string.IsNullOrEmpty(currentFilter) ? string.Empty : $"Filter: {currentFilter}";
 
-        if (!string.Equals(current, _lastSeenFilter, StringComparison.OrdinalIgnoreCase))
+        var currentStrategy = _settings.SelectedLearningStrategy;
+        var changed =
+            !string.Equals(currentFilter, _lastSeenFilter, StringComparison.OrdinalIgnoreCase) ||
+            currentStrategy != _selectedStrategy;
+
+        if (changed)
         {
-            _lastSeenFilter = current;
-            // Don't trigger a fresh load on the very first appearance — OnAppearing already does that.
+            _lastSeenFilter = currentFilter;
+            // Mirror SelectedStrategy without re-triggering its setter side-effects.
+            if (_selectedStrategy != currentStrategy)
+            {
+                _selectedStrategy = currentStrategy;
+                OnPropertyChanged(nameof(SelectedStrategy));
+            }
             if (_current is not null) await LoadNextAsync();
         }
     }
@@ -160,7 +166,6 @@ public sealed class QuizViewModel : BaseViewModel
             _current = q;
             Prompt = q.Prompt;
             PromptFurigana = q.PromptFurigana;
-            DirectionLabel = q.Direction == QuestionDirection.JapaneseToEnglish ? "Japanese → English" : "English → Japanese";
             ShowPromptSpeakButton = q.Direction == QuestionDirection.JapaneseToEnglish;
 
             var optionsAreJapanese = q.Direction == QuestionDirection.EnglishToJapanese;
@@ -195,7 +200,7 @@ public sealed class QuizViewModel : BaseViewModel
                 if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
         }
 
-        if (_countForProficiency)
+        if (_settings.CountForProficiency)
         {
             try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, correct); }
             catch { /* best effort */ }
@@ -234,7 +239,7 @@ public sealed class QuizViewModel : BaseViewModel
         foreach (var o in Options)
             if (o.Source.IsCorrect) { o.State = "revealed"; o.RaiseColors(); }
 
-        if (_countForProficiency)
+        if (_settings.CountForProficiency)
         {
             try { await _store.RecordAsync(_current.Target.Id, _current.Criterion, false); }
             catch { /* best effort */ }

@@ -4,11 +4,12 @@
        xmlns:views="clr-namespace:LearnJP.Views"
        x:Class="LearnJP.AppShell"
        Shell.FlyoutBehavior="Disabled"
+       Shell.NavBarIsVisible="False"
        Title="LearnJP">
 
     <TabBar>
         <ShellContent Title="Quiz" ContentTemplate="{DataTemplate views:QuizPage}" Route="quiz" />
-        <ShellContent Title="Filter" ContentTemplate="{DataTemplate views:TagFilterPage}" Route="filter" />
+        <ShellContent Title="Mode" ContentTemplate="{DataTemplate views:TagFilterPage}" Route="mode" />
         <ShellContent Title="Progress" ContentTemplate="{DataTemplate views:ProgressPage}" Route="progress" />
         <ShellContent Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}" Route="settings" />
     </TabBar>
