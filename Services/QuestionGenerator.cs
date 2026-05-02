@@ -22,7 +22,8 @@ public sealed class QuestionGenerator : IQuestionGenerator
     // rotation stalls on a wide-but-shallow sweep. Instead, only the K most-common (lowest
     // FrequencyRank) unseen words are "in scope" at any moment — once one is learned past the
     // mastery floor, the next-most-common unseen word slides in.
-    private const int NewTermFrontierSize = 12;
+    // Public-static (not const) so the strategy simulator can sweep it; production never writes.
+    public static int NewTermFrontierSize = 12;
 
     public IReadOnlyList<Word> CurrentNewTermFrontier { get; private set; } = Array.Empty<Word>();
 

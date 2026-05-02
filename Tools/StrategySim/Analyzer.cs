@@ -27,7 +27,7 @@ internal sealed class Analyzer
             _firstReachedKnown[r.WordId] = r.Turn;
     }
 
-    public void Print(IProficiencyStore store, IReadOnlyList<Word> pool, string botName, LearningStrategy strategy)
+    public void Print(IProficiencyStore store, IReadOnlyList<Word> pool, string botName, LearningStrategy strategy, string? tunables = null)
     {
         var totalTurns = _records.Count;
         var correct = _records.Count(r => r.Correct);
@@ -56,7 +56,8 @@ internal sealed class Analyzer
         var avgFrontier = _records.Count > 0 ? _records.Average(r => r.FrontierSize) : 0;
 
         Console.WriteLine();
-        Console.WriteLine($"=== {botName} / {strategy} / pool={pool.Count} ===");
+        var suffix = string.IsNullOrEmpty(tunables) ? "" : $" / {tunables}";
+        Console.WriteLine($"=== {botName} / {strategy} / pool={pool.Count}{suffix} ===");
         Console.WriteLine($"  turns asked       : {totalTurns}");
         Console.WriteLine($"  accuracy          : {(totalTurns == 0 ? 0 : 100.0 * correct / totalTurns):F1}%  ({correct}/{totalTurns})");
         Console.WriteLine($"  pool state        : unseen={unseen}  struggling={struggling}  learning={learning}  known={known}  mastered={mastered}");

@@ -41,7 +41,10 @@ internal sealed class MemoryVocabularyService : IVocabularyService
 internal sealed class MemoryProficiencyStore : IProficiencyStore
 {
     private readonly Dictionary<string, WordProficiency> _byWord = new(StringComparer.Ordinal);
+    private readonly int _intervalCap;
     private int _turns;
+
+    public MemoryProficiencyStore(int intervalCap = 250) { _intervalCap = intervalCap; }
 
     public int TurnsAsked => _turns;
 
@@ -63,7 +66,7 @@ internal sealed class MemoryProficiencyStore : IProficiencyStore
         var p = Get(wordId);
         p.RecordResult(criterion, correct);
         _turns++;
-        p.NextDueAtTurn = _turns + ComputeInterval(p.Overall, correct);
+        p.NextDueAtTurn = _turns + ComputeInterval(p.Overall, correct, _intervalCap);
         return Task.CompletedTask;
     }
 
@@ -82,12 +85,13 @@ internal sealed class MemoryProficiencyStore : IProficiencyStore
         return Task.CompletedTask;
     }
 
-    // Mirrors ProficiencyStore.ComputeInterval — keep in sync.
-    private static int ComputeInterval(double overall, bool correct)
+    // Mirrors ProficiencyStore.ComputeInterval — keep in sync. The cap is parameterised here
+    // (production hard-codes 250) so the simulator can sweep it.
+    private static int ComputeInterval(double overall, bool correct, int cap)
     {
         if (!correct) return Random.Shared.Next(1, 3);
         var raw = 2.0 * Math.Pow(1.6, overall / 12.0);
-        return (int)Math.Clamp(Math.Round(raw), 2, 250);
+        return (int)Math.Clamp(Math.Round(raw), 2, cap);
     }
 }
 

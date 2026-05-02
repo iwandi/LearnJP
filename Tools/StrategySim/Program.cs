@@ -2,6 +2,10 @@ using LearnJP.Models;
 using LearnJP.Services;
 using LearnJP.Tools.StrategySim;
 
+// Sweep value sets — exposed at the top so they're easy to tweak.
+int[] FrontierSweep = { 6, 12, 24, 48 };
+int[] IntervalCapSweep = { 60, 120, 250, 500 };
+
 // Default vocabulary path: ../../Resources/Raw/vocabulary.json relative to the project.
 var defaults = new RunConfig
 {
@@ -14,7 +18,10 @@ var defaults = new RunConfig
     ChanceP = 0.5,
     Seed = 1234,
     CsvOut = null,
-    All = false
+    All = false,
+    Frontier = QuestionGenerator.NewTermFrontierSize,
+    IntervalCap = 250,
+    Sweep = null
 };
 
 var cfg = ParseArgs(args, defaults);
@@ -26,7 +33,12 @@ if (!File.Exists(cfg.VocabPath))
     return 1;
 }
 
-if (cfg.All)
+if (cfg.Sweep is { } sweep)
+{
+    foreach (var run in BuildSweep(cfg, sweep, FrontierSweep, IntervalCapSweep))
+        await RunOne(run);
+}
+else if (cfg.All)
 {
     foreach (var s in new[] { LearningStrategy.Neutral, LearningStrategy.Spaced })
     foreach (var b in BuildAllBots())
@@ -38,6 +50,17 @@ else
 }
 return 0;
 
+static IEnumerable<RunConfig> BuildSweep(RunConfig basis, string sweep, int[] frontiers, int[] caps)
+{
+    bool sweepFrontier = sweep is "frontier" or "both" or "all";
+    bool sweepCap = sweep is "interval" or "both" or "all";
+    var fs = sweepFrontier ? frontiers : new[] { basis.Frontier };
+    var cs = sweepCap ? caps : new[] { basis.IntervalCap };
+    foreach (var f in fs)
+    foreach (var c in cs)
+        yield return basis with { Frontier = f, IntervalCap = c };
+}
+
 static IEnumerable<string> BuildAllBots() => new[] { "random", "always-right", "always-wrong", "chance-0.25", "chance-0.50", "chance-0.75", "learner", "streak-3", "streak-5" };
 
 static bool IsKana(Word w) =>
@@ -48,9 +71,13 @@ static bool IsKana(Word w) =>
 
 static async Task RunOne(RunConfig cfg)
 {
+    // Apply tunables for this run. NewTermFrontierSize is process-global static — fine for
+    // the sim's serial runner; would need locking if we ever ran sweeps in parallel.
+    QuestionGenerator.NewTermFrontierSize = cfg.Frontier;
+
     var rng = new Random(cfg.Seed);
     var vocab = new MemoryVocabularyService(cfg.VocabPath, cfg.Limit);
-    var store = new MemoryProficiencyStore();
+    var store = new MemoryProficiencyStore(cfg.IntervalCap);
     var settings = new MemorySettingsService { SelectedLearningStrategy = cfg.Strategy };
     var gen = new QuestionGenerator(vocab, store, settings);
 
@@ -79,7 +106,8 @@ static async Task RunOne(RunConfig cfg)
     // The generator excludes kana entries by default (no include filter for hiragana/katakana),
     // so the analyzer should report against the *eligible* pool only.
     var eligible = vocab.All.Where(w => !IsKana(w)).ToList();
-    analyzer.Print(store, eligible, bot.Name, cfg.Strategy);
+    var tunables = $"frontier={cfg.Frontier} cap={cfg.IntervalCap}";
+    analyzer.Print(store, eligible, bot.Name, cfg.Strategy, tunables);
     if (cfg.CsvOut is { } path)
     {
         var fileName = Path.GetFileNameWithoutExtension(path) + "-" + bot.Name + "-" + cfg.Strategy + Path.GetExtension(path);
@@ -129,6 +157,9 @@ static RunConfig ParseArgs(string[] args, RunConfig def)
             case "--seed":      cfg = cfg with { Seed = int.Parse(Next()) }; break;
             case "--csv":       cfg = cfg with { CsvOut = Next() }; break;
             case "--all":       cfg = cfg with { All = true }; break;
+            case "--frontier":  cfg = cfg with { Frontier = int.Parse(Next()) }; break;
+            case "--interval-cap": cfg = cfg with { IntervalCap = int.Parse(Next()) }; break;
+            case "--sweep":     cfg = cfg with { Sweep = Next().ToLowerInvariant() }; break;
             case "--help":
             case "-h":
                 Console.WriteLine("StrategySim — exercises QuestionGenerator with synthetic answer bots.");
@@ -142,6 +173,9 @@ static RunConfig ParseArgs(string[] args, RunConfig def)
                 Console.WriteLine("  --seed N          RNG seed for repeatability (default: 1234)");
                 Console.WriteLine("  --csv PATH        Write per-turn dump to PATH (filename gets bot+strategy suffix)");
                 Console.WriteLine("  --all             Run every bot × every strategy and print all summaries");
+                Console.WriteLine("  --frontier N      Override NewTermFrontierSize (default: 12)");
+                Console.WriteLine("  --interval-cap N  Override the spaced-interval cap (default: 250)");
+                Console.WriteLine("  --sweep KIND      frontier | interval | both — sweep tunables for the chosen bot/strategy");
                 Environment.Exit(0);
                 break;
         }
@@ -160,4 +194,7 @@ internal record RunConfig
     public required int Seed { get; init; }
     public required string? CsvOut { get; init; }
     public required bool All { get; init; }
+    public required int Frontier { get; init; }
+    public required int IntervalCap { get; init; }
+    public required string? Sweep { get; init; }
 }
