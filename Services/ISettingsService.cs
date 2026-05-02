@@ -22,4 +22,7 @@ public interface ISettingsService
 
     /// <summary>Active tag-based pool filter. Empty / null = no filter.</summary>
     string ActiveTagFilter { get; set; }
+
+    /// <summary>Persisted target-picking strategy.</summary>
+    LearningStrategy SelectedLearningStrategy { get; set; }
 }

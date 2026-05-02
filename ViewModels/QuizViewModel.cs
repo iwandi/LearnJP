@@ -57,7 +57,7 @@ public sealed class QuizViewModel : BaseViewModel
     private bool _isLoading;
     private bool _showPromptSpeakButton;
     private bool _countForProficiency = true;
-    private LearningStrategy _selectedStrategy = LearningStrategy.Neutral;
+    private LearningStrategy _selectedStrategy;
     private CancellationTokenSource? _autoAdvanceCts;
     private Task _ttsTask = Task.CompletedTask;
 
@@ -73,7 +73,17 @@ public sealed class QuizViewModel : BaseViewModel
     public bool IsLoading { get => _isLoading; private set => SetProperty(ref _isLoading, value); }
     public bool ShowPromptSpeakButton { get => _showPromptSpeakButton; private set => SetProperty(ref _showPromptSpeakButton, value); }
     public bool CountForProficiency { get => _countForProficiency; set => SetProperty(ref _countForProficiency, value); }
-    public LearningStrategy SelectedStrategy { get => _selectedStrategy; set => SetProperty(ref _selectedStrategy, value); }
+    public LearningStrategy SelectedStrategy
+    {
+        get => _selectedStrategy;
+        set
+        {
+            if (SetProperty(ref _selectedStrategy, value))
+            {
+                try { _settings.SelectedLearningStrategy = value; } catch { /* best effort */ }
+            }
+        }
+    }
 
     private string _activeFilterDisplay = "";
     public string ActiveFilterDisplay { get => _activeFilterDisplay; private set { SetProperty(ref _activeFilterDisplay, value); OnPropertyChanged(nameof(HasActiveFilter)); } }
@@ -122,6 +132,7 @@ public sealed class QuizViewModel : BaseViewModel
         _tts = tts;
         _settings = settings;
         _sounds = sounds;
+        try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Neutral; }
     }
 
     public async Task LoadNextAsync()
