@@ -34,7 +34,6 @@ public sealed class TtsService : ITtsService
         try { ttsEnabled = _settings.TtsEnabled; } catch { ttsEnabled = false; }
         if (!ttsEnabled) return;
 
-        // SpeechSynthesizer on Windows requires the UI thread.
         await MainThread.InvokeOnMainThreadAsync(async () =>
         {
             try
@@ -44,16 +43,9 @@ public sealed class TtsService : ITtsService
                 _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
 
                 var locale = languagePrefix == "ja" ? _japaneseLocaleCache : _englishLocaleCache;
-                var options = new SpeechOptions
-                {
-                    Locale = locale,
-                    Pitch = 1.0f,
-                    Volume = 1.0f
-                };
+                var options = new SpeechOptions { Locale = locale, Pitch = 1.0f, Volume = 1.0f };
 
-                Debug.WriteLine($"[TTS] Speaking '{text}' lang={languagePrefix} locale={locale?.Language ?? "<default>"}/{locale?.Country ?? ""} name={locale?.Name ?? ""}");
                 await TextToSpeech.Default.SpeakAsync(text, options, _cts.Token);
-                Debug.WriteLine("[TTS] Speak completed.");
             }
             catch (OperationCanceledException) { /* expected when interrupted */ }
             catch (System.Runtime.InteropServices.COMException ex)
@@ -74,17 +66,10 @@ public sealed class TtsService : ITtsService
         try
         {
             var locales = (await TextToSpeech.Default.GetLocalesAsync()).ToList();
-            Debug.WriteLine($"[TTS] {locales.Count} locale(s) available:");
-            foreach (var l in locales)
-                Debug.WriteLine($"[TTS]   - lang={l.Language} country={l.Country} name={l.Name}");
-
             _japaneseLocaleCache = locales.FirstOrDefault(l =>
                 l.Language?.StartsWith("ja", StringComparison.OrdinalIgnoreCase) == true);
             _englishLocaleCache = locales.FirstOrDefault(l =>
                 l.Language?.StartsWith("en", StringComparison.OrdinalIgnoreCase) == true);
-
-            if (_japaneseLocaleCache is null)
-                Debug.WriteLine("[TTS] No Japanese voice installed — JP playback will use the default voice.");
         }
         catch (Exception ex)
         {
