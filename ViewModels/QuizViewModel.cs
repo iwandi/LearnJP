@@ -192,7 +192,8 @@ public sealed class QuizViewModel : BaseViewModel
             _current = q;
             Prompt = q.Prompt;
             PromptFurigana = q.PromptFurigana;
-            ShowPromptSpeakButton = q.Direction == QuestionDirection.JapaneseToEnglish;
+            // Always show the manual replay button — the user can always ask to hear the JP audio.
+            ShowPromptSpeakButton = true;
 
             var optionsAreJapanese = q.Direction == QuestionDirection.EnglishToJapanese;
             Options.Clear();
