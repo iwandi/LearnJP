@@ -31,6 +31,22 @@
             <Picker ItemsSource="{Binding TtsProviders}"
                     SelectedItem="{Binding SelectedTtsProvider}" />
 
+            <VerticalStackLayout Spacing="2" IsVisible="{Binding IsSystemSelected}">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="System TTS volume" Style="{StaticResource MutedLabel}" />
+                    <Label Grid.Column="1" Text="{Binding SystemTtsVolumeText}" Style="{StaticResource MutedLabel}" />
+                </Grid>
+                <Slider Minimum="0" Maximum="1" Value="{Binding SystemTtsVolume, Mode=TwoWay}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="2" IsVisible="{Binding IsAzureSelected}">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Azure TTS volume" Style="{StaticResource MutedLabel}" />
+                    <Label Grid.Column="1" Text="{Binding AzureTtsVolumeText}" Style="{StaticResource MutedLabel}" />
+                </Grid>
+                <Slider Minimum="0" Maximum="1" Value="{Binding AzureTtsVolume, Mode=TwoWay}" />
+            </VerticalStackLayout>
+
             <VerticalStackLayout Spacing="10" IsVisible="{Binding IsAzureSelected}">
                 <Label Text="Azure subscription key" Style="{StaticResource MutedLabel}" />
                 <Entry Text="{Binding AzureSpeechKey}" IsPassword="True" Placeholder="paste your key here" />

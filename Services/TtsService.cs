@@ -66,7 +66,9 @@ public sealed class TtsService : ITtsService
         var wav = await _azure.SynthesizeAsync(text, lang, voice, ct);
         if (wav is null || wav.Length < 64) return;
 
-        _sounds.PlayWav(wav);
+        var volume = 1.0;
+        try { volume = _settings.AzureTtsVolume; } catch { /* default */ }
+        _sounds.PlayWav(wav, volume);
         // PlayWav is fire-and-forget on Windows; wait the WAV's own duration so callers awaiting
         // SpeakAsync don't return before the audio actually finishes.
         var dur = EstimateWavDurationMs(wav);
@@ -88,7 +90,9 @@ public sealed class TtsService : ITtsService
                 _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
 
                 var locale = languagePrefix == "ja" ? _japaneseLocaleCache : _englishLocaleCache;
-                var options = new SpeechOptions { Locale = locale, Pitch = 1.0f, Volume = 1.0f };
+                var sysVolume = 1.0;
+                try { sysVolume = _settings.SystemTtsVolume; } catch { /* default */ }
+                var options = new SpeechOptions { Locale = locale, Pitch = 1.0f, Volume = (float)Math.Clamp(sysVolume, 0.0, 1.0) };
 
                 await TextToSpeech.Default.SpeakAsync(text, options, _cts.Token);
             }

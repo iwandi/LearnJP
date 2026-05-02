@@ -13,6 +13,8 @@ public sealed class SettingsService : ISettingsService
     private const string KeyAzureRegion   = "settings.azure_region";
     private const string KeyAzureJaVoice  = "settings.azure_ja_voice";
     private const string KeyAzureEnVoice  = "settings.azure_en_voice";
+    private const string KeySystemVolume  = "settings.system_volume";
+    private const string KeyAzureVolume   = "settings.azure_volume";
 
     private readonly Dictionary<string, object> _fallback = new();
     private bool _preferencesAvailable = true;
@@ -70,5 +72,17 @@ public sealed class SettingsService : ISettingsService
     {
         get => Read(KeyAzureEnVoice, "en-US-JennyNeural");
         set => Write(KeyAzureEnVoice, value ?? string.Empty);
+    }
+
+    public double SystemTtsVolume
+    {
+        get => Math.Clamp(Read(KeySystemVolume, 1.0), 0.0, 1.0);
+        set => Write(KeySystemVolume, Math.Clamp(value, 0.0, 1.0));
+    }
+
+    public double AzureTtsVolume
+    {
+        get => Math.Clamp(Read(KeyAzureVolume, 1.0), 0.0, 1.0);
+        set => Write(KeyAzureVolume, Math.Clamp(value, 0.0, 1.0));
     }
 }

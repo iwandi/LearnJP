@@ -45,18 +45,53 @@ public sealed class SoundService : ISoundService
         _                   => TimeSpan.FromMilliseconds(80)
     };
 
-    public void PlayWav(byte[] wavBytes)
+    public void PlayWav(byte[] wavBytes, double volume = 1.0)
     {
 #if WINDOWS
         if (wavBytes.Length == 0) return;
+        var clamped = Math.Clamp(volume, 0.0, 1.0);
+        var toPlay = clamped >= 0.999 ? wavBytes : ScaleWav16BitPcm(wavBytes, clamped);
         _ = Task.Run(() =>
         {
-            try { PlaySound(wavBytes, IntPtr.Zero, SND_MEMORY | SND_ASYNC | SND_NODEFAULT); }
+            try { PlaySound(toPlay, IntPtr.Zero, SND_MEMORY | SND_ASYNC | SND_NODEFAULT); }
             catch (Exception ex) { Debug.WriteLine($"[Sound] PlaySound failed: {ex.Message}"); }
         });
 #else
-        _ = wavBytes;
+        _ = wavBytes; _ = volume;
 #endif
+    }
+
+    /// <summary>
+    /// Returns a fresh WAV byte buffer with the audio data section scaled by <paramref name="volume"/>.
+    /// Walks the RIFF chunk list to locate the "data" chunk so non-canonical headers are handled.
+    /// </summary>
+    private static byte[] ScaleWav16BitPcm(byte[] wav, double volume)
+    {
+        var copy = (byte[])wav.Clone();
+        if (copy.Length < 44) return copy;
+        // RIFF header: bytes 0..11 ("RIFF" size "WAVE"). Chunks start at offset 12.
+        int p = 12;
+        int dataStart = -1;
+        int dataSize = 0;
+        while (p + 8 <= copy.Length)
+        {
+            var id = System.Text.Encoding.ASCII.GetString(copy, p, 4);
+            var size = BitConverter.ToInt32(copy, p + 4);
+            if (id == "data") { dataStart = p + 8; dataSize = size; break; }
+            p += 8 + size + (size & 1); // chunks are word-aligned
+        }
+        if (dataStart < 0) return copy;
+        int end = Math.Min(copy.Length, dataStart + dataSize);
+        for (int i = dataStart; i + 1 < end; i += 2)
+        {
+            short sample = BitConverter.ToInt16(copy, i);
+            int scaled = (int)Math.Round(sample * volume);
+            if (scaled > short.MaxValue) scaled = short.MaxValue;
+            else if (scaled < short.MinValue) scaled = short.MinValue;
+            copy[i]     = (byte)(scaled & 0xFF);
+            copy[i + 1] = (byte)((scaled >> 8) & 0xFF);
+        }
+        return copy;
     }
 
     private byte[] GetOrBuild(SoundEffect effect)

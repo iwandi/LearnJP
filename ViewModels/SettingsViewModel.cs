@@ -48,10 +48,12 @@ public sealed class SettingsViewModel : BaseViewModel
             _settings.TtsProvider = value;
             OnPropertyChanged();
             OnPropertyChanged(nameof(IsAzureSelected));
+            OnPropertyChanged(nameof(IsSystemSelected));
         }
     }
 
     public bool IsAzureSelected => SelectedTtsProvider == TtsProvider.Azure;
+    public bool IsSystemSelected => SelectedTtsProvider == TtsProvider.System;
 
     public string AzureSpeechKey
     {
@@ -76,4 +78,30 @@ public sealed class SettingsViewModel : BaseViewModel
         get => _settings.AzureEnglishVoice;
         set { _settings.AzureEnglishVoice = value; OnPropertyChanged(); }
     }
+
+    public double SystemTtsVolume
+    {
+        get => _settings.SystemTtsVolume;
+        set
+        {
+            _settings.SystemTtsVolume = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(SystemTtsVolumeText));
+        }
+    }
+
+    public string SystemTtsVolumeText => $"{(int)Math.Round(SystemTtsVolume * 100)}%";
+
+    public double AzureTtsVolume
+    {
+        get => _settings.AzureTtsVolume;
+        set
+        {
+            _settings.AzureTtsVolume = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(AzureTtsVolumeText));
+        }
+    }
+
+    public string AzureTtsVolumeText => $"{(int)Math.Round(AzureTtsVolume * 100)}%";
 }
