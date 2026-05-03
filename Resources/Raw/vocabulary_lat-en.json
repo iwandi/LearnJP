@@ -1,12 +1,12 @@
 [
-  { "id": "la-a1-001", "meanings": ["hello", "greetings"] },
-  { "id": "la-a1-002", "meanings": ["goodbye", "farewell"] },
-  { "id": "la-a1-003", "meanings": ["so", "thus"] },
-  { "id": "la-a1-004", "meanings": ["thus", "so"] },
-  { "id": "la-a1-005", "meanings": ["not", "no"] },
-  { "id": "la-a1-006", "meanings": ["and"] },
-  { "id": "la-a1-007", "meanings": ["but"] },
-  { "id": "la-a1-008", "meanings": ["who", "someone"] },
-  { "id": "la-a1-009", "meanings": ["what", "something"] },
-  { "id": "la-a1-010", "meanings": ["I love"] }
+  { "id": "lat-a1-001", "meanings": ["hello", "greetings"] },
+  { "id": "lat-a1-002", "meanings": ["goodbye", "farewell"] },
+  { "id": "lat-a1-003", "meanings": ["so", "thus"] },
+  { "id": "lat-a1-004", "meanings": ["thus", "so"] },
+  { "id": "lat-a1-005", "meanings": ["not", "no"] },
+  { "id": "lat-a1-006", "meanings": ["and"] },
+  { "id": "lat-a1-007", "meanings": ["but"] },
+  { "id": "lat-a1-008", "meanings": ["who", "someone"] },
+  { "id": "lat-a1-009", "meanings": ["what", "something"] },
+  { "id": "lat-a1-010", "meanings": ["I love"] }
 ]
