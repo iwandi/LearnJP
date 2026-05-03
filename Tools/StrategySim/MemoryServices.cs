@@ -4,17 +4,22 @@ using LearnJP.Services;
 
 namespace LearnJP.Tools.StrategySim;
 
-/// <summary>Loads vocabulary.json from disk; supports an optional cap on pool size.</summary>
+/// <summary>
+/// Loads target-language vocab from disk plus an optional translation file (e.g.
+/// vocabulary_en.json) merged in by id, mirroring the production VocabularyService.
+/// </summary>
 internal sealed class MemoryVocabularyService : IVocabularyService
 {
     private readonly string _path;
+    private readonly string? _translationPath;
     private readonly int? _limit;
     private List<Word> _words = new();
 
-    public MemoryVocabularyService(string path, int? limit)
+    public MemoryVocabularyService(string path, int? limit, string? translationPath = null)
     {
         _path = path;
         _limit = limit;
+        _translationPath = translationPath;
     }
 
     public IReadOnlyList<Word> All => _words;
@@ -22,15 +27,29 @@ internal sealed class MemoryVocabularyService : IVocabularyService
     public Task EnsureLoadedAsync()
     {
         if (_words.Count > 0) return Task.CompletedTask;
-        var json = File.ReadAllText(_path);
         var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var list = JsonSerializer.Deserialize<List<Word>>(json, opts) ?? new();
+        var list = JsonSerializer.Deserialize<List<Word>>(File.ReadAllText(_path), opts) ?? new();
+
+        if (_translationPath is not null && File.Exists(_translationPath))
+        {
+            var translations = JsonSerializer.Deserialize<List<TranslationEntry>>(File.ReadAllText(_translationPath), opts) ?? new();
+            var byId = translations.Where(t => !string.IsNullOrEmpty(t.Id)).ToDictionary(t => t.Id, t => t.Meanings);
+            foreach (var w in list)
+                if (byId.TryGetValue(w.Id, out var m)) w.Meanings = m;
+        }
+
         if (_limit is { } cap) list = list.Take(cap).ToList();
         _words = list;
         return Task.CompletedTask;
     }
 
     public Word? GetById(string id) => _words.FirstOrDefault(w => w.Id == id);
+
+    private sealed class TranslationEntry
+    {
+        public string Id { get; set; } = string.Empty;
+        public List<string> Meanings { get; set; } = new();
+    }
 }
 
 /// <summary>
@@ -176,4 +195,5 @@ internal sealed class MemorySettingsService : ISettingsService
     public LearningStrategy SelectedLearningStrategy { get; set; } = LearningStrategy.Fsrs;
     public bool CountForProficiency { get; set; } = true;
     public string ActiveLanguageId { get; set; } = string.Empty;
+    public string BaseLanguageId { get; set; } = "en";
 }

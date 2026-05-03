@@ -20,6 +20,7 @@ public sealed class SettingsService : ISettingsService
     private const string KeyStrategy      = "settings.learning_strategy";
     private const string KeyTrackProf     = "settings.count_for_proficiency";
     private const string KeyActiveLang    = "settings.active_language_id";
+    private const string KeyBaseLang      = "settings.base_language_id";
 
     private readonly Dictionary<string, object> _fallback = new();
     private bool _preferencesAvailable = true;
@@ -131,5 +132,11 @@ public sealed class SettingsService : ISettingsService
     {
         get => Read(KeyActiveLang, string.Empty);
         set => Write(KeyActiveLang, value ?? string.Empty);
+    }
+
+    public string BaseLanguageId
+    {
+        get => Read(KeyBaseLang, "en");
+        set => Write(KeyBaseLang, string.IsNullOrWhiteSpace(value) ? "en" : value);
     }
 }

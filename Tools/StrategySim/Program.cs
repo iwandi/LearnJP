@@ -9,7 +9,7 @@ int[] IntervalCapSweep = { 60, 120, 250, 500 };
 // Default vocabulary path: ../../Resources/Raw/vocabulary.json relative to the project.
 var defaults = new RunConfig
 {
-    VocabPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "Resources", "Raw", "vocabulary.json")),
+    VocabPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "Resources", "Raw", "vocabulary_ja.json")),
     Bot = "learner",
     Strategy = LearningStrategy.Fsrs,
     // ~35 picks × 500-word pool ≈ 17,500. At 100 answers/day that's ~6 months of practice.
@@ -98,7 +98,10 @@ static bool IsKana(Word w) =>
 static async Task<string> RunOne(RunConfig cfg)
 {
     var rng = new Random(cfg.Seed);
-    var vocab = new MemoryVocabularyService(cfg.VocabPath, cfg.Limit);
+    // Convention: translations sit alongside the target vocab as vocabulary_en.json.
+    var translationPath = Path.Combine(Path.GetDirectoryName(cfg.VocabPath) ?? ".", "vocabulary_en.json");
+    if (!File.Exists(translationPath)) translationPath = null!;
+    var vocab = new MemoryVocabularyService(cfg.VocabPath, cfg.Limit, translationPath);
     var store = new MemoryProficiencyStore(cfg.IntervalCap);
     var settings = new MemorySettingsService { SelectedLearningStrategy = cfg.Strategy };
     var gen = new QuestionGenerator(vocab, store, settings)

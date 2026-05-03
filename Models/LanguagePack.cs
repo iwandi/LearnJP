@@ -25,9 +25,37 @@ public sealed class LanguagePack
     [JsonPropertyName("defaultAzureVoice")]
     public string DefaultAzureVoice { get; set; } = string.Empty;
 
-    /// <summary>Vocabulary file to load (relative to Resources/Raw).</summary>
+    /// <summary>Vocabulary file to load (relative to Resources/Raw). Holds target-language
+    /// fields (writing, reading, transliteration). Translations live in <see cref="TranslationFile"/>.</summary>
     [JsonPropertyName("vocabFile")]
     public string VocabFile { get; set; } = "vocabulary.json";
+
+    /// <summary>
+    /// Per-base-language meanings files keyed by base-language code (e.g. "en", "de").
+    /// Each value is a vocabulary_&lt;target&gt;-&lt;base&gt;.json file containing
+    /// <c>{ id, meanings }</c> entries. The user's selected base language picks one.
+    /// </summary>
+    [JsonPropertyName("translations")]
+    public Dictionary<string, string> Translations { get; set; } = new();
+
+    /// <summary>Legacy single-file fallback when <see cref="Translations"/> is empty.</summary>
+    [JsonPropertyName("translationFile")]
+    public string TranslationFile { get; set; } = string.Empty;
+
+    /// <summary>Resolve which translation file to load for the requested base language.
+    /// Prefers exact match, then "en", then any first entry, then the legacy field.</summary>
+    public string? ResolveTranslationFile(string? baseLanguageId)
+    {
+        if (Translations.Count > 0)
+        {
+            if (!string.IsNullOrWhiteSpace(baseLanguageId)
+                && Translations.TryGetValue(baseLanguageId, out var match))
+                return match;
+            if (Translations.TryGetValue("en", out var en)) return en;
+            return Translations.Values.FirstOrDefault();
+        }
+        return string.IsNullOrWhiteSpace(TranslationFile) ? null : TranslationFile;
+    }
 
     /// <summary>
     /// Tags identifying single-glyph entries (e.g. hiragana characters in Japanese, jamo in

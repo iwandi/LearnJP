@@ -34,4 +34,7 @@ public interface ISettingsService
 
     /// <summary>Id of the currently selected language pack (e.g. "ja"). Empty = first available.</summary>
     string ActiveLanguageId { get; set; }
+
+    /// <summary>Base-language code the user wants meanings displayed in (e.g. "en", "de").</summary>
+    string BaseLanguageId { get; set; }
 }
