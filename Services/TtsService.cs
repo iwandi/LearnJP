@@ -209,7 +209,10 @@ public sealed class TtsService : ITtsService
                 return audio.Length / 8;
             }
 
-            // MP3 (Azure outputs at 96 kbps): duration_ms ≈ bytes * 8 / 96 = bytes / 12
+            // Fallback: assume MP3 at 96 kbps (the rate Azure uses for audio-24khz-96kbitrate-mono-mp3).
+            // Unknown or unsupported formats will produce an imprecise estimate, but that is
+            // acceptable — the caller only needs a rough delay so speech isn't cut off early.
+            // duration_ms = bytes * 8 / kbps = bytes * 8 / 96 = bytes / 12
             return audio.Length / 12;
         }
         catch { return 0; }

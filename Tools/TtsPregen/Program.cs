@@ -212,6 +212,7 @@ foreach (var (pack, words) in packs)
 
         var capturedText  = ttsText;
         var capturedPath  = filePath;
+        var capturedId    = word.Id;
 
         await semaphore.WaitAsync();
         tasks.Add(Task.Run(async () =>
@@ -221,17 +222,17 @@ foreach (var (pack, words) in packs)
                 var audio = await SynthesizeAsync(http, cfg, outputFormat, locale, voice, capturedText);
                 if (audio is null || audio.Length < 64)
                 {
-                    Console.WriteLine($"  [FAIL] {word.Id}: synthesis returned no data");
+                    Console.WriteLine($"  [FAIL] {capturedId}: synthesis returned no data");
                     Interlocked.Increment(ref totalFailed);
                     return;
                 }
                 await File.WriteAllBytesAsync(capturedPath, audio);
-                Console.WriteLine($"  [OK] {word.Id}: {capturedText} → {Path.GetFileName(capturedPath)} ({audio.Length / 1024}KB)");
+                Console.WriteLine($"  [OK] {capturedId}: {capturedText} → {Path.GetFileName(capturedPath)} ({audio.Length / 1024}KB)");
                 Interlocked.Increment(ref totalGenerated);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"  [FAIL] {word.Id}: {ex.Message}");
+                Console.WriteLine($"  [FAIL] {capturedId}: {ex.Message}");
                 Interlocked.Increment(ref totalFailed);
             }
             finally
