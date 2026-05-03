@@ -38,8 +38,11 @@ public sealed class LanguagePackService : ILanguagePackService
                         var pack = await JsonSerializer.DeserializeAsync<LanguagePack>(packStream, opts);
                         if (pack is not null && !string.IsNullOrWhiteSpace(pack.Id))
                         {
-                            // Materialise the runtime behaviour from the declared type + config.
+                            // Materialise the runtime behaviour from the declared type + config,
+                            // then wire the back-reference so the behaviour can resolve role→index
+                            // lookups against the pack's Forms declaration.
                             pack.Behavior = LanguageBehavior.Create(pack.BehaviorType, pack.BehaviorConfig);
+                            pack.Behavior.Pack = pack;
                             _packs.Add(pack);
                         }
                     }

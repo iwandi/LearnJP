@@ -1,6 +1,6 @@
 using System.Text;
 using System.Text.Json;
-using LearnJP.Models;
+using System.Text.Json.Serialization;
 
 var path = args.Length > 0
     ? args[0]
@@ -14,7 +14,7 @@ if (!File.Exists(path))
 
 var jsonOpts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 var raw = await File.ReadAllTextAsync(path);
-var entries = JsonSerializer.Deserialize<List<Word>>(raw, jsonOpts) ?? new();
+var entries = JsonSerializer.Deserialize<List<JpWord>>(raw, jsonOpts) ?? new();
 
 var stats = new Stats { Input = entries.Count };
 
@@ -37,7 +37,7 @@ var tagAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase
 string Canon(string t) =>
     tagAliases.TryGetValue(t.Trim().ToLowerInvariant(), out var v) ? v : t.Trim().ToLowerInvariant();
 
-List<string> NormaliseTags(IEnumerable<string>? tags, Word w)
+List<string> NormaliseTags(IEnumerable<string>? tags, JpWord w)
 {
     var set = new SortedSet<string>(StringComparer.Ordinal);
     foreach (var t in tags ?? Enumerable.Empty<string>())
@@ -51,12 +51,12 @@ List<string> NormaliseTags(IEnumerable<string>? tags, Word w)
     return set.ToList();
 }
 
-string Fingerprint(Word w) =>
-    $"{(w.Kana ?? "").Trim()}|{(w.Romaji ?? "").Trim().ToLowerInvariant()}|{(w.PrimaryMeaning ?? "").Trim().ToLowerInvariant()}";
+string Fingerprint(JpWord w) =>
+    $"{(w.Kana ?? "").Trim()}|{(w.Romaji ?? "").Trim().ToLowerInvariant()}|{(w.PrimaryMeaning).Trim().ToLowerInvariant()}";
 
 var seenIds = new HashSet<string>(StringComparer.Ordinal);
-var byFingerprint = new Dictionary<string, Word>(StringComparer.Ordinal);
-var kept = new List<Word>(entries.Count);
+var byFingerprint = new Dictionary<string, JpWord>(StringComparer.Ordinal);
+var kept = new List<JpWord>(entries.Count);
 
 foreach (var src in entries)
 {
@@ -103,7 +103,7 @@ foreach (var src in entries)
 stats.Output = kept.Count;
 
 // Stable sort: hiragana → katakana → vocabulary, then by id within each group.
-int Group(Word w) => w.Id switch
+int Group(JpWord w) => w.Id switch
 {
     var s when s.StartsWith("h-")  => 0,
     var s when s.StartsWith("k-")  => 1,
@@ -120,15 +120,15 @@ kept.Sort((a, b) =>
 // (we never alter the actual values).
 string J(object? v) => JsonSerializer.Serialize(v);
 
-string IdTok(Word w)     => $"\"id\": \"{w.Id}\"";
-string KanjiTok(Word w)  => $"\"kanji\": \"{w.Kanji}\"";
-string KanaTok(Word w)   => $"\"kana\": \"{w.Kana}\"";
-string RomajiTok(Word w) => $"\"romaji\": \"{w.Romaji}\"";
-string PosTok(Word w)    => $"\"pos\": \"{w.PartOfSpeech}\"";
+string IdTok(JpWord w)     => $"\"id\": \"{w.Id}\"";
+string KanjiTok(JpWord w)  => $"\"kanji\": \"{w.Kanji}\"";
+string KanaTok(JpWord w)   => $"\"kana\": \"{w.Kana}\"";
+string RomajiTok(JpWord w) => $"\"romaji\": \"{w.Romaji}\"";
+string PosTok(JpWord w)    => $"\"pos\": \"{w.PartOfSpeech}\"";
 
 // Width is in chars (CJK glyphs counted as 1 — the alignment is approximate visually,
 // but the file content stays canonical and re-parses identically).
-int Wmax(Func<Word, string> sel) => kept.Max(w => sel(w).Length);
+int Wmax(Func<JpWord, string> sel) => kept.Max(w => sel(w).Length);
 
 int idW     = Wmax(IdTok);
 int kanjiW  = Wmax(KanjiTok);
@@ -169,4 +169,20 @@ return 0;
 internal sealed class Stats
 {
     public int Input, Output, DroppedDupId, DroppedDupContent, FixedFreq, NormalisedTags;
+}
+
+/// <summary>Local JP-shaped DTO for the cleaner. Decoupled from the runtime Word model
+/// (which now stores forms positionally) because this tool only ever operates on the
+/// JP vocabulary file's specific kanji/kana/romaji shape.</summary>
+internal sealed class JpWord
+{
+    [JsonPropertyName("id")]            public string Id { get; set; } = string.Empty;
+    [JsonPropertyName("kanji")]         public string Kanji { get; set; } = string.Empty;
+    [JsonPropertyName("kana")]          public string Kana { get; set; } = string.Empty;
+    [JsonPropertyName("romaji")]        public string Romaji { get; set; } = string.Empty;
+    [JsonPropertyName("meanings")]      public List<string> Meanings { get; set; } = new();
+    [JsonPropertyName("pos")]           public string PartOfSpeech { get; set; } = string.Empty;
+    [JsonPropertyName("tags")]          public List<string> Tags { get; set; } = new();
+    [JsonPropertyName("frequencyRank")] public int FrequencyRank { get; set; } = int.MaxValue;
+    public string PrimaryMeaning => Meanings.Count > 0 ? Meanings[0] : string.Empty;
 }

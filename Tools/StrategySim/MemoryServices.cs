@@ -6,20 +6,27 @@ namespace LearnJP.Tools.StrategySim;
 
 /// <summary>
 /// Loads target-language vocab from disk plus an optional translation file (e.g.
-/// vocabulary_en.json) merged in by id, mirroring the production VocabularyService.
+/// vocabulary_en.json) merged in by id, mirroring the production VocabularyService. Each
+/// word's <see cref="Word.Forms"/> array is filled from the JSON keys passed in
+/// <paramref name="formKeys"/> (defaults to JP's <c>romaji/kana/kanji</c> layout, since
+/// the sim's bundled vocabulary file is JP).
 /// </summary>
 internal sealed class MemoryVocabularyService : IVocabularyService
 {
+    private static readonly string[] DefaultFormKeys = { "romaji", "kana", "kanji" };
+
     private readonly string _path;
     private readonly string? _translationPath;
     private readonly int? _limit;
+    private readonly IReadOnlyList<string> _formKeys;
     private List<Word> _words = new();
 
-    public MemoryVocabularyService(string path, int? limit, string? translationPath = null)
+    public MemoryVocabularyService(string path, int? limit, string? translationPath = null, IReadOnlyList<string>? formKeys = null)
     {
         _path = path;
         _limit = limit;
         _translationPath = translationPath;
+        _formKeys = formKeys is { Count: > 0 } ? formKeys : DefaultFormKeys;
     }
 
     public IReadOnlyList<Word> All => _words;
@@ -27,11 +34,31 @@ internal sealed class MemoryVocabularyService : IVocabularyService
     public Task EnsureLoadedAsync()
     {
         if (_words.Count > 0) return Task.CompletedTask;
-        var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var list = JsonSerializer.Deserialize<List<Word>>(File.ReadAllText(_path), opts) ?? new();
+
+        // Project each entry through the same form-key projection the production
+        // VocabularyService uses, so the sim runs against identically-shaped Words.
+        using var doc = JsonDocument.Parse(File.ReadAllText(_path));
+        var list = new List<Word>();
+        if (doc.RootElement.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var el in doc.RootElement.EnumerateArray())
+            {
+                if (el.ValueKind != JsonValueKind.Object) continue;
+                list.Add(new Word
+                {
+                    Id            = ReadString(el, "id"),
+                    PartOfSpeech  = ReadString(el, "pos"),
+                    FrequencyRank = ReadInt(el, "frequencyRank", int.MaxValue),
+                    Meanings      = ReadStringList(el, "meanings"),
+                    Tags          = ReadStringList(el, "tags"),
+                    Forms         = _formKeys.Select(k => ReadString(el, k)).ToArray(),
+                });
+            }
+        }
 
         if (_translationPath is not null && File.Exists(_translationPath))
         {
+            var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var translations = JsonSerializer.Deserialize<List<TranslationEntry>>(File.ReadAllText(_translationPath), opts) ?? new();
             var byId = translations.Where(t => !string.IsNullOrEmpty(t.Id)).ToDictionary(t => t.Id, t => t.Meanings);
             foreach (var w in list)
@@ -44,6 +71,24 @@ internal sealed class MemoryVocabularyService : IVocabularyService
     }
 
     public Word? GetById(string id) => _words.FirstOrDefault(w => w.Id == id);
+
+    private static string ReadString(JsonElement el, string name) =>
+        el.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.String
+            ? v.GetString() ?? string.Empty : string.Empty;
+
+    private static int ReadInt(JsonElement el, string name, int fallback) =>
+        el.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.Number && v.TryGetInt32(out var n)
+            ? n : fallback;
+
+    private static List<string> ReadStringList(JsonElement el, string name)
+    {
+        if (!el.TryGetProperty(name, out var v) || v.ValueKind != JsonValueKind.Array) return new();
+        var list = new List<string>(v.GetArrayLength());
+        foreach (var item in v.EnumerateArray())
+            if (item.ValueKind == JsonValueKind.String)
+                list.Add(item.GetString() ?? string.Empty);
+        return list;
+    }
 
     private sealed class TranslationEntry
     {
@@ -179,9 +224,7 @@ internal sealed class MemoryProficiencyStore : IProficiencyStore
 /// <summary>Minimal settings impl backed by simple fields — no Preferences, no MAUI.</summary>
 internal sealed class MemorySettingsService : ISettingsService
 {
-    public bool RomajiOnly { get; set; }
     public bool TtsEnabled { get; set; } = true;
-    public bool ForceFurigana { get; set; }
     public double TtsRate { get; set; } = 0.9;
     public TtsProvider TtsProvider { get; set; } = TtsProvider.System;
     public string AzureSpeechKey { get; set; } = string.Empty;
@@ -194,4 +237,24 @@ internal sealed class MemorySettingsService : ISettingsService
     public bool CountForProficiency { get; set; } = true;
     public string ActiveLanguageId { get; set; } = string.Empty;
     public string BaseLanguageId { get; set; } = "en";
+
+    private readonly Dictionary<(string Pack, string Key), bool> _displayFlags = new();
+
+    public bool GetDisplayFlag(string packId, string key, bool defaultValue) =>
+        _displayFlags.TryGetValue((packId ?? "", key ?? ""), out var v) ? v : defaultValue;
+
+    public void SetDisplayFlag(string packId, string key, bool value) =>
+        _displayFlags[(packId ?? "", key ?? "")] = value;
+
+    public IDisplayFlags DisplayFlagsFor(string packId) =>
+        new View(this, packId ?? string.Empty);
+
+    private sealed class View : IDisplayFlags
+    {
+        private readonly MemorySettingsService _owner;
+        private readonly string _packId;
+        public View(MemorySettingsService owner, string packId) { _owner = owner; _packId = packId; }
+        public bool Get(string key, bool defaultValue = false) =>
+            _owner.GetDisplayFlag(_packId, key, defaultValue);
+    }
 }

@@ -8,9 +8,11 @@
     <RootNamespace>LearnJP.Tools.VocabCleaner</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Reuse the existing Word model from the MAUI project so we stay in sync with the schema. -->
-    <Compile Include="..\..\Models\Word.cs" Link="Models\Word.cs" />
-  </ItemGroup>
+  <!--
+    The runtime Word model now stores forms positionally (string[]) and the JSON keys
+    are pack-driven, so this JP-specific tool keeps a local DTO instead of taking a
+    dependency on the runtime model.
+  -->
+
 
 </Project>

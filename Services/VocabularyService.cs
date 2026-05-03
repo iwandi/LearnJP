@@ -30,12 +30,13 @@ public sealed class VocabularyService : IVocabularyService
         var key = pack.Id + "::" + (baseId ?? string.Empty);
         if (_loadedKey == key) return;
 
-        var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-
-        // Target-language fields (kanji/kana/romaji + tags + frequency rank).
+        // Read the vocabulary file as a flat JsonDocument so we can project each entry through
+        // the pack's declared form-key list. This is what keeps Word.Forms language-neutral —
+        // the runtime model holds positional values, the JSON keeps human-friendly key names.
         await using (var stream = await FileSystem.OpenAppPackageFileAsync(pack.VocabFile))
+        using (var doc = await JsonDocument.ParseAsync(stream))
         {
-            _words = await JsonSerializer.DeserializeAsync<List<Word>>(stream, opts) ?? new();
+            _words = LoadWords(doc.RootElement, pack.EffectiveForms);
         }
 
         // Translations into the user's base language. Joined onto each word by id; missing
@@ -45,6 +46,7 @@ public sealed class VocabularyService : IVocabularyService
         {
             try
             {
+                var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 await using var stream = await FileSystem.OpenAppPackageFileAsync(translationFile);
                 var translations = await JsonSerializer.DeserializeAsync<List<TranslationEntry>>(stream, opts) ?? new();
                 var byId = translations.Where(t => !string.IsNullOrEmpty(t.Id))
@@ -57,6 +59,59 @@ public sealed class VocabularyService : IVocabularyService
 
         _byId = _words.Where(w => !string.IsNullOrEmpty(w.Id)).ToDictionary(w => w.Id);
         _loadedKey = key;
+    }
+
+    /// <summary>Projects a JSON array of word entries into runtime <see cref="Word"/> instances.
+    /// Each entry's <see cref="Word.Forms"/> is filled in the order declared by
+    /// <paramref name="formKeys"/> — missing keys become empty strings so position-by-index
+    /// stays stable.</summary>
+    private static List<Word> LoadWords(JsonElement root, IReadOnlyList<string> formKeys)
+    {
+        var words = new List<Word>();
+        if (root.ValueKind != JsonValueKind.Array) return words;
+
+        foreach (var el in root.EnumerateArray())
+        {
+            if (el.ValueKind != JsonValueKind.Object) continue;
+            var w = new Word
+            {
+                Id            = ReadString(el, "id"),
+                PartOfSpeech  = ReadString(el, "pos"),
+                FrequencyRank = ReadInt(el, "frequencyRank", int.MaxValue),
+                Meanings      = ReadStringList(el, "meanings"),
+                Tags          = ReadStringList(el, "tags"),
+                Forms         = ReadForms(el, formKeys),
+            };
+            words.Add(w);
+        }
+        return words;
+    }
+
+    private static string[] ReadForms(JsonElement el, IReadOnlyList<string> formKeys)
+    {
+        var arr = new string[formKeys.Count];
+        for (int i = 0; i < formKeys.Count; i++)
+            arr[i] = ReadString(el, formKeys[i]);
+        return arr;
+    }
+
+    private static string ReadString(JsonElement el, string name) =>
+        el.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.String
+            ? v.GetString() ?? string.Empty
+            : string.Empty;
+
+    private static int ReadInt(JsonElement el, string name, int fallback) =>
+        el.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.Number && v.TryGetInt32(out var n)
+            ? n : fallback;
+
+    private static List<string> ReadStringList(JsonElement el, string name)
+    {
+        if (!el.TryGetProperty(name, out var v) || v.ValueKind != JsonValueKind.Array) return new();
+        var list = new List<string>(v.GetArrayLength());
+        foreach (var item in v.EnumerateArray())
+            if (item.ValueKind == JsonValueKind.String)
+                list.Add(item.GetString() ?? string.Empty);
+        return list;
     }
 
     private sealed class TranslationEntry

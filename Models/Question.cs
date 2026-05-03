@@ -2,18 +2,14 @@ namespace LearnJP.Models;
 
 public enum QuestionDirection { TargetToBase, BaseToTarget }
 
-public enum JapaneseDisplayMode
-{
-    KanjiWithFurigana,
-    HiraganaOnly,
-    KanjiOnly,
-    RomajiOnly
-}
-
 public sealed class QuestionOption
 {
     public required Word Word { get; init; }
+    /// <summary>Pre-rendered text shown while the option is in its idle (unanswered) state.</summary>
     public required string DisplayText { get; init; }
+    /// <summary>Pre-rendered text shown after the user has answered — surfaces both target-language
+    /// form and meaning so distractors are verifiable at a glance.</summary>
+    public required string RevealedText { get; init; }
     public bool IsCorrect { get; init; }
 }
 
@@ -22,7 +18,6 @@ public sealed class Question
     public required Word Target { get; init; }
     public required QuestionDirection Direction { get; init; }
     public required ProficiencyCriterion Criterion { get; init; }
-    public required JapaneseDisplayMode DisplayMode { get; init; }
     public required string Prompt { get; init; }
     public string? PromptFurigana { get; init; }
     public required IReadOnlyList<QuestionOption> Options { get; init; }

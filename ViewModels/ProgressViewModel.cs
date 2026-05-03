@@ -20,6 +20,7 @@ public sealed class ProgressViewModel : BaseViewModel
 {
     private readonly IVocabularyService _vocab;
     private readonly IProficiencyStore _store;
+    private readonly ILanguagePackService _packs;
 
     private string _summary = "";
     private int _total;
@@ -38,10 +39,11 @@ public sealed class ProgressViewModel : BaseViewModel
     public ICommand RefreshCommand { get; }
     public ICommand ResetCommand { get; }
 
-    public ProgressViewModel(IVocabularyService vocab, IProficiencyStore store)
+    public ProgressViewModel(IVocabularyService vocab, IProficiencyStore store, ILanguagePackService packs)
     {
         _vocab = vocab;
         _store = store;
+        _packs = packs;
         RefreshCommand = new Command(async () => await RefreshAsync());
         ResetCommand = new Command(async () =>
         {
@@ -54,6 +56,10 @@ public sealed class ProgressViewModel : BaseViewModel
     {
         await _vocab.EnsureLoadedAsync();
         await _store.LoadAsync();
+
+        // Display/reading rendering goes through the active language's behaviour so this
+        // page works for any pack — JP gets "kanji / kana", Italian gets "ciao / ".
+        var behavior = _packs.Active?.Behavior;
 
         Rows.Clear();
         int seen = 0, known = 0, mastered = 0;
@@ -70,8 +76,8 @@ public sealed class ProgressViewModel : BaseViewModel
 
             rows.Add(new WordProgressRow
             {
-                Display = string.IsNullOrEmpty(w.Kanji) ? w.Kana : w.Kanji,
-                Reading = w.Kana,
+                Display = behavior?.PrimaryForm(w) ?? w.FormAt(0),
+                Reading = behavior?.ReadingForm(w) ?? string.Empty,
                 Meaning = w.MeaningsJoined,
                 Overall = p.Overall,
                 OverallText = $"{p.Overall:0}%",

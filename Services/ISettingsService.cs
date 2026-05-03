@@ -4,9 +4,7 @@ namespace LearnJP.Services;
 
 public interface ISettingsService
 {
-    bool RomajiOnly { get; set; }
     bool TtsEnabled { get; set; }
-    bool ForceFurigana { get; set; }
     double TtsRate { get; set; }
 
     TtsProvider TtsProvider { get; set; }
@@ -35,4 +33,20 @@ public interface ISettingsService
 
     /// <summary>Base-language code the user wants meanings displayed in (e.g. "en", "de").</summary>
     string BaseLanguageId { get; set; }
+
+    /// <summary>
+    /// Reads a per-pack display flag. The settings layer never defines what these keys mean —
+    /// the active <see cref="LanguageBehavior"/> declares them through
+    /// <see cref="LanguageBehavior.DisplayOptions"/> and consumes them from this same
+    /// generic store. Flags are scoped per pack so e.g. JP's "always show furigana" doesn't
+    /// pollute Italian's settings.
+    /// </summary>
+    bool GetDisplayFlag(string packId, string key, bool defaultValue);
+
+    /// <summary>Persists a per-pack display flag. See <see cref="GetDisplayFlag"/>.</summary>
+    void SetDisplayFlag(string packId, string key, bool value);
+
+    /// <summary>Returns a read-only view of all display flags for the given pack, suitable
+    /// for passing to <see cref="LanguageBehavior"/>'s render methods.</summary>
+    IDisplayFlags DisplayFlagsFor(string packId);
 }
