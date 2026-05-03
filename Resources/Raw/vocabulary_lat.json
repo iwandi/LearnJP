@@ -1,0 +1,12 @@
+[
+  { "id": "la-a1-001", "kanji": "salve",      "kana": "salve",      "romaji": "salve",      "pos": "interjection", "tags": ["a1","greeting"], "frequencyRank": 50 },
+  { "id": "la-a1-002", "kanji": "vale",       "kana": "vale",       "romaji": "vale",       "pos": "interjection", "tags": ["a1","greeting"], "frequencyRank": 70 },
+  { "id": "la-a1-003", "kanji": "ita",        "kana": "ita",        "romaji": "ita",        "pos": "adverb",       "tags": ["a1","basic"],    "frequencyRank": 120 },
+  { "id": "la-a1-004", "kanji": "sic",        "kana": "sic",        "romaji": "sic",        "pos": "adverb",       "tags": ["a1","basic"],    "frequencyRank": 90 },
+  { "id": "la-a1-005", "kanji": "non",        "kana": "non",        "romaji": "non",        "pos": "adverb",       "tags": ["a1","basic"],    "frequencyRank": 20 },
+  { "id": "la-a1-006", "kanji": "et",         "kana": "et",         "romaji": "et",         "pos": "conjunction",  "tags": ["a1","basic"],    "frequencyRank": 10 },
+  { "id": "la-a1-007", "kanji": "sed",        "kana": "sed",        "romaji": "sed",        "pos": "conjunction",  "tags": ["a1","basic"],    "frequencyRank": 40 },
+  { "id": "la-a1-008", "kanji": "quis",       "kana": "quis",       "romaji": "quis",       "pos": "pronoun",      "tags": ["a1","basic"],    "frequencyRank": 110 },
+  { "id": "la-a1-009", "kanji": "quid",       "kana": "quid",       "romaji": "quid",       "pos": "pronoun",      "tags": ["a1","basic"],    "frequencyRank": 130 },
+  { "id": "la-a1-010", "kanji": "amo",        "kana": "amo",        "romaji": "amo",        "pos": "verb",         "tags": ["a1","basic"],    "frequencyRank": 150 }
+]

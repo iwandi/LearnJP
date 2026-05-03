@@ -1,0 +1,12 @@
+[
+  { "id": "it-a1-001", "meanings": ["hello", "hi", "bye"] },
+  { "id": "it-a1-002", "meanings": ["good morning"] },
+  { "id": "it-a1-003", "meanings": ["good evening"] },
+  { "id": "it-a1-004", "meanings": ["good night"] },
+  { "id": "it-a1-005", "meanings": ["goodbye"] },
+  { "id": "it-a1-006", "meanings": ["yes"] },
+  { "id": "it-a1-007", "meanings": ["no"] },
+  { "id": "it-a1-008", "meanings": ["thank you", "thanks"] },
+  { "id": "it-a1-009", "meanings": ["you're welcome"] },
+  { "id": "it-a1-010", "meanings": ["sorry", "excuse me"] }
+]

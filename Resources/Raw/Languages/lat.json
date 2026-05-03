@@ -1,0 +1,14 @@
+{
+    "id": "lat",
+    "displayName": "Latin",
+    "ttsLocale": "it-IT",
+    "defaultAzureVoice": "it-IT-ElsaNeural",
+    "vocabFile": "vocabulary_lat.json",
+    "translations": {
+      "en": "vocabulary_lat-en.json",
+      "de": "vocabulary_lat-de.json"
+    },
+    "glyphTags": [],
+    "behaviorType": "Generic"
+  }
+  

@@ -1,0 +1,12 @@
+[
+  { "id": "la-a1-001", "meanings": ["hallo", "grüße"] },
+  { "id": "la-a1-002", "meanings": ["auf Wiedersehen", "leb wohl"] },
+  { "id": "la-a1-003", "meanings": ["so", "auf diese Weise"] },
+  { "id": "la-a1-004", "meanings": ["so", "auf diese Weise"] },
+  { "id": "la-a1-005", "meanings": ["nicht", "nein"] },
+  { "id": "la-a1-006", "meanings": ["und"] },
+  { "id": "la-a1-007", "meanings": ["aber"] },
+  { "id": "la-a1-008", "meanings": ["wer", "jemand"] },
+  { "id": "la-a1-009", "meanings": ["was", "etwas"] },
+  { "id": "la-a1-010", "meanings": ["ich liebe"] }
+]
