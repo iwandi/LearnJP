@@ -3,6 +3,7 @@
   "azureSpeechRegion": "eastus",
   "resourcesRawPath": "",
   "outputDirectory": "./tts-output",
+  "outputFormat": "webm-24khz-16bit-mono-opus",
   "maxConcurrency": 4,
   "overwrite": false,
   "delayBetweenRequestsMs": 50

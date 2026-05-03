@@ -177,15 +177,17 @@ public sealed class TtsService : ITtsService
     }
 
     /// <summary>Returns the approximate duration in milliseconds of an audio buffer, or 0 on
-    /// parse failure. Handles both canonical RIFF/WAV (checks for "RIFF" header) and raw MP3
-    /// (estimating from byte count at the 96 kbps rate Azure uses for mp3 synthesis).</summary>
+    /// parse failure. Handles RIFF/WAV (exact, via header), MP3 (approximate at 96 kbps),
+    /// and WebM/OGG (approximate at 64 kbps — the Opus rate Azure uses).</summary>
     private static int EstimateWavDurationMs(byte[] audio)
     {
         try
         {
-            // RIFF/WAV: parse the standard header.
-            if (audio.Length >= 44 &&
-                audio[0] == 'R' && audio[1] == 'I' && audio[2] == 'F' && audio[3] == 'F')
+            if (audio.Length < 8) return 0;
+
+            // RIFF/WAV: parse the standard header for an exact value.
+            if (audio[0] == 'R' && audio[1] == 'I' && audio[2] == 'F' && audio[3] == 'F'
+                && audio.Length >= 44)
             {
                 var sampleRate = BitConverter.ToUInt32(audio, 24);
                 var channels   = BitConverter.ToUInt16(audio, 22);
@@ -197,12 +199,18 @@ public sealed class TtsService : ITtsService
                 return (int)(dataBytes * 1000 / bytesPerSecond);
             }
 
-            // MP3 (Azure outputs at 96 kbps): approximate from byte count.
-            // duration_ms = bytes * 8 / kbps = bytes * 8 / 96 = bytes / 12
-            if (audio.Length > 64)
-                return audio.Length / 12;
+            if (audio.Length <= 64) return 0;
 
-            return 0;
+            // WebM (starts with 0x1A 0x45 0xDF 0xA3 — EBML magic) or OGG (starts with "OggS"):
+            // Azure Opus streams are ~64 kbps. duration_ms ≈ bytes * 8 / 64 = bytes / 8
+            if ((audio[0] == 0x1A && audio[1] == 0x45 && audio[2] == 0xDF && audio[3] == 0xA3)
+                || (audio[0] == 'O' && audio[1] == 'g' && audio[2] == 'g' && audio[3] == 'S'))
+            {
+                return audio.Length / 8;
+            }
+
+            // MP3 (Azure outputs at 96 kbps): duration_ms ≈ bytes * 8 / 96 = bytes / 12
+            return audio.Length / 12;
         }
         catch { return 0; }
     }

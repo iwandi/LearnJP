@@ -3,19 +3,24 @@
 /// Walks every language pack and every vocabulary entry, synthesises the target-language
 /// audio via the Azure TTS REST API and writes the result to a local output directory.
 ///
-/// Output files are named with the same SHA-256 scheme that FileTtsCache uses (provider|lang|voice|text)
-/// so the generated files can be dropped directly into the app's tts-cache folder on any device
-/// to skip network synthesis at runtime.
+/// Output files are named with the same SHA-256 scheme that FileTtsCache uses
+/// (provider|lang|voice|text), so the generated files can be dropped directly into the
+/// app's tts-cache folder on any device to skip network synthesis at runtime.
 ///
-/// Audio format: MP3 at 24 kHz / 96 kbps (audio-24khz-96kbitrate-mono-mp3).
-/// Azure Cognitive Services does not expose AAC output via its REST API; MP3 is the
-/// closest equivalent compressed format and is natively supported on all target platforms.
+/// Audio formats (set via "outputFormat" in the config, no transcoding needed):
+///   webm-24khz-16bit-mono-opus  (default) — WebM/Opus; best quality/size ratio, natively
+///                                supported by Azure. Works on Android and Windows; NOT
+///                                supported by iOS/macOS AVAudioPlayer — use mp3 for those.
+///   audio-24khz-96kbitrate-mono-mp3        — MP3; universally supported on all platforms.
+///
+/// Any Azure TTS output format string is accepted; the file extension is derived
+/// automatically (webm-* → .webm, ogg-* → .ogg, audio-*-mp3 / riff-* → .mp3/.wav, etc.).
 ///
 /// Usage:
 ///   dotnet run [path/to/tts-pregen-config.json]
 ///
 /// If no path is given, the tool looks for tts-pregen-config.json in the current directory,
-/// then relative to the solution root (../../..).
+/// then under Tools/TtsPregen/ relative to the solution root.
 
 using System.Net.Http;
 using System.Security.Cryptography;
@@ -59,6 +64,13 @@ if (string.IsNullOrWhiteSpace(cfg.AzureSpeechRegion))
     Console.Error.WriteLine("azureSpeechRegion is not set in the config file.");
     return 1;
 }
+
+var outputFormat = string.IsNullOrWhiteSpace(cfg.OutputFormat)
+    ? "webm-24khz-16bit-mono-opus"
+    : cfg.OutputFormat.Trim();
+var fileExtension = DeriveExtension(outputFormat);
+
+Console.WriteLine($"Output format : {outputFormat} → {fileExtension}");
 
 // ── Resolve Resources/Raw path ─────────────────────────────────────────────────────────────────
 
@@ -189,7 +201,7 @@ foreach (var (pack, words) in packs)
 
         // Compute the cache key the app uses so the files are drop-in replacements.
         var cacheKey  = $"azure|{locale}|{voice}|{ttsText}";
-        var fileName  = CacheFileName(cacheKey);
+        var fileName  = CacheFileName(cacheKey, fileExtension);
         var filePath  = Path.Combine(outputDir, fileName);
 
         if (!cfg.Overwrite && File.Exists(filePath))
@@ -206,7 +218,7 @@ foreach (var (pack, words) in packs)
         {
             try
             {
-                var audio = await SynthesizeAsync(http, cfg, locale, voice, capturedText);
+                var audio = await SynthesizeAsync(http, cfg, outputFormat, locale, voice, capturedText);
                 if (audio is null || audio.Length < 64)
                 {
                     Console.WriteLine($"  [FAIL] {word.Id}: synthesis returned no data");
@@ -237,20 +249,35 @@ foreach (var (pack, words) in packs)
 Console.WriteLine($"Done. Generated: {totalGenerated}  Skipped: {totalSkipped}  Failed: {totalFailed}");
 Console.WriteLine($"Output: {outputDir}");
 Console.WriteLine();
-Console.WriteLine("To pre-populate the app cache, copy the .mp3 files to the device's");
+Console.WriteLine($"To pre-populate the app cache, copy the {fileExtension} files to the device's");
 Console.WriteLine("  AppData/LearnJP/tts-cache/  directory.");
 return totalFailed > 0 ? 2 : 0;
 
 // ── Helpers ────────────────────────────────────────────────────────────────────────────────────
 
-static string CacheFileName(string cacheKey)
+static string CacheFileName(string cacheKey, string extension)
 {
     var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(cacheKey));
-    return Convert.ToHexString(bytes) + ".mp3";
+    return Convert.ToHexString(bytes) + extension;
+}
+
+/// <summary>Derives a file extension from an Azure TTS output-format string.
+/// Examples: "webm-24khz-16bit-mono-opus" → ".webm",
+///           "ogg-16khz-16bit-mono-opus"  → ".ogg",
+///           "audio-24khz-96kbitrate-mono-mp3" → ".mp3",
+///           "riff-24khz-16bit-mono-pcm"  → ".wav"</summary>
+static string DeriveExtension(string format)
+{
+    var f = format.ToLowerInvariant();
+    if (f.StartsWith("webm"))  return ".webm";
+    if (f.StartsWith("ogg"))   return ".ogg";
+    if (f.EndsWith("mp3"))     return ".mp3";
+    if (f.StartsWith("riff"))  return ".wav";
+    return ".bin";
 }
 
 static async Task<byte[]?> SynthesizeAsync(
-    HttpClient http, PregenConfig cfg, string locale, string voice, string text)
+    HttpClient http, PregenConfig cfg, string outputFormat, string locale, string voice, string text)
 {
     var endpoint = $"https://{cfg.AzureSpeechRegion}.tts.speech.microsoft.com/cognitiveservices/v1";
     var safeText = System.Security.SecurityElement.Escape(text) ?? text;
@@ -261,7 +288,7 @@ static async Task<byte[]?> SynthesizeAsync(
 
     using var req = new HttpRequestMessage(HttpMethod.Post, endpoint);
     req.Headers.Add("Ocp-Apim-Subscription-Key", cfg.AzureSpeechKey);
-    req.Headers.Add("X-Microsoft-OutputFormat", "audio-24khz-96kbitrate-mono-mp3");
+    req.Headers.Add("X-Microsoft-OutputFormat", outputFormat);
     req.Headers.Add("User-Agent", "LearnJP-TtsPregen/1.0");
     req.Content = new StringContent(ssml, Encoding.UTF8, "application/ssml+xml");
 
@@ -330,6 +357,15 @@ internal sealed class PregenConfig
     /// <summary>Path to Resources/Raw. Leave empty to auto-detect from the directory tree.</summary>
     [JsonPropertyName("resourcesRawPath")]       public string ResourcesRawPath       { get; set; } = string.Empty;
     [JsonPropertyName("outputDirectory")]        public string OutputDirectory        { get; set; } = "./tts-output";
+    /// <summary>
+    /// Azure TTS output-format string. The file extension is derived automatically.
+    /// Recommended options (no transcoding — Azure outputs these natively):
+    ///   webm-24khz-16bit-mono-opus         (default) best quality/size; Android + Windows only
+    ///   audio-24khz-96kbitrate-mono-mp3    universally supported including iOS/macOS
+    ///   ogg-24khz-16bit-mono-opus          OGG/Opus; Android + Windows
+    /// Leave empty to use the default (webm-24khz-16bit-mono-opus).
+    /// </summary>
+    [JsonPropertyName("outputFormat")]           public string OutputFormat           { get; set; } = string.Empty;
     [JsonPropertyName("maxConcurrency")]         public int    MaxConcurrency         { get; set; } = 4;
     [JsonPropertyName("overwrite")]              public bool   Overwrite              { get; set; } = false;
     [JsonPropertyName("delayBetweenRequestsMs")] public int    DelayBetweenRequestsMs { get; set; } = 50;
