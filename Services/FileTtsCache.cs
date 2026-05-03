@@ -27,7 +27,17 @@ public sealed class FileTtsCache : ITtsCache
     private static string FileFor(string key)
     {
         var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(key));
-        return Convert.ToHexString(bytes) + ".wav";
+        return Convert.ToHexString(bytes) + ".mp3";
+    }
+
+    /// <summary>Returns the full path for a cache entry, checking the current .mp3 extension
+    /// first and falling back to the legacy .wav extension for backward compatibility.</summary>
+    private string PathFor(string key)
+    {
+        var mp3 = Path.Combine(GetDir(), FileFor(key));
+        if (File.Exists(mp3)) return mp3;
+        var wav = Path.Combine(GetDir(), Path.ChangeExtension(FileFor(key), ".wav"));
+        return File.Exists(wav) ? wav : mp3; // return mp3 path as the write target when neither exists
     }
 
     public async Task<byte[]?> GetAsync(string provider, string voice, string lang, string text, CancellationToken ct = default)
@@ -36,7 +46,7 @@ public sealed class FileTtsCache : ITtsCache
 
         if (_memory.TryGetValue(key, out var cached)) return cached;
 
-        var path = Path.Combine(GetDir(), FileFor(key));
+        var path = PathFor(key);
         if (!File.Exists(path)) return null;
 
         await _gate.WaitAsync(ct);

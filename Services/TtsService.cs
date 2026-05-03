@@ -176,22 +176,33 @@ public sealed class TtsService : ITtsService
         }
     }
 
-    /// <summary>Returns the duration of a canonical PCM WAV in milliseconds, or 0 on parse failure.</summary>
-    private static int EstimateWavDurationMs(byte[] wav)
+    /// <summary>Returns the approximate duration in milliseconds of an audio buffer, or 0 on
+    /// parse failure. Handles both canonical RIFF/WAV (checks for "RIFF" header) and raw MP3
+    /// (estimating from byte count at the 96 kbps rate Azure uses for mp3 synthesis).</summary>
+    private static int EstimateWavDurationMs(byte[] audio)
     {
         try
         {
-            if (wav.Length < 44) return 0;
-            // sampleRate at offset 24 (little-endian uint32), channels at 22 (uint16), bitsPerSample at 34 (uint16),
-            // data chunk size at offset 40 (uint32). This is the canonical RIFF/WAV layout Azure returns.
-            var sampleRate = BitConverter.ToUInt32(wav, 24);
-            var channels   = BitConverter.ToUInt16(wav, 22);
-            var bps        = BitConverter.ToUInt16(wav, 34);
-            var dataBytes  = BitConverter.ToUInt32(wav, 40);
-            if (sampleRate == 0 || channels == 0 || bps == 0) return 0;
-            var bytesPerSecond = sampleRate * channels * (bps / 8u);
-            if (bytesPerSecond == 0) return 0;
-            return (int)(dataBytes * 1000 / bytesPerSecond);
+            // RIFF/WAV: parse the standard header.
+            if (audio.Length >= 44 &&
+                audio[0] == 'R' && audio[1] == 'I' && audio[2] == 'F' && audio[3] == 'F')
+            {
+                var sampleRate = BitConverter.ToUInt32(audio, 24);
+                var channels   = BitConverter.ToUInt16(audio, 22);
+                var bps        = BitConverter.ToUInt16(audio, 34);
+                var dataBytes  = BitConverter.ToUInt32(audio, 40);
+                if (sampleRate == 0 || channels == 0 || bps == 0) return 0;
+                var bytesPerSecond = sampleRate * channels * (bps / 8u);
+                if (bytesPerSecond == 0) return 0;
+                return (int)(dataBytes * 1000 / bytesPerSecond);
+            }
+
+            // MP3 (Azure outputs at 96 kbps): approximate from byte count.
+            // duration_ms = bytes * 8 / kbps = bytes * 8 / 96 = bytes / 12
+            if (audio.Length > 64)
+                return audio.Length / 12;
+
+            return 0;
         }
         catch { return 0; }
     }

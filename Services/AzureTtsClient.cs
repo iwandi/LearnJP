@@ -49,7 +49,7 @@ public sealed class AzureTtsClient : IDisposable
         {
             using var req = new HttpRequestMessage(HttpMethod.Post, endpoint);
             req.Headers.Add("Ocp-Apim-Subscription-Key", key);
-            req.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
+            req.Headers.Add("X-Microsoft-OutputFormat", "audio-24khz-96kbitrate-mono-mp3");
             req.Headers.Add("User-Agent", "LearnJP/1.0");
             req.Content = new StringContent(ssml, Encoding.UTF8, "application/ssml+xml");
 

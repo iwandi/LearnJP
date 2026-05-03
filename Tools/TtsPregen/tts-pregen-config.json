@@ -1,0 +1,9 @@
+{
+  "azureSpeechKey": "",
+  "azureSpeechRegion": "eastus",
+  "resourcesRawPath": "",
+  "outputDirectory": "./tts-output",
+  "maxConcurrency": 4,
+  "overwrite": false,
+  "delayBetweenRequestsMs": 50
+}
