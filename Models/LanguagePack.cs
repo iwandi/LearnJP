@@ -22,9 +22,26 @@ public sealed class LanguagePack
     [JsonPropertyName("ttsLocale")]
     public string TtsLocale { get; set; } = string.Empty;
 
-    /// <summary>Azure neural voice used when the user hasn't picked a custom voice.</summary>
-    [JsonPropertyName("defaultAzureVoice")]
-    public string DefaultAzureVoice { get; set; } = string.Empty;
+    /// <summary>
+    /// Default voice per TTS provider, keyed by the provider's lowercase name
+    /// (e.g. "azure"). Lets each pack ship its own preferred voice without forcing the
+    /// settings layer to know about every provider/language combination. Lookup is
+    /// case-insensitive — see <see cref="GetVoiceFor"/>.
+    /// </summary>
+    [JsonPropertyName("providerVoices")]
+    public Dictionary<string, string> ProviderVoices { get; set; } = new();
+
+    /// <summary>Returns the configured voice for <paramref name="provider"/>, or empty if none.
+    /// Case-insensitive — System.Text.Json drops our comparer when deserialising, so we walk
+    /// the entries explicitly instead of relying on the dictionary's own comparer.</summary>
+    public string GetVoiceFor(TtsProvider provider)
+    {
+        var key = provider.ToString();
+        foreach (var (k, v) in ProviderVoices)
+            if (string.Equals(k, key, StringComparison.OrdinalIgnoreCase))
+                return v ?? string.Empty;
+        return string.Empty;
+    }
 
     /// <summary>Vocabulary file to load (relative to Resources/Raw). Holds target-language
     /// fields (writing, reading, transliteration). Translations live in <see cref="TranslationFile"/>.</summary>

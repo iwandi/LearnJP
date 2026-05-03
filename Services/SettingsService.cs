@@ -11,8 +11,6 @@ public sealed class SettingsService : ISettingsService
     private const string KeyTtsProvider   = "settings.tts_provider";
     private const string KeyAzureKey      = "settings.azure_key";
     private const string KeyAzureRegion   = "settings.azure_region";
-    private const string KeyAzureJaVoice  = "settings.azure_ja_voice";
-    private const string KeyAzureEnVoice  = "settings.azure_en_voice";
     private const string KeySystemVolume  = "settings.system_volume";
     private const string KeyAzureVolume   = "settings.azure_volume";
     private const string KeyIncludeTags   = "settings.include_tags";
@@ -66,18 +64,6 @@ public sealed class SettingsService : ISettingsService
     {
         get => Read(KeyAzureRegion, "westeurope");
         set => Write(KeyAzureRegion, value ?? string.Empty);
-    }
-
-    public string AzureJapaneseVoice
-    {
-        get => Read(KeyAzureJaVoice, "ja-JP-NanamiNeural");
-        set => Write(KeyAzureJaVoice, value ?? string.Empty);
-    }
-
-    public string AzureEnglishVoice
-    {
-        get => Read(KeyAzureEnVoice, "en-US-JennyNeural");
-        set => Write(KeyAzureEnVoice, value ?? string.Empty);
     }
 
     public double SystemTtsVolume

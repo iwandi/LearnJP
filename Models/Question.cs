@@ -27,7 +27,6 @@ public sealed class Question
     public string? PromptFurigana { get; init; }
     public required IReadOnlyList<QuestionOption> Options { get; init; }
     public required string TtsText { get; init; }
-    public required string TtsLocaleTag { get; init; }
     public required double TargetProficiencyAtAsk { get; init; }
     /// <summary>True when the picker drew this word from the strategy's active focus set.</summary>
     public bool IsInReinforcementSet { get; init; }

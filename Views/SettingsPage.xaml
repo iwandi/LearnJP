@@ -54,14 +54,8 @@
                 <Label Text="Azure region" Style="{StaticResource MutedLabel}" />
                 <Entry Text="{Binding AzureSpeechRegion}" Placeholder="e.g. westeurope, eastus" />
 
-                <Label Text="Japanese voice" Style="{StaticResource MutedLabel}" />
-                <Entry Text="{Binding AzureJapaneseVoice}" Placeholder="ja-JP-NanamiNeural" />
-
-                <Label Text="English voice" Style="{StaticResource MutedLabel}" />
-                <Entry Text="{Binding AzureEnglishVoice}" Placeholder="en-US-JennyNeural" />
-
                 <Label Style="{StaticResource MutedLabel}"
-                       Text="Common JP voices: ja-JP-NanamiNeural, ja-JP-KeitaNeural, ja-JP-AoiNeural, ja-JP-DaichiNeural, ja-JP-MayuNeural, ja-JP-NaokiNeural, ja-JP-ShioriNeural." />
+                       Text="Voices are configured per language in the language pack (providerVoices.azure)." />
             </VerticalStackLayout>
 
             <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />

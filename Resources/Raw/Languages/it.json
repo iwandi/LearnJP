@@ -2,7 +2,9 @@
     "id": "it",
     "displayName": "Italian",
     "ttsLocale": "it-IT",
-    "defaultAzureVoice": "it-IT-ElsaNeural",
+    "providerVoices": {
+      "azure": "it-IT-ElsaNeural"
+    },
     "vocabFile": "vocabulary_it.json",
     "translations": {
       "en": "vocabulary_it-en.json",

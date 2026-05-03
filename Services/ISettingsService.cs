@@ -12,8 +12,6 @@ public interface ISettingsService
     TtsProvider TtsProvider { get; set; }
     string AzureSpeechKey { get; set; }
     string AzureSpeechRegion { get; set; }
-    string AzureJapaneseVoice { get; set; }
-    string AzureEnglishVoice { get; set; }
 
     /// <summary>0.0 .. 1.0. Applied at playback, not synthesis.</summary>
     double SystemTtsVolume { get; set; }

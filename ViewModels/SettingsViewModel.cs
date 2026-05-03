@@ -73,18 +73,6 @@ public sealed class SettingsViewModel : BaseViewModel
         set { _settings.AzureSpeechRegion = value; OnPropertyChanged(); }
     }
 
-    public string AzureJapaneseVoice
-    {
-        get => _settings.AzureJapaneseVoice;
-        set { _settings.AzureJapaneseVoice = value; OnPropertyChanged(); }
-    }
-
-    public string AzureEnglishVoice
-    {
-        get => _settings.AzureEnglishVoice;
-        set { _settings.AzureEnglishVoice = value; OnPropertyChanged(); }
-    }
-
     public double SystemTtsVolume
     {
         get => _settings.SystemTtsVolume;

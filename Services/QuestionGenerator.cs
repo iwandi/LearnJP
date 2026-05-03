@@ -119,7 +119,11 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         var distractors = PickDistractors(target, criterion, prof.Overall, optionCount - 1, pool);
         var options = BuildOptions(target, distractors, direction);
-        var (prompt, furigana, ttsText, ttsLocale) = BuildPrompt(target, direction, displayMode);
+        var (prompt, furigana) = BuildPrompt(target, direction, displayMode);
+        // Language-specific TTS form goes through the behaviour module so the TTS service
+        // never has to inspect target-language fields directly.
+        var behavior = _packs?.Active?.Behavior;
+        var ttsText = behavior is not null ? behavior.TtsText(target) : target.Kana;
 
         _lastWordId = target.Id;
 
@@ -133,7 +137,6 @@ public sealed class QuestionGenerator : IQuestionGenerator
             PromptFurigana = furigana,
             Options = options,
             TtsText = ttsText,
-            TtsLocaleTag = ttsLocale,
             TargetProficiencyAtAsk = prof.Overall,
             IsInReinforcementSet = IsInActiveFocusSet(strategy, target.Id),
             IsValidation = isValidation
@@ -701,28 +704,28 @@ public sealed class QuestionGenerator : IQuestionGenerator
         return options;
     }
 
-    private (string prompt, string? furigana, string ttsText, string ttsLocale) BuildPrompt(
+    private (string prompt, string? furigana) BuildPrompt(
         Word target, QuestionDirection dir, JapaneseDisplayMode mode)
     {
         if (dir == QuestionDirection.BaseToTarget)
         {
-            return (target.MeaningsJoined, null, target.Kana, "ja");
+            return (target.MeaningsJoined, null);
         }
 
         // JP → EN, render according to display mode.
         switch (mode)
         {
             case JapaneseDisplayMode.RomajiOnly:
-                return (target.Romaji, null, target.Kana, "ja");
+                return (target.Romaji, null);
             case JapaneseDisplayMode.HiraganaOnly:
-                return (target.Kana, null, target.Kana, "ja");
+                return (target.Kana, null);
             case JapaneseDisplayMode.KanjiOnly:
-                return (string.IsNullOrEmpty(target.Kanji) ? target.Kana : target.Kanji, null, target.Kana, "ja");
+                return (string.IsNullOrEmpty(target.Kanji) ? target.Kana : target.Kanji, null);
             case JapaneseDisplayMode.KanjiWithFurigana:
             default:
                 var prompt = string.IsNullOrEmpty(target.Kanji) ? target.Kana : target.Kanji;
                 var furi = string.IsNullOrEmpty(target.Kanji) ? null : target.Kana;
-                return (prompt, furi, target.Kana, "ja");
+                return (prompt, furi);
         }
     }
 }

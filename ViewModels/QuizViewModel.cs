@@ -222,16 +222,23 @@ public sealed class QuizViewModel : BaseViewModel
             // Kana drills skip the initial auto-TTS (the prompt is the pronunciation),
             // but still vocalise after the answer is revealed.
             if (q.Direction == QuestionDirection.TargetToBase && !IsKanaWord(q.Target))
-                _ = _tts.SpeakJapaneseAsync(q.TtsText);
+                _ = _tts.SpeakAsync(q.TtsText);
 
             // Warm the TTS cache for the active "new term" frontier so when one of those
             // words surfaces, the audio is already on disk instead of waiting on synthesis.
-            var frontierKana = _gen.CurrentNewTermFrontier
-                .Where(w => !IsKanaWord(w))
-                .Select(w => w.Kana)
-                .ToList();
-            if (frontierKana.Count > 0)
-                _ = _tts.PrefetchJapaneseAsync(frontierKana);
+            // Pulls TTS text via the active language behaviour so e.g. JP picks kana while
+            // Italian picks the headword field directly.
+            var behavior = _packs.Active?.Behavior;
+            if (behavior is not null)
+            {
+                var frontierTexts = _gen.CurrentNewTermFrontier
+                    .Where(w => !IsKanaWord(w))
+                    .Select(behavior.TtsText)
+                    .Where(s => !string.IsNullOrWhiteSpace(s))
+                    .ToList();
+                if (frontierTexts.Count > 0)
+                    _ = _tts.PrefetchAsync(frontierTexts);
+            }
         }
         finally { IsLoading = false; }
     }
@@ -281,7 +288,7 @@ public sealed class QuizViewModel : BaseViewModel
         try
         {
             if (delay > TimeSpan.Zero) await Task.Delay(delay);
-            await _tts.SpeakJapaneseAsync(text);
+            await _tts.SpeakAsync(text);
         }
         catch { /* ignore */ }
     }
@@ -338,10 +345,13 @@ public sealed class QuizViewModel : BaseViewModel
 
     public async Task SpeakOptionAsync(QuizOptionVm opt)
     {
-        var kana = opt.Source.Word.Kana;
-        if (string.IsNullOrWhiteSpace(kana)) return;
+        // Route through the active language's behaviour so we feed the TTS engine the right
+        // form (e.g. kana for JP, the headword field for romance languages).
+        var behavior = _packs.Active?.Behavior;
+        var text = behavior is not null ? behavior.TtsText(opt.Source.Word) : opt.Source.Word.Kana;
+        if (string.IsNullOrWhiteSpace(text)) return;
         var effectDuration = _sounds.Play(SoundEffect.Click);
-        await SpeakAfterAsync(effectDuration + PostEffectPause, kana);
+        await SpeakAfterAsync(effectDuration + PostEffectPause, text);
     }
 
     private async Task ScheduleAutoAdvance(TimeSpan delay)

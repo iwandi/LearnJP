@@ -186,8 +186,6 @@ internal sealed class MemorySettingsService : ISettingsService
     public TtsProvider TtsProvider { get; set; } = TtsProvider.System;
     public string AzureSpeechKey { get; set; } = string.Empty;
     public string AzureSpeechRegion { get; set; } = string.Empty;
-    public string AzureJapaneseVoice { get; set; } = string.Empty;
-    public string AzureEnglishVoice { get; set; } = string.Empty;
     public double SystemTtsVolume { get; set; } = 1.0;
     public double AzureTtsVolume { get; set; } = 1.0;
     public IReadOnlyList<string> ActiveIncludeTags { get; set; } = Array.Empty<string>();
