@@ -175,4 +175,5 @@ internal sealed class MemorySettingsService : ISettingsService
     public IReadOnlyList<string> ActiveExcludeTags { get; set; } = Array.Empty<string>();
     public LearningStrategy SelectedLearningStrategy { get; set; } = LearningStrategy.Fsrs;
     public bool CountForProficiency { get; set; } = true;
+    public string ActiveLanguageId { get; set; } = string.Empty;
 }

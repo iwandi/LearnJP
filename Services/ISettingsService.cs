@@ -31,4 +31,7 @@ public interface ISettingsService
 
     /// <summary>When false, answers are not recorded against per-word proficiency (debugging).</summary>
     bool CountForProficiency { get; set; }
+
+    /// <summary>Id of the currently selected language pack (e.g. "ja"). Empty = first available.</summary>
+    string ActiveLanguageId { get; set; }
 }

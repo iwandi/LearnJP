@@ -1,0 +1,8 @@
+{
+  "id": "ja",
+  "displayName": "Japanese",
+  "ttsLocale": "ja-JP",
+  "defaultAzureVoice": "ja-JP-NanamiNeural",
+  "vocabFile": "vocabulary.json",
+  "glyphTags": ["hiragana", "katakana"]
+}

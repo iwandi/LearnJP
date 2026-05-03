@@ -19,6 +19,7 @@ public sealed class SettingsService : ISettingsService
     private const string KeyExcludeTags   = "settings.exclude_tags";
     private const string KeyStrategy      = "settings.learning_strategy";
     private const string KeyTrackProf     = "settings.count_for_proficiency";
+    private const string KeyActiveLang    = "settings.active_language_id";
 
     private readonly Dictionary<string, object> _fallback = new();
     private bool _preferencesAvailable = true;
@@ -124,5 +125,11 @@ public sealed class SettingsService : ISettingsService
     {
         get => Read(KeyTrackProf, true);
         set => Write(KeyTrackProf, value);
+    }
+
+    public string ActiveLanguageId
+    {
+        get => Read(KeyActiveLang, string.Empty);
+        set => Write(KeyActiveLang, value ?? string.Empty);
     }
 }
