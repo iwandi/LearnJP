@@ -1,7 +1,7 @@
 {
     "id": "lat",
     "displayName": "Latin",
-    "ttsLocale": "la",
+    "ttsLocale": "it-IT",
     "providerVoices": {
       "azure": "it-IT-ElsaNeural"
     },
