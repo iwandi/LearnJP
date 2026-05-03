@@ -4,97 +4,108 @@ using Microsoft.Maui.Media;
 
 namespace LearnJP.Services;
 
+/// <summary>
+/// Provider-agnostic, language-neutral TTS. The active language pack supplies the BCP-47
+/// locale and the provider-specific voice; this service holds no per-language state of its
+/// own and never inspects <see cref="Word"/> fields. Anything language-specific must arrive
+/// either from the pack data or from a <see cref="LanguageBehavior"/>.
+/// </summary>
 public sealed class TtsService : ITtsService
 {
     private readonly ISettingsService _settings;
     private readonly ISoundService _sounds;
     private readonly AzureTtsClient _azure;
+    private readonly ILanguagePackService _packs;
 
     private CancellationTokenSource? _cts;
-    private Locale? _japaneseLocaleCache;
-    private Locale? _englishLocaleCache;
-    private bool _localesLoaded;
+    // Keyed by BCP-47 tag so that switching language packs doesn't reuse another language's locale.
+    private readonly Dictionary<string, Locale?> _systemLocales = new(StringComparer.OrdinalIgnoreCase);
     private bool _systemEngineDisabled;
 
-    // Texts already submitted for prefetch this session. Azure cache is persistent, but
-    // re-issuing 12 cache lookups every question is wasteful — this short-circuits them.
-    private readonly HashSet<string> _prefetchedJapanese = new(StringComparer.Ordinal);
+    // Texts already submitted for prefetch. Reset on language change so the cache can warm
+    // again for the new locale instead of short-circuiting on stale entries.
+    private readonly HashSet<string> _prefetched = new(StringComparer.Ordinal);
 
-    public TtsService(ISettingsService settings, ISoundService sounds, AzureTtsClient azure)
+    public TtsService(ISettingsService settings, ISoundService sounds, AzureTtsClient azure, ILanguagePackService packs)
     {
         _settings = settings;
         _sounds = sounds;
         _azure = azure;
+        _packs = packs;
+        _packs.ActiveChanged += (_, _) =>
+        {
+            lock (_prefetched) _prefetched.Clear();
+        };
     }
 
-    public Task SpeakJapaneseAsync(string text, CancellationToken ct = default) =>
-        SpeakAsync(text, "ja", ct);
+    public Task SpeakAsync(string text, CancellationToken ct = default)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return Task.CompletedTask;
+        if (!IsEnabled()) return Task.CompletedTask;
+        if (!TryResolveTarget(out var locale, out var voice)) return Task.CompletedTask;
 
-    public Task SpeakEnglishAsync(string text, CancellationToken ct = default) =>
-        SpeakAsync(text, "en", ct);
+        return CurrentProvider() switch
+        {
+            TtsProvider.Azure => SpeakAzureAsync(text, locale, voice, ct),
+            _                 => SpeakSystemAsync(text, locale, ct)
+        };
+    }
 
-    public void Cancel()
+    public void CancelSpeaking()
     {
         try { _cts?.Cancel(); } catch { /* ignore */ }
     }
 
-    public async Task PrefetchJapaneseAsync(IEnumerable<string> texts, CancellationToken ct = default)
+    public async Task PrefetchAsync(IEnumerable<string> texts, CancellationToken ct = default)
     {
         if (texts is null) return;
-
-        bool ttsEnabled;
-        try { ttsEnabled = _settings.TtsEnabled; } catch { ttsEnabled = false; }
-        if (!ttsEnabled) return;
-
-        TtsProvider provider;
-        try { provider = _settings.TtsProvider; } catch { provider = TtsProvider.System; }
+        if (!IsEnabled()) return;
         // Only Azure has a persistent cache to warm; system TTS goes straight to the OS engine.
-        if (provider != TtsProvider.Azure) return;
+        if (CurrentProvider() != TtsProvider.Azure) return;
+        if (!TryResolveTarget(out var locale, out var voice)) return;
 
-        var voice = _settings.AzureJapaneseVoice;
         foreach (var text in texts)
         {
             if (ct.IsCancellationRequested) return;
             if (string.IsNullOrWhiteSpace(text)) continue;
-            lock (_prefetchedJapanese)
+            lock (_prefetched)
             {
-                if (!_prefetchedJapanese.Add(text)) continue;
+                if (!_prefetched.Add(text)) continue;
             }
-            try { await _azure.SynthesizeAsync(text, "ja-JP", voice, ct); }
+            try { await _azure.SynthesizeAsync(text, locale, voice, ct); }
             catch { /* best effort */ }
         }
     }
 
-    private async Task SpeakAsync(string text, string languagePrefix, CancellationToken ct)
+    private bool IsEnabled()
     {
-        if (string.IsNullOrWhiteSpace(text)) return;
-
-        bool ttsEnabled;
-        try { ttsEnabled = _settings.TtsEnabled; } catch { ttsEnabled = false; }
-        if (!ttsEnabled) return;
-
-        TtsProvider provider;
-        try { provider = _settings.TtsProvider; } catch { provider = TtsProvider.System; }
-
-        switch (provider)
-        {
-            case TtsProvider.Azure:
-                await SpeakAzureAsync(text, languagePrefix, ct);
-                break;
-            default:
-                if (_systemEngineDisabled) return;
-                await SpeakSystemAsync(text, languagePrefix, ct);
-                break;
-        }
+        try { return _settings.TtsEnabled; } catch { return false; }
     }
 
-    private async Task SpeakAzureAsync(string text, string languagePrefix, CancellationToken ct)
+    private TtsProvider CurrentProvider()
     {
-        var (lang, voice) = languagePrefix == "ja"
-            ? ("ja-JP", _settings.AzureJapaneseVoice)
-            : ("en-US", _settings.AzureEnglishVoice);
+        try { return _settings.TtsProvider; } catch { return TtsProvider.System; }
+    }
 
-        var wav = await _azure.SynthesizeAsync(text, lang, voice, ct);
+    /// <summary>Pulls the BCP-47 locale and the provider-specific voice off the active pack.
+    /// Returns false (and skips synthesis) if no pack is active or no locale is configured.</summary>
+    private bool TryResolveTarget(out string locale, out string voice)
+    {
+        locale = string.Empty;
+        voice = string.Empty;
+        var pack = _packs.Active;
+        if (pack is null) return false;
+        if (string.IsNullOrWhiteSpace(pack.TtsLocale)) return false;
+        locale = pack.TtsLocale;
+        voice = pack.GetVoiceFor(CurrentProvider());
+        return true;
+    }
+
+    private async Task SpeakAzureAsync(string text, string locale, string voice, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(voice)) return; // Azure requires an explicit voice name.
+
+        var wav = await _azure.SynthesizeAsync(text, locale, voice, ct);
         if (wav is null || wav.Length < 64) return;
 
         var volume = 1.0;
@@ -110,20 +121,20 @@ public sealed class TtsService : ITtsService
         }
     }
 
-    private async Task SpeakSystemAsync(string text, string languagePrefix, CancellationToken ct)
+    private async Task SpeakSystemAsync(string text, string locale, CancellationToken ct)
     {
+        if (_systemEngineDisabled) return;
         await MainThread.InvokeOnMainThreadAsync(async () =>
         {
             try
             {
-                await EnsureLocalesAsync();
-                try { Cancel(); } catch { /* ignore */ }
+                var sysLocale = await ResolveSystemLocaleAsync(locale);
+                CancelSpeaking();
                 _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
 
-                var locale = languagePrefix == "ja" ? _japaneseLocaleCache : _englishLocaleCache;
                 var sysVolume = 1.0;
                 try { sysVolume = _settings.SystemTtsVolume; } catch { /* default */ }
-                var options = new SpeechOptions { Locale = locale, Pitch = 1.0f, Volume = (float)Math.Clamp(sysVolume, 0.0, 1.0) };
+                var options = new SpeechOptions { Locale = sysLocale, Pitch = 1.0f, Volume = (float)Math.Clamp(sysVolume, 0.0, 1.0) };
 
                 await TextToSpeech.Default.SpeakAsync(text, options, _cts.Token);
             }
@@ -140,22 +151,29 @@ public sealed class TtsService : ITtsService
         });
     }
 
-    private async Task EnsureLocalesAsync()
+    /// <summary>Maps a BCP-47 tag (e.g. "ja-JP") to a system <see cref="Locale"/> the OS engine
+    /// understands. Match the language prefix only ("ja") because some platforms expose
+    /// "ja-Jpan" or no region tag at all. Cached per language so we don't query each speak.</summary>
+    private async Task<Locale?> ResolveSystemLocaleAsync(string bcp47)
     {
-        if (_localesLoaded) return;
+        var langPrefix = (bcp47.Split('-').FirstOrDefault() ?? string.Empty).ToLowerInvariant();
+        if (string.IsNullOrEmpty(langPrefix)) return null;
+
+        if (_systemLocales.TryGetValue(langPrefix, out var cached)) return cached;
         try
         {
             var locales = (await TextToSpeech.Default.GetLocalesAsync()).ToList();
-            _japaneseLocaleCache = locales.FirstOrDefault(l =>
-                l.Language?.StartsWith("ja", StringComparison.OrdinalIgnoreCase) == true);
-            _englishLocaleCache = locales.FirstOrDefault(l =>
-                l.Language?.StartsWith("en", StringComparison.OrdinalIgnoreCase) == true);
+            var match = locales.FirstOrDefault(l =>
+                l.Language?.StartsWith(langPrefix, StringComparison.OrdinalIgnoreCase) == true);
+            _systemLocales[langPrefix] = match;
+            return match;
         }
         catch (Exception ex)
         {
             Debug.WriteLine($"[TTS] GetLocalesAsync failed: {ex.GetType().Name}: {ex.Message}");
+            _systemLocales[langPrefix] = null;
+            return null;
         }
-        finally { _localesLoaded = true; }
     }
 
     /// <summary>Returns the duration of a canonical PCM WAV in milliseconds, or 0 on parse failure.</summary>

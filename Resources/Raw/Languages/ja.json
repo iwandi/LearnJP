@@ -1,0 +1,16 @@
+{
+  "id": "ja",
+  "displayName": "Japanese",
+  "ttsLocale": "ja-JP",
+  "providerVoices": {
+    "azure": "ja-JP-NanamiNeural"
+  },
+  "forms": ["romaji", "kana", "kanji"],
+  "vocabFile": "vocabulary_ja.json",
+  "translations": {
+    "en": "vocabulary_ja-en.json",
+    "de": "vocabulary_ja-de.json"
+  },
+  "glyphTags": ["hiragana", "katakana"],
+  "behaviorType": "Japanese"
+}

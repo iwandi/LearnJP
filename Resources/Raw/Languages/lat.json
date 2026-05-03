@@ -1,0 +1,17 @@
+{
+    "id": "lat",
+    "displayName": "Latin",
+    "ttsLocale": "it-IT",
+    "providerVoices": {
+      "azure": "it-IT-ElsaNeural"
+    },
+    "forms": ["word"],
+    "vocabFile": "vocabulary_lat.json",
+    "translations": {
+      "en": "vocabulary_lat-en.json",
+      "de": "vocabulary_lat-de.json"
+    },
+    "glyphTags": [],
+    "behaviorType": "Generic"
+  }
+  

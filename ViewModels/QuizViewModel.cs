@@ -9,21 +9,16 @@ public sealed class QuizOptionVm : BaseViewModel
     private string _state = "idle"; // idle | correct | wrong | revealed
 
     public required QuestionOption Source { get; init; }
-    public required bool IsJapaneseSide { get; init; }
+    /// <summary>True when the option text is in the active target language (controls whether
+    /// the speak button shows — TTS is only configured for the target language).</summary>
+    public required bool IsTargetLanguageSide { get; init; }
 
-    // Idle: just the prompted side. After answer (any non-idle state): show both
-    // JP and EN so the user can verify every distractor at a glance.
-    public string Text => State == "idle" ? Source.DisplayText : BuildRevealedText();
+    // Idle: just the prompted side. After answer (any non-idle state): show both target form
+    // and meaning so the user can verify every distractor at a glance. Both texts are
+    // pre-rendered by the QuestionGenerator via the active language's behaviour module.
+    public string Text => State == "idle" ? Source.DisplayText : Source.RevealedText;
     public string State { get => _state; set => SetProperty(ref _state, value); }
-    public bool ShowSpeakButton => IsJapaneseSide;
-
-    private string BuildRevealedText()
-    {
-        var w = Source.Word;
-        var jp = string.IsNullOrEmpty(w.Kanji) ? w.Kana
-                 : (w.Kanji == w.Kana ? w.Kanji : $"{w.Kanji} ({w.Kana})");
-        return $"{jp} — {w.PrimaryMeaning}";
-    }
+    public bool ShowSpeakButton => IsTargetLanguageSide;
 
     public Color BackgroundColor => State switch
     {
@@ -123,12 +118,14 @@ public sealed class QuizViewModel : BaseViewModel
     }
 
     private string _lastSeenFilterKey = string.Empty;
-    private bool? _lastSeenRomajiOnly;
-    private bool? _lastSeenForceFurigana;
+    private string? _lastSeenDisplayFingerprint;
 
     /// <summary>
     /// Called from the page's OnAppearing — picks up tag-filter, strategy, and display-mode
-    /// changes made on other tabs and forces a fresh question if any of them changed.
+    /// changes made on other tabs and forces a fresh question if any of them changed. The
+    /// display fingerprint is built generically from whatever flags the active language's
+    /// behaviour exposes, so adding a new toggle on a new language doesn't require code
+    /// changes here.
     /// </summary>
     public async Task SyncActiveFilterAsync()
     {
@@ -138,22 +135,15 @@ public sealed class QuizViewModel : BaseViewModel
         var filterKey = string.Join("|", include) + "::" + string.Join("|", exclude);
 
         var currentStrategy = _settings.SelectedLearningStrategy;
-        var currentRomaji = _settings.RomajiOnly;
-        var currentForceFurigana = _settings.ForceFurigana;
+        var currentDisplay = ActiveDisplayFingerprint();
 
-        // Display-mode settings affect prompt rendering inside QuestionGenerator, so a change
-        // requires re-running BuildPrompt on a fresh question to surface the new mode.
-        var displayChanged =
-            (_lastSeenRomajiOnly is { } r && r != currentRomaji) ||
-            (_lastSeenForceFurigana is { } f && f != currentForceFurigana);
-
+        var displayChanged = _lastSeenDisplayFingerprint is { } prev && prev != currentDisplay;
         var changed =
             !string.Equals(filterKey, _lastSeenFilterKey, StringComparison.Ordinal) ||
             currentStrategy != _selectedStrategy ||
             displayChanged;
 
-        _lastSeenRomajiOnly = currentRomaji;
-        _lastSeenForceFurigana = currentForceFurigana;
+        _lastSeenDisplayFingerprint = currentDisplay;
 
         if (changed)
         {
@@ -168,6 +158,19 @@ public sealed class QuizViewModel : BaseViewModel
         }
     }
 
+    /// <summary>Snapshot of the active pack's display flags. Used to detect when the user
+    /// flipped a toggle on the Settings page so the next question can re-render through
+    /// the new mode.</summary>
+    private string ActiveDisplayFingerprint()
+    {
+        var pack = _packs.Active;
+        if (pack is null) return string.Empty;
+        var flags = _settings.DisplayFlagsFor(pack.Id);
+        var parts = pack.Behavior.DisplayOptions
+            .Select(o => $"{o.Key}={flags.Get(o.Key, o.DefaultValue)}");
+        return string.Join("|", parts);
+    }
+
     private static string BuildFilterDisplay(IReadOnlyList<string> include, IReadOnlyList<string> exclude)
     {
         if (include.Count == 0 && exclude.Count == 0) return string.Empty;
@@ -177,13 +180,16 @@ public sealed class QuizViewModel : BaseViewModel
         return "Filter: " + string.Join("  ", parts);
     }
 
-    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds)
+    private readonly ILanguagePackService _packs;
+
+    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds, ILanguagePackService packs)
     {
         _gen = gen;
         _store = store;
         _tts = tts;
         _settings = settings;
         _sounds = sounds;
+        _packs = packs;
         try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Fsrs; }
     }
 
@@ -206,10 +212,10 @@ public sealed class QuizViewModel : BaseViewModel
             // Always show the manual replay button — the user can always ask to hear the JP audio.
             ShowPromptSpeakButton = true;
 
-            var optionsAreJapanese = q.Direction == QuestionDirection.EnglishToJapanese;
+            var optionsAreInTargetLanguage = q.Direction == QuestionDirection.BaseToTarget;
             Options.Clear();
             foreach (var o in q.Options)
-                Options.Add(new QuizOptionVm { Source = o, IsJapaneseSide = optionsAreJapanese });
+                Options.Add(new QuizOptionVm { Source = o, IsTargetLanguageSide = optionsAreInTargetLanguage });
 
             IsAnswered = false;
             _isManuallyPinned = _store.Get(q.Target.Id).IsReinforced;
@@ -218,17 +224,24 @@ public sealed class QuizViewModel : BaseViewModel
 
             // Kana drills skip the initial auto-TTS (the prompt is the pronunciation),
             // but still vocalise after the answer is revealed.
-            if (q.Direction == QuestionDirection.JapaneseToEnglish && !IsKanaWord(q.Target))
-                _ = _tts.SpeakJapaneseAsync(q.TtsText);
+            if (q.Direction == QuestionDirection.TargetToBase && !IsGlyph(q.Target))
+                _ = _tts.SpeakAsync(q.TtsText);
 
             // Warm the TTS cache for the active "new term" frontier so when one of those
             // words surfaces, the audio is already on disk instead of waiting on synthesis.
-            var frontierKana = _gen.CurrentNewTermFrontier
-                .Where(w => !IsKanaWord(w))
-                .Select(w => w.Kana)
-                .ToList();
-            if (frontierKana.Count > 0)
-                _ = _tts.PrefetchJapaneseAsync(frontierKana);
+            // Pulls TTS text via the active language behaviour so e.g. JP picks kana while
+            // Italian picks the headword field directly.
+            var behavior = _packs.Active?.Behavior;
+            if (behavior is not null)
+            {
+                var frontierTexts = _gen.CurrentNewTermFrontier
+                    .Where(w => !IsGlyph(w))
+                    .Select(behavior.TtsText)
+                    .Where(s => !string.IsNullOrWhiteSpace(s))
+                    .ToList();
+                if (frontierTexts.Count > 0)
+                    _ = _tts.PrefetchAsync(frontierTexts);
+            }
         }
         finally { IsLoading = false; }
     }
@@ -278,7 +291,7 @@ public sealed class QuizViewModel : BaseViewModel
         try
         {
             if (delay > TimeSpan.Zero) await Task.Delay(delay);
-            await _tts.SpeakJapaneseAsync(text);
+            await _tts.SpeakAsync(text);
         }
         catch { /* ignore */ }
     }
@@ -315,15 +328,15 @@ public sealed class QuizViewModel : BaseViewModel
     }
 
     /// <summary>
-    /// Hiragana / katakana entries: their prompt and answer are the pronunciation itself,
-    /// so any auto-TTS would speak the answer aloud. Manual speak buttons stay enabled.
+    /// Glyph entries (e.g. JP kana): their prompt and answer are the pronunciation itself, so
+    /// any auto-TTS would speak the answer aloud. Manual speak buttons stay enabled. Now
+    /// dispatched to the active language's behaviour module instead of hardcoding kana logic.
     /// </summary>
-    private static bool IsKanaWord(Word w)
+    private bool IsGlyph(Word w)
     {
-        if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return true;
-        if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return true;
-        if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return true;
-        return false;
+        var pack = _packs.Active;
+        if (pack is null) return false;
+        return pack.Behavior.IsGlyphEntry(w, pack.GlyphTags);
     }
 
     public async Task SpeakCurrentAsync()
@@ -335,10 +348,14 @@ public sealed class QuizViewModel : BaseViewModel
 
     public async Task SpeakOptionAsync(QuizOptionVm opt)
     {
-        var kana = opt.Source.Word.Kana;
-        if (string.IsNullOrWhiteSpace(kana)) return;
+        // Route through the active language's behaviour so we feed the TTS engine the right
+        // form (e.g. kana for JP, the primary form for monolithic languages).
+        var behavior = _packs.Active?.Behavior;
+        if (behavior is null) return;
+        var text = behavior.TtsText(opt.Source.Word);
+        if (string.IsNullOrWhiteSpace(text)) return;
         var effectDuration = _sounds.Play(SoundEffect.Click);
-        await SpeakAfterAsync(effectDuration + PostEffectPause, kana);
+        await SpeakAfterAsync(effectDuration + PostEffectPause, text);
     }
 
     private async Task ScheduleAutoAdvance(TimeSpan delay)

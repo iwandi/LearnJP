@@ -7,6 +7,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private readonly IVocabularyService _vocab;
     private readonly IProficiencyStore _store;
     private readonly ISettingsService _settings;
+    private readonly ILanguagePackService? _packs;
     private readonly Random _rng = new();
     private string? _lastWordId;
 
@@ -40,11 +41,12 @@ public sealed class QuestionGenerator : IQuestionGenerator
     /// </summary>
     private static int FrequencyOrderKey(int rank) => rank <= 0 ? int.MaxValue : rank;
 
-    public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings)
+    public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings, ILanguagePackService? packs = null)
     {
         _vocab = vocab;
         _store = store;
         _settings = settings;
+        _packs = packs;
     }
 
     public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Fsrs)
@@ -60,22 +62,22 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         // Kana stays excluded from general practice unless the user explicitly opts in via
         // the include list — matches the prior "no filter excludes kana" behaviour.
-        bool kanaAllowed = includeSet.Contains("hiragana") || includeSet.Contains("katakana");
+        bool glyphAllowed = _packs?.Active?.GlyphTags.Any() ?? false;
 
         IEnumerable<Word> filteredEnum = pool;
         if (includeSet.Count > 0)
             filteredEnum = filteredEnum.Where(w => w.Tags.Any(t => includeSet.Contains(t)));
         if (excludeSet.Count > 0)
             filteredEnum = filteredEnum.Where(w => !w.Tags.Any(t => excludeSet.Contains(t)));
-        if (!kanaAllowed)
-            filteredEnum = filteredEnum.Where(w => CategoryOf(w) != WordCategory.Kana);
+        if (!glyphAllowed)
+            filteredEnum = filteredEnum.Where(w => CategoryOf(w) != WordCategory.Glyph);
 
         var filtered = filteredEnum.ToList();
         // Need at least one target plus one distractor — fall back to the default
         // (kana-excluded) pool if the user's filter yields too few hits.
         pool = filtered.Count >= 2
             ? filtered
-            : _vocab.All.Where(w => CategoryOf(w) != WordCategory.Kana).ToList();
+            : _vocab.All.Where(w => CategoryOf(w) != WordCategory.Glyph).ToList();
 
         if (pool.Count < 2) return null;
 
@@ -113,11 +115,18 @@ public sealed class QuestionGenerator : IQuestionGenerator
         var criterion = PickCriterion(prof);
         var direction = DirectionFor(criterion);
         var optionCount = OptionCountFor(prof.Overall);
-        var displayMode = DisplayModeFor(prof.Overall, direction);
 
-        var distractors = PickDistractors(target, criterion, prof.Overall, optionCount - 1, pool);
-        var options = BuildOptions(target, distractors, direction);
-        var (prompt, furigana, ttsText, ttsLocale) = BuildPrompt(target, direction, displayMode);
+        // All language-specific rendering routes through the active pack's behaviour. The
+        // generic fallback (used by the StrategySim when no pack is wired) is a behaviour
+        // that just reads Forms[0] — produces sensible prompts/options without crashing.
+        var pack = _packs?.Active;
+        var behavior = pack?.Behavior ?? _genericBehavior;
+        var flags = pack is not null ? _settings.DisplayFlagsFor(pack.Id) : _emptyFlags;
+
+        var distractors = PickDistractors(target, criterion, prof.Overall, optionCount - 1, pool, behavior);
+        var options = BuildOptions(target, distractors, direction, behavior, flags);
+        var rendered = behavior.RenderPrompt(target, direction, prof.Overall, flags);
+        var ttsText = behavior.TtsText(target);
 
         _lastWordId = target.Id;
 
@@ -126,17 +135,21 @@ public sealed class QuestionGenerator : IQuestionGenerator
             Target = target,
             Direction = direction,
             Criterion = criterion,
-            DisplayMode = displayMode,
-            Prompt = prompt,
-            PromptFurigana = furigana,
+            Prompt = rendered.Prompt,
+            PromptFurigana = rendered.Furigana,
             Options = options,
             TtsText = ttsText,
-            TtsLocaleTag = ttsLocale,
             TargetProficiencyAtAsk = prof.Overall,
             IsInReinforcementSet = IsInActiveFocusSet(strategy, target.Id),
             IsValidation = isValidation
         };
     }
+
+    // Used when the generator runs without a wired language pack (e.g. the strategy sim).
+    // Provides language-neutral defaults — Forms[0] for everything, no display flags.
+    private static readonly LanguageBehavior _genericBehavior = new GenericBehavior(null);
+    private static readonly IDisplayFlags _emptyFlags = new EmptyFlags();
+    private sealed class EmptyFlags : IDisplayFlags { public bool Get(string key, bool def = false) => def; }
 
     /// <summary>
     /// FSRS-style scheduler: pick the word whose retrievability has dropped closest below
@@ -467,11 +480,11 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
     private static QuestionDirection DirectionFor(ProficiencyCriterion c) => c switch
     {
-        ProficiencyCriterion.JapaneseToEnglish => QuestionDirection.JapaneseToEnglish,
-        ProficiencyCriterion.SimilarSoundDifferentiation => QuestionDirection.JapaneseToEnglish,
-        ProficiencyCriterion.EnglishToJapanese => QuestionDirection.EnglishToJapanese,
-        ProficiencyCriterion.SimilarMeaningDifferentiation => QuestionDirection.EnglishToJapanese,
-        _ => QuestionDirection.JapaneseToEnglish
+        ProficiencyCriterion.TargetToBase => QuestionDirection.TargetToBase,
+        ProficiencyCriterion.SimilarSoundDifferentiation => QuestionDirection.TargetToBase,
+        ProficiencyCriterion.BaseToTarget => QuestionDirection.BaseToTarget,
+        ProficiencyCriterion.SimilarMeaningDifferentiation => QuestionDirection.BaseToTarget,
+        _ => QuestionDirection.TargetToBase
     };
 
     private static int OptionCountFor(double overall)
@@ -484,23 +497,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         return 6;
     }
 
-    private JapaneseDisplayMode DisplayModeFor(double overall, QuestionDirection dir)
-    {
-        if (_settings.RomajiOnly) return JapaneseDisplayMode.RomajiOnly;
-        if (dir == QuestionDirection.EnglishToJapanese)
-        {
-            // Options shown in JP — at low proficiency favor hiragana, otherwise mixed kanji+furigana.
-            if (overall < 25) return JapaneseDisplayMode.HiraganaOnly;
-            if (overall < 70 || _settings.ForceFurigana) return JapaneseDisplayMode.KanjiWithFurigana;
-            return JapaneseDisplayMode.KanjiOnly;
-        }
-        // JP → EN: Prompt shown in JP.
-        if (overall < 25) return JapaneseDisplayMode.HiraganaOnly;
-        if (overall < 70 || _settings.ForceFurigana) return JapaneseDisplayMode.KanjiWithFurigana;
-        return JapaneseDisplayMode.KanjiOnly;
-    }
-
-    private List<Word> PickDistractors(Word target, ProficiencyCriterion criterion, double overall, int count, IReadOnlyList<Word> pool)
+    private List<Word> PickDistractors(Word target, ProficiencyCriterion criterion, double overall, int count, IReadOnlyList<Word> pool, LanguageBehavior behavior)
     {
         if (count <= 0) return new();
 
@@ -517,7 +514,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         // Score every candidate by suitability for this criterion + proficiency level.
         var scored = candidates
-            .Select(w => (Word: w, Score: ScoreDistractor(w, target, criterion, overall)
+            .Select(w => (Word: w, Score: ScoreDistractor(w, target, criterion, overall, behavior)
                                           + (confusionByWordId.TryGetValue(w.Id, out var n) ? 40.0 + n * 5.0 : 0.0)))
             .OrderByDescending(t => t.Score)
             .ThenBy(_ => _rng.Next())
@@ -528,19 +525,23 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         var picked = new List<Word>();
         var usedMeanings = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { target.PrimaryMeaning };
-        var usedKana = new HashSet<string>(StringComparer.Ordinal) { target.Kana };
+        // De-dupe options that share the same phonetic form (e.g. JP homophones), since the
+        // listener can't tell them apart. The phonetic form is whatever the language's
+        // behaviour considers canonical for sound comparison (kana for JP, primary form
+        // for romance languages).
+        var usedPhonetic = new HashSet<string>(StringComparer.Ordinal) { behavior.PhoneticForm(target) };
 
         foreach (var (w, _) in topPortion.OrderBy(_ => _rng.Next()))
         {
             if (picked.Count >= count) break;
-            // Avoid distractors that are functionally indistinguishable (same meaning or same reading).
             if (usedMeanings.Contains(w.PrimaryMeaning)) continue;
-            if (usedKana.Contains(w.Kana)) continue;
+            var phon = behavior.PhoneticForm(w);
+            if (!string.IsNullOrEmpty(phon) && usedPhonetic.Contains(phon)) continue;
             // Avoid synonyms of target.
             if (target.Meanings.Any(m => w.Meanings.Contains(m, StringComparer.OrdinalIgnoreCase))) continue;
             picked.Add(w);
             usedMeanings.Add(w.PrimaryMeaning);
-            usedKana.Add(w.Kana);
+            if (!string.IsNullOrEmpty(phon)) usedPhonetic.Add(phon);
         }
 
         // Fill remainder with random others if we're short.
@@ -557,7 +558,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         return picked;
     }
 
-    private double ScoreDistractor(Word w, Word target, ProficiencyCriterion criterion, double overall)
+    private double ScoreDistractor(Word w, Word target, ProficiencyCriterion criterion, double overall, LanguageBehavior behavior)
     {
         var prof = _store.Get(w.Id).Overall;
         double score = 0;
@@ -565,7 +566,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         switch (criterion)
         {
             case ProficiencyCriterion.SimilarSoundDifferentiation:
-                score += SoundSimilarity(w.Kana, target.Kana) * 100;
+                score += SoundSimilarity(behavior.PhoneticForm(w), behavior.PhoneticForm(target)) * 100;
                 // Prefer somewhat-known words so the contrast is meaningful.
                 score += Math.Min(prof, 50) * 0.3;
                 break;
@@ -576,20 +577,20 @@ public sealed class QuestionGenerator : IQuestionGenerator
                 score += Math.Min(prof, 50) * 0.3;
                 break;
 
-            case ProficiencyCriterion.JapaneseToEnglish:
-            case ProficiencyCriterion.EnglishToJapanese:
+            case ProficiencyCriterion.TargetToBase:
+            case ProficiencyCriterion.BaseToTarget:
             default:
                 // Low proficiency → prefer well-known, distinct words. High → prefer same-POS, less-known, similar.
                 if (overall < 35)
                 {
                     score += prof; // higher proficiency = more distinct/familiar
                     score -= MeaningSimilarity(w, target) * 60;
-                    score -= SoundSimilarity(w.Kana, target.Kana) * 40;
+                    score -= SoundSimilarity(behavior.PhoneticForm(w), behavior.PhoneticForm(target)) * 40;
                 }
                 else
                 {
                     score += SamePosBonus(w, target);
-                    score += SoundSimilarity(w.Kana, target.Kana) * 40;
+                    score += SoundSimilarity(behavior.PhoneticForm(w), behavior.PhoneticForm(target)) * 40;
                     score += MeaningSimilarity(w, target) * 30;
                     score -= Math.Max(0, prof - 60); // de-prefer fully mastered
                 }
@@ -655,30 +656,49 @@ public sealed class QuestionGenerator : IQuestionGenerator
         string.Equals(a.PartOfSpeech, b.PartOfSpeech, StringComparison.OrdinalIgnoreCase) ? 25.0 : 0.0;
 
     /// <summary>
-    /// Hiragana / katakana entries form their own pool: kana words only contrast with other kana,
-    /// and general vocabulary never gets a kana glyph as a distractor.
+    /// Glyph entries form their own pool: kana / jamo / character drills only contrast with
+    /// other glyphs, and general vocabulary never gets one of them as a distractor. Detection
+    /// is delegated to the active language's behaviour module; legacy hiragana/katakana
+    /// id-prefix detection is applied as a fallback so out-of-band callers (e.g. the sim
+    /// that runs without a language pack) still behave correctly.
     /// </summary>
-    private enum WordCategory { Kana, General }
+    private enum WordCategory { Glyph, General }
 
-    private static WordCategory CategoryOf(Word w)
+    private WordCategory CategoryOf(Word w)
     {
-        if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return WordCategory.Kana;
-        if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return WordCategory.Kana;
-        if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return WordCategory.Kana;
+        var pack = _packs?.Active;
+        if (pack is not null && pack.Behavior.IsGlyphEntry(w, pack.GlyphTags))
+            return WordCategory.Glyph;
         return WordCategory.General;
     }
 
-    private List<QuestionOption> BuildOptions(Word target, List<Word> distractors, QuestionDirection dir)
+    private List<QuestionOption> BuildOptions(Word target, List<Word> distractors, QuestionDirection dir, LanguageBehavior behavior, IDisplayFlags flags)
     {
         var options = new List<QuestionOption>(distractors.Count + 1);
 
-        string Display(Word w) => dir == QuestionDirection.JapaneseToEnglish
+        // Idle state: meaning side shows the meaning; target side shows whatever the active
+        // language considers a presentable option label (e.g. JP "kanji (kana)" vs IT "ciao").
+        // Revealed state always combines the target form with the meaning.
+        string Idle(Word w) => dir == QuestionDirection.TargetToBase
             ? w.PrimaryMeaning
-            : (_settings.RomajiOnly ? w.Romaji : (string.IsNullOrEmpty(w.Kanji) ? w.Kana : $"{w.Kanji}  ({w.Kana})"));
+            : behavior.OptionDisplay(w, flags);
+        string Revealed(Word w) => behavior.RevealedDisplay(w, flags);
 
-        options.Add(new QuestionOption { Word = target, DisplayText = Display(target), IsCorrect = true });
+        options.Add(new QuestionOption
+        {
+            Word = target,
+            DisplayText = Idle(target),
+            RevealedText = Revealed(target),
+            IsCorrect = true
+        });
         foreach (var d in distractors)
-            options.Add(new QuestionOption { Word = d, DisplayText = Display(d), IsCorrect = false });
+            options.Add(new QuestionOption
+            {
+                Word = d,
+                DisplayText = Idle(d),
+                RevealedText = Revealed(d),
+                IsCorrect = false
+            });
 
         // Shuffle.
         for (int i = options.Count - 1; i > 0; i--)
@@ -687,30 +707,5 @@ public sealed class QuestionGenerator : IQuestionGenerator
             (options[i], options[j]) = (options[j], options[i]);
         }
         return options;
-    }
-
-    private (string prompt, string? furigana, string ttsText, string ttsLocale) BuildPrompt(
-        Word target, QuestionDirection dir, JapaneseDisplayMode mode)
-    {
-        if (dir == QuestionDirection.EnglishToJapanese)
-        {
-            return (target.MeaningsJoined, null, target.Kana, "ja");
-        }
-
-        // JP → EN, render according to display mode.
-        switch (mode)
-        {
-            case JapaneseDisplayMode.RomajiOnly:
-                return (target.Romaji, null, target.Kana, "ja");
-            case JapaneseDisplayMode.HiraganaOnly:
-                return (target.Kana, null, target.Kana, "ja");
-            case JapaneseDisplayMode.KanjiOnly:
-                return (string.IsNullOrEmpty(target.Kanji) ? target.Kana : target.Kanji, null, target.Kana, "ja");
-            case JapaneseDisplayMode.KanjiWithFurigana:
-            default:
-                var prompt = string.IsNullOrEmpty(target.Kanji) ? target.Kana : target.Kanji;
-                var furi = string.IsNullOrEmpty(target.Kanji) ? null : target.Kana;
-                return (prompt, furi, target.Kana, "ja");
-        }
     }
 }

@@ -10,16 +10,29 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="18">
 
-            <Label Text="Display" Style="{StaticResource HeadlineLabel}" />
-            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="12">
-                <Label Grid.Row="0" Grid.Column="0" Text="Romaji-only mode" VerticalOptions="Center" />
-                <Switch Grid.Row="0" Grid.Column="1" IsToggled="{Binding RomajiOnly}" HorizontalOptions="End" WidthRequest="50" />
+            <Label Text="Display" Style="{StaticResource HeadlineLabel}"
+                   IsVisible="{Binding HasDisplayFlags}" />
+            <!-- Toggles are sourced from the active language pack's behaviour. Languages
+                 that don't expose any (e.g. Italian) hide this whole section. -->
+            <CollectionView ItemsSource="{Binding DisplayFlags}"
+                            IsVisible="{Binding HasDisplayFlags}"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="12" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:DisplayFlagVm">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Grid.Column="0" Text="{Binding Display}" VerticalOptions="Center" />
+                            <Switch Grid.Column="1" IsToggled="{Binding Value, Mode=TwoWay}"
+                                    HorizontalOptions="End" WidthRequest="50" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Always show furigana" VerticalOptions="Center" />
-                <Switch Grid.Row="1" Grid.Column="1" IsToggled="{Binding ForceFurigana}" HorizontalOptions="End" WidthRequest="50" />
-            </Grid>
-
-            <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />
+            <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2"
+                     IsVisible="{Binding HasDisplayFlags}" />
 
             <Label Text="Audio" Style="{StaticResource HeadlineLabel}" />
             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" RowSpacing="12">
@@ -54,14 +67,8 @@
                 <Label Text="Azure region" Style="{StaticResource MutedLabel}" />
                 <Entry Text="{Binding AzureSpeechRegion}" Placeholder="e.g. westeurope, eastus" />
 
-                <Label Text="Japanese voice" Style="{StaticResource MutedLabel}" />
-                <Entry Text="{Binding AzureJapaneseVoice}" Placeholder="ja-JP-NanamiNeural" />
-
-                <Label Text="English voice" Style="{StaticResource MutedLabel}" />
-                <Entry Text="{Binding AzureEnglishVoice}" Placeholder="en-US-JennyNeural" />
-
                 <Label Style="{StaticResource MutedLabel}"
-                       Text="Common JP voices: ja-JP-NanamiNeural, ja-JP-KeitaNeural, ja-JP-AoiNeural, ja-JP-DaichiNeural, ja-JP-MayuNeural, ja-JP-NaokiNeural, ja-JP-ShioriNeural." />
+                       Text="Voices are configured per language in the language pack (providerVoices.azure)." />
             </VerticalStackLayout>
 
             <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2" />

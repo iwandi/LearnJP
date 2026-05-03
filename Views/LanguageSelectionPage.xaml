@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LearnJP.ViewModels"
+             x:Class="LearnJP.Views.LanguageSelectionPage"
+             x:DataType="vm:LanguageSelectionViewModel"
+             Title="Language">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="10">
+
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 12"
+                Padding="14">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                <Label Grid.Column="0" Text="Base language" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+                <Picker Grid.Column="1"
+                        ItemsSource="{Binding BaseLanguages}"
+                        ItemDisplayBinding="{Binding Display}"
+                        SelectedItem="{Binding SelectedBase, Mode=TwoWay}" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 12"
+                Padding="14">
+            <VerticalStackLayout Spacing="2">
+                <Label Text="Active target language" Style="{StaticResource MutedLabel}" />
+                <Label Text="{Binding ActiveName}" FontSize="20" FontAttributes="Bold" />
+            </VerticalStackLayout>
+        </Border>
+
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Languages}"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="6" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:LanguageOption">
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 12"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            Padding="14">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                                <Label Text="{Binding DisplayName}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding Subtitle}" FontSize="12" Style="{StaticResource MutedLabel}" />
+                            </VerticalStackLayout>
+                            <Button Grid.Column="1"
+                                    Text="{Binding SelectButtonText}"
+                                    Clicked="OnSelectClicked"
+                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"
+                                    TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                                    CornerRadius="10"
+                                    HeightRequest="40"
+                                    Padding="16,0" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

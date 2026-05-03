@@ -16,6 +16,9 @@
     <Compile Include="..\..\Models\ProficiencyCriterion.cs" Link="Models\ProficiencyCriterion.cs" />
     <Compile Include="..\..\Models\LearningStrategy.cs"   Link="Models\LearningStrategy.cs" />
     <Compile Include="..\..\Models\TtsProvider.cs"        Link="Models\TtsProvider.cs" />
+    <Compile Include="..\..\Models\LanguagePack.cs"       Link="Models\LanguagePack.cs" />
+    <Compile Include="..\..\Models\LanguageBehavior.cs"   Link="Models\LanguageBehavior.cs" />
+    <Compile Include="..\..\Services\ILanguagePackService.cs" Link="Services\ILanguagePackService.cs" />
     <Compile Include="..\..\Services\IQuestionGenerator.cs"   Link="Services\IQuestionGenerator.cs" />
     <Compile Include="..\..\Services\IVocabularyService.cs"   Link="Services\IVocabularyService.cs" />
     <Compile Include="..\..\Services\IProficiencyStore.cs"    Link="Services\IProficiencyStore.cs" />

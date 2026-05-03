@@ -14,6 +14,7 @@ public static class MauiProgram
         builder.UseMauiApp<App>();
 
         builder.Services.AddSingleton<IVocabularyService, VocabularyService>();
+        builder.Services.AddSingleton<ILanguagePackService, LanguagePackService>();
         builder.Services.AddSingleton<IProficiencyStore, SqliteProficiencyStore>();
         builder.Services.AddSingleton<IQuestionGenerator, QuestionGenerator>();
         builder.Services.AddSingleton(AudioManager.Current);
@@ -27,11 +28,13 @@ public static class MauiProgram
         builder.Services.AddSingleton<ProgressViewModel>();
         builder.Services.AddSingleton<SettingsViewModel>();
         builder.Services.AddSingleton<TagFilterViewModel>();
+        builder.Services.AddSingleton<LanguageSelectionViewModel>();
 
         builder.Services.AddSingleton<QuizPage>();
         builder.Services.AddSingleton<ProgressPage>();
         builder.Services.AddSingleton<SettingsPage>();
         builder.Services.AddSingleton<TagFilterPage>();
+        builder.Services.AddSingleton<LanguageSelectionPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();
