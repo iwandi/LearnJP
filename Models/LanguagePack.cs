@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace LearnJP.Models;
@@ -63,6 +64,26 @@ public sealed class LanguagePack
     /// </summary>
     [JsonPropertyName("glyphTags")]
     public List<string> GlyphTags { get; set; } = new();
+
+    /// <summary>
+    /// Behavior module the algorithm should call into for language-specific decisions.
+    /// Resolved via switch-case (see <see cref="LanguageBehavior.Create"/>). Defaults to
+    /// <see cref="LanguageBehaviorType.Generic"/> when omitted or unrecognised.
+    /// </summary>
+    [JsonPropertyName("behaviorType")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public LanguageBehaviorType BehaviorType { get; set; } = LanguageBehaviorType.Generic;
+
+    /// <summary>Free-form configuration handed to the behavior constructor. Each behavior
+    /// type defines its own schema; left as a raw <see cref="JsonElement"/> so we don't
+    /// pre-bind the shape here.</summary>
+    [JsonPropertyName("behaviorConfig")]
+    public JsonElement? BehaviorConfig { get; set; }
+
+    /// <summary>Runtime behaviour instance, populated by <see cref="LearnJP.Services.LanguagePackService"/>
+    /// once the pack is loaded. Not serialised.</summary>
+    [JsonIgnore]
+    public LanguageBehavior Behavior { get; set; } = new GenericBehavior(null);
 }
 
 /// <summary>

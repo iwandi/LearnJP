@@ -8,5 +8,6 @@
     "en": "vocabulary_ja-en.json",
     "de": "vocabulary_ja-de.json"
   },
-  "glyphTags": ["hiragana", "katakana"]
+  "glyphTags": ["hiragana", "katakana"],
+  "behaviorType": "Japanese"
 }

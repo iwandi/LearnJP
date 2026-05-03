@@ -7,6 +7,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private readonly IVocabularyService _vocab;
     private readonly IProficiencyStore _store;
     private readonly ISettingsService _settings;
+    private readonly ILanguagePackService? _packs;
     private readonly Random _rng = new();
     private string? _lastWordId;
 
@@ -40,11 +41,12 @@ public sealed class QuestionGenerator : IQuestionGenerator
     /// </summary>
     private static int FrequencyOrderKey(int rank) => rank <= 0 ? int.MaxValue : rank;
 
-    public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings)
+    public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings, ILanguagePackService? packs = null)
     {
         _vocab = vocab;
         _store = store;
         _settings = settings;
+        _packs = packs;
     }
 
     public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Fsrs)
@@ -655,16 +657,26 @@ public sealed class QuestionGenerator : IQuestionGenerator
         string.Equals(a.PartOfSpeech, b.PartOfSpeech, StringComparison.OrdinalIgnoreCase) ? 25.0 : 0.0;
 
     /// <summary>
-    /// Hiragana / katakana entries form their own pool: kana words only contrast with other kana,
-    /// and general vocabulary never gets a kana glyph as a distractor.
+    /// Glyph entries form their own pool: kana / jamo / character drills only contrast with
+    /// other glyphs, and general vocabulary never gets one of them as a distractor. Detection
+    /// is delegated to the active language's behaviour module; legacy hiragana/katakana
+    /// id-prefix detection is applied as a fallback so out-of-band callers (e.g. the sim
+    /// that runs without a language pack) still behave correctly.
     /// </summary>
     private enum WordCategory { Kana, General }
 
-    private static WordCategory CategoryOf(Word w)
+    private WordCategory CategoryOf(Word w)
     {
-        if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return WordCategory.Kana;
-        if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return WordCategory.Kana;
-        if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return WordCategory.Kana;
+        var pack = _packs?.Active;
+        if (pack is not null && pack.Behavior.IsGlyphEntry(w, pack.GlyphTags))
+            return WordCategory.Kana;
+        if (pack is null)
+        {
+            // Fallback heuristic for callers that haven't loaded a language pack.
+            if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return WordCategory.Kana;
+            if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return WordCategory.Kana;
+            if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return WordCategory.Kana;
+        }
         return WordCategory.General;
     }
 

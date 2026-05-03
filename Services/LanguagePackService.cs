@@ -37,7 +37,11 @@ public sealed class LanguagePackService : ILanguagePackService
                         await using var packStream = await FileSystem.OpenAppPackageFileAsync($"Languages/{file}");
                         var pack = await JsonSerializer.DeserializeAsync<LanguagePack>(packStream, opts);
                         if (pack is not null && !string.IsNullOrWhiteSpace(pack.Id))
+                        {
+                            // Materialise the runtime behaviour from the declared type + config.
+                            pack.Behavior = LanguageBehavior.Create(pack.BehaviorType, pack.BehaviorConfig);
                             _packs.Add(pack);
+                        }
                     }
                     catch (Exception ex)
                     {

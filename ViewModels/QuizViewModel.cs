@@ -177,13 +177,16 @@ public sealed class QuizViewModel : BaseViewModel
         return "Filter: " + string.Join("  ", parts);
     }
 
-    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds)
+    private readonly ILanguagePackService _packs;
+
+    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds, ILanguagePackService packs)
     {
         _gen = gen;
         _store = store;
         _tts = tts;
         _settings = settings;
         _sounds = sounds;
+        _packs = packs;
         try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Fsrs; }
     }
 
@@ -315,15 +318,15 @@ public sealed class QuizViewModel : BaseViewModel
     }
 
     /// <summary>
-    /// Hiragana / katakana entries: their prompt and answer are the pronunciation itself,
-    /// so any auto-TTS would speak the answer aloud. Manual speak buttons stay enabled.
+    /// Glyph entries (e.g. JP kana): their prompt and answer are the pronunciation itself, so
+    /// any auto-TTS would speak the answer aloud. Manual speak buttons stay enabled. Now
+    /// dispatched to the active language's behaviour module instead of hardcoding kana logic.
     /// </summary>
-    private static bool IsKanaWord(Word w)
+    private bool IsKanaWord(Word w)
     {
-        if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return true;
-        if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return true;
-        if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return true;
-        return false;
+        var pack = _packs.Active;
+        if (pack is null) return false;
+        return pack.Behavior.IsGlyphEntry(w, pack.GlyphTags);
     }
 
     public async Task SpeakCurrentAsync()
