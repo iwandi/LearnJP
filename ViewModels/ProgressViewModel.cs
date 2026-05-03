@@ -92,8 +92,8 @@ public sealed class ProgressViewModel : BaseViewModel
 
     private static string ShortLabel(ProficiencyCriterion c) => c switch
     {
-        ProficiencyCriterion.JapaneseToEnglish => "J→E",
-        ProficiencyCriterion.EnglishToJapanese => "E→J",
+        ProficiencyCriterion.TargetToBase => "T→B",
+        ProficiencyCriterion.BaseToTarget => "B→T",
         ProficiencyCriterion.SimilarSoundDifferentiation => "Snd",
         ProficiencyCriterion.SimilarMeaningDifferentiation => "Mng",
         _ => "?"

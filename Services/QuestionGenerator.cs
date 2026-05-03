@@ -467,11 +467,11 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
     private static QuestionDirection DirectionFor(ProficiencyCriterion c) => c switch
     {
-        ProficiencyCriterion.JapaneseToEnglish => QuestionDirection.JapaneseToEnglish,
-        ProficiencyCriterion.SimilarSoundDifferentiation => QuestionDirection.JapaneseToEnglish,
-        ProficiencyCriterion.EnglishToJapanese => QuestionDirection.EnglishToJapanese,
-        ProficiencyCriterion.SimilarMeaningDifferentiation => QuestionDirection.EnglishToJapanese,
-        _ => QuestionDirection.JapaneseToEnglish
+        ProficiencyCriterion.TargetToBase => QuestionDirection.TargetToBase,
+        ProficiencyCriterion.SimilarSoundDifferentiation => QuestionDirection.TargetToBase,
+        ProficiencyCriterion.BaseToTarget => QuestionDirection.BaseToTarget,
+        ProficiencyCriterion.SimilarMeaningDifferentiation => QuestionDirection.BaseToTarget,
+        _ => QuestionDirection.TargetToBase
     };
 
     private static int OptionCountFor(double overall)
@@ -487,7 +487,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private JapaneseDisplayMode DisplayModeFor(double overall, QuestionDirection dir)
     {
         if (_settings.RomajiOnly) return JapaneseDisplayMode.RomajiOnly;
-        if (dir == QuestionDirection.EnglishToJapanese)
+        if (dir == QuestionDirection.BaseToTarget)
         {
             // Options shown in JP — at low proficiency favor hiragana, otherwise mixed kanji+furigana.
             if (overall < 25) return JapaneseDisplayMode.HiraganaOnly;
@@ -576,8 +576,8 @@ public sealed class QuestionGenerator : IQuestionGenerator
                 score += Math.Min(prof, 50) * 0.3;
                 break;
 
-            case ProficiencyCriterion.JapaneseToEnglish:
-            case ProficiencyCriterion.EnglishToJapanese:
+            case ProficiencyCriterion.TargetToBase:
+            case ProficiencyCriterion.BaseToTarget:
             default:
                 // Low proficiency → prefer well-known, distinct words. High → prefer same-POS, less-known, similar.
                 if (overall < 35)
@@ -672,7 +672,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
     {
         var options = new List<QuestionOption>(distractors.Count + 1);
 
-        string Display(Word w) => dir == QuestionDirection.JapaneseToEnglish
+        string Display(Word w) => dir == QuestionDirection.TargetToBase
             ? w.PrimaryMeaning
             : (_settings.RomajiOnly ? w.Romaji : (string.IsNullOrEmpty(w.Kanji) ? w.Kana : $"{w.Kanji}  ({w.Kana})"));
 
@@ -692,7 +692,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private (string prompt, string? furigana, string ttsText, string ttsLocale) BuildPrompt(
         Word target, QuestionDirection dir, JapaneseDisplayMode mode)
     {
-        if (dir == QuestionDirection.EnglishToJapanese)
+        if (dir == QuestionDirection.BaseToTarget)
         {
             return (target.MeaningsJoined, null, target.Kana, "ja");
         }

@@ -1,6 +1,6 @@
 namespace LearnJP.Models;
 
-public enum QuestionDirection { JapaneseToEnglish, EnglishToJapanese }
+public enum QuestionDirection { TargetToBase, BaseToTarget }
 
 public enum JapaneseDisplayMode
 {

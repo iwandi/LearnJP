@@ -206,7 +206,7 @@ public sealed class QuizViewModel : BaseViewModel
             // Always show the manual replay button — the user can always ask to hear the JP audio.
             ShowPromptSpeakButton = true;
 
-            var optionsAreJapanese = q.Direction == QuestionDirection.EnglishToJapanese;
+            var optionsAreJapanese = q.Direction == QuestionDirection.BaseToTarget;
             Options.Clear();
             foreach (var o in q.Options)
                 Options.Add(new QuizOptionVm { Source = o, IsJapaneseSide = optionsAreJapanese });
@@ -218,7 +218,7 @@ public sealed class QuizViewModel : BaseViewModel
 
             // Kana drills skip the initial auto-TTS (the prompt is the pronunciation),
             // but still vocalise after the answer is revealed.
-            if (q.Direction == QuestionDirection.JapaneseToEnglish && !IsKanaWord(q.Target))
+            if (q.Direction == QuestionDirection.TargetToBase && !IsKanaWord(q.Target))
                 _ = _tts.SpeakJapaneseAsync(q.TtsText);
 
             // Warm the TTS cache for the active "new term" frontier so when one of those
