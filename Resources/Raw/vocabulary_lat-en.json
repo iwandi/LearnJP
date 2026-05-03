@@ -1,992 +1,7322 @@
 [
-  { "id": "la-001", "meanings": ["from", "away from", "by"] },
-  { "id": "la-002", "meanings": ["and", "and also"] },
-  { "id": "la-003", "meanings": ["to happen", "to fall out"] },
-  { "id": "la-004", "meanings": ["to receive", "to accept"] },
-  { "id": "la-005", "meanings": ["to", "towards", "at"] },
-  { "id": "la-006", "meanings": ["to lead to", "to influence"] },
-  { "id": "la-007", "meanings": ["arrival", "approach"] },
-  { "id": "la-008", "meanings": ["building", "structure"] },
-  { "id": "la-009", "meanings": ["equal", "fair", "level"] },
-  { "id": "la-010", "meanings": ["field", "territory"] },
-  { "id": "la-011", "meanings": ["to do", "to drive", "to conduct"] },
-  { "id": "la-012", "meanings": ["column (of soldiers)", "line of march"] },
-  { "id": "la-013", "meanings": ["someone", "something", "anyone"] },
-  { "id": "la-014", "meanings": ["other", "another"] },
-  { "id": "la-015", "meanings": ["high", "deep"] },
-  { "id": "la-016", "meanings": ["friendship"] },
-  { "id": "la-017", "meanings": ["friend"] },
-  { "id": "la-018", "meanings": ["to lose", "to let go"] },
-  { "id": "la-019", "meanings": ["to love", "to like"] },
-  { "id": "la-020", "meanings": ["love", "affection"] },
-  { "id": "la-021", "meanings": ["spirit", "mind", "courage"] },
-  { "id": "la-022", "meanings": ["year"] },
-  { "id": "la-023", "meanings": ["before", "in front of"] },
-  { "id": "la-024", "meanings": ["to call", "to name"] },
-  { "id": "la-025", "meanings": ["among", "at the house of"] },
-  { "id": "la-026", "meanings": ["water"] },
-  { "id": "la-027", "meanings": ["to think", "to judge", "to believe"] },
-  { "id": "la-028", "meanings": ["tree"] },
-  { "id": "la-029", "meanings": ["arms", "weapons"] },
-  { "id": "la-030", "meanings": ["art", "skill"] },
-  { "id": "la-031", "meanings": ["to climb", "to ascend"] },
-  { "id": "la-032", "meanings": ["but", "yet"] },
-  { "id": "la-033", "meanings": ["and", "and also"] },
-  { "id": "la-034", "meanings": ["authority", "influence"] },
-  { "id": "la-035", "meanings": ["boldness", "audacity"] },
-  { "id": "la-036", "meanings": ["bold", "daring"] },
-  { "id": "la-037", "meanings": ["to dare"] },
-  { "id": "la-038", "meanings": ["to hear", "to listen to"] },
-  { "id": "la-039", "meanings": ["to carry away", "to take away"] },
-  { "id": "la-040", "meanings": ["or"] },
-  { "id": "la-041", "meanings": ["however", "moreover"] },
-  { "id": "la-042", "meanings": ["help", "aid"] },
-  { "id": "la-043", "meanings": ["war"] },
-  { "id": "la-044", "meanings": ["well"] },
-  { "id": "la-045", "meanings": ["kindness", "benefit"] },
-  { "id": "la-046", "meanings": ["beast", "wild animal"] },
-  { "id": "la-047", "meanings": ["to drink"] },
-  { "id": "la-048", "meanings": ["good"] },
-  { "id": "la-049", "meanings": ["short", "brief"] },
-  { "id": "la-050", "meanings": ["to fall"] },
-  { "id": "la-051", "meanings": ["slaughter", "murder"] },
-  { "id": "la-052", "meanings": ["sky", "heaven"] },
-  { "id": "la-053", "meanings": ["to take", "to seize", "to capture"] },
-  { "id": "la-054", "meanings": ["prisoner", "captive"] },
-  { "id": "la-055", "meanings": ["head"] },
-  { "id": "la-056", "meanings": ["camp", "military camp"] },
-  { "id": "la-057", "meanings": ["cause", "reason", "case"] },
-  { "id": "la-058", "meanings": ["to yield", "to withdraw"] },
-  { "id": "la-059", "meanings": ["swift", "fast"] },
-  { "id": "la-060", "meanings": ["speed", "swiftness"] },
-  { "id": "la-061", "meanings": ["dinner", "meal"] },
-  { "id": "la-062", "meanings": ["to think", "to vote", "to assess"] },
-  { "id": "la-063", "meanings": ["one hundred"] },
-  { "id": "la-064", "meanings": ["contest", "struggle", "battle"] },
-  { "id": "la-065", "meanings": ["certain", "fixed", "sure"] },
-  { "id": "la-066", "meanings": ["the rest", "the others"] },
-  { "id": "la-067", "meanings": ["food"] },
-  { "id": "la-068", "meanings": ["civil", "of a citizen"] },
-  { "id": "la-069", "meanings": ["citizen"] },
-  { "id": "la-070", "meanings": ["state", "citizenship"] },
-  { "id": "la-071", "meanings": ["to shout", "to cry out"] },
-  { "id": "la-072", "meanings": ["shout", "noise", "clamor"] },
-  { "id": "la-073", "meanings": ["clear", "famous", "bright"] },
-  { "id": "la-074", "meanings": ["to close", "to shut"] },
-  { "id": "la-075", "meanings": ["to have begun"] },
-  { "id": "la-076", "meanings": ["to compel", "to collect", "to force"] },
-  { "id": "la-077", "meanings": ["to think", "to consider"] },
-  { "id": "la-078", "meanings": ["to learn", "to recognize", "to find out"] },
-  { "id": "la-079", "meanings": ["cohort", "company"] },
-  { "id": "la-080", "meanings": ["to cultivate", "to worship", "to dwell"] },
-  { "id": "la-081", "meanings": ["companion"] },
-  { "id": "la-082", "meanings": ["to entrust", "to commit", "to join"] },
-  { "id": "la-083", "meanings": ["common", "general"] },
-  { "id": "la-084", "meanings": ["to prepare", "to compare", "to get together"] },
-  { "id": "la-085", "meanings": ["several", "very many"] },
-  { "id": "la-086", "meanings": ["to withdraw", "to yield", "to concede"] },
-  { "id": "la-087", "meanings": ["condition", "terms"] },
-  { "id": "la-088", "meanings": ["to bring together", "to collect", "to compare"] },
-  { "id": "la-089", "meanings": ["to finish", "to complete", "to wear out"] },
-  { "id": "la-090", "meanings": ["to strengthen", "to declare", "to assert"] },
-  { "id": "la-091", "meanings": ["to throw", "to hurl"] },
-  { "id": "la-092", "meanings": ["spouse", "wife", "husband"] },
-  { "id": "la-093", "meanings": ["to try", "to attempt"] },
-  { "id": "la-094", "meanings": ["plan", "advice", "council"] },
-  { "id": "la-095", "meanings": ["to halt", "to stand", "to take a stand"] },
-  { "id": "la-096", "meanings": ["to decide", "to establish", "to set up"] },
-  { "id": "la-097", "meanings": ["custom", "habit"] },
-  { "id": "la-098", "meanings": ["consul"] },
-  { "id": "la-099", "meanings": ["to strive", "to hasten", "to fight"] },
-  { "id": "la-100", "meanings": ["to hold together", "to contain", "to keep"] },
-  { "id": "la-101", "meanings": ["against", "opposite"] },
-  { "id": "la-102", "meanings": ["to come together", "to meet", "to be agreed"] },
-  { "id": "la-103", "meanings": ["to call together", "to assemble"] },
-  { "id": "la-104", "meanings": ["abundance", "supply", "troops (pl.)"] },
-  { "id": "la-105", "meanings": ["body"] },
-  { "id": "la-106", "meanings": ["to believe", "to trust"] },
-  { "id": "la-107", "meanings": ["to create", "to appoint", "to produce"] },
-  { "id": "la-108", "meanings": ["crime", "accusation", "charge"] },
-  { "id": "la-109", "meanings": ["cruel"] },
-  { "id": "la-110", "meanings": ["with", "when", "since", "although"] },
-  { "id": "la-111", "meanings": ["to desire", "to want", "to long for"] },
-  { "id": "la-112", "meanings": ["desire", "greed", "eagerness"] },
-  { "id": "la-113", "meanings": ["why"] },
-  { "id": "la-114", "meanings": ["care", "concern", "anxiety"] },
-  { "id": "la-115", "meanings": ["to care for", "to look after"] },
-  { "id": "la-116", "meanings": ["to run"] },
-  { "id": "la-117", "meanings": ["guard", "guardian"] },
-  { "id": "la-118", "meanings": ["to condemn", "to find guilty"] },
-  { "id": "la-119", "meanings": ["down from", "about", "concerning"] },
-  { "id": "la-120", "meanings": ["to owe", "ought", "must"] },
-  { "id": "la-121", "meanings": ["ten"] },
-  { "id": "la-122", "meanings": ["to fall down", "to die"] },
-  { "id": "la-123", "meanings": ["to decide", "to decree"] },
-  { "id": "la-124", "meanings": ["to surrender", "to give up"] },
-  { "id": "la-125", "meanings": ["to defend"] },
-  { "id": "la-126", "meanings": ["to carry down", "to report", "to offer"] },
-  { "id": "la-127", "meanings": ["then", "next"] },
-  { "id": "la-128", "meanings": ["to delight", "to please"] },
-  { "id": "la-129", "meanings": ["to choose", "to select"] },
-  { "id": "la-130", "meanings": ["to show", "to point out", "to demonstrate"] },
-  { "id": "la-131", "meanings": ["finally", "at last"] },
-  { "id": "la-132", "meanings": ["to descend", "to go down"] },
-  { "id": "la-133", "meanings": ["to desert", "to abandon"] },
-  { "id": "la-134", "meanings": ["to long for", "to miss", "to desire"] },
-  { "id": "la-135", "meanings": ["to stop", "to cease", "to desist"] },
-  { "id": "la-136", "meanings": ["god"] },
-  { "id": "la-137", "meanings": ["right", "right-hand"] },
-  { "id": "la-138", "meanings": ["to say", "to tell", "to speak"] },
-  { "id": "la-139", "meanings": ["day"] },
-  { "id": "la-140", "meanings": ["difficult"] },
-  { "id": "la-141", "meanings": ["dignity", "prestige", "honor"] },
-  { "id": "la-142", "meanings": ["worthy", "deserving"] },
-  { "id": "la-143", "meanings": ["diligent", "careful"] },
-  { "id": "la-144", "meanings": ["to send away", "to dismiss"] },
-  { "id": "la-145", "meanings": ["to depart", "to leave"] },
-  { "id": "la-146", "meanings": ["training", "instruction", "discipline"] },
-  { "id": "la-147", "meanings": ["to learn"] },
-  { "id": "la-148", "meanings": ["for a long time"] },
-  { "id": "la-149", "meanings": ["different", "diverse", "opposite"] },
-  { "id": "la-150", "meanings": ["to divide", "to separate"] },
-  { "id": "la-151", "meanings": ["divine", "heavenly"] },
-  { "id": "la-152", "meanings": ["riches", "wealth"] },
-  { "id": "la-153", "meanings": ["to give"] },
-  { "id": "la-154", "meanings": ["to teach"] },
-  { "id": "la-155", "meanings": ["pain", "grief", "sorrow"] },
-  { "id": "la-156", "meanings": ["trick", "deceit", "guile"] },
-  { "id": "la-157", "meanings": ["master", "lord"] },
-  { "id": "la-158", "meanings": ["house", "home"] },
-  { "id": "la-159", "meanings": ["gift", "present"] },
-  { "id": "la-160", "meanings": ["to doubt", "to hesitate"] },
-  { "id": "la-161", "meanings": ["doubtful", "uncertain"] },
-  { "id": "la-162", "meanings": ["to lead", "to guide", "to consider"] },
-  { "id": "la-163", "meanings": ["sweet", "pleasant"] },
-  { "id": "la-164", "meanings": ["while", "until"] },
-  { "id": "la-165", "meanings": ["two"] },
-  { "id": "la-166", "meanings": ["leader", "general", "guide"] },
-  { "id": "la-167", "meanings": ["out of", "from"] },
-  { "id": "la-168", "meanings": ["look!", "behold!"] },
-  { "id": "la-169", "meanings": ["to lead out"] },
-  { "id": "la-170", "meanings": ["to bring about", "to effect", "to cause"] },
-  { "id": "la-171", "meanings": ["I", "me"] },
-  { "id": "la-172", "meanings": ["to go out", "to exit", "to disembark"] },
-  { "id": "la-173", "meanings": ["to buy"] },
-  { "id": "la-174", "meanings": ["for", "indeed"] },
-  { "id": "la-175", "meanings": ["to that place", "thither"] },
-  { "id": "la-176", "meanings": ["letter", "epistle"] },
-  { "id": "la-177", "meanings": ["horseman", "knight"] },
-  { "id": "la-178", "meanings": ["cavalry"] },
-  { "id": "la-179", "meanings": ["horse"] },
-  { "id": "la-180", "meanings": ["therefore", "then"] },
-  { "id": "la-181", "meanings": ["to wander", "to make a mistake"] },
-  { "id": "la-182", "meanings": ["to snatch away", "to rescue"] },
-  { "id": "la-183", "meanings": ["to be", "to exist"] },
-  { "id": "la-184", "meanings": ["and"] },
-  { "id": "la-185", "meanings": ["also", "even"] },
-  { "id": "la-186", "meanings": ["even if", "although"] },
-  { "id": "la-187", "meanings": ["to escape", "to evade"] },
-  { "id": "la-188", "meanings": ["out of", "from"] },
-  { "id": "la-189", "meanings": ["to go out", "to withdraw", "to exceed"] },
-  { "id": "la-190", "meanings": ["to receive", "to welcome", "to catch"] },
-  { "id": "la-191", "meanings": ["to stir up", "to rouse", "to excite"] },
-  { "id": "la-192", "meanings": ["example", "pattern"] },
-  { "id": "la-193", "meanings": ["army"] },
-  { "id": "la-194", "meanings": ["to think", "to suppose", "to estimate"] },
-  { "id": "la-195", "meanings": ["exit", "outcome", "departure"] },
-  { "id": "la-196", "meanings": ["to wait for", "to expect"] },
-  { "id": "la-197", "meanings": ["to drive out", "to expel"] },
-  { "id": "la-198", "meanings": ["to explore", "to scout", "to investigate"] },
-  { "id": "la-199", "meanings": ["to set forth", "to explain", "to expose"] },
-  { "id": "la-200", "meanings": ["to take by storm", "to capture"] },
-  { "id": "la-201", "meanings": ["to do", "to make"] },
-  { "id": "la-202", "meanings": ["easy"] },
-  { "id": "la-203", "meanings": ["deed", "crime", "wicked act"] },
-  { "id": "la-204", "meanings": ["deed", "fact", "act"] },
-  { "id": "la-205", "meanings": ["ability", "opportunity", "power"] },
-  { "id": "la-206", "meanings": ["to deceive", "to trick"] },
-  { "id": "la-207", "meanings": ["false", "deceptive"] },
-  { "id": "la-208", "meanings": ["rumor", "reputation", "fame"] },
-  { "id": "la-209", "meanings": ["family", "household"] },
-  { "id": "la-210", "meanings": ["fate", "destiny"] },
-  { "id": "la-211", "meanings": ["lucky", "happy", "fortunate"] },
-  { "id": "la-212", "meanings": ["woman"] },
-  { "id": "la-213", "meanings": ["to carry", "to bear", "to bring"] },
-  { "id": "la-214", "meanings": ["iron", "sword"] },
-  { "id": "la-215", "meanings": ["wild", "savage", "fierce"] },
-  { "id": "la-216", "meanings": ["tired", "weary"] },
-  { "id": "la-217", "meanings": ["faith", "trust", "loyalty"] },
-  { "id": "la-218", "meanings": ["faithful", "loyal", "trusty"] },
-  { "id": "la-219", "meanings": ["to happen", "to become", "to be made"] },
-  { "id": "la-220", "meanings": ["daughter"] },
-  { "id": "la-221", "meanings": ["son"] },
-  { "id": "la-222", "meanings": ["end", "boundary", "limit"] },
-  { "id": "la-223", "meanings": ["neighboring", "bordering on"] },
-  { "id": "la-224", "meanings": ["firm", "strong", "steadfast"] },
-  { "id": "la-225", "meanings": ["to weep", "to cry"] },
-  { "id": "la-226", "meanings": ["flower"] },
-  { "id": "la-227", "meanings": ["river"] },
-  { "id": "la-228", "meanings": ["to flow"] },
-  { "id": "la-229", "meanings": ["treaty", "agreement", "alliance"] },
-  { "id": "la-230", "meanings": ["fountain", "spring", "source"] },
-  { "id": "la-231", "meanings": ["shape", "form", "beauty"] },
-  { "id": "la-232", "meanings": ["perhaps"] },
-  { "id": "la-233", "meanings": ["by chance", "accidentally"] },
-  { "id": "la-234", "meanings": ["brave", "strong"] },
-  { "id": "la-235", "meanings": ["fortune", "luck", "chance"] },
-  { "id": "la-236", "meanings": ["forum", "marketplace"] },
-  { "id": "la-237", "meanings": ["ditch", "trench"] },
-  { "id": "la-238", "meanings": ["to break", "to shatter"] },
-  { "id": "la-239", "meanings": ["brother"] },
-  { "id": "la-240", "meanings": ["deceit", "trickery", "fraud"] },
-  { "id": "la-241", "meanings": ["grain", "corn"] },
-  { "id": "la-242", "meanings": ["flight", "escape"] },
-  { "id": "la-243", "meanings": ["to flee", "to escape", "to avoid"] },
-  { "id": "la-244", "meanings": ["to pour", "to shed", "to scatter"] },
-  { "id": "la-245", "meanings": ["thief"] },
-  { "id": "la-246", "meanings": ["madness", "rage", "fury"] },
-  { "id": "la-247", "meanings": ["to rejoice", "to be glad"] },
-  { "id": "la-248", "meanings": ["joy", "gladness"] },
-  { "id": "la-249", "meanings": ["tribe", "nation", "family"] },
-  { "id": "la-250", "meanings": ["race", "kind", "sort"] },
-  { "id": "la-251", "meanings": ["to carry on", "to perform", "to wear"] },
-  { "id": "la-252", "meanings": ["sword"] },
-  { "id": "la-253", "meanings": ["glory", "fame"] },
-  { "id": "la-254", "meanings": ["favor", "influence", "gratitude"] },
-  { "id": "la-255", "meanings": ["pleasing", "grateful", "welcome"] },
-  { "id": "la-256", "meanings": ["heavy", "serious", "severe"] },
-  { "id": "la-257", "meanings": ["to have", "to hold", "to consider"] },
-  { "id": "la-258", "meanings": ["to live", "to dwell"] },
-  { "id": "la-259", "meanings": ["this"] },
-  { "id": "la-260", "meanings": ["winter"] },
-  { "id": "la-261", "meanings": ["human being", "man"] },
-  { "id": "la-262", "meanings": ["honor", "office", "public distinction"] },
-  { "id": "la-263", "meanings": ["hour", "time"] },
-  { "id": "la-264", "meanings": ["to encourage", "to urge"] },
-  { "id": "la-265", "meanings": ["garden"] },
-  { "id": "la-266", "meanings": ["guest", "host", "stranger"] },
-  { "id": "la-267", "meanings": ["enemy (public)"] },
-  { "id": "la-268", "meanings": ["to here", "hither"] },
-  { "id": "la-269", "meanings": ["low", "humble"] },
-  { "id": "la-270", "meanings": ["to lie", "to be situated"] },
-  { "id": "la-271", "meanings": ["to throw", "to hurl"] },
-  { "id": "la-272", "meanings": ["now", "already"] },
-  { "id": "la-273", "meanings": ["there", "in 그곳"] },
-  { "id": "la-274", "meanings": ["the same"] },
-  { "id": "la-275", "meanings": ["suitable", "fit", "proper"] },
-  { "id": "la-276", "meanings": ["therefore"] },
-  { "id": "la-277", "meanings": ["fire"] },
-  { "id": "la-278", "meanings": ["to not know", "to be ignorant of"] },
-  { "id": "la-279", "meanings": ["that", "he", "she", "it"] },
-  { "id": "la-280", "meanings": ["there", "in that place"] },
-  { "id": "la-281", "meanings": ["image", "likeness", "statue"] },
-  { "id": "la-282", "meanings": ["hindrance", "baggage (pl.)"] },
-  { "id": "la-283", "meanings": ["to hinder", "to prevent"] },
-  { "id": "la-284", "meanings": ["to command", "to order", "to rule"] },
-  { "id": "la-285", "meanings": ["general", "commander", "emperor"] },
-  { "id": "la-286", "meanings": ["command", "power", "empire"] },
-  { "id": "la-287", "meanings": ["attack", "assault", "impulse"] },
-  { "id": "la-288", "meanings": ["wicked", "bad", "shameless"] },
-  { "id": "la-289", "meanings": ["in", "on", "into", "against"] },
-  { "id": "la-290", "meanings": ["to set on fire", "to burn"] },
-  { "id": "la-291", "meanings": ["to fall into", "to happen", "to occur"] },
-  { "id": "la-292", "meanings": ["to begin"] },
-  { "id": "la-293", "meanings": ["to incite", "to rouse", "to spur on"] },
-  { "id": "la-294", "meanings": ["to inhabit", "to dwell in"] },
-  { "id": "la-295", "meanings": ["from there", "thence", "thereupon"] },
-  { "id": "la-296", "meanings": ["to indicate", "to point out", "to show"] },
-  { "id": "la-297", "meanings": ["to lead in", "to influence", "to introduce"] },
-  { "id": "la-298", "meanings": ["to be entered upon", "to be begun"] },
-  { "id": "la-299", "meanings": ["unhappy", "unfortunate"] },
-  { "id": "la-300", "meanings": ["to bring in", "to carry in", "to cause"] },
-  { "id": "la-301", "meanings": ["huge", "vast", "immense"] },
-  { "id": "la-302", "meanings": ["to step in", "to enter"] },
-  { "id": "la-303", "meanings": ["personal enemy"] },
-  { "id": "la-304", "meanings": ["beginning"] },
-  { "id": "la-305", "meanings": ["injury", "injustice", "wrong"] },
-  { "id": "la-306", "meanings": ["he says", "she says"] },
-  { "id": "la-307", "meanings": ["ambush", "trap", "plot"] },
-  { "id": "la-308", "meanings": ["to set up", "to establish", "to institute"] },
-  { "id": "la-309", "meanings": ["island", "apartment block"] },
-  { "id": "la-310", "meanings": ["to understand", "to realize"] },
-  { "id": "la-311", "meanings": ["between", "among"] },
-  { "id": "la-312", "meanings": ["meanwhile", "in the meantime"] },
-  { "id": "la-313", "meanings": ["to kill"] },
-  { "id": "la-314", "meanings": ["to leave off", "to interrupt", "to stop"] },
-  { "id": "la-315", "meanings": ["inside", "within"] },
-  { "id": "la-316", "meanings": ["to find", "to discover"] },
-  { "id": "la-317", "meanings": ["unconquered", "invincible"] },
-  { "id": "la-318", "meanings": ["to envy", "to look askance at"] },
-  { "id": "la-319", "meanings": ["to invite"] },
-  { "id": "la-320", "meanings": ["himself", "herself", "itself", "very"] },
-  { "id": "la-321", "meanings": ["anger", "wrath"] },
-  { "id": "la-322", "meanings": ["to be angry"] },
-  { "id": "la-323", "meanings": ["he", "she", "it", "that"] },
-  { "id": "la-324", "meanings": ["that (of yours)"] },
-  { "id": "la-325", "meanings": ["so", "thus", "in such a way"] },
-  { "id": "la-326", "meanings": ["and so", "therefore"] },
-  { "id": "la-327", "meanings": ["likewise", "also"] },
-  { "id": "la-328", "meanings": ["journey", "march", "way"] },
-  { "id": "la-329", "meanings": ["again", "a second time"] },
-  { "id": "la-330", "meanings": ["to order", "to command"] },
-  { "id": "la-331", "meanings": ["pleasant", "delightful", "agreeable"] },
-  { "id": "la-332", "meanings": ["judge", "juror"] },
-  { "id": "la-333", "meanings": ["to judge", "to decide"] },
-  { "id": "la-334", "meanings": ["judgment", "trial", "opinion"] },
-  { "id": "la-335", "meanings": ["to join", "to unite"] },
-  { "id": "la-336", "meanings": ["law", "right", "justice"] },
-  { "id": "la-337", "meanings": ["just", "fair", "righteous"] },
-  { "id": "la-338", "meanings": ["to help", "to aid", "to please"] },
-  { "id": "la-339", "meanings": ["young man", "youth"] },
-  { "id": "la-340", "meanings": ["work", "labor", "hardship"] },
-  { "id": "la-341", "meanings": ["to work", "to toil", "to suffer"] },
-  { "id": "la-342", "meanings": ["tear"] },
-  { "id": "la-343", "meanings": ["happy", "glad", "joyful"] },
-  { "id": "la-344", "meanings": ["wide", "broad"] },
-  { "id": "la-345", "meanings": ["praise", "glory"] },
-  { "id": "la-346", "meanings": ["embassy", "legation"] },
-  { "id": "la-347", "meanings": ["envoy", "ambassador", "lieutenant"] },
-  { "id": "la-348", "meanings": ["to read", "to choose", "to gather"] },
-  { "id": "la-349", "meanings": ["legion"] },
-  { "id": "la-350", "meanings": ["law", "statute"] },
-  { "id": "la-351", "meanings": ["free"] },
-  { "id": "la-352", "meanings": ["book"] },
-  { "id": "la-353", "meanings": ["to free", "to set free"] },
-  { "id": "la-354", "meanings": ["children"] },
-  { "id": "la-355", "meanings": ["freedom", "liberty"] },
-  { "id": "la-356", "meanings": ["it is permitted", "one may"] },
-  { "id": "la-357", "meanings": ["letter (of the alphabet)", "literature (pl.)"] },
-  { "id": "la-358", "meanings": ["place", "location"] },
-  { "id": "la-359", "meanings": ["long"] },
-  { "id": "la-360", "meanings": ["to speak", "to talk"] },
-  { "id": "la-361", "meanings": ["to play"] },
-  { "id": "la-362", "meanings": ["light", "eye"] },
-  { "id": "la-363", "meanings": ["light", "daylight"] },
-  { "id": "la-364", "meanings": ["more", "rather"] },
-  { "id": "la-365", "meanings": ["master", "teacher"] },
-  { "id": "la-366", "meanings": ["magistrate", "official"] },
-  { "id": "la-367", "meanings": ["greatness", "size"] },
-  { "id": "la-368", "meanings": ["great", "large", "big"] },
-  { "id": "la-369", "meanings": ["greater", "older"] },
-  { "id": "la-370", "meanings": ["bad", "evil", "wicked"] },
-  { "id": "la-371", "meanings": ["to entrust", "to command", "to commission"] },
-  { "id": "la-372", "meanings": ["to remain", "to stay"] },
-  { "id": "la-373", "meanings": ["hand", "band (of men)"] },
-  { "id": "la-374", "meanings": ["sea"] },
-  { "id": "la-375", "meanings": ["husband"] },
-  { "id": "la-376", "meanings": ["mother"] },
-  { "id": "la-377", "meanings": ["especially", "very much", "most"] },
-  { "id": "la-378", "meanings": ["greatest", "largest", "very great"] },
-  { "id": "la-379", "meanings": ["middle", "the middle of"] },
-  { "id": "la-380", "meanings": ["memory"] },
-  { "id": "la-381", "meanings": ["mind", "intellect"] },
-  { "id": "la-382", "meanings": ["month"] },
-  { "id": "la-383", "meanings": ["trade", "commerce"] },
-  { "id": "la-384", "meanings": ["fear", "dread"] },
-  { "id": "la-385", "meanings": ["my", "mine"] },
-  { "id": "la-386", "meanings": ["soldier"] },
-  { "id": "la-387", "meanings": ["a thousand"] },
-  { "id": "la-388", "meanings": ["not at all", "very little", "least"] },
-  { "id": "la-389", "meanings": ["smaller", "less"] },
-  { "id": "la-390", "meanings": ["wretched", "miserable", "unfortunate"] },
-  { "id": "la-391", "meanings": ["to send"] },
-  { "id": "la-392", "meanings": ["way", "manner", "method"] },
-  { "id": "la-393", "meanings": ["walls (of a city)"] },
-  { "id": "la-394", "meanings": ["soft", "gentle", "mild"] },
-  { "id": "la-395", "meanings": ["to warn", "to advise", "to remind"] },
-  { "id": "la-396", "meanings": ["mountain"] },
-  { "id": "la-397", "meanings": ["death"] },
-  { "id": "la-398", "meanings": ["custom", "habit", "character (pl.)"] },
-  { "id": "la-399", "meanings": ["to move"] },
-  { "id": "la-400", "meanings": ["soon", "presently"] },
-  { "id": "la-401", "meanings": ["multitude", "crowd", "large number"] },
-  { "id": "la-402", "meanings": ["much", "many (pl.)"] },
-  { "id": "la-403", "meanings": ["duty", "gift", "public show"] },
-  { "id": "la-404", "meanings": ["wall"] },
-  { "id": "la-405", "meanings": ["for"] },
-  { "id": "la-406", "meanings": ["to tell", "to relate", "to narrate"] },
-  { "id": "la-407", "meanings": ["to be born"] },
-  { "id": "la-408", "meanings": ["nation", "people", "tribe"] },
-  { "id": "la-409", "meanings": ["nature", "character"] },
-  { "id": "la-410", "meanings": ["ship"] },
-  { "id": "la-411", "meanings": ["lest", "that... not"] },
-  { "id": "la-412", "meanings": ["nor", "and... not"] },
-  { "id": "la-413", "meanings": ["necessary"] },
-  { "id": "la-414", "meanings": ["to deny", "to say... not", "to refuse"] },
-  { "id": "la-415", "meanings": ["business", "task", "matter"] },
-  { "id": "la-416", "meanings": ["no one", "nobody"] },
-  { "id": "la-417", "meanings": ["neither... nor", "and... not"] },
-  { "id": "la-418", "meanings": ["to not know"] },
-  { "id": "la-419", "meanings": ["nothing"] },
-  { "id": "la-420", "meanings": ["unless", "if... not", "except"] },
-  { "id": "la-421", "meanings": ["noble", "famous"] },
-  { "id": "la-422", "meanings": ["to harm", "to injure"] },
-  { "id": "la-423", "meanings": ["by night", "at night"] },
-  { "id": "la-424", "meanings": ["to not want", "to be unwilling"] },
-  { "id": "la-425", "meanings": ["name"] },
-  { "id": "la-426", "meanings": ["not"] },
-  { "id": "la-427", "meanings": ["our", "ours"] },
-  { "id": "la-428", "meanings": ["known", "familiar"] },
-  { "id": "la-429", "meanings": ["new", "strange"] },
-  { "id": "la-430", "meanings": ["night"] },
-  { "id": "la-431", "meanings": ["no", "none"] },
-  { "id": "la-432", "meanings": ["whether (in questions)"] },
-  { "id": "la-433", "meanings": ["number", "amount"] },
-  { "id": "la-434", "meanings": ["never"] },
-  { "id": "la-435", "meanings": ["now"] },
-  { "id": "la-436", "meanings": ["to announce", "to report"] },
-  { "id": "la-437", "meanings": ["messenger", "message"] },
-  { "id": "la-438", "meanings": ["because of", "on account of"] },
-  { "id": "la-439", "meanings": ["hostage"] },
-  { "id": "la-440", "meanings": ["to kill", "to cut down"] },
-  { "id": "la-441", "meanings": ["to occupy", "to seize"] },
-  { "id": "la-442", "meanings": ["eye"] },
-  { "id": "la-443", "meanings": ["duty", "service", "office"] },
-  { "id": "la-444", "meanings": ["all", "every"] },
-  { "id": "la-445", "meanings": ["burden", "load"] },
-  { "id": "la-446", "meanings": ["work", "effort", "service"] },
-  { "id": "la-447", "meanings": ["it is necessary", "it is proper"] },
-  { "id": "la-448", "meanings": ["town"] },
-  { "id": "la-449", "meanings": ["to crush", "to overwhelm", "to oppress"] },
-  { "id": "la-450", "meanings": ["to attack", "to besiege"] },
-  { "id": "la-451", "meanings": ["power", "wealth", "resources (pl.)"] },
-  { "id": "la-452", "meanings": ["work", "task", "deed"] },
-  { "id": "la-453", "meanings": ["to pray", "to beg", "to plead"] },
-  { "id": "la-454", "meanings": ["speech", "oration"] },
-  { "id": "la-455", "meanings": ["order", "rank", "row"] },
-  { "id": "la-456", "meanings": ["to rise", "to spring up"] },
-  { "id": "la-457", "meanings": ["to decorate", "to adorn", "to equip"] },
-  { "id": "la-458", "meanings": ["mouth", "face"] },
-  { "id": "la-459", "meanings": ["to show", "to exhibit"] },
-  { "id": "la-460", "meanings": ["leisure", "peace", "free time"] },
-  { "id": "la-461", "meanings": ["almost", "nearly"] },
-  { "id": "la-462", "meanings": ["to prepare", "to get ready"] },
-  { "id": "la-463", "meanings": ["prepared", "ready"] },
-  { "id": "la-464", "meanings": ["to obey"] },
-  { "id": "la-465", "meanings": ["part", "direction", "side"] },
-  { "id": "la-466", "meanings": ["small", "little"] },
-  { "id": "la-467", "meanings": ["pace", "step"] },
-  { "id": "la-468", "meanings": ["father"] },
-  { "id": "la-469", "meanings": ["to suffer", "to endure", "to permit"] },
-  { "id": "la-470", "meanings": ["fatherland", "native country"] },
-  { "id": "la-471", "meanings": ["few", "a few"] },
-  { "id": "la-472", "meanings": ["a little", "by a little"] },
-  { "id": "la-473", "meanings": ["peace"] },
-  { "id": "la-474", "meanings": ["money"] },
-  { "id": "la-475", "meanings": ["to drive", "to push", "to rout"] },
-  { "id": "la-476", "meanings": ["through", "by means of"] },
-  { "id": "la-477", "meanings": ["to destroy", "to lose", "to ruin"] },
-  { "id": "la-478", "meanings": ["to complete", "to finish", "to perform"] },
-  { "id": "la-479", "meanings": ["danger", "risk"] },
-  { "id": "la-480", "meanings": ["to perish", "to die", "to be lost"] },
-  { "id": "la-481", "meanings": ["to permit", "to allow", "to entrust"] },
-  { "id": "la-482", "meanings": ["to persuade"] },
-  { "id": "la-483", "meanings": ["to arrive", "to reach"] },
-  { "id": "la-484", "meanings": ["foot"] },
-  { "id": "la-485", "meanings": ["to seek", "to ask", "to attack", "to head for"] },
-  { "id": "la-486", "meanings": ["philosopher"] },
-  { "id": "la-487", "meanings": ["piety", "duty", "devotion"] },
-  { "id": "la-488", "meanings": ["to please", "to be pleasing to"] },
-  { "id": "la-489", "meanings": ["common people", "plebeians"] },
-  { "id": "la-490", "meanings": ["full"] },
-  { "id": "la-491", "meanings": ["most", "very many"] },
-  { "id": "la-492", "meanings": ["punishment", "penalty"] },
-  { "id": "la-493", "meanings": ["poet"] },
-  { "id": "la-494", "meanings": ["to put", "to place", "to set up"] },
-  { "id": "la-495", "meanings": ["people", "nation"] },
-  { "id": "la-496", "meanings": ["gate", "door"] },
-  { "id": "la-497", "meanings": ["to carry", "to bring"] },
-  { "id": "la-498", "meanings": ["port", "harbor"] },
-  { "id": "la-499", "meanings": ["to demand", "to ask for"] },
-  { "id": "la-500", "meanings": ["to be able", "can"] },
-  { "id": "la-501", "meanings": ["after", "behind"] },
-  { "id": "la-502", "meanings": ["afterwards", "later"] },
-  { "id": "la-503", "meanings": ["following", "next", "future"] },
-  { "id": "la-504", "meanings": ["after"] },
-  { "id": "la-505", "meanings": ["to demand", "to claim"] },
-  { "id": "la-506", "meanings": ["powerful"] },
-  { "id": "la-507", "meanings": ["power", "strength"] },
-  { "id": "la-508", "meanings": ["power", "authority", "opportunity"] },
-  { "id": "la-509", "meanings": ["rather", "more"] },
-  { "id": "la-510", "meanings": ["before", "in front of", "because of"] },
-  { "id": "la-511", "meanings": ["to provide", "to offer", "to show"] },
-  { "id": "la-512", "meanings": ["headlong", "steep", "precipitous"] },
-  { "id": "la-513", "meanings": ["booty", "plunder", "prey"] },
-  { "id": "la-514", "meanings": ["to declare", "to proclaim"] },
-  { "id": "la-515", "meanings": ["estate", "farm"] },
-  { "id": "la-516", "meanings": ["to be in charge of", "to command"] },
-  { "id": "la-517", "meanings": ["commander", "officer", "prefect"] },
-  { "id": "la-518", "meanings": ["reward", "prize"] },
-  { "id": "la-519", "meanings": ["present", "at hand"] },
-  { "id": "la-520", "meanings": ["protection", "guard", "garrison"] },
-  { "id": "la-521", "meanings": ["to excel", "to exhibit", "to stand before"] },
-  { "id": "la-522", "meanings": ["beyond", "except", "besides"] },
-  { "id": "la-523", "meanings": ["besides", "moreover"] },
-  { "id": "la-524", "meanings": ["praetor (magistrate)"] },
-  { "id": "la-525", "meanings": ["prayers", "entreaties"] },
-  { "id": "la-526", "meanings": ["to seize", "to grasp"] },
-  { "id": "la-527", "meanings": ["to press", "to crush", "to overpower"] },
-  { "id": "la-528", "meanings": ["price", "value", "reward"] },
-  { "id": "la-529", "meanings": ["on the day before"] },
-  { "id": "la-530", "meanings": ["first", "at first"] },
-  { "id": "la-531", "meanings": ["first"] },
-  { "id": "la-532", "meanings": ["chief", "leader", "emperor"] },
-  { "id": "la-533", "meanings": ["former", "prior", "previous"] },
-  { "id": "la-534", "meanings": ["before", "sooner", "rather"] },
-  { "id": "la-535", "meanings": ["private", "personal"] },
-  { "id": "la-536", "meanings": ["for", "on behalf of", "in front of"] },
-  { "id": "la-537", "meanings": ["to prove", "to approve", "to test"] },
-  { "id": "la-538", "meanings": ["to proceed", "to advance", "to go forward"] },
-  { "id": "la-539", "meanings": ["far off", "at a distance"] },
-  { "id": "la-540", "meanings": ["to lead forth", "to produce", "to prolong"] },
-  { "id": "la-541", "meanings": ["battle"] },
-  { "id": "la-542", "meanings": ["surely", "certainly", "indeed"] },
-  { "id": "la-543", "meanings": ["to bring forward", "to produce", "to extend"] },
-  { "id": "la-544", "meanings": ["to set out", "to depart"] },
-  { "id": "la-545", "meanings": ["to prevent", "to prohibit", "to forbid"] },
-  { "id": "la-546", "meanings": ["to throw forward", "to cast out", "to project"] },
-  { "id": "la-547", "meanings": ["near", "nearly", "almost"] },
-  { "id": "la-548", "meanings": ["to hasten", "to hurry"] },
-  { "id": "la-549", "meanings": ["to set forth", "to propose", "to display"] },
-  { "id": "la-550", "meanings": ["one's own", "characteristic", "proper"] },
-  { "id": "la-551", "meanings": ["because of", "on account of", "near"] },
-  { "id": "la-552", "meanings": ["for that reason", "therefore"] },
-  { "id": "la-553", "meanings": ["to look forward", "to look out", "to foresee"] },
-  { "id": "la-554", "meanings": ["immediately", "at once"] },
-  { "id": "la-555", "meanings": ["province", "duty", "command"] },
-  { "id": "la-556", "meanings": ["nearest", "next", "very close"] },
-  { "id": "la-557", "meanings": ["wise", "prudent", "sensible"] },
-  { "id": "la-558", "meanings": ["public", "common"] },
-  { "id": "la-559", "meanings": ["shame", "modesty", "decency"] },
-  { "id": "la-560", "meanings": ["girl"] },
-  { "id": "la-561", "meanings": ["boy"] },
-  { "id": "la-562", "meanings": ["fight", "battle"] },
-  { "id": "la-563", "meanings": ["to fight"] },
-  { "id": "la-564", "meanings": ["beautiful", "handsome"] },
-  { "id": "la-565", "meanings": ["to strike", "to beat", "to knock"] },
-  { "id": "la-566", "meanings": ["to think", "to suppose", "to reckon"] },
-  { "id": "la-567", "meanings": ["where", "by which way"] },
-  { "id": "la-568", "meanings": ["forty"] },
-  { "id": "la-569", "meanings": ["four-footed animal", "quadruped"] },
-  { "id": "la-570", "meanings": ["to seek", "to ask", "to inquire"] },
-  { "id": "la-571", "meanings": ["question", "inquiry", "investigation"] },
-  { "id": "la-572", "meanings": ["quaestor (treasury official)"] },
-  { "id": "la-573", "meanings": ["of what sort", "what kind of"] },
-  { "id": "la-574", "meanings": ["than", "how", "as... as possible"] },
-  { "id": "la-575", "meanings": ["although"] },
-  { "id": "la-576", "meanings": ["although", "however much"] },
-  { "id": "la-577", "meanings": ["when"] },
-  { "id": "la-578", "meanings": ["how great", "how much"] },
-  { "id": "la-579", "meanings": ["why", "wherefore"] },
-  { "id": "la-580", "meanings": ["fourth"] },
-  { "id": "la-581", "meanings": ["as if", "just as if"] },
-  { "id": "la-582", "meanings": ["four"] },
-  { "id": "la-583", "meanings": ["and"] },
-  { "id": "la-584", "meanings": ["in what way", "how"] },
-  { "id": "la-585", "meanings": ["to complain", "to lament"] },
-  { "id": "la-586", "meanings": ["who", "which", "that"] },
-  { "id": "la-587", "meanings": ["because"] },
-  { "id": "la-588", "meanings": ["whoever", "whatever"] },
-  { "id": "la-589", "meanings": ["what", "anything"] },
-  { "id": "la-590", "meanings": ["a certain one", "someone"] },
-  { "id": "la-591", "meanings": ["indeed", "at least"] },
-  { "id": "la-592", "meanings": ["rest", "quiet", "sleep"] },
-  { "id": "la-593", "meanings": ["to rest", "to keep quiet"] },
-  { "id": "la-594", "meanings": ["but that", "that... not", "nay even"] },
-  { "id": "la-595", "meanings": ["five hundred"] },
-  { "id": "la-596", "meanings": ["five"] },
-  { "id": "la-597", "meanings": ["fifth"] },
-  { "id": "la-598", "meanings": ["who", "what"] },
-  { "id": "la-599", "meanings": ["anyone", "anything (after negative)"] },
-  { "id": "la-600", "meanings": ["each one", "every one"] },
-  { "id": "la-601", "meanings": ["whoever", "whatever"] },
-  { "id": "la-602", "meanings": ["where to", "whither", "to which place"] },
-  { "id": "la-603", "meanings": ["because", "that", "the fact that"] },
-  { "id": "la-604", "meanings": ["so that... not", "lest (after hindering)"] },
-  { "id": "la-605", "meanings": ["how", "in what way"] },
-  { "id": "la-606", "meanings": ["since", "whereas"] },
-  { "id": "la-607", "meanings": ["also", "too"] },
-  { "id": "la-608", "meanings": ["how many", "as many as"] },
-  { "id": "la-609", "meanings": ["daily", "every day"] },
-  { "id": "la-610", "meanings": ["how often", "as often as"] },
-  { "id": "la-611", "meanings": ["root", "base", "foot"] },
-  { "id": "la-612", "meanings": ["branch", "bough"] },
-  { "id": "la-613", "meanings": ["to snatch", "to seize", "to hurry"] },
-  { "id": "la-614", "meanings": ["thin", "rare", "scattered"] },
-  { "id": "la-615", "meanings": ["reason", "account", "manner"] },
-  { "id": "la-616", "meanings": ["raft", "boat"] },
-  { "id": "la-617", "meanings": ["fresh", "recent", "new"] },
-  { "id": "la-618", "meanings": ["to take back", "to receive", "to recover"] },
-  { "id": "la-619", "meanings": ["to recite", "to read aloud"] },
-  { "id": "la-620", "meanings": ["straight", "right", "correct"] },
-  { "id": "la-621", "meanings": ["to recover", "to regain", "to get back"] },
-  { "id": "la-622", "meanings": ["to give back", "to return", "to render"] },
-  { "id": "la-623", "meanings": ["to go back", "to return"] },
-  { "id": "la-624", "meanings": ["to lead back", "to bring back"] },
-  { "id": "la-625", "meanings": ["to bring back", "to report", "to refer"] },
-  { "id": "la-626", "meanings": ["to repair", "to restore", "to refresh"] },
-  { "id": "la-627", "meanings": ["queen"] },
-  { "id": "la-628", "meanings": ["region", "district", "direction"] },
-  { "id": "la-629", "meanings": ["royal", "kingly"] },
-  { "id": "la-630", "meanings": ["to rule", "to reign"] },
-  { "id": "la-631", "meanings": ["kingdom", "realm", "royal power"] },
-  { "id": "la-632", "meanings": ["to rule", "to guide", "to direct"] },
-  { "id": "la-633", "meanings": ["religion", "scruple", "sanctity"] },
-  { "id": "la-634", "meanings": ["to leave behind", "to abandon"] },
-  { "id": "la-635", "meanings": ["remaining", "the rest"] },
-  { "id": "la-636", "meanings": ["remedy", "cure"] },
-  { "id": "la-637", "meanings": ["oar"] },
-  { "id": "la-638", "meanings": ["to renew", "to restore"] },
-  { "id": "la-639", "meanings": ["to find", "to discover", "to find out"] },
-  { "id": "la-640", "meanings": ["to repeat", "to seek again", "to recall"] },
-  { "id": "la-641", "meanings": ["to put back", "to replace", "to store"] },
-  { "id": "la-642", "meanings": ["thing", "matter", "affair", "event"] },
-  { "id": "la-643", "meanings": ["to resist", "to stand against", "to stop"] },
-  { "id": "la-644", "meanings": ["to look back at", "to regard", "to consider"] },
-  { "id": "la-645", "meanings": ["to answer", "to reply"] },
-  { "id": "la-646", "meanings": ["republic", "state", "commonwealth"] },
-  { "id": "la-647", "meanings": ["to restore", "to replace", "to reinstate"] },
-  { "id": "la-648", "meanings": ["to hold back", "to retain", "to keep"] },
-  { "id": "la-649", "meanings": ["defendant", "accused person"] },
-  { "id": "la-650", "meanings": ["to turn back", "to return"] },
-  { "id": "la-651", "meanings": ["to call back", "to recall", "to revoke"] },
-  { "id": "la-652", "meanings": ["king"] },
-  { "id": "la-653", "meanings": ["to laugh", "to smile"] },
-  { "id": "la-654", "meanings": ["bank (of a river)"] },
-  { "id": "la-655", "meanings": ["laughter", "smile"] },
-  { "id": "la-656", "meanings": ["rite", "ceremony", "custom"] },
-  { "id": "la-657", "meanings": ["stream", "brook"] },
-  { "id": "la-658", "meanings": ["strong", "robust", "vigorous"] },
-  { "id": "la-659", "meanings": ["to ask", "to beg", "to request"] },
-  { "id": "la-660", "meanings": ["wheel"] },
-  { "id": "la-661", "meanings": ["reddening", "blushing"] },
-  { "id": "la-662", "meanings": ["rough", "unrefined", "raw"] },
-  { "id": "la-663", "meanings": ["to rush", "to fall", "to collapse"] },
-  { "id": "la-664", "meanings": ["ruin", "fall", "destruction"] },
-  { "id": "la-665", "meanings": ["rumor", "report", "hearsay"] },
-  { "id": "la-666", "meanings": ["to break", "to burst", "to rupture"] },
-  { "id": "la-667", "meanings": ["back", "again"] },
-  { "id": "la-668", "meanings": ["countryside", "the country"] },
-  { "id": "la-669", "meanings": ["sacred", "holy", "consecrated"] },
-  { "id": "la-670", "meanings": ["priest", "priestess"] },
-  { "id": "la-671", "meanings": ["sacrifice"] },
-  { "id": "la-672", "meanings": ["age", "century", "generation"] },
-  { "id": "la-673", "meanings": ["often"] },
-  { "id": "la-674", "meanings": ["savage", "cruel", "fierce"] },
-  { "id": "la-675", "meanings": ["arrow"] },
-    { "id": "la-676", "meanings": ["salt", "wit"] },
-    { "id": "la-677", "meanings": ["to jump", "to leap", "to dance"] },
-    { "id": "la-678", "meanings": ["health", "safety", "greeting"] },
-    { "id": "la-679", "meanings": ["to greet", "to salute"] },
-    { "id": "la-680", "meanings": ["blood"] },
-    { "id": "la-681", "meanings": ["wise", "sensible"] },
-    { "id": "la-682", "meanings": ["wisdom", "good sense"] },
-    { "id": "la-683", "meanings": ["enough", "sufficiently"] },
-    { "id": "la-684", "meanings": ["to satisfy"] },
-    { "id": "la-685", "meanings": ["rock", "stone"] },
-    { "id": "la-686", "meanings": ["to know"] },
-    { "id": "la-687", "meanings": ["knowledge", "science", "skill"] },
-    { "id": "la-688", "meanings": ["to write"] },
-    { "id": "la-689", "meanings": ["shield"] },
-    { "id": "la-690", "meanings": ["to cut", "to kill", "to carve"] },
-    { "id": "la-691", "meanings": ["second", "favorable", "following"] },
-    { "id": "la-692", "meanings": ["but", "moreover"] },
-    { "id": "la-693", "meanings": ["seat", "residence", "home"] },
-    { "id": "la-694", "meanings": ["always"] },
-    { "id": "la-695", "meanings": ["senate"] },
-    { "id": "la-696", "meanings": ["senator"] },
-    { "id": "la-697", "meanings": ["old man"] },
-    { "id": "la-698", "meanings": ["feeling", "opinion", "sentence"] },
-    { "id": "la-699", "meanings": ["to feel", "to perceive", "to think"] },
-    { "id": "la-700", "meanings": ["separately", "apart"] },
-    { "id": "la-701", "meanings": ["seven"] },
-    { "id": "la-702", "meanings": ["to follow"] },
-    { "id": "la-703", "meanings": ["to save", "to keep", "to watch"] },
-    { "id": "la-704", "meanings": ["slave", "servant"] },
-    { "id": "la-705", "meanings": ["slavery", "servitude"] },
-    { "id": "la-706", "meanings": ["to serve", "to be a slave to"] },
-    { "id": "la-707", "meanings": ["service", "slavery"] },
-    { "id": "la-708", "meanings": ["six"] },
-    { "id": "la-709", "meanings": ["if"] },
-    { "id": "la-710", "meanings": ["thus", "so"] },
-    { "id": "la-711", "meanings": ["dry"] },
-    { "id": "la-712", "meanings": ["just as", "as if"] },
-    { "id": "la-713", "meanings": ["star", "constellation"] },
-    { "id": "la-714", "meanings": ["forest", "wood"] },
-    { "id": "la-715", "meanings": ["similar", "like"] },
-    { "id": "la-716", "meanings": ["at the same time"] },
-    { "id": "la-717", "meanings": ["without"] },
-    { "id": "la-718", "meanings": ["one at a time", "single"] },
-    { "id": "la-719", "meanings": ["left", "left-hand", "unlucky"] },
-    { "id": "la-720", "meanings": ["to allow", "to permit", "to leave"] },
-    { "id": "la-721", "meanings": ["site", "position"] },
-    { "id": "la-722", "meanings": ["placed", "situated"] },
-    { "id": "la-723", "meanings": ["or if", "whether"] },
-    { "id": "la-724", "meanings": ["ally", "companion"] },
-    { "id": "la-725", "meanings": ["alliance", "partnership"] },
-    { "id": "la-726", "meanings": ["sun"] },
-    { "id": "la-727", "meanings": ["to be accustomed"] },
-    { "id": "la-728", "meanings": ["alone", "only"] },
-    { "id": "la-729", "meanings": ["to loosen", "to free", "to pay"] },
-    { "id": "la-730", "meanings": ["sleep"] },
-    { "id": "la-731", "meanings": ["sound", "noise"] },
-    { "id": "la-732", "meanings": ["sister"] },
-    { "id": "la-733", "meanings": ["lot", "fate", "chance"] },
-    { "id": "la-734", "meanings": ["to scatter", "to sprinkle"] },
-    { "id": "la-735", "meanings": ["space", "distance", "period of time"] },
-    { "id": "la-736", "meanings": ["sight", "appearance", "kind"] },
-    { "id": "la-737", "meanings": ["to look at", "to behold"] },
-    { "id": "la-738", "meanings": ["hope"] },
-    { "id": "la-739", "meanings": ["to hope"] },
-    { "id": "la-740", "meanings": ["spirit", "breath", "life"] },
-    { "id": "la-741", "meanings": ["splendid", "bright", "magnificent"] },
-    { "id": "la-742", "meanings": ["to promise", "to vow"] },
-    { "id": "la-743", "meanings": ["standard", "sign", "signal"] },
-    { "id": "la-744", "meanings": ["immediately", "at once"] },
-    { "id": "la-745", "meanings": ["statue"] },
-    { "id": "la-746", "meanings": ["to stand"] },
-    { "id": "la-747", "meanings": ["noise", "din", "uproar"] },
-    { "id": "la-748", "meanings": ["eagerness", "study", "zeal"] },
-    { "id": "la-749", "meanings": ["stupid", "foolish"] },
-    { "id": "la-750", "meanings": ["under", "below", "at the foot of"] },
-    { "id": "la-751", "meanings": ["suddenly"] },
-    { "id": "la-752", "meanings": ["to go under", "to undergo", "to approach"] },
-    { "id": "la-753", "meanings": ["sudden"] },
-    { "id": "la-754", "meanings": ["help", "reserve troops", "aid"] },
-    { "id": "la-755", "meanings": ["highest", "top of", "last"] },
-    { "id": "la-756", "meanings": ["to overcome", "to surpass", "to defeat"] },
-    { "id": "la-757", "meanings": ["above", "upon"] },
-    { "id": "la-758", "meanings": ["upper", "higher", "former"] },
-    { "id": "la-759", "meanings": ["to undertake", "to take up", "to receive"] },
-    { "id": "la-760", "meanings": ["to suspect"] },
-    { "id": "la-761", "meanings": ["suspicion"] },
-    { "id": "la-762", "meanings": ["to sustain", "to endure", "to support"] },
-    { "id": "la-763", "meanings": ["his", "her", "its", "their (own)"] },
-    { "id": "la-764", "meanings": ["table"] },
-    { "id": "la-765", "meanings": ["to be silent"] },
-    { "id": "la-766", "meanings": ["silent", "still"] },
-    { "id": "la-767", "meanings": ["such", "of such a kind"] },
-    { "id": "la-768", "meanings": ["also", "even", "moreover"] },
-    { "id": "la-769", "meanings": ["so", "to such a degree"] },
-    { "id": "la-770", "meanings": ["at last", "finally"] },
-    { "id": "la-771", "meanings": ["only"] },
-    { "id": "la-772", "meanings": ["to touch"] },
-    { "id": "la-773", "meanings": ["so great", "as great"] },
-    { "id": "la-774", "meanings": ["only", "so much"] },
-    { "id": "la-775", "meanings": ["slow", "late"] },
-    { "id": "la-776", "meanings": ["at length", "finally"] },
-    { "id": "la-777", "meanings": ["nevertheless", "yet"] },
-    { "id": "la-778", "meanings": ["roof", "house"] },
-    { "id": "la-779", "meanings": ["to cover", "to protect"] },
-    { "id": "la-780", "meanings": ["weapon", "missile"] },
-    { "id": "la-781", "meanings": ["temple"] },
-    { "id": "la-782", "meanings": ["to try", "to test", "to attempt"] },
-    { "id": "la-783", "meanings": ["time", "opportunity"] },
-    { "id": "la-784", "meanings": ["to hold", "to keep"] },
-    { "id": "la-785", "meanings": ["tent"] },
-    { "id": "la-786", "meanings": ["earth", "land", "ground"] },
-    { "id": "la-787", "meanings": ["fright", "terror", "panic"] },
-    { "id": "la-788", "meanings": ["to frighten", "to terrify"] },
-    { "id": "la-789", "meanings": ["witness"] },
-    { "id": "la-790", "meanings": ["theatre"] },
-    { "id": "la-791", "meanings": ["to fear", "to be afraid"] },
-    { "id": "la-792", "meanings": ["fear", "dread"] },
-    { "id": "la-793", "meanings": ["to lift", "to raise", "to remove"] },
-    { "id": "la-794", "meanings": ["so many"] },
-    { "id": "la-795", "meanings": ["all the same", "nevertheless"] },
-    { "id": "la-796", "meanings": ["as many... as"] },
-    { "id": "la-797", "meanings": ["to hand over", "to surrender", "to report"] },
-    { "id": "la-798", "meanings": ["to drag", "to draw"] },
-    { "id": "la-799", "meanings": ["across"] },
-    { "id": "la-800", "meanings": ["to go across", "to cross over"] },
-    { "id": "la-801", "meanings": ["three"] },
-    { "id": "la-802", "meanings": ["triumph", "victory parade"] },
-    { "id": "la-803", "meanings": ["you (singular)"] },
-    { "id": "la-804", "meanings": ["then", "at that time"] },
-    { "id": "la-805", "meanings": ["crowd", "uproar", "mob"] },
-    { "id": "la-806", "meanings": ["safe", "secure"] },
-    { "id": "la-807", "meanings": ["your", "yours (singular)"] },
-    { "id": "la-808", "meanings": ["where", "when"] },
-    { "id": "la-809", "meanings": ["everywhere"] },
-    { "id": "la-810", "meanings": ["any"] },
-    { "id": "la-811", "meanings": ["last", "final", "farthest"] },
-    { "id": "la-812", "meanings": ["beyond", "further"] },
-    { "id": "la-813", "meanings": ["shadow", "shade", "ghost"] },
-    { "id": "la-814", "meanings": ["ever"] },
-    { "id": "la-815", "meanings": ["one", "only", "alone"] },
-    { "id": "la-816", "meanings": ["city"] },
-    { "id": "la-817", "meanings": ["to urge", "to press hard"] },
-    { "id": "la-818", "meanings": ["as", "when", "that", "so that"] },
-    { "id": "la-819", "meanings": ["useful", "profitable"] },
-    { "id": "la-820", "meanings": ["to use", "to enjoy", "to employ"] },
-    { "id": "la-821", "meanings": ["wife"] },
-    { "id": "la-822", "meanings": ["whether... or"] },
-    { "id": "la-823", "meanings": ["vacant", "empty", "free from"] },
-    { "id": "la-824", "meanings": ["to wander", "to roam"] },
-    { "id": "la-825", "meanings": ["to be strong", "to be well", "to prevail"] },
-    { "id": "la-826", "meanings": ["strong", "powerful", "healthy"] },
-    { "id": "la-827", "meanings": ["valley"] },
-    { "id": "la-828", "meanings": ["wall", "rampart"] },
-    { "id": "la-829", "meanings": ["varied", "different", "changing"] },
-    { "id": "la-830", "meanings": ["vast", "immense", "deserted"] },
-    { "id": "la-831", "meanings": ["or", "even"] },
-    { "id": "la-832", "meanings": ["swift", "fast"] },
-    { "id": "la-833", "meanings": ["speed", "swiftness"] },
-    { "id": "la-834", "meanings": ["as", "just as", "like"] },
-    { "id": "la-835", "meanings": ["to sell"] },
-    { "id": "la-836", "meanings": ["to come"] },
-    { "id": "la-837", "meanings": ["wind"] },
-    { "id": "la-838", "meanings": ["word"] },
-    { "id": "la-839", "meanings": ["truth"] },
-    { "id": "la-840", "meanings": ["true", "real"] },
-    { "id": "la-841", "meanings": ["but", "indeed"] },
-    { "id": "la-842", "meanings": ["to turn", "to change"] },
-    { "id": "la-843", "meanings": ["your", "yours (plural)"] },
-    { "id": "la-844", "meanings": ["evening"] },
-    { "id": "la-845", "meanings": ["your", "yours (plural)"] },
-    { "id": "la-846", "meanings": ["old", "former", "ancient"] },
-    { "id": "la-847", "meanings": ["way", "road", "street"] },
-    { "id": "la-848", "meanings": ["neighbor"] },
-    { "id": "la-849", "meanings": ["to see"] },
-    { "id": "la-850", "meanings": ["to seem", "to be seen"] },
-    { "id": "la-851", "meanings": ["vigil", "watch", "guard"] },
-    { "id": "la-852", "meanings": ["twenty"] },
-    { "id": "la-853", "meanings": ["to conquer", "to defeat"] },
-    { "id": "la-854", "meanings": ["man", "husband", "hero"] },
-    { "id": "la-855", "meanings": ["courage", "virtue", "bravery"] },
-    { "id": "la-856", "meanings": ["force", "violence", "strength (pl.)"] },
-    { "id": "la-857", "meanings": ["sight", "vision"] },
-    { "id": "la-858", "meanings": ["life"] },
-    { "id": "la-859", "meanings": ["to avoid", "to shun"] },
-    { "id": "la-860", "meanings": ["fault", "vice", "defect"] },
-    { "id": "la-861", "meanings": ["to live"] },
-    { "id": "la-862", "meanings": ["alive", "living"] },
-    { "id": "la-863", "meanings": ["scarcely", "with difficulty"] },
-    { "id": "la-864", "meanings": ["to call", "to summon"] },
-    { "id": "la-865", "meanings": ["to want", "to wish", "to be willing"] },
-    { "id": "la-866", "meanings": ["will", "wish", "consent"] },
-    { "id": "la-867", "meanings": ["pleasure", "delight"] },
-    { "id": "la-868", "meanings": ["voice", "word", "cry"] },
-    { "id": "la-869", "meanings": ["vulnerable", "exposed"] },
-    { "id": "la-870", "meanings": ["wound"] },
-    { "id": "la-871", "meanings": ["to wound"] },
-    { "id": "la-872", "meanings": ["face", "expression"] },
-    { "id": "la-873", "meanings": ["vulgar", "common"] },
-    { "id": "la-874", "meanings": ["stranger", "foreigner"] },
-    { "id": "la-875", "meanings": ["dryness", "drought"] },
-    { "id": "la-876", "meanings": ["belt", "girdle"] },
-    { "id": "la-877", "meanings": ["zeal", "enthusiasm"] },
-    { "id": "la-878", "meanings": ["to build", "to edify"] },
-    { "id": "la-879", "meanings": ["building", "edifice"] },
-    { "id": "la-880", "meanings": ["sick", "weak"] },
-    { "id": "la-881", "meanings": ["hardly", "scarcely", "with difficulty"] },
-    { "id": "la-882", "meanings": ["summer"] },
-    { "id": "la-883", "meanings": ["age", "time of life"] },
-    { "id": "la-884", "meanings": ["eternal", "everlasting"] },
-    { "id": "la-885", "meanings": ["air", "atmosphere"] },
-    { "id": "la-886", "meanings": ["copper", "bronze", "money"] },
-    { "id": "la-887", "meanings": ["summer (adj.)"] },
-    { "id": "la-888", "meanings": ["to estimate", "to value", "to think"] },
-    { "id": "la-889", "meanings": ["heat", "tide", "passion"] },
-    { "id": "la-890", "meanings": ["age", "generation"] },
-    { "id": "la-891", "meanings": ["to affect", "to influence"] },
-    { "id": "la-892", "meanings": ["to confirm", "to strengthen"] },
-    { "id": "la-893", "meanings": ["to take away", "to remove"] },
-    { "id": "la-894", "meanings": ["to set fire to", "to kindle"] },
-    { "id": "la-895", "meanings": ["to increase", "to enlarge"] },
-    { "id": "la-896", "meanings": ["bird"] },
-    { "id": "la-897", "meanings": ["grandfather"] },
-    { "id": "la-898", "meanings": ["to turn away", "to avert"] },
-    { "id": "la-899", "meanings": ["uncle (maternal)"] },
-    { "id": "la-900", "meanings": ["barbarian", "foreign"] },
-    { "id": "la-901", "meanings": ["bearded"] },
-    { "id": "la-902", "meanings": ["happy", "blessed"] },
-    { "id": "la-903", "meanings": ["warrior-like", "warlike"] },
-    { "id": "la-904", "meanings": ["to war", "to fight"] },
-    { "id": "la-905", "meanings": ["well"] },
-    { "id": "la-906", "meanings": ["twice"] },
-    { "id": "la-907", "meanings": ["bland", "flattering", "soothing"] },
-    { "id": "la-908", "meanings": ["flattery", "charm"] },
-    { "id": "la-909", "meanings": ["goodness", "kindness"] },
-    { "id": "la-910", "meanings": ["cattle", "ox"] },
-    { "id": "la-911", "meanings": ["arm", "upper arm"] },
-    { "id": "la-912", "meanings": ["briefly", "shortly"] },
-    { "id": "la-913", "meanings": ["blind"] },
-    { "id": "la-914", "meanings": ["to fall", "to happen", "to die"] },
-    { "id": "la-915", "meanings": ["blindness"] },
-    { "id": "la-916", "meanings": ["warmth", "heat"] },
-    { "id": "la-917", "meanings": ["warm", "hot"] },
-    { "id": "la-918", "meanings": ["callous", "hardened", "shrewd"] },
-    { "id": "la-919", "meanings": ["field", "plain"] },
-    { "id": "la-920", "meanings": ["white", "bright"] },
-    { "id": "la-921", "meanings": ["dog"] },
-    { "id": "la-922", "meanings": ["to sing", "to play (an instrument)"] },
-    { "id": "la-923", "meanings": ["song", "poem"] },
-    { "id": "la-924", "meanings": ["hair"] },
-    { "id": "la-925", "meanings": ["to lack", "to be without"] },
-    { "id": "la-926", "meanings": ["flesh", "meat"] },
-    { "id": "la-927", "meanings": ["dear", "expensive"] },
-    { "id": "la-928", "meanings": ["charity", "love", "dearness"] },
-    { "id": "la-929", "meanings": ["castle", "fortress"] },
-    { "id": "la-930", "meanings": ["chaste", "pure"] },
-    { "id": "la-931", "meanings": ["chance", "accident", "event"] },
-    { "id": "la-932", "meanings": ["chain", "fetter"] },
-    { "id": "la-933", "meanings": ["to beware", "to take care"] },
-    { "id": "la-934", "meanings": ["hollow", "concave"] },
-    { "id": "la-935", "meanings": ["to yield", "to go", "to withdraw"] },
-    { "id": "la-936", "meanings": ["famous", "celebrated"] },
-    { "id": "la-937", "meanings": ["swiftly", "quickly"] },
-    { "id": "la-938", "meanings": ["to hide", "to conceal"] },
-    { "id": "la-939", "meanings": ["censure", "judgment"] },
-    { "id": "la-940", "meanings": ["census", "wealth"] },
-    { "id": "la-941", "meanings": ["centurion"] },
-    { "id": "la-942", "meanings": ["wax"] },
-    { "id": "la-943", "meanings": ["to discern", "to separate", "to decide"] },
-    { "id": "la-944", "meanings": ["certainly", "at least"] },
-    { "id": "la-945", "meanings": ["stag", "deer"] },
-    { "id": "la-946", "meanings": ["to stop", "to cease"] },
-    { "id": "la-947", "meanings": ["the rest", "the others"] },
-    { "id": "la-948", "meanings": ["food", "meal"] },
-    { "id": "la-949", "meanings": ["to surround", "to gird"] },
-    { "id": "la-950", "meanings": ["about", "around"] },
-    { "id": "la-951", "meanings": ["around", "near"] },
-    { "id": "la-952", "meanings": ["citadel", "fortress"] },
-    { "id": "la-953", "meanings": ["quickly", "soon"] },
-    { "id": "la-954", "meanings": ["civilian", "polite"] },
-    { "id": "la-955", "meanings": ["secretly", "privately"] },
-    { "id": "la-956", "meanings": ["to shout", "to proclaim"] },
-    { "id": "la-957", "meanings": ["clear", "bright", "famous"] },
-    { "id": "la-958", "meanings": ["fleet"] },
-    { "id": "la-959", "meanings": ["to shut", "to close"] },
-    { "id": "la-960", "meanings": ["key"] },
-    { "id": "la-961", "meanings": ["mild", "gentle", "merciful"] },
-    { "id": "la-962", "meanings": ["client", "dependent"] },
-    { "id": "la-963", "meanings": ["slope", "hill"] },
-    { "id": "la-964", "meanings": ["to cook"] },
-    { "id": "la-965", "meanings": ["heavenly", "divine"] },
-    { "id": "la-966", "meanings": ["to force", "to compel", "to gather"] },
-    { "id": "la-967", "meanings": ["to know", "to recognize"] },
-    { "id": "la-968", "meanings": ["to inhabit", "to cultivate", "to worship"] },
-    { "id": "la-969", "meanings": ["color"] },
-    { "id": "la-970", "meanings": ["hair", "foliage"] },
-    { "id": "la-971", "meanings": ["comet"] },
-    { "id": "la-972", "meanings": ["courtesy", "kindness"] },
-    { "id": "la-973", "meanings": ["to eat"] },
-    { "id": "la-974", "meanings": ["companion", "comrade"] },
-    { "id": "la-975", "meanings": ["to prepare", "to compare"] },
-    { "id": "la-976", "meanings": ["to find out", "to discover"] },
-    { "id": "la-977", "meanings": ["complex", "embrace"] },
-    { "id": "la-978", "meanings": ["to fill", "to complete"] },
-    { "id": "la-979", "meanings": ["to buy", "to purchase"] },
-    { "id": "la-980", "meanings": ["to endeavor", "to try"] },
-    { "id": "la-981", "meanings": ["to grant", "to yield", "to withdraw"] },
-    { "id": "la-982", "meanings": ["assembly", "council"] },
-    { "id": "la-983", "meanings": ["to agree", "to harmonize"] },
-    { "id": "la-984", "meanings": ["to build", "to found", "to hide"] },
-    { "id": "la-985", "meanings": ["condition", "term", "situation"] },
-    { "id": "la-986", "meanings": ["to confide", "to trust"] },
-    { "id": "la-987", "meanings": ["to finish", "to accomplish"] },
-    { "id": "la-988", "meanings": ["to confess", "to acknowledge"] },
-    { "id": "la-989", "meanings": ["to preserve", "to keep safe"] },
-    { "id": "la-990", "meanings": ["to advise", "to consult"] }
+  {
+    "id": "la-001",
+    "meanings": [
+      "from",
+      "away from",
+      "by"
+    ]
+  },
+  {
+    "id": "la-002",
+    "meanings": [
+      "and",
+      "and also"
+    ]
+  },
+  {
+    "id": "la-003",
+    "meanings": [
+      "to happen",
+      "to fall out"
+    ]
+  },
+  {
+    "id": "la-004",
+    "meanings": [
+      "to receive",
+      "to accept"
+    ]
+  },
+  {
+    "id": "la-005",
+    "meanings": [
+      "to",
+      "towards",
+      "at"
+    ]
+  },
+  {
+    "id": "la-006",
+    "meanings": [
+      "to lead to",
+      "to influence"
+    ]
+  },
+  {
+    "id": "la-007",
+    "meanings": [
+      "arrival",
+      "approach"
+    ]
+  },
+  {
+    "id": "la-008",
+    "meanings": [
+      "building",
+      "structure"
+    ]
+  },
+  {
+    "id": "la-009",
+    "meanings": [
+      "equal",
+      "fair",
+      "level"
+    ]
+  },
+  {
+    "id": "la-010",
+    "meanings": [
+      "field",
+      "territory"
+    ]
+  },
+  {
+    "id": "la-011",
+    "meanings": [
+      "to do",
+      "to drive",
+      "to conduct"
+    ]
+  },
+  {
+    "id": "la-012",
+    "meanings": [
+      "column (of soldiers)",
+      "line of march"
+    ]
+  },
+  {
+    "id": "la-013",
+    "meanings": [
+      "someone",
+      "something",
+      "anyone"
+    ]
+  },
+  {
+    "id": "la-014",
+    "meanings": [
+      "other",
+      "another"
+    ]
+  },
+  {
+    "id": "la-015",
+    "meanings": [
+      "high",
+      "deep"
+    ]
+  },
+  {
+    "id": "la-016",
+    "meanings": [
+      "friendship"
+    ]
+  },
+  {
+    "id": "la-017",
+    "meanings": [
+      "friend"
+    ]
+  },
+  {
+    "id": "la-018",
+    "meanings": [
+      "to lose",
+      "to let go"
+    ]
+  },
+  {
+    "id": "la-019",
+    "meanings": [
+      "to love",
+      "to like"
+    ]
+  },
+  {
+    "id": "la-020",
+    "meanings": [
+      "love",
+      "affection"
+    ]
+  },
+  {
+    "id": "la-021",
+    "meanings": [
+      "spirit",
+      "mind",
+      "courage"
+    ]
+  },
+  {
+    "id": "la-022",
+    "meanings": [
+      "year"
+    ]
+  },
+  {
+    "id": "la-023",
+    "meanings": [
+      "before",
+      "in front of"
+    ]
+  },
+  {
+    "id": "la-024",
+    "meanings": [
+      "to call",
+      "to name"
+    ]
+  },
+  {
+    "id": "la-025",
+    "meanings": [
+      "among",
+      "at the house of"
+    ]
+  },
+  {
+    "id": "la-026",
+    "meanings": [
+      "water"
+    ]
+  },
+  {
+    "id": "la-027",
+    "meanings": [
+      "to think",
+      "to judge",
+      "to believe"
+    ]
+  },
+  {
+    "id": "la-028",
+    "meanings": [
+      "tree"
+    ]
+  },
+  {
+    "id": "la-029",
+    "meanings": [
+      "arms",
+      "weapons"
+    ]
+  },
+  {
+    "id": "la-030",
+    "meanings": [
+      "art",
+      "skill"
+    ]
+  },
+  {
+    "id": "la-031",
+    "meanings": [
+      "to climb",
+      "to ascend"
+    ]
+  },
+  {
+    "id": "la-032",
+    "meanings": [
+      "but",
+      "yet"
+    ]
+  },
+  {
+    "id": "la-033",
+    "meanings": [
+      "and",
+      "and also"
+    ]
+  },
+  {
+    "id": "la-034",
+    "meanings": [
+      "authority",
+      "influence"
+    ]
+  },
+  {
+    "id": "la-035",
+    "meanings": [
+      "boldness",
+      "audacity"
+    ]
+  },
+  {
+    "id": "la-036",
+    "meanings": [
+      "bold",
+      "daring"
+    ]
+  },
+  {
+    "id": "la-037",
+    "meanings": [
+      "to dare"
+    ]
+  },
+  {
+    "id": "la-038",
+    "meanings": [
+      "to hear",
+      "to listen to"
+    ]
+  },
+  {
+    "id": "la-039",
+    "meanings": [
+      "to carry away",
+      "to take away"
+    ]
+  },
+  {
+    "id": "la-040",
+    "meanings": [
+      "or"
+    ]
+  },
+  {
+    "id": "la-041",
+    "meanings": [
+      "however",
+      "moreover"
+    ]
+  },
+  {
+    "id": "la-042",
+    "meanings": [
+      "help",
+      "aid"
+    ]
+  },
+  {
+    "id": "la-043",
+    "meanings": [
+      "war"
+    ]
+  },
+  {
+    "id": "la-044",
+    "meanings": [
+      "well"
+    ]
+  },
+  {
+    "id": "la-045",
+    "meanings": [
+      "kindness",
+      "benefit"
+    ]
+  },
+  {
+    "id": "la-046",
+    "meanings": [
+      "beast",
+      "wild animal"
+    ]
+  },
+  {
+    "id": "la-047",
+    "meanings": [
+      "to drink"
+    ]
+  },
+  {
+    "id": "la-048",
+    "meanings": [
+      "good"
+    ]
+  },
+  {
+    "id": "la-049",
+    "meanings": [
+      "short",
+      "brief"
+    ]
+  },
+  {
+    "id": "la-050",
+    "meanings": [
+      "to fall"
+    ]
+  },
+  {
+    "id": "la-051",
+    "meanings": [
+      "slaughter",
+      "murder"
+    ]
+  },
+  {
+    "id": "la-052",
+    "meanings": [
+      "sky",
+      "heaven"
+    ]
+  },
+  {
+    "id": "la-053",
+    "meanings": [
+      "to take",
+      "to seize",
+      "to capture"
+    ]
+  },
+  {
+    "id": "la-054",
+    "meanings": [
+      "prisoner",
+      "captive"
+    ]
+  },
+  {
+    "id": "la-055",
+    "meanings": [
+      "head"
+    ]
+  },
+  {
+    "id": "la-056",
+    "meanings": [
+      "camp",
+      "military camp"
+    ]
+  },
+  {
+    "id": "la-057",
+    "meanings": [
+      "cause",
+      "reason",
+      "case"
+    ]
+  },
+  {
+    "id": "la-058",
+    "meanings": [
+      "to yield",
+      "to withdraw"
+    ]
+  },
+  {
+    "id": "la-059",
+    "meanings": [
+      "swift",
+      "fast"
+    ]
+  },
+  {
+    "id": "la-060",
+    "meanings": [
+      "speed",
+      "swiftness"
+    ]
+  },
+  {
+    "id": "la-061",
+    "meanings": [
+      "dinner",
+      "meal"
+    ]
+  },
+  {
+    "id": "la-062",
+    "meanings": [
+      "to think",
+      "to vote",
+      "to assess"
+    ]
+  },
+  {
+    "id": "la-063",
+    "meanings": [
+      "one hundred"
+    ]
+  },
+  {
+    "id": "la-064",
+    "meanings": [
+      "contest",
+      "struggle",
+      "battle"
+    ]
+  },
+  {
+    "id": "la-065",
+    "meanings": [
+      "certain",
+      "fixed",
+      "sure"
+    ]
+  },
+  {
+    "id": "la-066",
+    "meanings": [
+      "the rest",
+      "the others"
+    ]
+  },
+  {
+    "id": "la-067",
+    "meanings": [
+      "food"
+    ]
+  },
+  {
+    "id": "la-068",
+    "meanings": [
+      "civil",
+      "of a citizen"
+    ]
+  },
+  {
+    "id": "la-069",
+    "meanings": [
+      "citizen"
+    ]
+  },
+  {
+    "id": "la-070",
+    "meanings": [
+      "state",
+      "citizenship"
+    ]
+  },
+  {
+    "id": "la-071",
+    "meanings": [
+      "to shout",
+      "to cry out"
+    ]
+  },
+  {
+    "id": "la-072",
+    "meanings": [
+      "shout",
+      "noise",
+      "clamor"
+    ]
+  },
+  {
+    "id": "la-073",
+    "meanings": [
+      "clear",
+      "famous",
+      "bright"
+    ]
+  },
+  {
+    "id": "la-074",
+    "meanings": [
+      "to close",
+      "to shut"
+    ]
+  },
+  {
+    "id": "la-075",
+    "meanings": [
+      "to have begun"
+    ]
+  },
+  {
+    "id": "la-076",
+    "meanings": [
+      "to compel",
+      "to collect",
+      "to force"
+    ]
+  },
+  {
+    "id": "la-077",
+    "meanings": [
+      "to think",
+      "to consider"
+    ]
+  },
+  {
+    "id": "la-078",
+    "meanings": [
+      "to learn",
+      "to recognize",
+      "to find out"
+    ]
+  },
+  {
+    "id": "la-079",
+    "meanings": [
+      "cohort",
+      "company"
+    ]
+  },
+  {
+    "id": "la-080",
+    "meanings": [
+      "to cultivate",
+      "to worship",
+      "to dwell"
+    ]
+  },
+  {
+    "id": "la-081",
+    "meanings": [
+      "companion"
+    ]
+  },
+  {
+    "id": "la-082",
+    "meanings": [
+      "to entrust",
+      "to commit",
+      "to join"
+    ]
+  },
+  {
+    "id": "la-083",
+    "meanings": [
+      "common",
+      "general"
+    ]
+  },
+  {
+    "id": "la-084",
+    "meanings": [
+      "to prepare",
+      "to compare",
+      "to get together"
+    ]
+  },
+  {
+    "id": "la-085",
+    "meanings": [
+      "several",
+      "very many"
+    ]
+  },
+  {
+    "id": "la-086",
+    "meanings": [
+      "to withdraw",
+      "to yield",
+      "to concede"
+    ]
+  },
+  {
+    "id": "la-087",
+    "meanings": [
+      "condition",
+      "terms"
+    ]
+  },
+  {
+    "id": "la-088",
+    "meanings": [
+      "to bring together",
+      "to collect",
+      "to compare"
+    ]
+  },
+  {
+    "id": "la-089",
+    "meanings": [
+      "to finish",
+      "to complete",
+      "to wear out"
+    ]
+  },
+  {
+    "id": "la-090",
+    "meanings": [
+      "to strengthen",
+      "to declare",
+      "to assert"
+    ]
+  },
+  {
+    "id": "la-091",
+    "meanings": [
+      "to throw",
+      "to hurl"
+    ]
+  },
+  {
+    "id": "la-092",
+    "meanings": [
+      "spouse",
+      "wife",
+      "husband"
+    ]
+  },
+  {
+    "id": "la-093",
+    "meanings": [
+      "to try",
+      "to attempt"
+    ]
+  },
+  {
+    "id": "la-094",
+    "meanings": [
+      "plan",
+      "advice",
+      "council"
+    ]
+  },
+  {
+    "id": "la-095",
+    "meanings": [
+      "to halt",
+      "to stand",
+      "to take a stand"
+    ]
+  },
+  {
+    "id": "la-096",
+    "meanings": [
+      "to decide",
+      "to establish",
+      "to set up"
+    ]
+  },
+  {
+    "id": "la-097",
+    "meanings": [
+      "custom",
+      "habit"
+    ]
+  },
+  {
+    "id": "la-098",
+    "meanings": [
+      "consul"
+    ]
+  },
+  {
+    "id": "la-099",
+    "meanings": [
+      "to strive",
+      "to hasten",
+      "to fight"
+    ]
+  },
+  {
+    "id": "la-100",
+    "meanings": [
+      "to hold together",
+      "to contain",
+      "to keep"
+    ]
+  },
+  {
+    "id": "la-101",
+    "meanings": [
+      "against",
+      "opposite"
+    ]
+  },
+  {
+    "id": "la-102",
+    "meanings": [
+      "to come together",
+      "to meet",
+      "to be agreed"
+    ]
+  },
+  {
+    "id": "la-103",
+    "meanings": [
+      "to call together",
+      "to assemble"
+    ]
+  },
+  {
+    "id": "la-104",
+    "meanings": [
+      "abundance",
+      "supply",
+      "troops (pl.)"
+    ]
+  },
+  {
+    "id": "la-105",
+    "meanings": [
+      "body"
+    ]
+  },
+  {
+    "id": "la-106",
+    "meanings": [
+      "to believe",
+      "to trust"
+    ]
+  },
+  {
+    "id": "la-107",
+    "meanings": [
+      "to create",
+      "to appoint",
+      "to produce"
+    ]
+  },
+  {
+    "id": "la-108",
+    "meanings": [
+      "crime",
+      "accusation",
+      "charge"
+    ]
+  },
+  {
+    "id": "la-109",
+    "meanings": [
+      "cruel"
+    ]
+  },
+  {
+    "id": "la-110",
+    "meanings": [
+      "with",
+      "when",
+      "since",
+      "although"
+    ]
+  },
+  {
+    "id": "la-111",
+    "meanings": [
+      "to desire",
+      "to want",
+      "to long for"
+    ]
+  },
+  {
+    "id": "la-112",
+    "meanings": [
+      "desire",
+      "greed",
+      "eagerness"
+    ]
+  },
+  {
+    "id": "la-113",
+    "meanings": [
+      "why"
+    ]
+  },
+  {
+    "id": "la-114",
+    "meanings": [
+      "care",
+      "concern",
+      "anxiety"
+    ]
+  },
+  {
+    "id": "la-115",
+    "meanings": [
+      "to care for",
+      "to look after"
+    ]
+  },
+  {
+    "id": "la-116",
+    "meanings": [
+      "to run"
+    ]
+  },
+  {
+    "id": "la-117",
+    "meanings": [
+      "guard",
+      "guardian"
+    ]
+  },
+  {
+    "id": "la-118",
+    "meanings": [
+      "to condemn",
+      "to find guilty"
+    ]
+  },
+  {
+    "id": "la-119",
+    "meanings": [
+      "down from",
+      "about",
+      "concerning"
+    ]
+  },
+  {
+    "id": "la-120",
+    "meanings": [
+      "to owe",
+      "ought",
+      "must"
+    ]
+  },
+  {
+    "id": "la-121",
+    "meanings": [
+      "ten"
+    ]
+  },
+  {
+    "id": "la-122",
+    "meanings": [
+      "to fall down",
+      "to die"
+    ]
+  },
+  {
+    "id": "la-123",
+    "meanings": [
+      "to decide",
+      "to decree"
+    ]
+  },
+  {
+    "id": "la-124",
+    "meanings": [
+      "to surrender",
+      "to give up"
+    ]
+  },
+  {
+    "id": "la-125",
+    "meanings": [
+      "to defend"
+    ]
+  },
+  {
+    "id": "la-126",
+    "meanings": [
+      "to carry down",
+      "to report",
+      "to offer"
+    ]
+  },
+  {
+    "id": "la-127",
+    "meanings": [
+      "then",
+      "next"
+    ]
+  },
+  {
+    "id": "la-128",
+    "meanings": [
+      "to delight",
+      "to please"
+    ]
+  },
+  {
+    "id": "la-129",
+    "meanings": [
+      "to choose",
+      "to select"
+    ]
+  },
+  {
+    "id": "la-130",
+    "meanings": [
+      "to show",
+      "to point out",
+      "to demonstrate"
+    ]
+  },
+  {
+    "id": "la-131",
+    "meanings": [
+      "finally",
+      "at last"
+    ]
+  },
+  {
+    "id": "la-132",
+    "meanings": [
+      "to descend",
+      "to go down"
+    ]
+  },
+  {
+    "id": "la-133",
+    "meanings": [
+      "to desert",
+      "to abandon"
+    ]
+  },
+  {
+    "id": "la-134",
+    "meanings": [
+      "to long for",
+      "to miss",
+      "to desire"
+    ]
+  },
+  {
+    "id": "la-135",
+    "meanings": [
+      "to stop",
+      "to cease",
+      "to desist"
+    ]
+  },
+  {
+    "id": "la-136",
+    "meanings": [
+      "god"
+    ]
+  },
+  {
+    "id": "la-137",
+    "meanings": [
+      "right",
+      "right-hand"
+    ]
+  },
+  {
+    "id": "la-138",
+    "meanings": [
+      "to say",
+      "to tell",
+      "to speak"
+    ]
+  },
+  {
+    "id": "la-139",
+    "meanings": [
+      "day"
+    ]
+  },
+  {
+    "id": "la-140",
+    "meanings": [
+      "difficult"
+    ]
+  },
+  {
+    "id": "la-141",
+    "meanings": [
+      "dignity",
+      "prestige",
+      "honor"
+    ]
+  },
+  {
+    "id": "la-142",
+    "meanings": [
+      "worthy",
+      "deserving"
+    ]
+  },
+  {
+    "id": "la-143",
+    "meanings": [
+      "diligent",
+      "careful"
+    ]
+  },
+  {
+    "id": "la-144",
+    "meanings": [
+      "to send away",
+      "to dismiss"
+    ]
+  },
+  {
+    "id": "la-145",
+    "meanings": [
+      "to depart",
+      "to leave"
+    ]
+  },
+  {
+    "id": "la-146",
+    "meanings": [
+      "training",
+      "instruction",
+      "discipline"
+    ]
+  },
+  {
+    "id": "la-147",
+    "meanings": [
+      "to learn"
+    ]
+  },
+  {
+    "id": "la-148",
+    "meanings": [
+      "for a long time"
+    ]
+  },
+  {
+    "id": "la-149",
+    "meanings": [
+      "different",
+      "diverse",
+      "opposite"
+    ]
+  },
+  {
+    "id": "la-150",
+    "meanings": [
+      "to divide",
+      "to separate"
+    ]
+  },
+  {
+    "id": "la-151",
+    "meanings": [
+      "divine",
+      "heavenly"
+    ]
+  },
+  {
+    "id": "la-152",
+    "meanings": [
+      "riches",
+      "wealth"
+    ]
+  },
+  {
+    "id": "la-153",
+    "meanings": [
+      "to give"
+    ]
+  },
+  {
+    "id": "la-154",
+    "meanings": [
+      "to teach"
+    ]
+  },
+  {
+    "id": "la-155",
+    "meanings": [
+      "pain",
+      "grief",
+      "sorrow"
+    ]
+  },
+  {
+    "id": "la-156",
+    "meanings": [
+      "trick",
+      "deceit",
+      "guile"
+    ]
+  },
+  {
+    "id": "la-157",
+    "meanings": [
+      "master",
+      "lord"
+    ]
+  },
+  {
+    "id": "la-158",
+    "meanings": [
+      "house",
+      "home"
+    ]
+  },
+  {
+    "id": "la-159",
+    "meanings": [
+      "gift",
+      "present"
+    ]
+  },
+  {
+    "id": "la-160",
+    "meanings": [
+      "to doubt",
+      "to hesitate"
+    ]
+  },
+  {
+    "id": "la-161",
+    "meanings": [
+      "doubtful",
+      "uncertain"
+    ]
+  },
+  {
+    "id": "la-162",
+    "meanings": [
+      "to lead",
+      "to guide",
+      "to consider"
+    ]
+  },
+  {
+    "id": "la-163",
+    "meanings": [
+      "sweet",
+      "pleasant"
+    ]
+  },
+  {
+    "id": "la-164",
+    "meanings": [
+      "while",
+      "until"
+    ]
+  },
+  {
+    "id": "la-165",
+    "meanings": [
+      "two"
+    ]
+  },
+  {
+    "id": "la-166",
+    "meanings": [
+      "leader",
+      "general",
+      "guide"
+    ]
+  },
+  {
+    "id": "la-167",
+    "meanings": [
+      "out of",
+      "from"
+    ]
+  },
+  {
+    "id": "la-168",
+    "meanings": [
+      "look!",
+      "behold!"
+    ]
+  },
+  {
+    "id": "la-169",
+    "meanings": [
+      "to lead out"
+    ]
+  },
+  {
+    "id": "la-170",
+    "meanings": [
+      "to bring about",
+      "to effect",
+      "to cause"
+    ]
+  },
+  {
+    "id": "la-171",
+    "meanings": [
+      "I",
+      "me"
+    ]
+  },
+  {
+    "id": "la-172",
+    "meanings": [
+      "to go out",
+      "to exit",
+      "to disembark"
+    ]
+  },
+  {
+    "id": "la-173",
+    "meanings": [
+      "to buy"
+    ]
+  },
+  {
+    "id": "la-174",
+    "meanings": [
+      "for",
+      "indeed"
+    ]
+  },
+  {
+    "id": "la-175",
+    "meanings": [
+      "to that place",
+      "thither"
+    ]
+  },
+  {
+    "id": "la-176",
+    "meanings": [
+      "letter",
+      "epistle"
+    ]
+  },
+  {
+    "id": "la-177",
+    "meanings": [
+      "horseman",
+      "knight"
+    ]
+  },
+  {
+    "id": "la-178",
+    "meanings": [
+      "cavalry"
+    ]
+  },
+  {
+    "id": "la-179",
+    "meanings": [
+      "horse"
+    ]
+  },
+  {
+    "id": "la-180",
+    "meanings": [
+      "therefore",
+      "then"
+    ]
+  },
+  {
+    "id": "la-181",
+    "meanings": [
+      "to wander",
+      "to make a mistake"
+    ]
+  },
+  {
+    "id": "la-182",
+    "meanings": [
+      "to snatch away",
+      "to rescue"
+    ]
+  },
+  {
+    "id": "la-183",
+    "meanings": [
+      "to be",
+      "to exist"
+    ]
+  },
+  {
+    "id": "la-184",
+    "meanings": [
+      "and"
+    ]
+  },
+  {
+    "id": "la-185",
+    "meanings": [
+      "also",
+      "even"
+    ]
+  },
+  {
+    "id": "la-186",
+    "meanings": [
+      "even if",
+      "although"
+    ]
+  },
+  {
+    "id": "la-187",
+    "meanings": [
+      "to escape",
+      "to evade"
+    ]
+  },
+  {
+    "id": "la-188",
+    "meanings": [
+      "out of",
+      "from"
+    ]
+  },
+  {
+    "id": "la-189",
+    "meanings": [
+      "to go out",
+      "to withdraw",
+      "to exceed"
+    ]
+  },
+  {
+    "id": "la-190",
+    "meanings": [
+      "to receive",
+      "to welcome",
+      "to catch"
+    ]
+  },
+  {
+    "id": "la-191",
+    "meanings": [
+      "to stir up",
+      "to rouse",
+      "to excite"
+    ]
+  },
+  {
+    "id": "la-192",
+    "meanings": [
+      "example",
+      "pattern"
+    ]
+  },
+  {
+    "id": "la-193",
+    "meanings": [
+      "army"
+    ]
+  },
+  {
+    "id": "la-194",
+    "meanings": [
+      "to think",
+      "to suppose",
+      "to estimate"
+    ]
+  },
+  {
+    "id": "la-195",
+    "meanings": [
+      "exit",
+      "outcome",
+      "departure"
+    ]
+  },
+  {
+    "id": "la-196",
+    "meanings": [
+      "to wait for",
+      "to expect"
+    ]
+  },
+  {
+    "id": "la-197",
+    "meanings": [
+      "to drive out",
+      "to expel"
+    ]
+  },
+  {
+    "id": "la-198",
+    "meanings": [
+      "to explore",
+      "to scout",
+      "to investigate"
+    ]
+  },
+  {
+    "id": "la-199",
+    "meanings": [
+      "to set forth",
+      "to explain",
+      "to expose"
+    ]
+  },
+  {
+    "id": "la-200",
+    "meanings": [
+      "to take by storm",
+      "to capture"
+    ]
+  },
+  {
+    "id": "la-201",
+    "meanings": [
+      "to do",
+      "to make"
+    ]
+  },
+  {
+    "id": "la-202",
+    "meanings": [
+      "easy"
+    ]
+  },
+  {
+    "id": "la-203",
+    "meanings": [
+      "deed",
+      "crime",
+      "wicked act"
+    ]
+  },
+  {
+    "id": "la-204",
+    "meanings": [
+      "deed",
+      "fact",
+      "act"
+    ]
+  },
+  {
+    "id": "la-205",
+    "meanings": [
+      "ability",
+      "opportunity",
+      "power"
+    ]
+  },
+  {
+    "id": "la-206",
+    "meanings": [
+      "to deceive",
+      "to trick"
+    ]
+  },
+  {
+    "id": "la-207",
+    "meanings": [
+      "false",
+      "deceptive"
+    ]
+  },
+  {
+    "id": "la-208",
+    "meanings": [
+      "rumor",
+      "reputation",
+      "fame"
+    ]
+  },
+  {
+    "id": "la-209",
+    "meanings": [
+      "family",
+      "household"
+    ]
+  },
+  {
+    "id": "la-210",
+    "meanings": [
+      "fate",
+      "destiny"
+    ]
+  },
+  {
+    "id": "la-211",
+    "meanings": [
+      "lucky",
+      "happy",
+      "fortunate"
+    ]
+  },
+  {
+    "id": "la-212",
+    "meanings": [
+      "woman"
+    ]
+  },
+  {
+    "id": "la-213",
+    "meanings": [
+      "to carry",
+      "to bear",
+      "to bring"
+    ]
+  },
+  {
+    "id": "la-214",
+    "meanings": [
+      "iron",
+      "sword"
+    ]
+  },
+  {
+    "id": "la-215",
+    "meanings": [
+      "wild",
+      "savage",
+      "fierce"
+    ]
+  },
+  {
+    "id": "la-216",
+    "meanings": [
+      "tired",
+      "weary"
+    ]
+  },
+  {
+    "id": "la-217",
+    "meanings": [
+      "faith",
+      "trust",
+      "loyalty"
+    ]
+  },
+  {
+    "id": "la-218",
+    "meanings": [
+      "faithful",
+      "loyal",
+      "trusty"
+    ]
+  },
+  {
+    "id": "la-219",
+    "meanings": [
+      "to happen",
+      "to become",
+      "to be made"
+    ]
+  },
+  {
+    "id": "la-220",
+    "meanings": [
+      "daughter"
+    ]
+  },
+  {
+    "id": "la-221",
+    "meanings": [
+      "son"
+    ]
+  },
+  {
+    "id": "la-222",
+    "meanings": [
+      "end",
+      "boundary",
+      "limit"
+    ]
+  },
+  {
+    "id": "la-223",
+    "meanings": [
+      "neighboring",
+      "bordering on"
+    ]
+  },
+  {
+    "id": "la-224",
+    "meanings": [
+      "firm",
+      "strong",
+      "steadfast"
+    ]
+  },
+  {
+    "id": "la-225",
+    "meanings": [
+      "to weep",
+      "to cry"
+    ]
+  },
+  {
+    "id": "la-226",
+    "meanings": [
+      "flower"
+    ]
+  },
+  {
+    "id": "la-227",
+    "meanings": [
+      "river"
+    ]
+  },
+  {
+    "id": "la-228",
+    "meanings": [
+      "to flow"
+    ]
+  },
+  {
+    "id": "la-229",
+    "meanings": [
+      "treaty",
+      "agreement",
+      "alliance"
+    ]
+  },
+  {
+    "id": "la-230",
+    "meanings": [
+      "fountain",
+      "spring",
+      "source"
+    ]
+  },
+  {
+    "id": "la-231",
+    "meanings": [
+      "shape",
+      "form",
+      "beauty"
+    ]
+  },
+  {
+    "id": "la-232",
+    "meanings": [
+      "perhaps"
+    ]
+  },
+  {
+    "id": "la-233",
+    "meanings": [
+      "by chance",
+      "accidentally"
+    ]
+  },
+  {
+    "id": "la-234",
+    "meanings": [
+      "brave",
+      "strong"
+    ]
+  },
+  {
+    "id": "la-235",
+    "meanings": [
+      "fortune",
+      "luck",
+      "chance"
+    ]
+  },
+  {
+    "id": "la-236",
+    "meanings": [
+      "forum",
+      "marketplace"
+    ]
+  },
+  {
+    "id": "la-237",
+    "meanings": [
+      "ditch",
+      "trench"
+    ]
+  },
+  {
+    "id": "la-238",
+    "meanings": [
+      "to break",
+      "to shatter"
+    ]
+  },
+  {
+    "id": "la-239",
+    "meanings": [
+      "brother"
+    ]
+  },
+  {
+    "id": "la-240",
+    "meanings": [
+      "deceit",
+      "trickery",
+      "fraud"
+    ]
+  },
+  {
+    "id": "la-241",
+    "meanings": [
+      "grain",
+      "corn"
+    ]
+  },
+  {
+    "id": "la-242",
+    "meanings": [
+      "flight",
+      "escape"
+    ]
+  },
+  {
+    "id": "la-243",
+    "meanings": [
+      "to flee",
+      "to escape",
+      "to avoid"
+    ]
+  },
+  {
+    "id": "la-244",
+    "meanings": [
+      "to pour",
+      "to shed",
+      "to scatter"
+    ]
+  },
+  {
+    "id": "la-245",
+    "meanings": [
+      "thief"
+    ]
+  },
+  {
+    "id": "la-246",
+    "meanings": [
+      "madness",
+      "rage",
+      "fury"
+    ]
+  },
+  {
+    "id": "la-247",
+    "meanings": [
+      "to rejoice",
+      "to be glad"
+    ]
+  },
+  {
+    "id": "la-248",
+    "meanings": [
+      "joy",
+      "gladness"
+    ]
+  },
+  {
+    "id": "la-249",
+    "meanings": [
+      "tribe",
+      "nation",
+      "family"
+    ]
+  },
+  {
+    "id": "la-250",
+    "meanings": [
+      "race",
+      "kind",
+      "sort"
+    ]
+  },
+  {
+    "id": "la-251",
+    "meanings": [
+      "to carry on",
+      "to perform",
+      "to wear"
+    ]
+  },
+  {
+    "id": "la-252",
+    "meanings": [
+      "sword"
+    ]
+  },
+  {
+    "id": "la-253",
+    "meanings": [
+      "glory",
+      "fame"
+    ]
+  },
+  {
+    "id": "la-254",
+    "meanings": [
+      "favor",
+      "influence",
+      "gratitude"
+    ]
+  },
+  {
+    "id": "la-255",
+    "meanings": [
+      "pleasing",
+      "grateful",
+      "welcome"
+    ]
+  },
+  {
+    "id": "la-256",
+    "meanings": [
+      "heavy",
+      "serious",
+      "severe"
+    ]
+  },
+  {
+    "id": "la-257",
+    "meanings": [
+      "to have",
+      "to hold",
+      "to consider"
+    ]
+  },
+  {
+    "id": "la-258",
+    "meanings": [
+      "to live",
+      "to dwell"
+    ]
+  },
+  {
+    "id": "la-259",
+    "meanings": [
+      "this"
+    ]
+  },
+  {
+    "id": "la-260",
+    "meanings": [
+      "winter"
+    ]
+  },
+  {
+    "id": "la-261",
+    "meanings": [
+      "human being",
+      "man"
+    ]
+  },
+  {
+    "id": "la-262",
+    "meanings": [
+      "honor",
+      "office",
+      "public distinction"
+    ]
+  },
+  {
+    "id": "la-263",
+    "meanings": [
+      "hour",
+      "time"
+    ]
+  },
+  {
+    "id": "la-264",
+    "meanings": [
+      "to encourage",
+      "to urge"
+    ]
+  },
+  {
+    "id": "la-265",
+    "meanings": [
+      "garden"
+    ]
+  },
+  {
+    "id": "la-266",
+    "meanings": [
+      "guest",
+      "host",
+      "stranger"
+    ]
+  },
+  {
+    "id": "la-267",
+    "meanings": [
+      "enemy (public)"
+    ]
+  },
+  {
+    "id": "la-268",
+    "meanings": [
+      "to here",
+      "hither"
+    ]
+  },
+  {
+    "id": "la-269",
+    "meanings": [
+      "low",
+      "humble"
+    ]
+  },
+  {
+    "id": "la-270",
+    "meanings": [
+      "to lie",
+      "to be situated"
+    ]
+  },
+  {
+    "id": "la-271",
+    "meanings": [
+      "to throw",
+      "to hurl"
+    ]
+  },
+  {
+    "id": "la-272",
+    "meanings": [
+      "now",
+      "already"
+    ]
+  },
+  {
+    "id": "la-273",
+    "meanings": [
+      "there",
+      "in 그곳"
+    ]
+  },
+  {
+    "id": "la-274",
+    "meanings": [
+      "the same"
+    ]
+  },
+  {
+    "id": "la-275",
+    "meanings": [
+      "suitable",
+      "fit",
+      "proper"
+    ]
+  },
+  {
+    "id": "la-276",
+    "meanings": [
+      "therefore"
+    ]
+  },
+  {
+    "id": "la-277",
+    "meanings": [
+      "fire"
+    ]
+  },
+  {
+    "id": "la-278",
+    "meanings": [
+      "to not know",
+      "to be ignorant of"
+    ]
+  },
+  {
+    "id": "la-279",
+    "meanings": [
+      "that",
+      "he",
+      "she",
+      "it"
+    ]
+  },
+  {
+    "id": "la-280",
+    "meanings": [
+      "there",
+      "in that place"
+    ]
+  },
+  {
+    "id": "la-281",
+    "meanings": [
+      "image",
+      "likeness",
+      "statue"
+    ]
+  },
+  {
+    "id": "la-282",
+    "meanings": [
+      "hindrance",
+      "baggage (pl.)"
+    ]
+  },
+  {
+    "id": "la-283",
+    "meanings": [
+      "to hinder",
+      "to prevent"
+    ]
+  },
+  {
+    "id": "la-284",
+    "meanings": [
+      "to command",
+      "to order",
+      "to rule"
+    ]
+  },
+  {
+    "id": "la-285",
+    "meanings": [
+      "general",
+      "commander",
+      "emperor"
+    ]
+  },
+  {
+    "id": "la-286",
+    "meanings": [
+      "command",
+      "power",
+      "empire"
+    ]
+  },
+  {
+    "id": "la-287",
+    "meanings": [
+      "attack",
+      "assault",
+      "impulse"
+    ]
+  },
+  {
+    "id": "la-288",
+    "meanings": [
+      "wicked",
+      "bad",
+      "shameless"
+    ]
+  },
+  {
+    "id": "la-289",
+    "meanings": [
+      "in",
+      "on",
+      "into",
+      "against"
+    ]
+  },
+  {
+    "id": "la-290",
+    "meanings": [
+      "to set on fire",
+      "to burn"
+    ]
+  },
+  {
+    "id": "la-291",
+    "meanings": [
+      "to fall into",
+      "to happen",
+      "to occur"
+    ]
+  },
+  {
+    "id": "la-292",
+    "meanings": [
+      "to begin"
+    ]
+  },
+  {
+    "id": "la-293",
+    "meanings": [
+      "to incite",
+      "to rouse",
+      "to spur on"
+    ]
+  },
+  {
+    "id": "la-294",
+    "meanings": [
+      "to inhabit",
+      "to dwell in"
+    ]
+  },
+  {
+    "id": "la-295",
+    "meanings": [
+      "from there",
+      "thence",
+      "thereupon"
+    ]
+  },
+  {
+    "id": "la-296",
+    "meanings": [
+      "to indicate",
+      "to point out",
+      "to show"
+    ]
+  },
+  {
+    "id": "la-297",
+    "meanings": [
+      "to lead in",
+      "to influence",
+      "to introduce"
+    ]
+  },
+  {
+    "id": "la-298",
+    "meanings": [
+      "to be entered upon",
+      "to be begun"
+    ]
+  },
+  {
+    "id": "la-299",
+    "meanings": [
+      "unhappy",
+      "unfortunate"
+    ]
+  },
+  {
+    "id": "la-300",
+    "meanings": [
+      "to bring in",
+      "to carry in",
+      "to cause"
+    ]
+  },
+  {
+    "id": "la-301",
+    "meanings": [
+      "huge",
+      "vast",
+      "immense"
+    ]
+  },
+  {
+    "id": "la-302",
+    "meanings": [
+      "to step in",
+      "to enter"
+    ]
+  },
+  {
+    "id": "la-303",
+    "meanings": [
+      "personal enemy"
+    ]
+  },
+  {
+    "id": "la-304",
+    "meanings": [
+      "beginning"
+    ]
+  },
+  {
+    "id": "la-305",
+    "meanings": [
+      "injury",
+      "injustice",
+      "wrong"
+    ]
+  },
+  {
+    "id": "la-306",
+    "meanings": [
+      "he says",
+      "she says"
+    ]
+  },
+  {
+    "id": "la-307",
+    "meanings": [
+      "ambush",
+      "trap",
+      "plot"
+    ]
+  },
+  {
+    "id": "la-308",
+    "meanings": [
+      "to set up",
+      "to establish",
+      "to institute"
+    ]
+  },
+  {
+    "id": "la-309",
+    "meanings": [
+      "island",
+      "apartment block"
+    ]
+  },
+  {
+    "id": "la-310",
+    "meanings": [
+      "to understand",
+      "to realize"
+    ]
+  },
+  {
+    "id": "la-311",
+    "meanings": [
+      "between",
+      "among"
+    ]
+  },
+  {
+    "id": "la-312",
+    "meanings": [
+      "meanwhile",
+      "in the meantime"
+    ]
+  },
+  {
+    "id": "la-313",
+    "meanings": [
+      "to kill"
+    ]
+  },
+  {
+    "id": "la-314",
+    "meanings": [
+      "to leave off",
+      "to interrupt",
+      "to stop"
+    ]
+  },
+  {
+    "id": "la-315",
+    "meanings": [
+      "inside",
+      "within"
+    ]
+  },
+  {
+    "id": "la-316",
+    "meanings": [
+      "to find",
+      "to discover"
+    ]
+  },
+  {
+    "id": "la-317",
+    "meanings": [
+      "unconquered",
+      "invincible"
+    ]
+  },
+  {
+    "id": "la-318",
+    "meanings": [
+      "to envy",
+      "to look askance at"
+    ]
+  },
+  {
+    "id": "la-319",
+    "meanings": [
+      "to invite"
+    ]
+  },
+  {
+    "id": "la-320",
+    "meanings": [
+      "himself",
+      "herself",
+      "itself",
+      "very"
+    ]
+  },
+  {
+    "id": "la-321",
+    "meanings": [
+      "anger",
+      "wrath"
+    ]
+  },
+  {
+    "id": "la-322",
+    "meanings": [
+      "to be angry"
+    ]
+  },
+  {
+    "id": "la-323",
+    "meanings": [
+      "he",
+      "she",
+      "it",
+      "that"
+    ]
+  },
+  {
+    "id": "la-324",
+    "meanings": [
+      "that (of yours)"
+    ]
+  },
+  {
+    "id": "la-325",
+    "meanings": [
+      "so",
+      "thus",
+      "in such a way"
+    ]
+  },
+  {
+    "id": "la-326",
+    "meanings": [
+      "and so",
+      "therefore"
+    ]
+  },
+  {
+    "id": "la-327",
+    "meanings": [
+      "likewise",
+      "also"
+    ]
+  },
+  {
+    "id": "la-328",
+    "meanings": [
+      "journey",
+      "march",
+      "way"
+    ]
+  },
+  {
+    "id": "la-329",
+    "meanings": [
+      "again",
+      "a second time"
+    ]
+  },
+  {
+    "id": "la-330",
+    "meanings": [
+      "to order",
+      "to command"
+    ]
+  },
+  {
+    "id": "la-331",
+    "meanings": [
+      "pleasant",
+      "delightful",
+      "agreeable"
+    ]
+  },
+  {
+    "id": "la-332",
+    "meanings": [
+      "judge",
+      "juror"
+    ]
+  },
+  {
+    "id": "la-333",
+    "meanings": [
+      "to judge",
+      "to decide"
+    ]
+  },
+  {
+    "id": "la-334",
+    "meanings": [
+      "judgment",
+      "trial",
+      "opinion"
+    ]
+  },
+  {
+    "id": "la-335",
+    "meanings": [
+      "to join",
+      "to unite"
+    ]
+  },
+  {
+    "id": "la-336",
+    "meanings": [
+      "law",
+      "right",
+      "justice"
+    ]
+  },
+  {
+    "id": "la-337",
+    "meanings": [
+      "just",
+      "fair",
+      "righteous"
+    ]
+  },
+  {
+    "id": "la-338",
+    "meanings": [
+      "to help",
+      "to aid",
+      "to please"
+    ]
+  },
+  {
+    "id": "la-339",
+    "meanings": [
+      "young man",
+      "youth"
+    ]
+  },
+  {
+    "id": "la-340",
+    "meanings": [
+      "work",
+      "labor",
+      "hardship"
+    ]
+  },
+  {
+    "id": "la-341",
+    "meanings": [
+      "to work",
+      "to toil",
+      "to suffer"
+    ]
+  },
+  {
+    "id": "la-342",
+    "meanings": [
+      "tear"
+    ]
+  },
+  {
+    "id": "la-343",
+    "meanings": [
+      "happy",
+      "glad",
+      "joyful"
+    ]
+  },
+  {
+    "id": "la-344",
+    "meanings": [
+      "wide",
+      "broad"
+    ]
+  },
+  {
+    "id": "la-345",
+    "meanings": [
+      "praise",
+      "glory"
+    ]
+  },
+  {
+    "id": "la-346",
+    "meanings": [
+      "embassy",
+      "legation"
+    ]
+  },
+  {
+    "id": "la-347",
+    "meanings": [
+      "envoy",
+      "ambassador",
+      "lieutenant"
+    ]
+  },
+  {
+    "id": "la-348",
+    "meanings": [
+      "to read",
+      "to choose",
+      "to gather"
+    ]
+  },
+  {
+    "id": "la-349",
+    "meanings": [
+      "legion"
+    ]
+  },
+  {
+    "id": "la-350",
+    "meanings": [
+      "law",
+      "statute"
+    ]
+  },
+  {
+    "id": "la-351",
+    "meanings": [
+      "free"
+    ]
+  },
+  {
+    "id": "la-352",
+    "meanings": [
+      "book"
+    ]
+  },
+  {
+    "id": "la-353",
+    "meanings": [
+      "to free",
+      "to set free"
+    ]
+  },
+  {
+    "id": "la-354",
+    "meanings": [
+      "children"
+    ]
+  },
+  {
+    "id": "la-355",
+    "meanings": [
+      "freedom",
+      "liberty"
+    ]
+  },
+  {
+    "id": "la-356",
+    "meanings": [
+      "it is permitted",
+      "one may"
+    ]
+  },
+  {
+    "id": "la-357",
+    "meanings": [
+      "letter (of the alphabet)",
+      "literature (pl.)"
+    ]
+  },
+  {
+    "id": "la-358",
+    "meanings": [
+      "place",
+      "location"
+    ]
+  },
+  {
+    "id": "la-359",
+    "meanings": [
+      "long"
+    ]
+  },
+  {
+    "id": "la-360",
+    "meanings": [
+      "to speak",
+      "to talk"
+    ]
+  },
+  {
+    "id": "la-361",
+    "meanings": [
+      "to play"
+    ]
+  },
+  {
+    "id": "la-362",
+    "meanings": [
+      "light",
+      "eye"
+    ]
+  },
+  {
+    "id": "la-363",
+    "meanings": [
+      "light",
+      "daylight"
+    ]
+  },
+  {
+    "id": "la-364",
+    "meanings": [
+      "more",
+      "rather"
+    ]
+  },
+  {
+    "id": "la-365",
+    "meanings": [
+      "master",
+      "teacher"
+    ]
+  },
+  {
+    "id": "la-366",
+    "meanings": [
+      "magistrate",
+      "official"
+    ]
+  },
+  {
+    "id": "la-367",
+    "meanings": [
+      "greatness",
+      "size"
+    ]
+  },
+  {
+    "id": "la-368",
+    "meanings": [
+      "great",
+      "large",
+      "big"
+    ]
+  },
+  {
+    "id": "la-369",
+    "meanings": [
+      "greater",
+      "older"
+    ]
+  },
+  {
+    "id": "la-370",
+    "meanings": [
+      "bad",
+      "evil",
+      "wicked"
+    ]
+  },
+  {
+    "id": "la-371",
+    "meanings": [
+      "to entrust",
+      "to command",
+      "to commission"
+    ]
+  },
+  {
+    "id": "la-372",
+    "meanings": [
+      "to remain",
+      "to stay"
+    ]
+  },
+  {
+    "id": "la-373",
+    "meanings": [
+      "hand",
+      "band (of men)"
+    ]
+  },
+  {
+    "id": "la-374",
+    "meanings": [
+      "sea"
+    ]
+  },
+  {
+    "id": "la-375",
+    "meanings": [
+      "husband"
+    ]
+  },
+  {
+    "id": "la-376",
+    "meanings": [
+      "mother"
+    ]
+  },
+  {
+    "id": "la-377",
+    "meanings": [
+      "especially",
+      "very much",
+      "most"
+    ]
+  },
+  {
+    "id": "la-378",
+    "meanings": [
+      "greatest",
+      "largest",
+      "very great"
+    ]
+  },
+  {
+    "id": "la-379",
+    "meanings": [
+      "middle",
+      "the middle of"
+    ]
+  },
+  {
+    "id": "la-380",
+    "meanings": [
+      "memory"
+    ]
+  },
+  {
+    "id": "la-381",
+    "meanings": [
+      "mind",
+      "intellect"
+    ]
+  },
+  {
+    "id": "la-382",
+    "meanings": [
+      "month"
+    ]
+  },
+  {
+    "id": "la-383",
+    "meanings": [
+      "trade",
+      "commerce"
+    ]
+  },
+  {
+    "id": "la-384",
+    "meanings": [
+      "fear",
+      "dread"
+    ]
+  },
+  {
+    "id": "la-385",
+    "meanings": [
+      "my",
+      "mine"
+    ]
+  },
+  {
+    "id": "la-386",
+    "meanings": [
+      "soldier"
+    ]
+  },
+  {
+    "id": "la-387",
+    "meanings": [
+      "a thousand"
+    ]
+  },
+  {
+    "id": "la-388",
+    "meanings": [
+      "not at all",
+      "very little",
+      "least"
+    ]
+  },
+  {
+    "id": "la-389",
+    "meanings": [
+      "smaller",
+      "less"
+    ]
+  },
+  {
+    "id": "la-390",
+    "meanings": [
+      "wretched",
+      "miserable",
+      "unfortunate"
+    ]
+  },
+  {
+    "id": "la-391",
+    "meanings": [
+      "to send"
+    ]
+  },
+  {
+    "id": "la-392",
+    "meanings": [
+      "way",
+      "manner",
+      "method"
+    ]
+  },
+  {
+    "id": "la-393",
+    "meanings": [
+      "walls (of a city)"
+    ]
+  },
+  {
+    "id": "la-394",
+    "meanings": [
+      "soft",
+      "gentle",
+      "mild"
+    ]
+  },
+  {
+    "id": "la-395",
+    "meanings": [
+      "to warn",
+      "to advise",
+      "to remind"
+    ]
+  },
+  {
+    "id": "la-396",
+    "meanings": [
+      "mountain"
+    ]
+  },
+  {
+    "id": "la-397",
+    "meanings": [
+      "death"
+    ]
+  },
+  {
+    "id": "la-398",
+    "meanings": [
+      "custom",
+      "habit",
+      "character (pl.)"
+    ]
+  },
+  {
+    "id": "la-399",
+    "meanings": [
+      "to move"
+    ]
+  },
+  {
+    "id": "la-400",
+    "meanings": [
+      "soon",
+      "presently"
+    ]
+  },
+  {
+    "id": "la-401",
+    "meanings": [
+      "multitude",
+      "crowd",
+      "large number"
+    ]
+  },
+  {
+    "id": "la-402",
+    "meanings": [
+      "much",
+      "many (pl.)"
+    ]
+  },
+  {
+    "id": "la-403",
+    "meanings": [
+      "duty",
+      "gift",
+      "public show"
+    ]
+  },
+  {
+    "id": "la-404",
+    "meanings": [
+      "wall"
+    ]
+  },
+  {
+    "id": "la-405",
+    "meanings": [
+      "for"
+    ]
+  },
+  {
+    "id": "la-406",
+    "meanings": [
+      "to tell",
+      "to relate",
+      "to narrate"
+    ]
+  },
+  {
+    "id": "la-407",
+    "meanings": [
+      "to be born"
+    ]
+  },
+  {
+    "id": "la-408",
+    "meanings": [
+      "nation",
+      "people",
+      "tribe"
+    ]
+  },
+  {
+    "id": "la-409",
+    "meanings": [
+      "nature",
+      "character"
+    ]
+  },
+  {
+    "id": "la-410",
+    "meanings": [
+      "ship"
+    ]
+  },
+  {
+    "id": "la-411",
+    "meanings": [
+      "lest",
+      "that... not"
+    ]
+  },
+  {
+    "id": "la-412",
+    "meanings": [
+      "nor",
+      "and... not"
+    ]
+  },
+  {
+    "id": "la-413",
+    "meanings": [
+      "necessary"
+    ]
+  },
+  {
+    "id": "la-414",
+    "meanings": [
+      "to deny",
+      "to say... not",
+      "to refuse"
+    ]
+  },
+  {
+    "id": "la-415",
+    "meanings": [
+      "business",
+      "task",
+      "matter"
+    ]
+  },
+  {
+    "id": "la-416",
+    "meanings": [
+      "no one",
+      "nobody"
+    ]
+  },
+  {
+    "id": "la-417",
+    "meanings": [
+      "neither... nor",
+      "and... not"
+    ]
+  },
+  {
+    "id": "la-418",
+    "meanings": [
+      "to not know"
+    ]
+  },
+  {
+    "id": "la-419",
+    "meanings": [
+      "nothing"
+    ]
+  },
+  {
+    "id": "la-420",
+    "meanings": [
+      "unless",
+      "if... not",
+      "except"
+    ]
+  },
+  {
+    "id": "la-421",
+    "meanings": [
+      "noble",
+      "famous"
+    ]
+  },
+  {
+    "id": "la-422",
+    "meanings": [
+      "to harm",
+      "to injure"
+    ]
+  },
+  {
+    "id": "la-423",
+    "meanings": [
+      "by night",
+      "at night"
+    ]
+  },
+  {
+    "id": "la-424",
+    "meanings": [
+      "to not want",
+      "to be unwilling"
+    ]
+  },
+  {
+    "id": "la-425",
+    "meanings": [
+      "name"
+    ]
+  },
+  {
+    "id": "la-426",
+    "meanings": [
+      "not"
+    ]
+  },
+  {
+    "id": "la-427",
+    "meanings": [
+      "our",
+      "ours"
+    ]
+  },
+  {
+    "id": "la-428",
+    "meanings": [
+      "known",
+      "familiar"
+    ]
+  },
+  {
+    "id": "la-429",
+    "meanings": [
+      "new",
+      "strange"
+    ]
+  },
+  {
+    "id": "la-430",
+    "meanings": [
+      "night"
+    ]
+  },
+  {
+    "id": "la-431",
+    "meanings": [
+      "no",
+      "none"
+    ]
+  },
+  {
+    "id": "la-432",
+    "meanings": [
+      "whether (in questions)"
+    ]
+  },
+  {
+    "id": "la-433",
+    "meanings": [
+      "number",
+      "amount"
+    ]
+  },
+  {
+    "id": "la-434",
+    "meanings": [
+      "never"
+    ]
+  },
+  {
+    "id": "la-435",
+    "meanings": [
+      "now"
+    ]
+  },
+  {
+    "id": "la-436",
+    "meanings": [
+      "to announce",
+      "to report"
+    ]
+  },
+  {
+    "id": "la-437",
+    "meanings": [
+      "messenger",
+      "message"
+    ]
+  },
+  {
+    "id": "la-438",
+    "meanings": [
+      "because of",
+      "on account of"
+    ]
+  },
+  {
+    "id": "la-439",
+    "meanings": [
+      "hostage"
+    ]
+  },
+  {
+    "id": "la-440",
+    "meanings": [
+      "to kill",
+      "to cut down"
+    ]
+  },
+  {
+    "id": "la-441",
+    "meanings": [
+      "to occupy",
+      "to seize"
+    ]
+  },
+  {
+    "id": "la-442",
+    "meanings": [
+      "eye"
+    ]
+  },
+  {
+    "id": "la-443",
+    "meanings": [
+      "duty",
+      "service",
+      "office"
+    ]
+  },
+  {
+    "id": "la-444",
+    "meanings": [
+      "all",
+      "every"
+    ]
+  },
+  {
+    "id": "la-445",
+    "meanings": [
+      "burden",
+      "load"
+    ]
+  },
+  {
+    "id": "la-446",
+    "meanings": [
+      "work",
+      "effort",
+      "service"
+    ]
+  },
+  {
+    "id": "la-447",
+    "meanings": [
+      "it is necessary",
+      "it is proper"
+    ]
+  },
+  {
+    "id": "la-448",
+    "meanings": [
+      "town"
+    ]
+  },
+  {
+    "id": "la-449",
+    "meanings": [
+      "to crush",
+      "to overwhelm",
+      "to oppress"
+    ]
+  },
+  {
+    "id": "la-450",
+    "meanings": [
+      "to attack",
+      "to besiege"
+    ]
+  },
+  {
+    "id": "la-451",
+    "meanings": [
+      "power",
+      "wealth",
+      "resources (pl.)"
+    ]
+  },
+  {
+    "id": "la-452",
+    "meanings": [
+      "work",
+      "task",
+      "deed"
+    ]
+  },
+  {
+    "id": "la-453",
+    "meanings": [
+      "to pray",
+      "to beg",
+      "to plead"
+    ]
+  },
+  {
+    "id": "la-454",
+    "meanings": [
+      "speech",
+      "oration"
+    ]
+  },
+  {
+    "id": "la-455",
+    "meanings": [
+      "order",
+      "rank",
+      "row"
+    ]
+  },
+  {
+    "id": "la-456",
+    "meanings": [
+      "to rise",
+      "to spring up"
+    ]
+  },
+  {
+    "id": "la-457",
+    "meanings": [
+      "to decorate",
+      "to adorn",
+      "to equip"
+    ]
+  },
+  {
+    "id": "la-458",
+    "meanings": [
+      "mouth",
+      "face"
+    ]
+  },
+  {
+    "id": "la-459",
+    "meanings": [
+      "to show",
+      "to exhibit"
+    ]
+  },
+  {
+    "id": "la-460",
+    "meanings": [
+      "leisure",
+      "peace",
+      "free time"
+    ]
+  },
+  {
+    "id": "la-461",
+    "meanings": [
+      "almost",
+      "nearly"
+    ]
+  },
+  {
+    "id": "la-462",
+    "meanings": [
+      "to prepare",
+      "to get ready"
+    ]
+  },
+  {
+    "id": "la-463",
+    "meanings": [
+      "prepared",
+      "ready"
+    ]
+  },
+  {
+    "id": "la-464",
+    "meanings": [
+      "to obey"
+    ]
+  },
+  {
+    "id": "la-465",
+    "meanings": [
+      "part",
+      "direction",
+      "side"
+    ]
+  },
+  {
+    "id": "la-466",
+    "meanings": [
+      "small",
+      "little"
+    ]
+  },
+  {
+    "id": "la-467",
+    "meanings": [
+      "pace",
+      "step"
+    ]
+  },
+  {
+    "id": "la-468",
+    "meanings": [
+      "father"
+    ]
+  },
+  {
+    "id": "la-469",
+    "meanings": [
+      "to suffer",
+      "to endure",
+      "to permit"
+    ]
+  },
+  {
+    "id": "la-470",
+    "meanings": [
+      "fatherland",
+      "native country"
+    ]
+  },
+  {
+    "id": "la-471",
+    "meanings": [
+      "few",
+      "a few"
+    ]
+  },
+  {
+    "id": "la-472",
+    "meanings": [
+      "a little",
+      "by a little"
+    ]
+  },
+  {
+    "id": "la-473",
+    "meanings": [
+      "peace"
+    ]
+  },
+  {
+    "id": "la-474",
+    "meanings": [
+      "money"
+    ]
+  },
+  {
+    "id": "la-475",
+    "meanings": [
+      "to drive",
+      "to push",
+      "to rout"
+    ]
+  },
+  {
+    "id": "la-476",
+    "meanings": [
+      "through",
+      "by means of"
+    ]
+  },
+  {
+    "id": "la-477",
+    "meanings": [
+      "to destroy",
+      "to lose",
+      "to ruin"
+    ]
+  },
+  {
+    "id": "la-478",
+    "meanings": [
+      "to complete",
+      "to finish",
+      "to perform"
+    ]
+  },
+  {
+    "id": "la-479",
+    "meanings": [
+      "danger",
+      "risk"
+    ]
+  },
+  {
+    "id": "la-480",
+    "meanings": [
+      "to perish",
+      "to die",
+      "to be lost"
+    ]
+  },
+  {
+    "id": "la-481",
+    "meanings": [
+      "to permit",
+      "to allow",
+      "to entrust"
+    ]
+  },
+  {
+    "id": "la-482",
+    "meanings": [
+      "to persuade"
+    ]
+  },
+  {
+    "id": "la-483",
+    "meanings": [
+      "to arrive",
+      "to reach"
+    ]
+  },
+  {
+    "id": "la-484",
+    "meanings": [
+      "foot"
+    ]
+  },
+  {
+    "id": "la-485",
+    "meanings": [
+      "to seek",
+      "to ask",
+      "to attack",
+      "to head for"
+    ]
+  },
+  {
+    "id": "la-486",
+    "meanings": [
+      "philosopher"
+    ]
+  },
+  {
+    "id": "la-487",
+    "meanings": [
+      "piety",
+      "duty",
+      "devotion"
+    ]
+  },
+  {
+    "id": "la-488",
+    "meanings": [
+      "to please",
+      "to be pleasing to"
+    ]
+  },
+  {
+    "id": "la-489",
+    "meanings": [
+      "common people",
+      "plebeians"
+    ]
+  },
+  {
+    "id": "la-490",
+    "meanings": [
+      "full"
+    ]
+  },
+  {
+    "id": "la-491",
+    "meanings": [
+      "most",
+      "very many"
+    ]
+  },
+  {
+    "id": "la-492",
+    "meanings": [
+      "punishment",
+      "penalty"
+    ]
+  },
+  {
+    "id": "la-493",
+    "meanings": [
+      "poet"
+    ]
+  },
+  {
+    "id": "la-494",
+    "meanings": [
+      "to put",
+      "to place",
+      "to set up"
+    ]
+  },
+  {
+    "id": "la-495",
+    "meanings": [
+      "people",
+      "nation"
+    ]
+  },
+  {
+    "id": "la-496",
+    "meanings": [
+      "gate",
+      "door"
+    ]
+  },
+  {
+    "id": "la-497",
+    "meanings": [
+      "to carry",
+      "to bring"
+    ]
+  },
+  {
+    "id": "la-498",
+    "meanings": [
+      "port",
+      "harbor"
+    ]
+  },
+  {
+    "id": "la-499",
+    "meanings": [
+      "to demand",
+      "to ask for"
+    ]
+  },
+  {
+    "id": "la-500",
+    "meanings": [
+      "to be able",
+      "can"
+    ]
+  },
+  {
+    "id": "la-501",
+    "meanings": [
+      "after",
+      "behind"
+    ]
+  },
+  {
+    "id": "la-502",
+    "meanings": [
+      "afterwards",
+      "later"
+    ]
+  },
+  {
+    "id": "la-503",
+    "meanings": [
+      "following",
+      "next",
+      "future"
+    ]
+  },
+  {
+    "id": "la-504",
+    "meanings": [
+      "after"
+    ]
+  },
+  {
+    "id": "la-505",
+    "meanings": [
+      "to demand",
+      "to claim"
+    ]
+  },
+  {
+    "id": "la-506",
+    "meanings": [
+      "powerful"
+    ]
+  },
+  {
+    "id": "la-507",
+    "meanings": [
+      "power",
+      "strength"
+    ]
+  },
+  {
+    "id": "la-508",
+    "meanings": [
+      "power",
+      "authority",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "la-509",
+    "meanings": [
+      "rather",
+      "more"
+    ]
+  },
+  {
+    "id": "la-510",
+    "meanings": [
+      "before",
+      "in front of",
+      "because of"
+    ]
+  },
+  {
+    "id": "la-511",
+    "meanings": [
+      "to provide",
+      "to offer",
+      "to show"
+    ]
+  },
+  {
+    "id": "la-512",
+    "meanings": [
+      "headlong",
+      "steep",
+      "precipitous"
+    ]
+  },
+  {
+    "id": "la-513",
+    "meanings": [
+      "booty",
+      "plunder",
+      "prey"
+    ]
+  },
+  {
+    "id": "la-514",
+    "meanings": [
+      "to declare",
+      "to proclaim"
+    ]
+  },
+  {
+    "id": "la-515",
+    "meanings": [
+      "estate",
+      "farm"
+    ]
+  },
+  {
+    "id": "la-516",
+    "meanings": [
+      "to be in charge of",
+      "to command"
+    ]
+  },
+  {
+    "id": "la-517",
+    "meanings": [
+      "commander",
+      "officer",
+      "prefect"
+    ]
+  },
+  {
+    "id": "la-518",
+    "meanings": [
+      "reward",
+      "prize"
+    ]
+  },
+  {
+    "id": "la-519",
+    "meanings": [
+      "present",
+      "at hand"
+    ]
+  },
+  {
+    "id": "la-520",
+    "meanings": [
+      "protection",
+      "guard",
+      "garrison"
+    ]
+  },
+  {
+    "id": "la-521",
+    "meanings": [
+      "to excel",
+      "to exhibit",
+      "to stand before"
+    ]
+  },
+  {
+    "id": "la-522",
+    "meanings": [
+      "beyond",
+      "except",
+      "besides"
+    ]
+  },
+  {
+    "id": "la-523",
+    "meanings": [
+      "besides",
+      "moreover"
+    ]
+  },
+  {
+    "id": "la-524",
+    "meanings": [
+      "praetor (magistrate)"
+    ]
+  },
+  {
+    "id": "la-525",
+    "meanings": [
+      "prayers",
+      "entreaties"
+    ]
+  },
+  {
+    "id": "la-526",
+    "meanings": [
+      "to seize",
+      "to grasp"
+    ]
+  },
+  {
+    "id": "la-527",
+    "meanings": [
+      "to press",
+      "to crush",
+      "to overpower"
+    ]
+  },
+  {
+    "id": "la-528",
+    "meanings": [
+      "price",
+      "value",
+      "reward"
+    ]
+  },
+  {
+    "id": "la-529",
+    "meanings": [
+      "on the day before"
+    ]
+  },
+  {
+    "id": "la-530",
+    "meanings": [
+      "first",
+      "at first"
+    ]
+  },
+  {
+    "id": "la-531",
+    "meanings": [
+      "first"
+    ]
+  },
+  {
+    "id": "la-532",
+    "meanings": [
+      "chief",
+      "leader",
+      "emperor"
+    ]
+  },
+  {
+    "id": "la-533",
+    "meanings": [
+      "former",
+      "prior",
+      "previous"
+    ]
+  },
+  {
+    "id": "la-534",
+    "meanings": [
+      "before",
+      "sooner",
+      "rather"
+    ]
+  },
+  {
+    "id": "la-535",
+    "meanings": [
+      "private",
+      "personal"
+    ]
+  },
+  {
+    "id": "la-536",
+    "meanings": [
+      "for",
+      "on behalf of",
+      "in front of"
+    ]
+  },
+  {
+    "id": "la-537",
+    "meanings": [
+      "to prove",
+      "to approve",
+      "to test"
+    ]
+  },
+  {
+    "id": "la-538",
+    "meanings": [
+      "to proceed",
+      "to advance",
+      "to go forward"
+    ]
+  },
+  {
+    "id": "la-539",
+    "meanings": [
+      "far off",
+      "at a distance"
+    ]
+  },
+  {
+    "id": "la-540",
+    "meanings": [
+      "to lead forth",
+      "to produce",
+      "to prolong"
+    ]
+  },
+  {
+    "id": "la-541",
+    "meanings": [
+      "battle"
+    ]
+  },
+  {
+    "id": "la-542",
+    "meanings": [
+      "surely",
+      "certainly",
+      "indeed"
+    ]
+  },
+  {
+    "id": "la-543",
+    "meanings": [
+      "to bring forward",
+      "to produce",
+      "to extend"
+    ]
+  },
+  {
+    "id": "la-544",
+    "meanings": [
+      "to set out",
+      "to depart"
+    ]
+  },
+  {
+    "id": "la-545",
+    "meanings": [
+      "to prevent",
+      "to prohibit",
+      "to forbid"
+    ]
+  },
+  {
+    "id": "la-546",
+    "meanings": [
+      "to throw forward",
+      "to cast out",
+      "to project"
+    ]
+  },
+  {
+    "id": "la-547",
+    "meanings": [
+      "near",
+      "nearly",
+      "almost"
+    ]
+  },
+  {
+    "id": "la-548",
+    "meanings": [
+      "to hasten",
+      "to hurry"
+    ]
+  },
+  {
+    "id": "la-549",
+    "meanings": [
+      "to set forth",
+      "to propose",
+      "to display"
+    ]
+  },
+  {
+    "id": "la-550",
+    "meanings": [
+      "one's own",
+      "characteristic",
+      "proper"
+    ]
+  },
+  {
+    "id": "la-551",
+    "meanings": [
+      "because of",
+      "on account of",
+      "near"
+    ]
+  },
+  {
+    "id": "la-552",
+    "meanings": [
+      "for that reason",
+      "therefore"
+    ]
+  },
+  {
+    "id": "la-553",
+    "meanings": [
+      "to look forward",
+      "to look out",
+      "to foresee"
+    ]
+  },
+  {
+    "id": "la-554",
+    "meanings": [
+      "immediately",
+      "at once"
+    ]
+  },
+  {
+    "id": "la-555",
+    "meanings": [
+      "province",
+      "duty",
+      "command"
+    ]
+  },
+  {
+    "id": "la-556",
+    "meanings": [
+      "nearest",
+      "next",
+      "very close"
+    ]
+  },
+  {
+    "id": "la-557",
+    "meanings": [
+      "wise",
+      "prudent",
+      "sensible"
+    ]
+  },
+  {
+    "id": "la-558",
+    "meanings": [
+      "public",
+      "common"
+    ]
+  },
+  {
+    "id": "la-559",
+    "meanings": [
+      "shame",
+      "modesty",
+      "decency"
+    ]
+  },
+  {
+    "id": "la-560",
+    "meanings": [
+      "girl"
+    ]
+  },
+  {
+    "id": "la-561",
+    "meanings": [
+      "boy"
+    ]
+  },
+  {
+    "id": "la-562",
+    "meanings": [
+      "fight",
+      "battle"
+    ]
+  },
+  {
+    "id": "la-563",
+    "meanings": [
+      "to fight"
+    ]
+  },
+  {
+    "id": "la-564",
+    "meanings": [
+      "beautiful",
+      "handsome"
+    ]
+  },
+  {
+    "id": "la-565",
+    "meanings": [
+      "to strike",
+      "to beat",
+      "to knock"
+    ]
+  },
+  {
+    "id": "la-566",
+    "meanings": [
+      "to think",
+      "to suppose",
+      "to reckon"
+    ]
+  },
+  {
+    "id": "la-567",
+    "meanings": [
+      "where",
+      "by which way"
+    ]
+  },
+  {
+    "id": "la-568",
+    "meanings": [
+      "forty"
+    ]
+  },
+  {
+    "id": "la-569",
+    "meanings": [
+      "four-footed animal",
+      "quadruped"
+    ]
+  },
+  {
+    "id": "la-570",
+    "meanings": [
+      "to seek",
+      "to ask",
+      "to inquire"
+    ]
+  },
+  {
+    "id": "la-571",
+    "meanings": [
+      "question",
+      "inquiry",
+      "investigation"
+    ]
+  },
+  {
+    "id": "la-572",
+    "meanings": [
+      "quaestor (treasury official)"
+    ]
+  },
+  {
+    "id": "la-573",
+    "meanings": [
+      "of what sort",
+      "what kind of"
+    ]
+  },
+  {
+    "id": "la-574",
+    "meanings": [
+      "than",
+      "how",
+      "as... as possible"
+    ]
+  },
+  {
+    "id": "la-575",
+    "meanings": [
+      "although"
+    ]
+  },
+  {
+    "id": "la-576",
+    "meanings": [
+      "although",
+      "however much"
+    ]
+  },
+  {
+    "id": "la-577",
+    "meanings": [
+      "when"
+    ]
+  },
+  {
+    "id": "la-578",
+    "meanings": [
+      "how great",
+      "how much"
+    ]
+  },
+  {
+    "id": "la-579",
+    "meanings": [
+      "why",
+      "wherefore"
+    ]
+  },
+  {
+    "id": "la-580",
+    "meanings": [
+      "fourth"
+    ]
+  },
+  {
+    "id": "la-581",
+    "meanings": [
+      "as if",
+      "just as if"
+    ]
+  },
+  {
+    "id": "la-582",
+    "meanings": [
+      "four"
+    ]
+  },
+  {
+    "id": "la-583",
+    "meanings": [
+      "and"
+    ]
+  },
+  {
+    "id": "la-584",
+    "meanings": [
+      "in what way",
+      "how"
+    ]
+  },
+  {
+    "id": "la-585",
+    "meanings": [
+      "to complain",
+      "to lament"
+    ]
+  },
+  {
+    "id": "la-586",
+    "meanings": [
+      "who",
+      "which",
+      "that"
+    ]
+  },
+  {
+    "id": "la-587",
+    "meanings": [
+      "because"
+    ]
+  },
+  {
+    "id": "la-588",
+    "meanings": [
+      "whoever",
+      "whatever"
+    ]
+  },
+  {
+    "id": "la-589",
+    "meanings": [
+      "what",
+      "anything"
+    ]
+  },
+  {
+    "id": "la-590",
+    "meanings": [
+      "a certain one",
+      "someone"
+    ]
+  },
+  {
+    "id": "la-591",
+    "meanings": [
+      "indeed",
+      "at least"
+    ]
+  },
+  {
+    "id": "la-592",
+    "meanings": [
+      "rest",
+      "quiet",
+      "sleep"
+    ]
+  },
+  {
+    "id": "la-593",
+    "meanings": [
+      "to rest",
+      "to keep quiet"
+    ]
+  },
+  {
+    "id": "la-594",
+    "meanings": [
+      "but that",
+      "that... not",
+      "nay even"
+    ]
+  },
+  {
+    "id": "la-595",
+    "meanings": [
+      "five hundred"
+    ]
+  },
+  {
+    "id": "la-596",
+    "meanings": [
+      "five"
+    ]
+  },
+  {
+    "id": "la-597",
+    "meanings": [
+      "fifth"
+    ]
+  },
+  {
+    "id": "la-598",
+    "meanings": [
+      "who",
+      "what"
+    ]
+  },
+  {
+    "id": "la-599",
+    "meanings": [
+      "anyone",
+      "anything (after negative)"
+    ]
+  },
+  {
+    "id": "la-600",
+    "meanings": [
+      "each one",
+      "every one"
+    ]
+  },
+  {
+    "id": "la-601",
+    "meanings": [
+      "whoever",
+      "whatever"
+    ]
+  },
+  {
+    "id": "la-602",
+    "meanings": [
+      "where to",
+      "whither",
+      "to which place"
+    ]
+  },
+  {
+    "id": "la-603",
+    "meanings": [
+      "because",
+      "that",
+      "the fact that"
+    ]
+  },
+  {
+    "id": "la-604",
+    "meanings": [
+      "so that... not",
+      "lest (after hindering)"
+    ]
+  },
+  {
+    "id": "la-605",
+    "meanings": [
+      "how",
+      "in what way"
+    ]
+  },
+  {
+    "id": "la-606",
+    "meanings": [
+      "since",
+      "whereas"
+    ]
+  },
+  {
+    "id": "la-607",
+    "meanings": [
+      "also",
+      "too"
+    ]
+  },
+  {
+    "id": "la-608",
+    "meanings": [
+      "how many",
+      "as many as"
+    ]
+  },
+  {
+    "id": "la-609",
+    "meanings": [
+      "daily",
+      "every day"
+    ]
+  },
+  {
+    "id": "la-610",
+    "meanings": [
+      "how often",
+      "as often as"
+    ]
+  },
+  {
+    "id": "la-611",
+    "meanings": [
+      "root",
+      "base",
+      "foot"
+    ]
+  },
+  {
+    "id": "la-612",
+    "meanings": [
+      "branch",
+      "bough"
+    ]
+  },
+  {
+    "id": "la-613",
+    "meanings": [
+      "to snatch",
+      "to seize",
+      "to hurry"
+    ]
+  },
+  {
+    "id": "la-614",
+    "meanings": [
+      "thin",
+      "rare",
+      "scattered"
+    ]
+  },
+  {
+    "id": "la-615",
+    "meanings": [
+      "reason",
+      "account",
+      "manner"
+    ]
+  },
+  {
+    "id": "la-616",
+    "meanings": [
+      "raft",
+      "boat"
+    ]
+  },
+  {
+    "id": "la-617",
+    "meanings": [
+      "fresh",
+      "recent",
+      "new"
+    ]
+  },
+  {
+    "id": "la-618",
+    "meanings": [
+      "to take back",
+      "to receive",
+      "to recover"
+    ]
+  },
+  {
+    "id": "la-619",
+    "meanings": [
+      "to recite",
+      "to read aloud"
+    ]
+  },
+  {
+    "id": "la-620",
+    "meanings": [
+      "straight",
+      "right",
+      "correct"
+    ]
+  },
+  {
+    "id": "la-621",
+    "meanings": [
+      "to recover",
+      "to regain",
+      "to get back"
+    ]
+  },
+  {
+    "id": "la-622",
+    "meanings": [
+      "to give back",
+      "to return",
+      "to render"
+    ]
+  },
+  {
+    "id": "la-623",
+    "meanings": [
+      "to go back",
+      "to return"
+    ]
+  },
+  {
+    "id": "la-624",
+    "meanings": [
+      "to lead back",
+      "to bring back"
+    ]
+  },
+  {
+    "id": "la-625",
+    "meanings": [
+      "to bring back",
+      "to report",
+      "to refer"
+    ]
+  },
+  {
+    "id": "la-626",
+    "meanings": [
+      "to repair",
+      "to restore",
+      "to refresh"
+    ]
+  },
+  {
+    "id": "la-627",
+    "meanings": [
+      "queen"
+    ]
+  },
+  {
+    "id": "la-628",
+    "meanings": [
+      "region",
+      "district",
+      "direction"
+    ]
+  },
+  {
+    "id": "la-629",
+    "meanings": [
+      "royal",
+      "kingly"
+    ]
+  },
+  {
+    "id": "la-630",
+    "meanings": [
+      "to rule",
+      "to reign"
+    ]
+  },
+  {
+    "id": "la-631",
+    "meanings": [
+      "kingdom",
+      "realm",
+      "royal power"
+    ]
+  },
+  {
+    "id": "la-632",
+    "meanings": [
+      "to rule",
+      "to guide",
+      "to direct"
+    ]
+  },
+  {
+    "id": "la-633",
+    "meanings": [
+      "religion",
+      "scruple",
+      "sanctity"
+    ]
+  },
+  {
+    "id": "la-634",
+    "meanings": [
+      "to leave behind",
+      "to abandon"
+    ]
+  },
+  {
+    "id": "la-635",
+    "meanings": [
+      "remaining",
+      "the rest"
+    ]
+  },
+  {
+    "id": "la-636",
+    "meanings": [
+      "remedy",
+      "cure"
+    ]
+  },
+  {
+    "id": "la-637",
+    "meanings": [
+      "oar"
+    ]
+  },
+  {
+    "id": "la-638",
+    "meanings": [
+      "to renew",
+      "to restore"
+    ]
+  },
+  {
+    "id": "la-639",
+    "meanings": [
+      "to find",
+      "to discover",
+      "to find out"
+    ]
+  },
+  {
+    "id": "la-640",
+    "meanings": [
+      "to repeat",
+      "to seek again",
+      "to recall"
+    ]
+  },
+  {
+    "id": "la-641",
+    "meanings": [
+      "to put back",
+      "to replace",
+      "to store"
+    ]
+  },
+  {
+    "id": "la-642",
+    "meanings": [
+      "thing",
+      "matter",
+      "affair",
+      "event"
+    ]
+  },
+  {
+    "id": "la-643",
+    "meanings": [
+      "to resist",
+      "to stand against",
+      "to stop"
+    ]
+  },
+  {
+    "id": "la-644",
+    "meanings": [
+      "to look back at",
+      "to regard",
+      "to consider"
+    ]
+  },
+  {
+    "id": "la-645",
+    "meanings": [
+      "to answer",
+      "to reply"
+    ]
+  },
+  {
+    "id": "la-646",
+    "meanings": [
+      "republic",
+      "state",
+      "commonwealth"
+    ]
+  },
+  {
+    "id": "la-647",
+    "meanings": [
+      "to restore",
+      "to replace",
+      "to reinstate"
+    ]
+  },
+  {
+    "id": "la-648",
+    "meanings": [
+      "to hold back",
+      "to retain",
+      "to keep"
+    ]
+  },
+  {
+    "id": "la-649",
+    "meanings": [
+      "defendant",
+      "accused person"
+    ]
+  },
+  {
+    "id": "la-650",
+    "meanings": [
+      "to turn back",
+      "to return"
+    ]
+  },
+  {
+    "id": "la-651",
+    "meanings": [
+      "to call back",
+      "to recall",
+      "to revoke"
+    ]
+  },
+  {
+    "id": "la-652",
+    "meanings": [
+      "king"
+    ]
+  },
+  {
+    "id": "la-653",
+    "meanings": [
+      "to laugh",
+      "to smile"
+    ]
+  },
+  {
+    "id": "la-654",
+    "meanings": [
+      "bank (of a river)"
+    ]
+  },
+  {
+    "id": "la-655",
+    "meanings": [
+      "laughter",
+      "smile"
+    ]
+  },
+  {
+    "id": "la-656",
+    "meanings": [
+      "rite",
+      "ceremony",
+      "custom"
+    ]
+  },
+  {
+    "id": "la-657",
+    "meanings": [
+      "stream",
+      "brook"
+    ]
+  },
+  {
+    "id": "la-658",
+    "meanings": [
+      "strong",
+      "robust",
+      "vigorous"
+    ]
+  },
+  {
+    "id": "la-659",
+    "meanings": [
+      "to ask",
+      "to beg",
+      "to request"
+    ]
+  },
+  {
+    "id": "la-660",
+    "meanings": [
+      "wheel"
+    ]
+  },
+  {
+    "id": "la-661",
+    "meanings": [
+      "reddening",
+      "blushing"
+    ]
+  },
+  {
+    "id": "la-662",
+    "meanings": [
+      "rough",
+      "unrefined",
+      "raw"
+    ]
+  },
+  {
+    "id": "la-663",
+    "meanings": [
+      "to rush",
+      "to fall",
+      "to collapse"
+    ]
+  },
+  {
+    "id": "la-664",
+    "meanings": [
+      "ruin",
+      "fall",
+      "destruction"
+    ]
+  },
+  {
+    "id": "la-665",
+    "meanings": [
+      "rumor",
+      "report",
+      "hearsay"
+    ]
+  },
+  {
+    "id": "la-666",
+    "meanings": [
+      "to break",
+      "to burst",
+      "to rupture"
+    ]
+  },
+  {
+    "id": "la-667",
+    "meanings": [
+      "back",
+      "again"
+    ]
+  },
+  {
+    "id": "la-668",
+    "meanings": [
+      "countryside",
+      "the country"
+    ]
+  },
+  {
+    "id": "la-669",
+    "meanings": [
+      "sacred",
+      "holy",
+      "consecrated"
+    ]
+  },
+  {
+    "id": "la-670",
+    "meanings": [
+      "priest",
+      "priestess"
+    ]
+  },
+  {
+    "id": "la-671",
+    "meanings": [
+      "sacrifice"
+    ]
+  },
+  {
+    "id": "la-672",
+    "meanings": [
+      "age",
+      "century",
+      "generation"
+    ]
+  },
+  {
+    "id": "la-673",
+    "meanings": [
+      "often"
+    ]
+  },
+  {
+    "id": "la-674",
+    "meanings": [
+      "savage",
+      "cruel",
+      "fierce"
+    ]
+  },
+  {
+    "id": "la-675",
+    "meanings": [
+      "arrow"
+    ]
+  },
+  {
+    "id": "la-676",
+    "meanings": [
+      "health",
+      "safety",
+      "greeting"
+    ]
+  },
+  {
+    "id": "la-677",
+    "meanings": [
+      "to greet",
+      "to salute"
+    ]
+  },
+  {
+    "id": "la-678",
+    "meanings": [
+      "safe",
+      "well",
+      "unharmed"
+    ]
+  },
+  {
+    "id": "la-679",
+    "meanings": [
+      "holy",
+      "sacred",
+      "inviolable"
+    ]
+  },
+  {
+    "id": "la-680",
+    "meanings": [
+      "blood"
+    ]
+  },
+  {
+    "id": "la-681",
+    "meanings": [
+      "healthy",
+      "sane",
+      "sound"
+    ]
+  },
+  {
+    "id": "la-682",
+    "meanings": [
+      "to taste",
+      "to be wise",
+      "to have good sense"
+    ]
+  },
+  {
+    "id": "la-683",
+    "meanings": [
+      "wise",
+      "sensible",
+      "prudent"
+    ]
+  },
+  {
+    "id": "la-684",
+    "meanings": [
+      "wisdom",
+      "good sense",
+      "prudence"
+    ]
+  },
+  {
+    "id": "la-685",
+    "meanings": [
+      "enough",
+      "sufficiently"
+    ]
+  },
+  {
+    "id": "la-686",
+    "meanings": [
+      "rock",
+      "stone",
+      "boulder"
+    ]
+  },
+  {
+    "id": "la-687",
+    "meanings": [
+      "crime",
+      "wickedness",
+      "outrage"
+    ]
+  },
+  {
+    "id": "la-688",
+    "meanings": [
+      "knowledge",
+      "skill",
+      "science"
+    ]
+  },
+  {
+    "id": "la-689",
+    "meanings": [
+      "obviously",
+      "of course",
+      "namely"
+    ]
+  },
+  {
+    "id": "la-690",
+    "meanings": [
+      "to know",
+      "to understand"
+    ]
+  },
+  {
+    "id": "la-691",
+    "meanings": [
+      "to write"
+    ]
+  },
+  {
+    "id": "la-692",
+    "meanings": [
+      "shield"
+    ]
+  },
+  {
+    "id": "la-693",
+    "meanings": [
+      "himself",
+      "herself",
+      "itself",
+      "themselves"
+    ]
+  },
+  {
+    "id": "la-694",
+    "meanings": [
+      "according to",
+      "following",
+      "along"
+    ]
+  },
+  {
+    "id": "la-695",
+    "meanings": [
+      "second",
+      "favorable",
+      "following"
+    ]
+  },
+  {
+    "id": "la-696",
+    "meanings": [
+      "axe",
+      "hatchet"
+    ]
+  },
+  {
+    "id": "la-697",
+    "meanings": [
+      "but",
+      "however"
+    ]
+  },
+  {
+    "id": "la-698",
+    "meanings": [
+      "to sit",
+      "to be seated"
+    ]
+  },
+  {
+    "id": "la-699",
+    "meanings": [
+      "seat",
+      "abode",
+      "home"
+    ]
+  },
+  {
+    "id": "la-700",
+    "meanings": [
+      "once",
+      "a single time"
+    ]
+  },
+  {
+    "id": "la-701",
+    "meanings": [
+      "always",
+      "ever"
+    ]
+  },
+  {
+    "id": "la-702",
+    "meanings": [
+      "senator"
+    ]
+  },
+  {
+    "id": "la-703",
+    "meanings": [
+      "senate"
+    ]
+  },
+  {
+    "id": "la-704",
+    "meanings": [
+      "old man",
+      "elder"
+    ]
+  },
+  {
+    "id": "la-705",
+    "meanings": [
+      "old age",
+      "senility"
+    ]
+  },
+  {
+    "id": "la-706",
+    "meanings": [
+      "sense",
+      "feeling",
+      "perception"
+    ]
+  },
+  {
+    "id": "la-707",
+    "meanings": [
+      "opinion",
+      "feeling",
+      "sentence",
+      "verdict"
+    ]
+  },
+  {
+    "id": "la-708",
+    "meanings": [
+      "to feel",
+      "to perceive",
+      "to think"
+    ]
+  },
+  {
+    "id": "la-709",
+    "meanings": [
+      "to separate",
+      "to divide",
+      "to part"
+    ]
+  },
+  {
+    "id": "la-710",
+    "meanings": [
+      "seven"
+    ]
+  },
+  {
+    "id": "la-711",
+    "meanings": [
+      "tomb",
+      "grave",
+      "sepulchre"
+    ]
+  },
+  {
+    "id": "la-712",
+    "meanings": [
+      "to follow",
+      "to pursue"
+    ]
+  },
+  {
+    "id": "la-713",
+    "meanings": [
+      "speech",
+      "conversation",
+      "talk",
+      "language"
+    ]
+  },
+  {
+    "id": "la-714",
+    "meanings": [
+      "to creep",
+      "to crawl",
+      "to spread"
+    ]
+  },
+  {
+    "id": "la-715",
+    "meanings": [
+      "to save",
+      "to keep",
+      "to observe",
+      "to protect"
+    ]
+  },
+  {
+    "id": "la-716",
+    "meanings": [
+      "to serve",
+      "to be a slave to"
+    ]
+  },
+  {
+    "id": "la-717",
+    "meanings": [
+      "slavery",
+      "servitude"
+    ]
+  },
+  {
+    "id": "la-718",
+    "meanings": [
+      "slave",
+      "servant"
+    ]
+  },
+  {
+    "id": "la-719",
+    "meanings": [
+      "or if",
+      "whether... or"
+    ]
+  },
+  {
+    "id": "la-720",
+    "meanings": [
+      "strict",
+      "serious",
+      "stern",
+      "severe"
+    ]
+  },
+  {
+    "id": "la-721",
+    "meanings": [
+      "six"
+    ]
+  },
+  {
+    "id": "la-722",
+    "meanings": [
+      "if",
+      "in case"
+    ]
+  },
+  {
+    "id": "la-723",
+    "meanings": [
+      "so",
+      "thus",
+      "in this way"
+    ]
+  },
+  {
+    "id": "la-724",
+    "meanings": [
+      "dry",
+      "thirsty",
+      "parched"
+    ]
+  },
+  {
+    "id": "la-725",
+    "meanings": [
+      "star",
+      "constellation"
+    ]
+  },
+  {
+    "id": "la-726",
+    "meanings": [
+      "sign",
+      "signal",
+      "standard",
+      "seal"
+    ]
+  },
+  {
+    "id": "la-727",
+    "meanings": [
+      "silence",
+      "stillness"
+    ]
+  },
+  {
+    "id": "la-728",
+    "meanings": [
+      "to be silent",
+      "to be still"
+    ]
+  },
+  {
+    "id": "la-729",
+    "meanings": [
+      "forest",
+      "wood",
+      "woodland"
+    ]
+  },
+  {
+    "id": "la-730",
+    "meanings": [
+      "like",
+      "similar",
+      "resembling"
+    ]
+  },
+  {
+    "id": "la-731",
+    "meanings": [
+      "at the same time",
+      "simultaneously",
+      "together"
+    ]
+  },
+  {
+    "id": "la-732",
+    "meanings": [
+      "to pretend",
+      "to feign",
+      "to imitate"
+    ]
+  },
+  {
+    "id": "la-733",
+    "meanings": [
+      "without"
+    ]
+  },
+  {
+    "id": "la-734",
+    "meanings": [
+      "one by one",
+      "individually",
+      "each"
+    ]
+  },
+  {
+    "id": "la-735",
+    "meanings": [
+      "to allow",
+      "to permit",
+      "to let"
+    ]
+  },
+  {
+    "id": "la-736",
+    "meanings": [
+      "left",
+      "unfavorable",
+      "sinister"
+    ]
+  },
+  {
+    "id": "la-737",
+    "meanings": [
+      "fold",
+      "bosom",
+      "bay",
+      "gulf"
+    ]
+  },
+  {
+    "id": "la-738",
+    "meanings": [
+      "thirst"
+    ]
+  },
+  {
+    "id": "la-739",
+    "meanings": [
+      "situated",
+      "placed",
+      "located"
+    ]
+  },
+  {
+    "id": "la-740",
+    "meanings": [
+      "or if",
+      "whether... or"
+    ]
+  },
+  {
+    "id": "la-741",
+    "meanings": [
+      "society",
+      "partnership",
+      "alliance"
+    ]
+  },
+  {
+    "id": "la-742",
+    "meanings": [
+      "ally",
+      "companion",
+      "associate"
+    ]
+  },
+  {
+    "id": "la-743",
+    "meanings": [
+      "sun"
+    ]
+  },
+  {
+    "id": "la-744",
+    "meanings": [
+      "to be accustomed",
+      "to be in the habit"
+    ]
+  },
+  {
+    "id": "la-745",
+    "meanings": [
+      "solitude",
+      "loneliness",
+      "wilderness"
+    ]
+  },
+  {
+    "id": "la-746",
+    "meanings": [
+      "anxious",
+      "worried",
+      "troubled"
+    ]
+  },
+  {
+    "id": "la-747",
+    "meanings": [
+      "only",
+      "alone"
+    ]
+  },
+  {
+    "id": "la-748",
+    "meanings": [
+      "alone",
+      "only",
+      "single"
+    ]
+  },
+  {
+    "id": "la-749",
+    "meanings": [
+      "to loosen",
+      "to free",
+      "to pay",
+      "to dissolve"
+    ]
+  },
+  {
+    "id": "la-750",
+    "meanings": [
+      "dream"
+    ]
+  },
+  {
+    "id": "la-751",
+    "meanings": [
+      "sleep"
+    ]
+  },
+  {
+    "id": "la-752",
+    "meanings": [
+      "sound",
+      "noise",
+      "din"
+    ]
+  },
+  {
+    "id": "la-753",
+    "meanings": [
+      "sound",
+      "tone",
+      "voice"
+    ]
+  },
+  {
+    "id": "la-754",
+    "meanings": [
+      "sister"
+    ]
+  },
+  {
+    "id": "la-755",
+    "meanings": [
+      "lot",
+      "fortune",
+      "fate"
+    ]
+  },
+  {
+    "id": "la-756",
+    "meanings": [
+      "to scatter",
+      "to spread",
+      "to sprinkle"
+    ]
+  },
+  {
+    "id": "la-757",
+    "meanings": [
+      "space",
+      "distance",
+      "time",
+      "extent"
+    ]
+  },
+  {
+    "id": "la-758",
+    "meanings": [
+      "appearance",
+      "kind",
+      "type",
+      "form"
+    ]
+  },
+  {
+    "id": "la-759",
+    "meanings": [
+      "to look at",
+      "to watch",
+      "to observe"
+    ]
+  },
+  {
+    "id": "la-760",
+    "meanings": [
+      "to hope",
+      "to expect"
+    ]
+  },
+  {
+    "id": "la-761",
+    "meanings": [
+      "hope"
+    ]
+  },
+  {
+    "id": "la-762",
+    "meanings": [
+      "breath",
+      "spirit",
+      "soul"
+    ]
+  },
+  {
+    "id": "la-763",
+    "meanings": [
+      "to shine",
+      "to be bright",
+      "to gleam"
+    ]
+  },
+  {
+    "id": "la-764",
+    "meanings": [
+      "spoils",
+      "plunder",
+      "booty"
+    ]
+  },
+  {
+    "id": "la-765",
+    "meanings": [
+      "voluntarily",
+      "of one's own accord"
+    ]
+  },
+  {
+    "id": "la-766",
+    "meanings": [
+      "to stand"
+    ]
+  },
+  {
+    "id": "la-767",
+    "meanings": [
+      "immediately",
+      "at once",
+      "straightaway"
+    ]
+  },
+  {
+    "id": "la-768",
+    "meanings": [
+      "post",
+      "station",
+      "position",
+      "garrison"
+    ]
+  },
+  {
+    "id": "la-769",
+    "meanings": [
+      "to establish",
+      "to decide",
+      "to set up"
+    ]
+  },
+  {
+    "id": "la-770",
+    "meanings": [
+      "state",
+      "condition",
+      "position"
+    ]
+  },
+  {
+    "id": "la-771",
+    "meanings": [
+      "star"
+    ]
+  },
+  {
+    "id": "la-772",
+    "meanings": [
+      "to spread out",
+      "to lay low",
+      "to pave",
+      "to knock down"
+    ]
+  },
+  {
+    "id": "la-773",
+    "meanings": [
+      "pay",
+      "tribute",
+      "military service"
+    ]
+  },
+  {
+    "id": "la-774",
+    "meanings": [
+      "stock",
+      "root",
+      "family",
+      "race"
+    ]
+  },
+  {
+    "id": "la-775",
+    "meanings": [
+      "to stand",
+      "to be fixed"
+    ]
+  },
+  {
+    "id": "la-776",
+    "meanings": [
+      "noise",
+      "uproar",
+      "clatter",
+      "din"
+    ]
+  },
+  {
+    "id": "la-777",
+    "meanings": [
+      "to be eager",
+      "to study",
+      "to devote oneself to"
+    ]
+  },
+  {
+    "id": "la-778",
+    "meanings": [
+      "eagerness",
+      "zeal",
+      "study",
+      "pursuit"
+    ]
+  },
+  {
+    "id": "la-779",
+    "meanings": [
+      "stupidity",
+      "foolishness",
+      "folly"
+    ]
+  },
+  {
+    "id": "la-780",
+    "meanings": [
+      "stupid",
+      "foolish"
+    ]
+  },
+  {
+    "id": "la-781",
+    "meanings": [
+      "to be stunned",
+      "to be amazed",
+      "to be dazed"
+    ]
+  },
+  {
+    "id": "la-782",
+    "meanings": [
+      "to advise",
+      "to urge",
+      "to persuade"
+    ]
+  },
+  {
+    "id": "la-783",
+    "meanings": [
+      "under",
+      "beneath",
+      "at the foot of"
+    ]
+  },
+  {
+    "id": "la-784",
+    "meanings": [
+      "suddenly",
+      "unexpectedly"
+    ]
+  },
+  {
+    "id": "la-785",
+    "meanings": [
+      "sudden",
+      "unexpected"
+    ]
+  },
+  {
+    "id": "la-786",
+    "meanings": [
+      "help",
+      "support",
+      "reserve troops"
+    ]
+  },
+  {
+    "id": "la-787",
+    "meanings": [
+      "to go under",
+      "to succeed",
+      "to follow",
+      "to relieve"
+    ]
+  },
+  {
+    "id": "la-788",
+    "meanings": [
+      "of himself",
+      "of herself",
+      "of themselves"
+    ]
+  },
+  {
+    "id": "la-789",
+    "meanings": [
+      "to take",
+      "to take up",
+      "to assume",
+      "to consume"
+    ]
+  },
+  {
+    "id": "la-790",
+    "meanings": [
+      "total",
+      "sum",
+      "main point",
+      "chief matter"
+    ]
+  },
+  {
+    "id": "la-791",
+    "meanings": [
+      "highest",
+      "greatest",
+      "topmost",
+      "utmost"
+    ]
+  },
+  {
+    "id": "la-792",
+    "meanings": [
+      "above",
+      "over",
+      "beyond"
+    ]
+  },
+  {
+    "id": "la-793",
+    "meanings": [
+      "to overcome",
+      "to surpass",
+      "to survive",
+      "to conquer"
+    ]
+  },
+  {
+    "id": "la-794",
+    "meanings": [
+      "proud",
+      "arrogant",
+      "haughty"
+    ]
+  },
+  {
+    "id": "la-795",
+    "meanings": [
+      "the gods above",
+      "the heavenly ones"
+    ]
+  },
+  {
+    "id": "la-796",
+    "meanings": [
+      "above",
+      "upper",
+      "higher"
+    ]
+  },
+  {
+    "id": "la-797",
+    "meanings": [
+      "punishment",
+      "torture",
+      "execution"
+    ]
+  },
+  {
+    "id": "la-798",
+    "meanings": [
+      "above",
+      "before",
+      "beyond"
+    ]
+  },
+  {
+    "id": "la-799",
+    "meanings": [
+      "to rise",
+      "to get up",
+      "to stand up"
+    ]
+  },
+  {
+    "id": "la-800",
+    "meanings": [
+      "to undertake",
+      "to take up",
+      "to receive",
+      "to support"
+    ]
+  },
+  {
+    "id": "la-801",
+    "meanings": [
+      "to look up at",
+      "to admire",
+      "to suspect"
+    ]
+  },
+  {
+    "id": "la-802",
+    "meanings": [
+      "suspicion",
+      "distrust",
+      "mistrust"
+    ]
+  },
+  {
+    "id": "la-803",
+    "meanings": [
+      "to hold up",
+      "to sustain",
+      "to withstand",
+      "to endure"
+    ]
+  },
+  {
+    "id": "la-804",
+    "meanings": [
+      "his own",
+      "her own",
+      "its own",
+      "their own"
+    ]
+  },
+  {
+    "id": "la-805",
+    "meanings": [
+      "shop",
+      "inn",
+      "tavern",
+      "workshop"
+    ]
+  },
+  {
+    "id": "la-806",
+    "meanings": [
+      "board",
+      "tablet",
+      "writing tablet",
+      "painting"
+    ]
+  },
+  {
+    "id": "la-807",
+    "meanings": [
+      "to be silent",
+      "to be quiet",
+      "to say nothing"
+    ]
+  },
+  {
+    "id": "la-808",
+    "meanings": [
+      "silent",
+      "quiet",
+      "unspoken"
+    ]
+  },
+  {
+    "id": "la-809",
+    "meanings": [
+      "such",
+      "of such a kind",
+      "like this"
+    ]
+  },
+  {
+    "id": "la-810",
+    "meanings": [
+      "so",
+      "so much",
+      "to such a degree"
+    ]
+  },
+  {
+    "id": "la-811",
+    "meanings": [
+      "however",
+      "nevertheless",
+      "yet",
+      "still"
+    ]
+  },
+  {
+    "id": "la-812",
+    "meanings": [
+      "just as",
+      "as if",
+      "like"
+    ]
+  },
+  {
+    "id": "la-813",
+    "meanings": [
+      "at last",
+      "finally",
+      "at length"
+    ]
+  },
+  {
+    "id": "la-814",
+    "meanings": [
+      "to touch",
+      "to reach",
+      "to affect"
+    ]
+  },
+  {
+    "id": "la-815",
+    "meanings": [
+      "only",
+      "so much"
+    ]
+  },
+  {
+    "id": "la-816",
+    "meanings": [
+      "so great",
+      "so much",
+      "such a great"
+    ]
+  },
+  {
+    "id": "la-817",
+    "meanings": [
+      "slow",
+      "late",
+      "sluggish"
+    ]
+  },
+  {
+    "id": "la-818",
+    "meanings": [
+      "roof",
+      "house",
+      "ceiling",
+      "shelter"
+    ]
+  },
+  {
+    "id": "la-819",
+    "meanings": [
+      "to cover",
+      "to protect",
+      "to conceal"
+    ]
+  },
+  {
+    "id": "la-820",
+    "meanings": [
+      "weapon",
+      "javelin",
+      "bolt",
+      "missile"
+    ]
+  },
+  {
+    "id": "la-821",
+    "meanings": [
+      "rashly",
+      "without purpose",
+      "at random"
+    ]
+  },
+  {
+    "id": "la-822",
+    "meanings": [
+      "to restrain",
+      "to moderate",
+      "to regulate",
+      "to control"
+    ]
+  },
+  {
+    "id": "la-823",
+    "meanings": [
+      "storm",
+      "weather",
+      "season",
+      "tempest"
+    ]
+  },
+  {
+    "id": "la-824",
+    "meanings": [
+      "temple",
+      "sanctuary",
+      "sacred precinct"
+    ]
+  },
+  {
+    "id": "la-825",
+    "meanings": [
+      "time",
+      "period",
+      "season",
+      "occasion"
+    ]
+  },
+  {
+    "id": "la-826",
+    "meanings": [
+      "to stretch",
+      "to extend",
+      "to aim for",
+      "to pitch"
+    ]
+  },
+  {
+    "id": "la-827",
+    "meanings": [
+      "darkness",
+      "night",
+      "gloom",
+      "shadows"
+    ]
+  },
+  {
+    "id": "la-828",
+    "meanings": [
+      "to hold",
+      "to keep",
+      "to maintain",
+      "to occupy"
+    ]
+  },
+  {
+    "id": "la-829",
+    "meanings": [
+      "to test",
+      "to try",
+      "to attempt",
+      "to attack"
+    ]
+  },
+  {
+    "id": "la-830",
+    "meanings": [
+      "thin",
+      "slim",
+      "slight",
+      "poor",
+      "delicate"
+    ]
+  },
+  {
+    "id": "la-831",
+    "meanings": [
+      "three times",
+      "thrice"
+    ]
+  },
+  {
+    "id": "la-832",
+    "meanings": [
+      "back (of body)",
+      "rear",
+      "back side"
+    ]
+  },
+  {
+    "id": "la-833",
+    "meanings": [
+      "land",
+      "earth",
+      "ground",
+      "soil"
+    ]
+  },
+  {
+    "id": "la-834",
+    "meanings": [
+      "to frighten",
+      "to terrify",
+      "to alarm"
+    ]
+  },
+  {
+    "id": "la-835",
+    "meanings": [
+      "terrible",
+      "frightening",
+      "dreadful"
+    ]
+  },
+  {
+    "id": "la-836",
+    "meanings": [
+      "terror",
+      "dread",
+      "fright"
+    ]
+  },
+  {
+    "id": "la-837",
+    "meanings": [
+      "third"
+    ]
+  },
+  {
+    "id": "la-838",
+    "meanings": [
+      "testimony",
+      "evidence",
+      "witness statement"
+    ]
+  },
+  {
+    "id": "la-839",
+    "meanings": [
+      "witness"
+    ]
+  },
+  {
+    "id": "la-840",
+    "meanings": [
+      "theater",
+      "playhouse"
+    ]
+  },
+  {
+    "id": "la-841",
+    "meanings": [
+      "to fear",
+      "to be afraid of",
+      "to dread"
+    ]
+  },
+  {
+    "id": "la-842",
+    "meanings": [
+      "timid",
+      "fearful",
+      "cowardly"
+    ]
+  },
+  {
+    "id": "la-843",
+    "meanings": [
+      "fear",
+      "dread",
+      "anxiety"
+    ]
+  },
+  {
+    "id": "la-844",
+    "meanings": [
+      "toga",
+      "Roman garment"
+    ]
+  },
+  {
+    "id": "la-845",
+    "meanings": [
+      "to lift",
+      "to raise",
+      "to remove",
+      "to destroy"
+    ]
+  },
+  {
+    "id": "la-846",
+    "meanings": [
+      "torture",
+      "torment",
+      "siege engine",
+      "rack"
+    ]
+  },
+  {
+    "id": "la-847",
+    "meanings": [
+      "so many",
+      "as many"
+    ]
+  },
+  {
+    "id": "la-848",
+    "meanings": [
+      "just as many",
+      "the same number of"
+    ]
+  },
+  {
+    "id": "la-849",
+    "meanings": [
+      "so many times",
+      "as often"
+    ]
+  },
+  {
+    "id": "la-850",
+    "meanings": [
+      "whole",
+      "all",
+      "entire"
+    ]
+  },
+  {
+    "id": "la-851",
+    "meanings": [
+      "to drag",
+      "to pull",
+      "to haul"
+    ]
+  },
+  {
+    "id": "la-852",
+    "meanings": [
+      "to hand over",
+      "to deliver",
+      "to betray",
+      "to pass on"
+    ]
+  },
+  {
+    "id": "la-853",
+    "meanings": [
+      "to drag",
+      "to draw",
+      "to pull",
+      "to attract"
+    ]
+  },
+  {
+    "id": "la-854",
+    "meanings": [
+      "across",
+      "through",
+      "beyond"
+    ]
+  },
+  {
+    "id": "la-855",
+    "meanings": [
+      "to cross",
+      "to go across",
+      "to pass",
+      "to traverse"
+    ]
+  },
+  {
+    "id": "la-856",
+    "meanings": [
+      "three hundred"
+    ]
+  },
+  {
+    "id": "la-857",
+    "meanings": [
+      "to tremble",
+      "to shake",
+      "to shudder"
+    ]
+  },
+  {
+    "id": "la-858",
+    "meanings": [
+      "three"
+    ]
+  },
+  {
+    "id": "la-859",
+    "meanings": [
+      "tribunate",
+      "office of tribune"
+    ]
+  },
+  {
+    "id": "la-860",
+    "meanings": [
+      "tribune (military or civil officer)"
+    ]
+  },
+  {
+    "id": "la-861",
+    "meanings": [
+      "to assign",
+      "to grant",
+      "to attribute",
+      "to bestow"
+    ]
+  },
+  {
+    "id": "la-862",
+    "meanings": [
+      "tribe",
+      "ward",
+      "district"
+    ]
+  },
+  {
+    "id": "la-863",
+    "meanings": [
+      "sad",
+      "sorrowful",
+      "gloomy",
+      "severe"
+    ]
+  },
+  {
+    "id": "la-864",
+    "meanings": [
+      "triumph",
+      "triumphal procession",
+      "victory parade"
+    ]
+  },
+  {
+    "id": "la-865",
+    "meanings": [
+      "you (singular)"
+    ]
+  },
+  {
+    "id": "la-866",
+    "meanings": [
+      "to look at",
+      "to protect",
+      "to guard",
+      "to watch over"
+    ]
+  },
+  {
+    "id": "la-867",
+    "meanings": [
+      "then",
+      "at that time",
+      "thereupon"
+    ]
+  },
+  {
+    "id": "la-868",
+    "meanings": [
+      "uproar",
+      "disturbance",
+      "commotion",
+      "riot"
+    ]
+  },
+  {
+    "id": "la-869",
+    "meanings": [
+      "hill",
+      "mound",
+      "burial mound"
+    ]
+  },
+  {
+    "id": "la-870",
+    "meanings": [
+      "then",
+      "at that time"
+    ]
+  },
+  {
+    "id": "la-871",
+    "meanings": [
+      "crowd",
+      "mob",
+      "disorder",
+      "commotion"
+    ]
+  },
+  {
+    "id": "la-872",
+    "meanings": [
+      "to disturb",
+      "to throw into confusion",
+      "to agitate"
+    ]
+  },
+  {
+    "id": "la-873",
+    "meanings": [
+      "ugly",
+      "shameful",
+      "disgraceful",
+      "base"
+    ]
+  },
+  {
+    "id": "la-874",
+    "meanings": [
+      "tower"
+    ]
+  },
+  {
+    "id": "la-875",
+    "meanings": [
+      "safe",
+      "secure",
+      "protected"
+    ]
+  },
+  {
+    "id": "la-876",
+    "meanings": [
+      "your (singular)",
+      "yours"
+    ]
+  },
+  {
+    "id": "la-877",
+    "meanings": [
+      "where",
+      "when",
+      "wherever"
+    ]
+  },
+  {
+    "id": "la-878",
+    "meanings": [
+      "everywhere",
+      "in all places"
+    ]
+  },
+  {
+    "id": "la-879",
+    "meanings": [
+      "to avenge",
+      "to take revenge",
+      "to punish"
+    ]
+  },
+  {
+    "id": "la-880",
+    "meanings": [
+      "any",
+      "any at all"
+    ]
+  },
+  {
+    "id": "la-881",
+    "meanings": [
+      "last",
+      "farthest",
+      "final",
+      "extreme"
+    ]
+  },
+  {
+    "id": "la-882",
+    "meanings": [
+      "beyond",
+      "further",
+      "on the other side"
+    ]
+  },
+  {
+    "id": "la-883",
+    "meanings": [
+      "voluntarily",
+      "beyond",
+      "moreover",
+      "of one's own accord"
+    ]
+  },
+  {
+    "id": "la-884",
+    "meanings": [
+      "shadow",
+      "shade",
+      "ghost"
+    ]
+  },
+  {
+    "id": "la-885",
+    "meanings": [
+      "ever",
+      "at any time"
+    ]
+  },
+  {
+    "id": "la-886",
+    "meanings": [
+      "together",
+      "at the same time"
+    ]
+  },
+  {
+    "id": "la-887",
+    "meanings": [
+      "wave",
+      "water"
+    ]
+  },
+  {
+    "id": "la-888",
+    "meanings": [
+      "from where",
+      "from which",
+      "whence"
+    ]
+  },
+  {
+    "id": "la-889",
+    "meanings": [
+      "eleven"
+    ]
+  },
+  {
+    "id": "la-890",
+    "meanings": [
+      "from all sides",
+      "on all sides",
+      "everywhere"
+    ]
+  },
+  {
+    "id": "la-891",
+    "meanings": [
+      "all together",
+      "whole",
+      "universal"
+    ]
+  },
+  {
+    "id": "la-892",
+    "meanings": [
+      "one"
+    ]
+  },
+  {
+    "id": "la-893",
+    "meanings": [
+      "city",
+      "walled city"
+    ]
+  },
+  {
+    "id": "la-894",
+    "meanings": [
+      "to press",
+      "to urge",
+      "to drive",
+      "to push"
+    ]
+  },
+  {
+    "id": "la-895",
+    "meanings": [
+      "anywhere",
+      "in any place"
+    ]
+  },
+  {
+    "id": "la-896",
+    "meanings": [
+      "all the way",
+      "continuously",
+      "as far as",
+      "right up to"
+    ]
+  },
+  {
+    "id": "la-897",
+    "meanings": [
+      "use",
+      "practice",
+      "experience",
+      "advantage"
+    ]
+  },
+  {
+    "id": "la-898",
+    "meanings": [
+      "as",
+      "when",
+      "in order that",
+      "so that",
+      "how"
+    ]
+  },
+  {
+    "id": "la-899",
+    "meanings": [
+      "which (of two)",
+      "which one"
+    ]
+  },
+  {
+    "id": "la-900",
+    "meanings": [
+      "each (of two)",
+      "both"
+    ]
+  },
+  {
+    "id": "la-901",
+    "meanings": [
+      "useful",
+      "advantageous",
+      "profitable"
+    ]
+  },
+  {
+    "id": "la-902",
+    "meanings": [
+      "if only",
+      "would that",
+      "I wish that"
+    ]
+  },
+  {
+    "id": "la-903",
+    "meanings": [
+      "to use",
+      "to make use of",
+      "to employ"
+    ]
+  },
+  {
+    "id": "la-904",
+    "meanings": [
+      "whether (in double question)"
+    ]
+  },
+  {
+    "id": "la-905",
+    "meanings": [
+      "wife"
+    ]
+  },
+  {
+    "id": "la-906",
+    "meanings": [
+      "empty",
+      "free",
+      "unoccupied",
+      "at leisure"
+    ]
+  },
+  {
+    "id": "la-907",
+    "meanings": [
+      "shallow",
+      "ford",
+      "shoal",
+      "depth"
+    ]
+  },
+  {
+    "id": "la-908",
+    "meanings": [
+      "woe!",
+      "alas!"
+    ]
+  },
+  {
+    "id": "la-909",
+    "meanings": [
+      "wandering",
+      "roaming",
+      "uncertain",
+      "vague"
+    ]
+  },
+  {
+    "id": "la-910",
+    "meanings": [
+      "very",
+      "greatly",
+      "strongly"
+    ]
+  },
+  {
+    "id": "la-911",
+    "meanings": [
+      "farewell",
+      "goodbye",
+      "be well"
+    ]
+  },
+  {
+    "id": "la-912",
+    "meanings": [
+      "to be strong",
+      "to be well",
+      "to be able",
+      "to be worth"
+    ]
+  },
+  {
+    "id": "la-913",
+    "meanings": [
+      "health",
+      "state of health",
+      "condition"
+    ]
+  },
+  {
+    "id": "la-914",
+    "meanings": [
+      "strong",
+      "robust",
+      "powerful",
+      "healthy"
+    ]
+  },
+  {
+    "id": "la-915",
+    "meanings": [
+      "valley"
+    ]
+  },
+  {
+    "id": "la-916",
+    "meanings": [
+      "rampart",
+      "wall",
+      "palisade",
+      "earthwork"
+    ]
+  },
+  {
+    "id": "la-917",
+    "meanings": [
+      "empty",
+      "vain",
+      "idle",
+      "false"
+    ]
+  },
+  {
+    "id": "la-918",
+    "meanings": [
+      "various",
+      "diverse",
+      "different",
+      "changeable"
+    ]
+  },
+  {
+    "id": "la-919",
+    "meanings": [
+      "vessel",
+      "container",
+      "jar",
+      "dish"
+    ]
+  },
+  {
+    "id": "la-920",
+    "meanings": [
+      "to lay waste",
+      "to devastate",
+      "to ravage"
+    ]
+  },
+  {
+    "id": "la-921",
+    "meanings": [
+      "vast",
+      "immense",
+      "empty",
+      "desolate"
+    ]
+  },
+  {
+    "id": "la-922",
+    "meanings": [
+      "prophet",
+      "poet",
+      "seer"
+    ]
+  },
+  {
+    "id": "la-923",
+    "meanings": [
+      "or (enclitic suffix)"
+    ]
+  },
+  {
+    "id": "la-924",
+    "meanings": [
+      "to carry",
+      "to convey",
+      "to transport"
+    ]
+  },
+  {
+    "id": "la-925",
+    "meanings": [
+      "or",
+      "even",
+      "at least"
+    ]
+  },
+  {
+    "id": "la-926",
+    "meanings": [
+      "swift",
+      "fast",
+      "rapid",
+      "quick"
+    ]
+  },
+  {
+    "id": "la-927",
+    "meanings": [
+      "sail",
+      "veil",
+      "awning"
+    ]
+  },
+  {
+    "id": "la-928",
+    "meanings": [
+      "just as",
+      "as if",
+      "like"
+    ]
+  },
+  {
+    "id": "la-929",
+    "meanings": [
+      "to worship",
+      "to revere",
+      "to venerate"
+    ]
+  },
+  {
+    "id": "la-930",
+    "meanings": [
+      "pardon",
+      "favor",
+      "permission",
+      "indulgence"
+    ]
+  },
+  {
+    "id": "la-931",
+    "meanings": [
+      "to come",
+      "to arrive"
+    ]
+  },
+  {
+    "id": "la-932",
+    "meanings": [
+      "wind"
+    ]
+  },
+  {
+    "id": "la-933",
+    "meanings": [
+      "spring (season)"
+    ]
+  },
+  {
+    "id": "la-934",
+    "meanings": [
+      "to beat",
+      "to strike",
+      "to lash",
+      "to flog"
+    ]
+  },
+  {
+    "id": "la-935",
+    "meanings": [
+      "word",
+      "expression",
+      "verb"
+    ]
+  },
+  {
+    "id": "la-936",
+    "meanings": [
+      "truly",
+      "really",
+      "in truth",
+      "correctly"
+    ]
+  },
+  {
+    "id": "la-937",
+    "meanings": [
+      "to fear",
+      "to respect",
+      "to stand in awe of"
+    ]
+  },
+  {
+    "id": "la-938",
+    "meanings": [
+      "truly",
+      "but in truth",
+      "however",
+      "indeed"
+    ]
+  },
+  {
+    "id": "la-939",
+    "meanings": [
+      "to be engaged in",
+      "to dwell",
+      "to move about",
+      "to live"
+    ]
+  },
+  {
+    "id": "la-940",
+    "meanings": [
+      "verse",
+      "line of poetry"
+    ]
+  },
+  {
+    "id": "la-941",
+    "meanings": [
+      "to turn",
+      "to change",
+      "to translate"
+    ]
+  },
+  {
+    "id": "la-942",
+    "meanings": [
+      "but",
+      "however",
+      "truth",
+      "reality"
+    ]
+  },
+  {
+    "id": "la-943",
+    "meanings": [
+      "true",
+      "real",
+      "genuine",
+      "proper"
+    ]
+  },
+  {
+    "id": "la-944",
+    "meanings": [
+      "evening",
+      "west",
+      "evening star"
+    ]
+  },
+  {
+    "id": "la-945",
+    "meanings": [
+      "your (plural)",
+      "yours (plural)"
+    ]
+  },
+  {
+    "id": "la-946",
+    "meanings": [
+      "footprint",
+      "track",
+      "trace",
+      "vestige"
+    ]
+  },
+  {
+    "id": "la-947",
+    "meanings": [
+      "clothing",
+      "garment",
+      "dress"
+    ]
+  },
+  {
+    "id": "la-948",
+    "meanings": [
+      "to forbid",
+      "to prohibit",
+      "to prevent"
+    ]
+  },
+  {
+    "id": "la-949",
+    "meanings": [
+      "old",
+      "ancient",
+      "of long standing"
+    ]
+  },
+  {
+    "id": "la-950",
+    "meanings": [
+      "road",
+      "way",
+      "path",
+      "journey"
+    ]
+  },
+  {
+    "id": "la-951",
+    "meanings": [
+      "traveler",
+      "wayfarer"
+    ]
+  },
+  {
+    "id": "la-952",
+    "meanings": [
+      "to shake",
+      "to wave",
+      "to vibrate",
+      "to brandish"
+    ]
+  },
+  {
+    "id": "la-953",
+    "meanings": [
+      "neighboring",
+      "nearby",
+      "adjacent",
+      "neighbor"
+    ]
+  },
+  {
+    "id": "la-954",
+    "meanings": [
+      "victor",
+      "conqueror",
+      "winner"
+    ]
+  },
+  {
+    "id": "la-955",
+    "meanings": [
+      "victory"
+    ]
+  },
+  {
+    "id": "la-956",
+    "meanings": [
+      "to see",
+      "to look",
+      "to perceive"
+    ]
+  },
+  {
+    "id": "la-957",
+    "meanings": [
+      "to thrive",
+      "to be strong",
+      "to flourish",
+      "to be vigorous"
+    ]
+  },
+  {
+    "id": "la-958",
+    "meanings": [
+      "watch",
+      "wakefulness",
+      "night watch",
+      "vigil"
+    ]
+  },
+  {
+    "id": "la-959",
+    "meanings": [
+      "twenty"
+    ]
+  },
+  {
+    "id": "la-960",
+    "meanings": [
+      "cheap",
+      "worthless",
+      "low",
+      "of little value"
+    ]
+  },
+  {
+    "id": "la-961",
+    "meanings": [
+      "country house",
+      "farm",
+      "estate",
+      "villa"
+    ]
+  },
+  {
+    "id": "la-962",
+    "meanings": [
+      "to conquer",
+      "to win",
+      "to prevail over"
+    ]
+  },
+  {
+    "id": "la-963",
+    "meanings": [
+      "chain",
+      "bond",
+      "fetter",
+      "restraint"
+    ]
+  },
+  {
+    "id": "la-964",
+    "meanings": [
+      "protector",
+      "avenger",
+      "guarantor"
+    ]
+  },
+  {
+    "id": "la-965",
+    "meanings": [
+      "wine"
+    ]
+  },
+  {
+    "id": "la-966",
+    "meanings": [
+      "to violate",
+      "to dishonor",
+      "to injure",
+      "to profane"
+    ]
+  },
+  {
+    "id": "la-967",
+    "meanings": [
+      "man",
+      "husband",
+      "hero"
+    ]
+  },
+  {
+    "id": "la-968",
+    "meanings": [
+      "maiden",
+      "virgin",
+      "girl"
+    ]
+  },
+  {
+    "id": "la-969",
+    "meanings": [
+      "virtue",
+      "courage",
+      "excellence",
+      "manliness"
+    ]
+  },
+  {
+    "id": "la-970",
+    "meanings": [
+      "force",
+      "power",
+      "violence",
+      "strength"
+    ]
+  },
+  {
+    "id": "la-971",
+    "meanings": [
+      "to visit",
+      "to go to see",
+      "to inspect"
+    ]
+  },
+  {
+    "id": "la-972",
+    "meanings": [
+      "life"
+    ]
+  },
+  {
+    "id": "la-973",
+    "meanings": [
+      "to avoid",
+      "to shun",
+      "to escape"
+    ]
+  },
+  {
+    "id": "la-974",
+    "meanings": [
+      "fault",
+      "vice",
+      "defect",
+      "error"
+    ]
+  },
+  {
+    "id": "la-975",
+    "meanings": [
+      "to live",
+      "to be alive"
+    ]
+  },
+  {
+    "id": "la-976",
+    "meanings": [
+      "alive",
+      "living"
+    ]
+  },
+  {
+    "id": "la-977",
+    "meanings": [
+      "scarcely",
+      "hardly",
+      "barely",
+      "with difficulty"
+    ]
+  },
+  {
+    "id": "la-978",
+    "meanings": [
+      "to call",
+      "to summon",
+      "to invite",
+      "to name"
+    ]
+  },
+  {
+    "id": "la-979",
+    "meanings": [
+      "to fly"
+    ]
+  },
+  {
+    "id": "la-980",
+    "meanings": [
+      "to want",
+      "to wish",
+      "to be willing"
+    ]
+  },
+  {
+    "id": "la-981",
+    "meanings": [
+      "will",
+      "wish",
+      "desire",
+      "intention"
+    ]
+  },
+  {
+    "id": "la-982",
+    "meanings": [
+      "pleasure",
+      "enjoyment",
+      "delight"
+    ]
+  },
+  {
+    "id": "la-983",
+    "meanings": [
+      "to roll",
+      "to turn",
+      "to revolve",
+      "to ponder"
+    ]
+  },
+  {
+    "id": "la-984",
+    "meanings": [
+      "vow",
+      "prayer",
+      "wish",
+      "offering"
+    ]
+  },
+  {
+    "id": "la-985",
+    "meanings": [
+      "voice",
+      "word",
+      "sound",
+      "utterance"
+    ]
+  },
+  {
+    "id": "la-986",
+    "meanings": [
+      "the common people",
+      "the crowd",
+      "the masses"
+    ]
+  },
+  {
+    "id": "la-987",
+    "meanings": [
+      "wound",
+      "injury"
+    ]
+  },
+  {
+    "id": "la-988",
+    "meanings": [
+      "face",
+      "expression",
+      "countenance",
+      "look"
+    ]
+  },
+  {
+    "id": "la-989",
+    "meanings": [
+      "west wind",
+      "gentle breeze"
+    ]
+  },
+  {
+    "id": "la-990",
+    "meanings": [
+      "zone",
+      "belt",
+      "girdle",
+      "band"
+    ]
+  }
 ]

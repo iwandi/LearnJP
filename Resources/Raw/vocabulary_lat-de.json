@@ -1,993 +1,7342 @@
 [
-  { "id": "la-001", "meanings": ["von", "von ... her"] },
-  { "id": "la-002", "meanings": ["und", "und auch"] },
-  { "id": "la-003", "meanings": ["sich ereignen", "zustossen"] },
-  { "id": "la-004", "meanings": ["annehmen", "empfangen", "erfahren"] },
-  { "id": "la-005", "meanings": ["zu", "an", "bei"] },
-  { "id": "la-006", "meanings": ["heranführen", "veranlassen"] },
-  { "id": "la-007", "meanings": ["Ankunft"] },
-  { "id": "la-008", "meanings": ["Gebäude"] },
-  { "id": "la-009", "meanings": ["eben", "gerecht", "gleich"] },
-  { "id": "la-010", "meanings": ["Acker", "Feld", "Gebiet"] },
-  { "id": "la-011", "meanings": ["treiben", "tun", "handeln"] },
-  { "id": "la-012", "meanings": ["Heereszug", "Schar"] },
-  { "id": "la-013", "meanings": ["jemand", "irgendjemand"] },
-  { "id": "la-014", "meanings": ["ein anderer"] },
-  { "id": "la-015", "meanings": ["hoch", "tief"] },
-  { "id": "la-016", "meanings": ["Freundschaft"] },
-  { "id": "la-017", "meanings": ["Freund"] },
-  { "id": "la-018", "meanings": ["verlieren", "aufgeben"] },
-  { "id": "la-019", "meanings": ["lieben"] },
-  { "id": "la-020", "meanings": ["Liebe"] },
-  { "id": "la-021", "meanings": ["Geist", "Sinn", "Mut"] },
-  { "id": "la-022", "meanings": ["Jahr"] },
-  { "id": "la-023", "meanings": ["vor"] },
-  { "id": "la-024", "meanings": ["nennen", "anrufen"] },
-  { "id": "la-025", "meanings": ["bei"] },
-  { "id": "la-026", "meanings": ["Wasser"] },
-  { "id": "la-027", "meanings": ["glauben", "meinen"] },
-  { "id": "la-028", "meanings": ["Baum"] },
-  { "id": "la-029", "meanings": ["Waffen"] },
-  { "id": "la-030", "meanings": ["Kunst", "Geschicklichkeit"] },
-  { "id": "la-031", "meanings": ["hinaufsteigen", "besteigen"] },
-  { "id": "la-032", "meanings": ["aber", "doch"] },
-  { "id": "la-033", "meanings": ["und", "und auch"] },
-  { "id": "la-034", "meanings": ["Ansehen", "Einfluss", "Macht"] },
-  { "id": "la-035", "meanings": ["Kühnheit", "Frechheit"] },
-  { "id": "la-036", "meanings": ["kühn", "frech"] },
-  { "id": "la-037", "meanings": ["wagen"] },
-  { "id": "la-038", "meanings": ["hören"] },
-  { "id": "la-039", "meanings": ["wegtragen", "wegnehmen"] },
-  { "id": "la-040", "meanings": ["oder"] },
-  { "id": "la-041", "meanings": ["aber", "jedoch"] },
-  { "id": "la-042", "meanings": ["Hilfe"] },
-  { "id": "la-043", "meanings": ["Krieg"] },
-  { "id": "la-044", "meanings": ["gut"] },
-  { "id": "la-045", "meanings": ["Wohltat"] },
-  { "id": "la-046", "meanings": ["Tier", "wildes Tier"] },
-  { "id": "la-047", "meanings": ["trinken"] },
-  { "id": "la-048", "meanings": ["gut"] },
-  { "id": "la-049", "meanings": ["kurz"] },
-  { "id": "la-050", "meanings": ["fallen"] },
-  { "id": "la-051", "meanings": ["Blutbad", "Mord"] },
-  { "id": "la-052", "meanings": ["Himmel"] },
-  { "id": "la-053", "meanings": ["fassen", "nehmen", "fangen"] },
-  { "id": "la-054", "meanings": ["Gefangener"] },
-  { "id": "la-055", "meanings": ["Haupt", "Kopf", "Hauptstadt"] },
-  { "id": "la-056", "meanings": ["Lager"] },
-  { "id": "la-057", "meanings": ["Ursache", "Grund", "Prozess"] },
-  { "id": "la-058", "meanings": ["gehen", "weichen"] },
-  { "id": "la-059", "meanings": ["schnell"] },
-  { "id": "la-060", "meanings": ["Schnelligkeit"] },
-  { "id": "la-061", "meanings": ["Mahlzeit", "Essen"] },
-  { "id": "la-062", "meanings": ["meinen", "schätzen"] },
-  { "id": "la-063", "meanings": ["hundert"] },
-  { "id": "la-064", "meanings": ["Wettstreit", "Kampf"] },
-  { "id": "la-065", "meanings": ["sicher", "gewiss"] },
-  { "id": "la-066", "meanings": ["die übrigen"] },
-  { "id": "la-067", "meanings": ["Speise", "Nahrung"] },
-  { "id": "la-068", "meanings": ["bürgerlich", "öffentlich"] },
-  { "id": "la-069", "meanings": ["Bürger"] },
-  { "id": "la-070", "meanings": ["Bürgerschaft", "Staat"] },
-  { "id": "la-071", "meanings": ["rufen", "schreien"] },
-  { "id": "la-072", "meanings": ["Geschrei", "Lärm"] },
-  { "id": "la-073", "meanings": ["hell", "klar", "berühmt"] },
-  { "id": "la-074", "meanings": ["schliessen"] },
-  { "id": "la-075", "meanings": ["anfangen", "beginnen"] },
-  { "id": "la-076", "meanings": ["versammeln", "zwingen"] },
-  { "id": "la-077", "meanings": ["denken", "beabsichtigen"] },
-  { "id": "la-078", "meanings": ["erkennen", "erfahren"] },
-  { "id": "la-079", "meanings": ["Kohorte", "Schar"] },
-  { "id": "la-080", "meanings": ["pflegen", "verehren", "bewohnen"] },
-  { "id": "la-081", "meanings": ["Begleiter"] },
-  { "id": "la-082", "meanings": ["anvertrauen", "begehen"] },
-  { "id": "la-083", "meanings": ["gemeinsam", "allgemein"] },
-  { "id": "la-084", "meanings": ["vergleichen", "beschaffen"] },
-  { "id": "la-085", "meanings": ["mehrere", "ziemlich viele"] },
-  { "id": "la-086", "meanings": ["zugestehen", "weichen"] },
-  { "id": "la-087", "meanings": ["Bedingung", "Lage"] },
-  { "id": "la-088", "meanings": ["zusammentragen", "vergleichen"] },
-  { "id": "la-089", "meanings": ["beenden", "fertigmachen"] },
-  { "id": "la-090", "meanings": ["stärken", "behaupten"] },
-  { "id": "la-091", "meanings": ["werfen", "mutmassen"] },
-  { "id": "la-092", "meanings": ["Gatte", "Gattin"] },
-  { "id": "la-093", "meanings": ["versuchen"] },
-  { "id": "la-094", "meanings": ["Rat", "Plan", "Beschluss"] },
-  { "id": "la-095", "meanings": ["stehen bleiben", "haltmachen"] },
-  { "id": "la-096", "meanings": ["aufstellen", "festsetzen", "beschliessen"] },
-  { "id": "la-097", "meanings": ["Gewohnheit"] },
-  { "id": "la-098", "meanings": ["Konsul"] },
-  { "id": "la-099", "meanings": ["eilen", "kämpfen", "behaupten"] },
-  { "id": "la-100", "meanings": ["zusammenhalten", "enthalten"] },
-  { "id": "la-101", "meanings": ["gegen"] },
-  { "id": "la-102", "meanings": ["zusammenkommen", "passen"] },
-  { "id": "la-103", "meanings": ["zusammenrufen"] },
-  { "id": "la-104", "meanings": ["Vorrat", "Menge", "Truppen"] },
-  { "id": "la-105", "meanings": ["Körper"] },
-  { "id": "la-106", "meanings": ["glauben", "anvertrauen"] },
-  { "id": "la-107", "meanings": ["erschaffen", "wählen"] },
-  { "id": "la-108", "meanings": ["Verbrechen", "Anschuldigung"] },
-  { "id": "la-109", "meanings": ["grausam"] },
-  { "id": "la-110", "meanings": ["mit"] },
-  { "id": "la-111", "meanings": ["begehren", "wünschen"] },
-  { "id": "la-112", "meanings": ["Begierde", "Leidenschaft"] },
-  { "id": "la-113", "meanings": ["warum"] },
-  { "id": "la-114", "meanings": ["Sorge", "Pflege"] },
-  { "id": "la-115", "meanings": ["sorgen für", "pflegen"] },
-  { "id": "la-116", "meanings": ["laufen", "rennen"] },
-  { "id": "la-117", "meanings": ["Wächter", "Hüter"] },
-  { "id": "la-118", "meanings": ["verurteilen"] },
-  { "id": "la-119", "meanings": ["von ... her", "über"] },
-  { "id": "la-120", "meanings": ["müssen", "schulden"] },
-  { "id": "la-121", "meanings": ["zehn"] },
-  { "id": "la-122", "meanings": ["herabfallen", "entscheiden"] },
-  { "id": "la-123", "meanings": ["beschliessen", "entscheiden"] },
-  { "id": "la-124", "meanings": ["ausliefern", "übergeben"] },
-  { "id": "la-125", "meanings": ["verteidigen", "abwehren"] },
-  { "id": "la-126", "meanings": ["überbringen", "melden"] },
-  { "id": "la-127", "meanings": ["dann", "darauf"] },
-  { "id": "la-128", "meanings": ["erfreuen"] },
-  { "id": "la-129", "meanings": ["auswählen"] },
-  { "id": "la-130", "meanings": ["zeigen", "darlegen"] },
-  { "id": "la-131", "meanings": ["schliesslich", "endlich"] },
-  { "id": "la-132", "meanings": ["herabsteigen"] },
-  { "id": "la-133", "meanings": ["verlassen", "im Stich lassen"] },
-  { "id": "la-134", "meanings": ["ersehnen", "vermissen"] },
-  { "id": "la-135", "meanings": ["aufhören"] },
-  { "id": "la-136", "meanings": ["Gott"] },
-  { "id": "la-137", "meanings": ["rechts"] },
-  { "id": "la-138", "meanings": ["sagen", "nennen"] },
-  { "id": "la-139", "meanings": ["Tag"] },
-  { "id": "la-140", "meanings": ["schwierig"] },
-  { "id": "la-141", "meanings": ["Würde", "Rang"] },
-  { "id": "la-142", "meanings": ["würdig"] },
-  { "id": "la-143", "meanings": ["sorgfältig"] },
-  { "id": "la-144", "meanings": ["entlassen", "wegschicken"] },
-  { "id": "la-145", "meanings": ["weggehen"] },
-  { "id": "la-146", "meanings": ["Unterricht", "Ordnung", "Disziplin"] },
-  { "id": "la-147", "meanings": ["lernen", "erfahren"] },
-  { "id": "la-148", "meanings": ["lange Zeit"] },
-  { "id": "la-149", "meanings": ["verschieden"] },
-  { "id": "la-150", "meanings": ["teilen", "trennen"] },
-  { "id": "la-151", "meanings": ["göttlich"] },
-  { "id": "la-152", "meanings": ["Reichtum"] },
-  { "id": "la-153", "meanings": ["geben"] },
-  { "id": "la-154", "meanings": ["lehren", "unterrichten"] },
-  { "id": "la-155", "meanings": ["Schmerz"] },
-  { "id": "la-156", "meanings": ["List", "Täuschung"] },
-  { "id": "la-157", "meanings": ["Herr"] },
-  { "id": "la-158", "meanings": ["Haus"] },
-  { "id": "la-159", "meanings": ["Geschenk"] },
-  { "id": "la-160", "meanings": ["zweifeln", "zögern"] },
-  { "id": "la-161", "meanings": ["zweifelhaft"] },
-  { "id": "la-162", "meanings": ["führen", "ziehen", "meinen"] },
-  { "id": "la-163", "meanings": ["süss", "angenehm"] },
-  { "id": "la-164", "meanings": ["während", "solange bis"] },
-  { "id": "la-165", "meanings": ["zwei"] },
-  { "id": "la-166", "meanings": ["Führer", "Feldherr"] },
-  { "id": "la-167", "meanings": ["aus", "von ... aus"] },
-  { "id": "la-168", "meanings": ["siehe!", "schau!"] },
-  { "id": "la-169", "meanings": ["herausführen"] },
-  { "id": "la-170", "meanings": ["bewirken", "hervorbringen"] },
-  { "id": "la-171", "meanings": ["ich"] },
-  { "id": "la-172", "meanings": ["hinausgehen"] },
-  { "id": "la-173", "meanings": ["kaufen"] },
-  { "id": "la-174", "meanings": ["nämlich", "denn"] },
-  { "id": "la-175", "meanings": ["dorthin"] },
-  { "id": "la-176", "meanings": ["Brief"] },
-  { "id": "la-177", "meanings": ["Reiter", "Ritter"] },
-  { "id": "la-178", "meanings": ["Reiterei"] },
-  { "id": "la-179", "meanings": ["Pferd"] },
-  { "id": "la-180", "meanings": ["also", "folglich"] },
-  { "id": "la-181", "meanings": ["irren", "umherstreifen"] },
-  { "id": "la-182", "meanings": ["entreissen"] },
-  { "id": "la-183", "meanings": ["sein"] },
-  { "id": "la-184", "meanings": ["und"] },
-  { "id": "la-185", "meanings": ["auch", "sogar"] },
-  { "id": "la-186", "meanings": ["wenn auch", "obwohl"] },
-  { "id": "la-187", "meanings": ["entkommen", "entweichen"] },
-  { "id": "la-188", "meanings": ["aus", "von ... an"] },
-  { "id": "la-189", "meanings": ["hinausgehen", "weggehen"] },
-  { "id": "la-190", "meanings": ["aufnehmen", "auffangen"] },
-  { "id": "la-191", "meanings": ["antreiben", "erregen"] },
-  { "id": "la-192", "meanings": ["Beispiel", "Vorbild"] },
-  { "id": "la-193", "meanings": ["Heer"] },
-  { "id": "la-194", "meanings": ["meinen", "glauben"] },
-  { "id": "la-195", "meanings": ["Ausgang", "Ende"] },
-  { "id": "la-196", "meanings": ["erwarten"] },
-  { "id": "la-197", "meanings": ["vertreiben"] },
-  { "id": "la-198", "meanings": ["erkunden", "erforschen"] },
-  { "id": "la-199", "meanings": ["ausstellen", "darlegen"] },
-  { "id": "la-200", "meanings": ["erobern"] },
-  { "id": "la-201", "meanings": ["machen", "tun"] },
-  { "id": "la-202", "meanings": ["leicht"] },
-  { "id": "la-203", "meanings": ["Tat", "Untat"] },
-  { "id": "la-204", "meanings": ["Tat", "Tatsache"] },
-  { "id": "la-205", "meanings": ["Möglichkeit", "Fähigkeit"] },
-  { "id": "la-206", "meanings": ["täuschen"] },
-  { "id": "la-207", "meanings": ["falsch"] },
-  { "id": "la-208", "meanings": ["Ruf", "Gerücht"] },
-  { "id": "la-209", "meanings": ["Familie", "Hausgemeinschaft"] },
-  { "id": "la-210", "meanings": ["Schicksal", "Götterspruch"] },
-  { "id": "la-211", "meanings": ["glücklich"] },
-  { "id": "la-212", "meanings": ["Frau"] },
-  { "id": "la-213", "meanings": ["tragen", "bringen", "ertragen"] },
-  { "id": "la-214", "meanings": ["Eisen", "Schwert"] },
-  { "id": "la-215", "meanings": ["wild", "roh"] },
-  { "id": "la-216", "meanings": ["müde", "erschöpft"] },
-  { "id": "la-217", "meanings": ["Treue", "Glaube", "Vertrauen"] },
-  { "id": "la-218", "meanings": ["treu"] },
-  { "id": "la-219", "meanings": ["werden", "geschehen", "gemacht werden"] },
-  { "id": "la-220", "meanings": ["Tochter"] },
-  { "id": "la-221", "meanings": ["Sohn"] },
-  { "id": "la-222", "meanings": ["Ende", "Grenze", "Ziel"] },
-  { "id": "la-223", "meanings": ["benachbart"] },
-  { "id": "la-224", "meanings": ["fest", "stark"] },
-  { "id": "la-225", "meanings": ["weinen"] },
-  { "id": "la-226", "meanings": ["Blume"] },
-  { "id": "la-227", "meanings": ["Fluss"] },
-  { "id": "la-228", "meanings": ["fliessen"] },
-  { "id": "la-229", "meanings": ["Bündnis", "Vertrag"] },
-  { "id": "la-230", "meanings": ["Quelle"] },
-  { "id": "la-231", "meanings": ["Form", "Gestalt", "Schönheit"] },
-  { "id": "la-232", "meanings": ["vielleicht"] },
-  { "id": "la-233", "meanings": ["zufällig"] },
-  { "id": "la-234", "meanings": ["tapfer", "stark"] },
-  { "id": "la-235", "meanings": ["Glück", "Schicksal"] },
-  { "id": "la-236", "meanings": ["Marktplatz", "Forum"] },
-  { "id": "la-237", "meanings": ["Graben"] },
-  { "id": "la-238", "meanings": ["brechen"] },
-  { "id": "la-239", "meanings": ["Bruder"] },
-  { "id": "la-240", "meanings": ["Betrug", "Schaden"] },
-  { "id": "la-241", "meanings": ["Getreide"] },
-  { "id": "la-242", "meanings": ["Flucht"] },
-  { "id": "la-243", "meanings": ["fliehen", "meiden"] },
-  { "id": "la-244", "meanings": ["giessen", "vergiessen", "zerstreuen"] },
-  { "id": "la-245", "meanings": ["Dieb"] },
-  { "id": "la-246", "meanings": ["Wut", "Wahnsinn"] },
-  { "id": "la-247", "meanings": ["sich freuen"] },
-  { "id": "la-248", "meanings": ["Freude"] },
-  { "id": "la-249", "meanings": ["Geschlecht", "Stamm", "Volk"] },
-  { "id": "la-250", "meanings": ["Art", "Geschlecht"] },
-  { "id": "la-251", "meanings": ["tragen", "ausführen"] },
-  { "id": "la-252", "meanings": ["Schwert"] },
-  { "id": "la-253", "meanings": ["Ruhm", "Ehre"] },
-  { "id": "la-254", "meanings": ["Dank", "Gunst", "Beliebtheit"] },
-  { "id": "la-255", "meanings": ["willkommen", "dankbar", "angenehm"] },
-  { "id": "la-256", "meanings": ["schwer", "ernst"] },
-  { "id": "la-257", "meanings": ["haben", "halten"] },
-  { "id": "la-258", "meanings": ["wohnen"] },
-  { "id": "la-259", "meanings": ["dieser", "diese", "dieses"] },
-  { "id": "la-260", "meanings": ["Winter"] },
-  { "id": "la-261", "meanings": ["Mensch"] },
-  { "id": "la-262", "meanings": ["Ehre", "Ehrenamt"] },
-  { "id": "la-263", "meanings": ["Stunde"] },
-  { "id": "la-264", "meanings": ["ermahnen", "auffordern"] },
-  { "id": "la-265", "meanings": ["Garten"] },
-  { "id": "la-266", "meanings": ["Gast", "Fremder"] },
-  { "id": "la-267", "meanings": ["Feind"] },
-  { "id": "la-268", "meanings": ["hierher"] },
-  { "id": "la-269", "meanings": ["niedrig", "bescheiden"] },
-  { "id": "la-270", "meanings": ["liegen"] },
-  { "id": "la-271", "meanings": ["werfen", "schleudern"] },
-  { "id": "la-272", "meanings": ["schon", "nun"] },
-  { "id": "la-273", "meanings": ["dort"] },
-  { "id": "la-274", "meanings": ["derselbe", "dieselbe", "dasselbe"] },
-  { "id": "la-275", "meanings": ["geeignet"] },
-  { "id": "la-276", "meanings": ["also", "daher"] },
-  { "id": "la-277", "meanings": ["Feuer"] },
-  { "id": "la-278", "meanings": ["nicht wissen", "unbekannt sein"] },
-  { "id": "la-279", "meanings": ["jener", "jene", "jenes"] },
-  { "id": "la-280", "meanings": ["dort"] },
-  { "id": "la-281", "meanings": ["Bild", "Abbild"] },
-  { "id": "la-282", "meanings": ["Hindernis", "Gepäck"] },
-  { "id": "la-283", "meanings": ["hindern", "verhindern"] },
-  { "id": "la-284", "meanings": ["befehlen", "herrschen"] },
-  { "id": "la-285", "meanings": ["Feldherr", "Kaiser"] },
-  { "id": "la-286", "meanings": ["Befehl", "Herrschaft", "Reich"] },
-  { "id": "la-287", "meanings": ["Angriff", "Schwung"] },
-  { "id": "la-288", "meanings": ["schlecht", "böse"] },
-  { "id": "la-289", "meanings": ["in", "auf", "nach", "gegen"] },
-  { "id": "la-290", "meanings": ["anzünden", "entflammen"] },
-  { "id": "la-291", "meanings": ["hineinfallen", "sich ereignen"] },
-  { "id": "la-292", "meanings": ["anfangen", "beginnen"] },
-  { "id": "la-293", "meanings": ["antreiben", "reizen"] },
-  { "id": "la-294", "meanings": ["bewohnen"] },
-  { "id": "la-295", "meanings": ["von dort", "darauf"] },
-  { "id": "la-296", "meanings": ["anzeigen"] },
-  { "id": "la-297", "meanings": ["hineinführen", "verleiten"] },
-  { "id": "la-298", "meanings": ["zu unternehmend"] },
-  { "id": "la-299", "meanings": ["unglücklich"] },
-  { "id": "la-300", "meanings": ["hineintragen", "zufügen"] },
-  { "id": "la-301", "meanings": ["gewaltig", "ungeheuer"] },
-  { "id": "la-302", "meanings": ["hineingehen", "betreten"] },
-  { "id": "la-303", "meanings": ["Feind", "persönlicher Feind"] },
-  { "id": "la-304", "meanings": ["Anfang", "Beginn"] },
-  { "id": "la-305", "meanings": ["Unrecht", "Beleidigung"] },
-  { "id": "la-306", "meanings": ["sagt er", "sagte er"] },
-  { "id": "la-307", "meanings": ["Hinterhalt", "Falle"] },
-  { "id": "la-308", "meanings": ["einrichten", "unterrichten"] },
-  { "id": "la-309", "meanings": ["Insel", "Mietshaus"] },
-  { "id": "la-310", "meanings": ["verstehen", "einsehen"] },
-  { "id": "la-311", "meanings": ["zwischen", "unter"] },
-  { "id": "la-312", "meanings": ["inzwischen"] },
-  { "id": "la-313", "meanings": ["töten"] },
-  { "id": "la-314", "meanings": ["unterbrechen"] },
-  { "id": "la-315", "meanings": ["innerhalb"] },
-  { "id": "la-316", "meanings": ["finden", "erfinden"] },
-  { "id": "la-317", "meanings": ["unbesiegt"] },
-  { "id": "la-318", "meanings": ["neiden", "beneiden"] },
-  { "id": "la-319", "meanings": ["einladen"] },
-  { "id": "la-320", "meanings": ["selbst"] },
-  { "id": "la-321", "meanings": ["Zorn"] },
-  { "id": "la-322", "meanings": ["zürnen", "zornig sein"] },
-  { "id": "la-323", "meanings": ["er", "sie", "es", "dieser"] },
-  { "id": "la-324", "meanings": ["dieser da"] },
-  { "id": "la-325", "meanings": ["so"] },
-  { "id": "la-326", "meanings": ["daher", "deshalb"] },
-  { "id": "la-327", "meanings": ["ebenso"] },
-  { "id": "la-328", "meanings": ["Weg", "Marsch", "Reise"] },
-  { "id": "la-329", "meanings": ["wiederum", "zum zweiten Mal"] },
-  { "id": "la-330", "meanings": ["befehlen"] },
-  { "id": "la-331", "meanings": ["angenehm", "erfreulich"] },
-  { "id": "la-332", "meanings": ["Richter"] },
-  { "id": "la-333", "meanings": ["urteilen", "entscheiden"] },
-  { "id": "la-334", "meanings": ["Urteil", "Gericht"] },
-  { "id": "la-335", "meanings": ["verbinden"] },
-  { "id": "la-336", "meanings": ["Recht"] },
-  { "id": "la-337", "meanings": ["gerecht"] },
-  { "id": "la-338", "meanings": ["helfen", "erfreuen"] },
-  { "id": "la-339", "meanings": ["junger Mann"] },
-  { "id": "la-340", "meanings": ["Arbeit", "Mühe"] },
-  { "id": "la-341", "meanings": ["arbeiten", "leiden"] },
-  { "id": "la-342", "meanings": ["Träne"] },
-  { "id": "la-343", "meanings": ["froh", "fröhlich"] },
-  { "id": "la-344", "meanings": ["breit", "weit"] },
-  { "id": "la-345", "meanings": ["Lob"] },
-  { "id": "la-346", "meanings": ["Gesandtschaft"] },
-  { "id": "la-347", "meanings": ["Gesandter", "Unterfeldherr"] },
-  { "id": "la-348", "meanings": ["lesen", "sammeln"] },
-  { "id": "la-349", "meanings": ["Legion"] },
-  { "id": "la-350", "meanings": ["Gesetz"] },
-  { "id": "la-351", "meanings": ["frei"] },
-  { "id": "la-352", "meanings": ["Buch"] },
-  { "id": "la-353", "meanings": ["befreien"] },
-  { "id": "la-354", "meanings": ["Kinder"] },
-  { "id": "la-355", "meanings": ["Freiheit"] },
-  { "id": "la-356", "meanings": ["es ist erlaubt"] },
-  { "id": "la-357", "meanings": ["Buchstabe", "Brief"] },
-  { "id": "la-358", "meanings": ["Ort", "Stelle"] },
-  { "id": "la-359", "meanings": ["lang"] },
-  { "id": "la-360", "meanings": ["sprechen"] },
-  { "id": "la-361", "meanings": ["spielen"] },
-  { "id": "la-362", "meanings": ["Licht", "Auge"] },
-  { "id": "la-363", "meanings": ["Licht"] },
-  { "id": "la-364", "meanings": ["mehr"] },
-  { "id": "la-365", "meanings": ["Lehrer", "Meister"] },
-  { "id": "la-366", "meanings": ["Beamter", "Amt"] },
-  { "id": "la-367", "meanings": ["Grösse"] },
-  { "id": "la-368", "meanings": ["gross"] },
-  { "id": "la-369", "meanings": ["größer"] },
-  { "id": "la-370", "meanings": ["schlecht", "böse"] },
-  { "id": "la-371", "meanings": ["anvertrauen", "übertragen"] },
-  { "id": "la-372", "meanings": ["bleiben", "erwarten"] },
-  { "id": "la-373", "meanings": ["Hand", "Schar"] },
-  { "id": "la-374", "meanings": ["Meer"] },
-  { "id": "la-375", "meanings": ["Ehemann"] },
-  { "id": "la-376", "meanings": ["Mutter"] },
-  { "id": "la-377", "meanings": ["am meisten", "besonders"] },
-  { "id": "la-378", "meanings": ["der grösste"] },
-  { "id": "la-379", "meanings": ["der mittlere", "mitten in"] },
-  { "id": "la-380", "meanings": ["Gedächtnis", "Erinnerung"] },
-  { "id": "la-381", "meanings": ["Geist", "Sinn", "Verstand"] },
-  { "id": "la-382", "meanings": ["Monat"] },
-  { "id": "la-383", "meanings": ["Handel"] },
-  { "id": "la-384", "meanings": ["Furcht", "Angst"] },
-  { "id": "la-385", "meanings": ["mein"] },
-  { "id": "la-386", "meanings": ["Soldat"] },
-  { "id": "la-387", "meanings": ["tausend"] },
-  { "id": "la-388", "meanings": ["am wenigsten", "keineswegs"] },
-  { "id": "la-389", "meanings": ["kleiner"] },
-  { "id": "la-390", "meanings": ["arm", "elend"] },
-  { "id": "la-391", "meanings": ["schicken", "gehen lassen"] },
-  { "id": "la-392", "meanings": ["Art", "Weise", "Mass"] },
-  { "id": "la-393", "meanings": ["Stadtmauern"] },
-  { "id": "la-394", "meanings": ["weich", "angenehm"] },
-  { "id": "la-395", "meanings": ["ermahnen", "warnen"] },
-  { "id": "la-396", "meanings": ["Berg"] },
-  { "id": "la-397", "meanings": ["Tod"] },
-  { "id": "la-398", "meanings": ["Sitte", "Brauch"] },
-  { "id": "la-399", "meanings": ["bewegen"] },
-  { "id": "la-400", "meanings": ["bald"] },
-  { "id": "la-401", "meanings": ["Menge", "Vielzahl"] },
-  { "id": "la-402", "meanings": ["viel"] },
-  { "id": "la-403", "meanings": ["Amt", "Geschenk", "Aufgabe"] },
-  { "id": "la-404", "meanings": ["Mauer"] },
-  { "id": "la-405", "meanings": ["denn", "nämlich"] },
-  { "id": "la-406", "meanings": ["erzählen"] },
-  { "id": "la-407", "meanings": ["geboren werden"] },
-  { "id": "la-408", "meanings": ["Volk", "Stamm"] },
-  { "id": "la-409", "meanings": ["Natur", "Wesen"] },
-  { "id": "la-410", "meanings": ["Schiff"] },
-  { "id": "la-411", "meanings": ["dass nicht", "damit nicht"] },
-  { "id": "la-412", "meanings": ["und nicht", "auch nicht"] },
-  { "id": "la-413", "meanings": ["notwendig"] },
-  { "id": "la-414", "meanings": ["leugnen", "verweigern"] },
-  { "id": "la-415", "meanings": ["Geschäft", "Aufgabe"] },
-  { "id": "la-416", "meanings": ["niemand"] },
-  { "id": "la-417", "meanings": ["und nicht", "auch nicht"] },
-  { "id": "la-418", "meanings": ["ich weiss nicht"] },
-  { "id": "la-419", "meanings": ["nichts"] },
-  { "id": "la-420", "meanings": ["wenn nicht", "ausser"] },
-  { "id": "la-421", "meanings": ["adelig", "vornehm"] },
-  { "id": "la-422", "meanings": ["schaden"] },
-  { "id": "la-423", "meanings": ["nachts"] },
-  { "id": "la-424", "meanings": ["nicht wollen"] },
-  { "id": "la-425", "meanings": ["Name"] },
-  { "id": "la-426", "meanings": ["nicht"] },
-  { "id": "la-427", "meanings": ["unser"] },
-  { "id": "la-428", "meanings": ["bekannt"] },
-  { "id": "la-429", "meanings": ["neu"] },
-  { "id": "la-430", "meanings": ["Nacht"] },
-  { "id": "la-431", "meanings": ["kein"] },
-  { "id": "la-432", "meanings": ["etwa? (Fragepartikel)"] },
-  { "id": "la-433", "meanings": ["Zahl", "Anzahl"] },
-  { "id": "la-434", "meanings": ["niemals"] },
-  { "id": "la-435", "meanings": ["nun", "jetzt"] },
-  { "id": "la-436", "meanings": ["melden", "ankündigen"] },
-  { "id": "la-437", "meanings": ["Bote", "Nachricht"] },
-  { "id": "la-438", "meanings": ["wegen"] },
-  { "id": "la-439", "meanings": ["Geisel"] },
-  { "id": "la-440", "meanings": ["töten", "niederschlagen"] },
-  { "id": "la-441", "meanings": ["besetzen", "einnehmen"] },
-  { "id": "la-442", "meanings": ["Auge"] },
-  { "id": "la-443", "meanings": ["Dienst", "Pflicht"] },
-  { "id": "la-444", "meanings": ["jeder", "ganz", "alle"] },
-  { "id": "la-445", "meanings": ["Last"] },
-  { "id": "la-446", "meanings": ["Mühe", "Arbeit", "Hilfe"] },
-  { "id": "la-447", "meanings": ["es gehört sich", "man muss"] },
-  { "id": "la-448", "meanings": ["Stadt"] },
-  { "id": "la-449", "meanings": ["unterdrücken", "bedrängen"] },
-  { "id": "la-450", "meanings": ["angreifen", "belagern"] },
-  { "id": "la-451", "meanings": ["Kraft", "Hilfe", "Reichtum"] },
-  { "id": "la-452", "meanings": ["Werk", "Arbeit"] },
-  { "id": "la-453", "meanings": ["bitten", "beten"] },
-  { "id": "la-454", "meanings": ["Rede"] },
-  { "id": "la-455", "meanings": ["Ordnung", "Reihe"] },
-  { "id": "la-456", "meanings": ["aufgehen", "entstehen"] },
-  { "id": "la-457", "meanings": ["schmücken", "ausstatten"] },
-  { "id": "la-458", "meanings": ["Mund", "Gesicht"] },
-  { "id": "la-459", "meanings": ["zeigen", "darlegen"] },
-  { "id": "la-460", "meanings": ["Freizeit", "Ruhe"] },
-  { "id": "la-461", "meanings": ["fast", "beinahe"] },
-  { "id": "la-462", "meanings": ["vorbereiten", "erwerben"] },
-  { "id": "la-463", "meanings": ["bereit"] },
-  { "id": "la-464", "meanings": ["gehorchen"] },
-  { "id": "la-465", "meanings": ["Teil", "Seite"] },
-  { "id": "la-466", "meanings": ["klein"] },
-  { "id": "la-467", "meanings": ["Schritt"] },
-  { "id": "la-468", "meanings": ["Vater"] },
-  { "id": "la-469", "meanings": ["erleiden", "ertragen", "zulassen"] },
-  { "id": "la-470", "meanings": ["Heimat"] },
-  { "id": "la-471", "meanings": ["wenige"] },
-  { "id": "la-472", "meanings": ["ein wenig"] },
-  { "id": "la-473", "meanings": ["Frieden"] },
-  { "id": "la-474", "meanings": ["Geld"] },
-  { "id": "la-475", "meanings": ["treiben", "vertreiben"] },
-  { "id": "la-476", "meanings": ["durch"] },
-  { "id": "la-477", "meanings": ["verlieren", "verderben"] },
-  { "id": "la-478", "meanings": ["vollenden"] },
-  { "id": "la-479", "meanings": ["Gefahr"] },
-  { "id": "la-480", "meanings": ["zugrunde gehen", "umkommen"] },
-  { "id": "la-481", "meanings": ["erlauben", "überlassen"] },
-  { "id": "la-482", "meanings": ["überzeugen", "überreden"] },
-  { "id": "la-483", "meanings": ["gelangen", "ankommen"] },
-  { "id": "la-484", "meanings": ["Fuss"] },
-  { "id": "la-485", "meanings": ["erstreben", "bitten", "angreifen"] },
-  { "id": "la-486", "meanings": ["Philosoph"] },
-  { "id": "la-487", "meanings": ["Frömmigkeit", "Pflichtgefühl"] },
-  { "id": "la-488", "meanings": ["gefallen"] },
-  { "id": "la-489", "meanings": ["Volk", "Plejis"] },
-  { "id": "la-490", "meanings": ["voll"] },
-  { "id": "la-491", "meanings": ["die meisten"] },
-  { "id": "la-492", "meanings": ["Strafe"] },
-  { "id": "la-493", "meanings": ["Dichter"] },
-  { "id": "la-494", "meanings": ["stellen", "setzen", "legen"] },
-  { "id": "la-495", "meanings": ["Volk"] },
-  { "id": "la-496", "meanings": ["Tor", "Tür"] },
-  { "id": "la-497", "meanings": ["tragen", "bringen"] },
-  { "id": "la-498", "meanings": ["Hafen"] },
-  { "id": "la-499", "meanings": ["fordern"] },
-  { "id": "la-500", "meanings": ["können"] },{ "id": "la-501", "meanings": ["Maß", "Art", "Weise"] },
-  { "id": "la-502", "meanings": ["jetzt", "gerade"] },
-  { "id": "la-503", "meanings": ["weich", "angenehm"] },
-  { "id": "la-504", "meanings": ["mahnen", "erinnern", "warnen"] },
-  { "id": "la-505", "meanings": ["Berg"] },
-  { "id": "la-506", "meanings": ["Krankheit"] },
-  { "id": "la-507", "meanings": ["Sitte", "Brauch", "Charakter"] },
-  { "id": "la-508", "meanings": ["Tod"] },
-  { "id": "la-509", "meanings": ["sterblich"] },
-  { "id": "la-510", "meanings": ["bewegen", "beeinflussen"] },
-  { "id": "la-511", "meanings": ["bald", "sogleich"] },
-  { "id": "la-512", "meanings": ["Frau"] },
-  { "id": "la-513", "meanings": ["Menge", "Vielzahl"] },
-  { "id": "la-514", "meanings": ["Welt", "Weltall", "Schmuck"] },
-  { "id": "la-515", "meanings": ["Geschenk", "Aufgabe", "Amt"] },
-  { "id": "la-516", "meanings": ["befestigen", "schützen"] },
-  { "id": "la-517", "meanings": ["Mauer"] },
-  { "id": "la-518", "meanings": ["verändern", "wechseln"] },
-  { "id": "la-519", "meanings": ["denn", "nämlich"] },
-  { "id": "la-520", "meanings": ["erzählen", "berichten"] },
-  { "id": "la-521", "meanings": ["geboren werden", "entstehen"] },
-  { "id": "la-522", "meanings": ["Schiff"] },
-  { "id": "la-523", "meanings": ["Seemann", "Matrose"] },
-  { "id": "la-524", "meanings": ["nein", "nicht einmal"] },
-  { "id": "la-525", "meanings": ["notwendig"] },
-  { "id": "la-526", "meanings": ["töten", "umbringen"] },
-  { "id": "la-527", "meanings": ["Frevel", "Verbrechen"] },
-  { "id": "la-528", "meanings": ["leugnen", "verweigern"] },
-  { "id": "la-529", "meanings": ["niemand"] },
-  { "id": "la-530", "meanings": ["Hain", "Wald"] },
-  { "id": "la-531", "meanings": ["nicht wissen", "unbekannt sein"] },
-  { "id": "la-532", "meanings": ["nichts"] },
-  { "id": "la-533", "meanings": ["wenn nicht", "außer"] },
-  { "id": "la-534", "meanings": ["edel", "vornehm"] },
-  { "id": "la-535", "meanings": ["schaden"] },
-  { "id": "la-536", "meanings": ["Nacht"] },
-  { "id": "la-537", "meanings": ["Name"] },
-  { "id": "la-538", "meanings": ["noch nicht"] },
-  { "id": "la-539", "meanings": ["unser"] },
-  { "id": "la-540", "meanings": ["bekannt machen", "erfahren"] },
-  { "id": "la-541", "meanings": ["neu", "ungewöhnlich"] },
-  { "id": "la-542", "meanings": ["nun", "jetzt"] },
-  { "id": "la-543", "meanings": ["Bote", "Nachricht"] },
-  { "id": "la-544", "meanings": ["niemals"] },
-  { "id": "la-545", "meanings": ["nirgends"] },
-  { "id": "la-546", "meanings": ["ob", "etwa"] },
-  { "id": "la-547", "meanings": ["wegen", "gegenüber"] },
-  { "id": "la-548", "meanings": ["vergessen"] },
-  { "id": "la-549", "meanings": ["Geisel"] },
-  { "id": "la-550", "meanings": ["belagern"] },
-  { "id": "la-551", "meanings": ["entgegengehen", "sterben"] },
-  { "id": "la-552", "meanings": ["vergessen"] },
-  { "id": "la-553", "meanings": ["Gelegenheit", "Chance"] },
-  { "id": "la-554", "meanings": ["besetzen", "einnehmen"] },
-  { "id": "la-555", "meanings": ["begegnen", "entgegenlaufen"] },
-  { "id": "la-556", "meanings": ["Auge"] },
-  { "id": "la-557", "meanings": ["Hass"] },
-  { "id": "la-558", "meanings": ["anbieten", "entgegenbringen"] },
-  { "id": "la-559", "meanings": ["Amt", "Dienst", "Pflicht"] },
-  { "id": "la-560", "meanings": ["einst", "einmal"] },
-  { "id": "la-561", "meanings": ["ganz", "jeder"] },
-  { "id": "la-562", "meanings": ["Last", "Bürde"] },
-  { "id": "la-563", "meanings": ["Mühe", "Arbeit", "Werk"] },
-  { "id": "la-564", "meanings": ["Meinung", "Glaube"] },
-  { "id": "la-565", "meanings": ["Stadt", "Befestigung"] },
-  { "id": "la-566", "meanings": ["Glegenheit", "Mittel", "Hilfe"] },
-  { "id": "la-567", "meanings": ["unterdrücken", "überfallen"] },
-  { "id": "la-568", "meanings": ["Werk", "Arbeit", "Bauwerk"] },
-  { "id": "la-569", "meanings": ["Küste", "Ufer"] },
-  { "id": "la-570", "meanings": ["Rede", "Gebet"] },
-  { "id": "la-571", "meanings": ["Kreis", "Erdkreis"] },
-  { "id": "la-572", "meanings": ["Reihenfolge", "Stand"] },
-  { "id": "la-573", "meanings": ["entstanden aus", "stammend"] },
-  { "id": "la-574", "meanings": ["bitten", "beten"] },
-  { "id": "la-575", "meanings": ["Mund", "Gesicht"] },
-  { "id": "la-576", "meanings": ["Freizeit", "Ruhe"] },
-  { "id": "la-577", "meanings": ["fast", "beinahe"] },
-  { "id": "la-578", "meanings": ["offenstehen", "sich erstrecken"] },
-  { "id": "la-579", "meanings": ["Vater"] },
-  { "id": "la-580", "meanings": ["leiden", "ertragen", "zulassen"] },
-  { "id": "la-581", "meanings": ["Heimat"] },
-  { "id": "la-582", "meanings": ["wenige"] },
-  { "id": "la-583", "meanings": ["Frieden"] },
-  { "id": "la-584", "meanings": ["Geld"] },
-  { "id": "la-585", "meanings": ["treiben", "stoßen", "vertreiben"] },
-  { "id": "la-586", "meanings": ["durch", "mittels"] },
-  { "id": "la-587", "meanings": ["verderben", "zugrunde gehen"] },
-  { "id": "la-588", "meanings": ["Gefahr"] },
-  { "id": "la-589", "meanings": ["erlauben", "gestatten"] },
-  { "id": "la-590", "meanings": ["bleiben", "fortdauern"] },
-  { "id": "la-591", "meanings": ["beharren", "fortfahren"] },
-  { "id": "la-592", "meanings": ["überzeugen", "überreden"] },
-  { "id": "la-593", "meanings": ["erschrecken"] },
-  { "id": "la-594", "meanings": ["erreichen", "gelangen zu"] },
-  { "id": "la-595", "meanings": ["Fuß"] },
-  { "id": "la-596", "meanings": ["schlimmer"] },
-  { "id": "la-597", "meanings": ["fordern", "erstreben"] },
-  { "id": "la-598", "meanings": ["Pflichtgefühl", "Frömmigkeit"] },
-  { "id": "la-599", "meanings": ["vollschlagen", "füllen"] },
-  { "id": "la-600", "meanings": ["voll"] },
-  { "id": "la-601", "meanings": ["meistens", "sehr viele"] },
-  { "id": "la-602", "meanings": ["mehr", "eher"] },
-  { "id": "la-603", "meanings": ["Strafe"] },
-  { "id": "la-604", "meanings": ["setzen", "stellen", "legen"] },
-  { "id": "la-605", "meanings": ["Volk"] },
-  { "id": "la-606", "meanings": ["Tor", "Pforte"] },
-  { "id": "la-607", "meanings": ["tragen", "bringen"] },
-  { "id": "la-608", "meanings": ["fordern", "verlangen"] },
-  { "id": "la-609", "meanings": ["können", "mächtig sein"] },
-  { "id": "la-610", "meanings": ["Macht", "Gewalt"] },
-  { "id": "la-611", "meanings": ["bevorzugen", "lieber wollen"] },
-  { "id": "la-612", "meanings": ["beute"] },
-  { "id": "la-613", "meanings": ["bitten", "flehen"] },
-  { "id": "la-614", "meanings": ["drängen", "pressen"] },
-  { "id": "la-615", "meanings": ["Preise", "Wert"] },
-  { "id": "la-616", "meanings": ["zuerst"] },
-  { "id": "la-617", "meanings": ["erster"] },
-  { "id": "la-618", "meanings": ["Anführer", "Fürst"] },
-  { "id": "la-619", "meanings": ["vor", "für", "anstelle von"] },
-  { "id": "la-620", "meanings": ["beweisen", "billigen"] },
-  { "id": "la-621", "meanings": ["nahe bei", "wegen"] },
-  { "id": "la-622", "meanings": ["hervorragen", "leisten"] },
-  { "id": "la-623", "meanings": ["früher"] },
-  { "id": "la-624", "meanings": ["Schlacht", "Kampf"] },
-  { "id": "la-625", "meanings": ["vorrücken", "fortschreiten"] },
-  { "id": "la-626", "meanings": ["Verrat", "Übergabe"] },
-  { "id": "la-627", "meanings": ["hervorbringen", "verraten"] },
-  { "id": "la-628", "meanings": ["Schlacht", "Gefecht"] },
-  { "id": "la-629", "meanings": ["aufbrechen", "sich aufmachen"] },
-  { "id": "la-630", "meanings": ["nützen", "vorteilhaft sein"] },
-  { "id": "la-631", "meanings": ["fern", "weit weg"] },
-  { "id": "la-632", "meanings": ["nächster"] },
-  { "id": "la-633", "meanings": ["Scham", "Anstand"] },
-  { "id": "la-634", "meanings": ["Mädchen"] },
-  { "id": "la-635", "meanings": ["Kind", "Knabe"] },
-  { "id": "la-636", "meanings": ["Kampf", "Faustkampf"] },
-  { "id": "la-637", "meanings": ["kämpfen"] },
-  { "id": "la-638", "meanings": ["schön"] },
-  { "id": "la-639", "meanings": ["strafen", "rächen"] },
-  { "id": "la-640", "meanings": ["rein", "sauber"] },
-  { "id": "la-641", "meanings": ["glauben", "meinen"] },
-  { "id": "la-642", "meanings": ["suchen", "fragen"] },
-  { "id": "la-643", "meanings": ["welcher", "derjenige"] },
-  { "id": "la-644", "meanings": ["wie"] },
-  { "id": "la-645", "meanings": ["klagen", "jammern"] },
-  { "id": "la-646", "meanings": ["wann"] },
-  { "id": "la-647", "meanings": ["obwohl"] },
-  { "id": "la-648", "meanings": ["wer auch immer"] },
-  { "id": "la-649", "meanings": ["jeder"] },
-  { "id": "la-650", "meanings": ["weil"] },
-  { "id": "la-651", "meanings": ["einst", "ehemals"] },
-  { "id": "la-652", "meanings": ["wie viele"] },
-  { "id": "la-653", "meanings": ["auch", "sogar"] },
-  { "id": "la-654", "meanings": ["Wurzel"] },
-  { "id": "la-655", "meanings": ["Zweig", "Ast"] },
-  { "id": "la-656", "meanings": ["berechnen", "meinen"] },
-  { "id": "la-657", "meanings": ["Empfang", "Aufnahme"] },
-  { "id": "la-658", "meanings": ["zurücknehmen", "empfangen"] },
-  { "id": "la-659", "meanings": ["rezitieren", "vorlesen"] },
-  { "id": "la-660", "meanings": ["gerade", "richtig"] },
-  { "id": "la-661", "meanings": ["zurückgeben"] },
-  { "id": "la-662", "meanings": ["zurückkehren", "gehen"] },
-  { "id": "la-663", "meanings": ["zurückbringen", "berichten"] },
-  { "id": "la-664", "meanings": ["Königreich", "Herrschaft"] },
-  { "id": "la-665", "meanings": ["regieren", "herrschen"] },
-  { "id": "la-666", "meanings": ["Region", "Gegend"] },
-  { "id": "la-667", "meanings": ["König"] },
-  { "id": "la-668", "meanings": ["verlassen", "zurücklassen"] },
-  { "id": "la-669", "meanings": ["übrig"] },
-  { "id": "la-670", "meanings": ["Religion", "Glauben"] },
-  { "id": "la-671", "meanings": ["Sache", "Ding", "Angelegenheit"] },
-  { "id": "la-672", "meanings": ["widerstehen"] },
-  { "id": "la-673", "meanings": ["antworten"] },
-  { "id": "la-674", "meanings": ["Staat", "Gemeinwesen"] },
-  { "id": "la-675", "meanings": ["zurückhalten"] },
-    { "id": "la-676", "meanings": ["Salz", "Witz"] },
-    { "id": "la-677", "meanings": ["springen", "hüpfen", "tanzen"] },
-    { "id": "la-678", "meanings": ["Gesundheit", "Unversehrtheit", "Gruß"] },
-    { "id": "la-679", "meanings": ["grüßen", "begrüßen"] },
-    { "id": "la-680", "meanings": ["Blut"] },
-    { "id": "la-681", "meanings": ["klug", "vernünftig"] },
-    { "id": "la-682", "meanings": ["Weisheit", "Verstand"] },
-    { "id": "la-683", "meanings": ["genug", "ausreichend"] },
-    { "id": "la-684", "meanings": ["zufriedenstellen", "befriedigen"] },
-
-    
-    { "id": "la-685", "meanings": ["Fels", "Stein"] },
-    { "id": "la-686", "meanings": ["wissen", "verstehen"] },
-    { "id": "la-687", "meanings": ["Wissen", "Wissenschaft", "Fertigkeit"] },
-    { "id": "la-688", "meanings": ["schreiben"] },
-    { "id": "la-689", "meanings": ["Schild"] },
-    { "id": "la-690", "meanings": ["schneiden", "töten", "hauen"] },
-    { "id": "la-691", "meanings": ["zweiter", "günstig", "folgend"] },
-    { "id": "la-692", "meanings": ["aber", "im Übrigen"] },
-    { "id": "la-693", "meanings": ["Sitz", "Wohnsitz", "Heimat"] },
-    { "id": "la-694", "meanings": ["immer"] },
-    { "id": "la-695", "meanings": ["Senat"] },
-    { "id": "la-696", "meanings": ["Senator"] },
-    { "id": "la-697", "meanings": ["Greis", "alter Mann"] },
-    { "id": "la-698", "meanings": ["Gefühl", "Meinung", "Satz/Urteil"] },
-    { "id": "la-699", "meanings": ["fühlen", "wahrnehmen", "denken"] },
-    { "id": "la-700", "meanings": ["getrennt", "abgesondert"] },
-    { "id": "la-701", "meanings": ["sieben"] },
-    { "id": "la-702", "meanings": ["folgen"] },
-    { "id": "la-703", "meanings": ["retten", "bewahren", "beobachten"] },
-    { "id": "la-704", "meanings": ["Sklave", "Diener"] },
-    { "id": "la-705", "meanings": ["Sklaverei", "Knechtschaft"] },
-    { "id": "la-706", "meanings": ["dienen", "Sklave sein"] },
-    { "id": "la-707", "meanings": ["Dienst", "Sklaverei"] },
-    { "id": "la-708", "meanings": ["sechs"] },
-    { "id": "la-709", "meanings": ["wenn", "falls"] },
-    { "id": "la-710", "meanings": ["so", "auf diese Weise"] },
-    { "id": "la-711", "meanings": ["trocken"] },
-    { "id": "la-712", "meanings": ["sowie", "als ob"] },
-    { "id": "la-713", "meanings": ["Stern", "Gestirn"] },
-    { "id": "la-714", "meanings": ["Wald"] },
-    { "id": "la-715", "meanings": ["ähnlich"] },
-    { "id": "la-716", "meanings": ["gleichzeitig", "zugleich"] },
-    { "id": "la-717", "meanings": ["ohne"] },
-    { "id": "la-718", "meanings": ["einzeln", "je einer"] },
-    { "id": "la-719", "meanings": ["links", "linkshändig", "unglücklich"] },
-    { "id": "la-720", "meanings": ["erlauben", "lassen", "verlassen"] },
-    { "id": "la-721", "meanings": ["Ort", "Lage", "Stellung"] },
-    { "id": "la-722", "meanings": ["platziert", "gelegen"] },
-    { "id": "la-723", "meanings": ["oder wenn", "ob"] },
-    { "id": "la-724", "meanings": ["Verbündeter", "Gefährte"] },
-    { "id": "la-725", "meanings": ["Bündnis", "Partnerschaft"] },
-    { "id": "la-726", "meanings": ["Sonne"] },
-    { "id": "la-727", "meanings": ["gewohnt sein", "pflegen"] },
-    { "id": "la-728", "meanings": ["allein", "einzig"] },
-    { "id": "la-729", "meanings": ["lösen", "befreien", "bezahlen"] },
-    { "id": "la-730", "meanings": ["Schlaf"] },
-    { "id": "la-731", "meanings": ["Schall", "Geräusch", "Ton"] },
-    { "id": "la-732", "meanings": ["Schwester"] },
-    { "id": "la-733", "meanings": ["Los", "Schicksal", "Zufall"] },
-    { "id": "la-734", "meanings": ["streuen", "besprengen"] },
-    { "id": "la-735", "meanings": ["Raum", "Entfernung", "Zeitraum"] },
-    { "id": "la-736", "meanings": ["Anblick", "Aussehen", "Art"] },
-    { "id": "la-737", "meanings": ["betrachten", "anschauen"] },
-    { "id": "la-738", "meanings": ["Hoffnung"] },
-    { "id": "la-739", "meanings": ["hoffen"] },
-    { "id": "la-740", "meanings": ["Geist", "Atem", "Leben"] },
-    { "id": "la-741", "meanings": ["prächtig", "hell", "glänzend"] },
-    { "id": "la-742", "meanings": ["versprechen", "geloben"] },
-    { "id": "la-743", "meanings": ["Feldzeichen", "Zeichen", "Signal"] },
-    { "id": "la-744", "meanings": ["sofort", "auf der Stelle"] },
-    { "id": "la-745", "meanings": ["Statue", "Standbild"] },
-    { "id": "la-746", "meanings": ["stehen"] },
-    { "id": "la-747", "meanings": ["Lärm", "Getöse", "Aufruhr"] },
-    { "id": "la-748", "meanings": ["Eifer", "Studium", "Bemühung"] },
-    { "id": "la-749", "meanings": ["dumm", "töricht"] },
-    { "id": "la-750", "meanings": ["unter", "unten", "am Fuße von"] },
-    { "id": "la-751", "meanings": ["plötzlich"] },
-    { "id": "la-752", "meanings": ["daruntergehen", "ertragen", "herantreten"] },
-    { "id": "la-753", "meanings": ["plötzlich", "unerwartet"] },
-    { "id": "la-754", "meanings": ["Hilfe", "Reservetruppen", "Beistand"] },
-    { "id": "la-755", "meanings": ["höchster", "oberster", "letzter"] },
-    { "id": "la-756", "meanings": ["überwinden", "übertreffen", "besiegen"] },
-    { "id": "la-757", "meanings": ["über", "darüber"] },
-    { "id": "la-758", "meanings": ["oberer", "höherer", "früherer"] },
-    { "id": "la-759", "meanings": ["unternehmen", "aufnehmen", "empfangen"] },
-    { "id": "la-760", "meanings": ["argwöhnen", "verdächtigen"] },
-    { "id": "la-761", "meanings": ["Verdacht", "Argwohn"] },
-    { "id": "la-762", "meanings": ["aushalten", "ertragen", "stützen"] },
-    { "id": "la-763", "meanings": ["sein", "ihr", "ihr (eigen)"] },
-    { "id": "la-764", "meanings": ["Tisch", "Tafel"] },
-    { "id": "la-765", "meanings": ["schweigen"] },
-    { "id": "la-766", "meanings": ["schweigend", "still"] },
-    { "id": "la-767", "meanings": ["solch ein", "von solcher Art"] },
-    { "id": "la-768", "meanings": ["auch", "sogar", "außerdem"] },
-    { "id": "la-769", "meanings": ["so", "in solchem Maße"] },
-    { "id": "la-770", "meanings": ["endlich", "zuletzt"] },
-    { "id": "la-771", "meanings": ["nur"] },
-    { "id": "la-772", "meanings": ["berühren"] },
-    { "id": "la-773", "meanings": ["so groß", "ebenso groß"] },
-    { "id": "la-774", "meanings": ["nur", "so viel"] },
-    { "id": "la-775", "meanings": ["langsam", "spät"] },
-    { "id": "la-776", "meanings": ["endlich", "schließlich"] },
-    { "id": "la-777", "meanings": ["dennoch", "trotzdem"] },
-    { "id": "la-778", "meanings": ["Dach", "Haus"] },
-    { "id": "la-779", "meanings": ["bedecken", "schützen"] },
-    { "id": "la-780", "meanings": ["Waffe", "Geschoss"] },
-    { "id": "la-781", "meanings": ["Tempel"] },
-    { "id": "la-782", "meanings": ["versuchen", "prüfen", "erproben"] },
-    { "id": "la-783", "meanings": ["Zeit", "Gelegenheit"] },
-    { "id": "la-784", "meanings": ["halten", "festhalten"] },
-    { "id": "la-785", "meanings": ["Zelt"] },
-    { "id": "la-786", "meanings": ["Erde", "Land", "Boden"] },
-    { "id": "la-787", "meanings": ["Schrecken", "Terror", "Panik"] },
-    { "id": "la-788", "meanings": ["erschrecken", "terrörisieren"] },
-    { "id": "la-789", "meanings": ["Zeuge"] },
-    { "id": "la-790", "meanings": ["Theater"] },
-    { "id": "la-791", "meanings": ["fürchten", "Angst haben"] },
-    { "id": "la-792", "meanings": ["Furcht", "Angst"] },
-    { "id": "la-793", "meanings": ["aufheben", "erheben", "beseitigen"] },
-    { "id": "la-794", "meanings": ["so viele"] },
-    { "id": "la-795", "meanings": ["dennoch", "trotzdem"] },
-    { "id": "la-796", "meanings": ["so viele... wie"] },
-    { "id": "la-797", "meanings": ["übergeben", "ausliefern", "berichten"] },
-    { "id": "la-798", "meanings": ["ziehen", "schleppen"] },
-    { "id": "la-799", "meanings": ["jenseits", "über... hinüber"] },
-    { "id": "la-800", "meanings": ["hinübergehen", "überqueren"] },
-    { "id": "la-801", "meanings": ["drei"] },
-    { "id": "la-802", "meanings": ["Triumph", "Siegeszug"] },
-    { "id": "la-803", "meanings": ["du"] },
-    { "id": "la-804", "meanings": ["dann", "damals"] },
-    { "id": "la-805", "meanings": ["Menge", "Aufruhr", "Schar"] },
-    { "id": "la-806", "meanings": ["sicher", "geschützt"] },
-    { "id": "la-807", "meanings": ["dein"] },
-    { "id": "la-808", "meanings": ["wo", "sobald"] },
-    { "id": "la-809", "meanings": ["überall"] },
-    { "id": "la-810", "meanings": ["irgendein", "jeder"] },
-    { "id": "la-811", "meanings": ["letzter", "äußerster", "entferntester"] },
-    { "id": "la-812", "meanings": ["jenseits", "weiter"] },
-    { "id": "la-813", "meanings": ["Schatten", "Geist"] },
-    { "id": "la-814", "meanings": ["jemals"] },
-    { "id": "la-815", "meanings": ["einer", "einzig", "allein"] },
-    { "id": "la-816", "meanings": ["Stadt"] },
-    { "id": "la-817", "meanings": ["drängen", "hart bedrängen"] },
-    { "id": "la-818", "meanings": ["wie", "als", "dass", "damit"] },
-    { "id": "la-819", "meanings": ["nützlich", "vorteilhaft"] },
-    { "id": "la-820", "meanings": ["gebrauchen", "benutzen", "genießen"] },
-    { "id": "la-821", "meanings": ["Ehefrau"] },
-    { "id": "la-822", "meanings": ["ob... oder"] },
-    { "id": "la-823", "meanings": ["leer", "frei von"] },
-    { "id": "la-824", "meanings": ["umherschweifen", "wandern"] },
-    { "id": "la-825", "meanings": ["stark sein", "gesund sein", "gelten"] },
-    { "id": "la-826", "meanings": ["stark", "mächtig", "gesund"] },
-    { "id": "la-827", "meanings": ["Tal"] },
-    { "id": "la-828", "meanings": ["Wall", "Schanze"] },
-    { "id": "la-829", "meanings": ["verschieden", "mannigfaltig"] },
-    { "id": "la-830", "meanings": ["gewaltig", "unermesslich", "öde"] },
-    { "id": "la-831", "meanings": ["oder", "sogar"] },
-    { "id": "la-832", "meanings": ["schnell", "flink"] },
-    { "id": "la-833", "meanings": ["Schnelligkeit"] },
-    { "id": "la-834", "meanings": ["wie", "genauso wie"] },
-    { "id": "la-835", "meanings": ["verkaufen"] },
-    { "id": "la-836", "meanings": ["kommen"] },
-    { "id": "la-837", "meanings": ["Wind"] },
-    { "id": "la-838", "meanings": ["Wort"] },
-    { "id": "la-839", "meanings": ["Wahrheit"] },
-    { "id": "la-840", "meanings": ["wahr", "echt"] },
-    { "id": "la-841", "meanings": ["aber", "freilich"] },
-    { "id": "la-842", "meanings": ["drehen", "wenden", "verwandeln"] },
-    { "id": "la-843", "meanings": ["euer"] },
-    { "id": "la-844", "meanings": ["Abend"] },
-    { "id": "la-845", "meanings": ["euer"] },
-    { "id": "la-846", "meanings": ["alt", "ehemalig"] },
-    { "id": "la-847", "meanings": ["Weg", "Straße"] },
-    { "id": "la-848", "meanings": ["Nachbar"] },
-    { "id": "la-849", "meanings": ["sehen"] },
-    { "id": "la-850", "meanings": ["scheinen", "gesehen werden"] },
-    { "id": "la-851", "meanings": ["Wache", "Nachtwache"] },
-    { "id": "la-852", "meanings": ["zwanzig"] },
-    { "id": "la-853", "meanings": ["siegen", "besiegen"] },
-    { "id": "la-854", "meanings": ["Mann", "Ehemann", "Held"] },
-    { "id": "la-855", "meanings": ["Tapferkeit", "Tugend"] },
-    { "id": "la-856", "meanings": ["Gewalt", "Kraft", "Stärke (Pl.)"] },
-    { "id": "la-857", "meanings": ["Anblick", "Vision"] },
-    { "id": "la-858", "meanings": ["Leben"] },
-    { "id": "la-859", "meanings": ["meiden", "vermeiden"] },
-    { "id": "la-860", "meanings": ["Fehler", "Laster"] },
-    { "id": "la-861", "meanings": ["leben"] },
-    { "id": "la-862", "meanings": ["lebendig", "lebend"] },
-    { "id": "la-863", "meanings": ["kaum", "mit Mühe"] },
-    { "id": "la-864", "meanings": ["rufen", "nennen"] },
-    { "id": "la-865", "meanings": ["wollen"] },
-    { "id": "la-866", "meanings": ["Wille", "Wunsch"] },
-    { "id": "la-867", "meanings": ["Vergnügen", "Lust"] },
-    { "id": "la-868", "meanings": ["Stimme", "Wort", "Äußerung"] },
-    { "id": "la-869", "meanings": ["verwundbar"] },
-    { "id": "la-870", "meanings": ["Wunde"] },
-    { "id": "la-871", "meanings": ["verwunden"] },
-    { "id": "la-872", "meanings": ["Gesicht", "Miene"] },
-    { "id": "la-873", "meanings": ["gewöhnlich", "gemein"] },
-    { "id": "la-874", "meanings": ["Fremder", "Gast"] },
-    { "id": "la-875", "meanings": ["Trockenheit", "Dürre"] },
-    { "id": "la-876", "meanings": ["Gürtel"] },
-    { "id": "la-877", "meanings": ["Eifer", "Begeisterung"] },
-    { "id": "la-878", "meanings": ["bauen", "erbauen"] },
-    { "id": "la-879", "meanings": ["Gebäude"] },
-    { "id": "la-880", "meanings": ["krank", "schwach"] },
-    { "id": "la-881", "meanings": ["kaum", "schwerlich"] },
-    { "id": "la-882", "meanings": ["Sommer"] },
-    { "id": "la-883", "meanings": ["Lebensalter", "Zeit"] },
-    { "id": "la-884", "meanings": ["ewig"] },
-    { "id": "la-885", "meanings": ["Luft"] },
-    { "id": "la-886", "meanings": ["Kupfer", "Bronze", "Geld"] },
-    { "id": "la-887", "meanings": ["sommerlich"] },
-    { "id": "la-888", "meanings": ["schätzen", "meinen"] },
-    { "id": "la-889", "meanings": ["Glut", "Hitze", "Leidenschaft"] },
-    { "id": "la-890", "meanings": ["Zeitalter", "Generation"] },
-    { "id": "la-891", "meanings": ["einwirken", "beeinflussen"] },
-    { "id": "la-892", "meanings": ["bestätigen", "stärken"] },
-    { "id": "la-893", "meanings": ["wegnehmen", "entfernen"] },
-    { "id": "la-894", "meanings": ["anzünden", "entflammen"] },
-    { "id": "la-895", "meanings": ["vergrößern", "vermehren"] },
-    { "id": "la-896", "meanings": ["Vogel"] },
-    { "id": "la-897", "meanings": ["Großvater"] },
-    { "id": "la-898", "meanings": ["abwenden"] },
-    { "id": "la-899", "meanings": ["Onkel (mütterlicherseits)"] },
-    { "id": "la-900", "meanings": ["barbarisch", "fremd"] },
-    { "id": "la-901", "meanings": ["bärtig"] },
-    { "id": "la-902", "meanings": ["glücklich", "selig"] },
-    { "id": "la-903", "meanings": ["kriegerisch"] },
-    { "id": "la-904", "meanings": ["Krieg führen", "kämpfen"] },
-    { "id": "la-905", "meanings": ["gut (Adverb)"] },
-    { "id": "la-906", "meanings": ["zweimal"] },
-    { "id": "la-907", "meanings": ["schmeichelnd", "sanft"] },
-    { "id": "la-908", "meanings": ["Schmeichelei", "Lockung"] },
-    { "id": "la-909", "meanings": ["Güte", "Freundlichkeit"] },
-    { "id": "la-910", "meanings": ["Rind", "Ochse"] },
-    { "id": "la-911", "meanings": ["Arm", "Oberarm"] },
-    { "id": "la-912", "meanings": ["kurz", "in Kürze"] },
-    { "id": "la-913", "meanings": ["blind"] },
-    { "id": "la-914", "meanings": ["fallen", "umkommen"] },
-    { "id": "la-915", "meanings": ["Blindheit"] },
-    { "id": "la-916", "meanings": ["Wärme", "Hitze"] },
-    { "id": "la-917", "meanings": ["warm", "heiß"] },
-    { "id": "la-918", "meanings": ["abgehärtet", "erfahren", "schlau"] },
-    { "id": "la-919", "meanings": ["Feld", "Ebene"] },
-    { "id": "la-920", "meanings": ["weiß", "glänzend"] },
-    { "id": "la-921", "meanings": ["Hund"] },
-    { "id": "la-922", "meanings": ["singen", "spielen (Instrument)"] },
-    { "id": "la-923", "meanings": ["Gesang", "Lied", "Gedicht"] },
-    { "id": "la-924", "meanings": ["Haar"] },
-    { "id": "la-925", "meanings": ["mangeln", "entbehren"] },
-    { "id": "la-926", "meanings": ["Fleisch"] },
-    { "id": "la-927", "meanings": ["lieb", "teuer"] },
-    { "id": "la-928", "meanings": ["Liebe", "Zuneigung", "Teuerung"] },
-    { "id": "la-929", "meanings": ["Kastell", "Festung"] },
-    { "id": "la-930", "meanings": ["keusch", "rein"] },
-    { "id": "la-931", "meanings": ["Zufall", "Fall"] },
-    { "id": "la-932", "meanings": ["Kette", "Fessel"] },
-    { "id": "la-933", "meanings": ["sich hüten", "achtgeben"] },
-    { "id": "la-934", "meanings": ["hohl", "gewölbt"] },
-    { "id": "la-935", "meanings": ["weichen", "gehen"] },
-    { "id": "la-936", "meanings": ["berühmt"] },
-    { "id": "la-937", "meanings": ["schnell"] },
-    { "id": "la-938", "meanings": ["verbergen", "verstecken"] },
-    { "id": "la-939", "meanings": ["Tadel", "Prüfung"] },
-    { "id": "la-940", "meanings": ["Vermögensschätzung", "Zensus"] },
-    { "id": "la-941", "meanings": ["Zenturio", "Hauptmann"] },
-    { "id": "la-942", "meanings": ["Wachs"] },
-    { "id": "la-943", "meanings": ["entscheiden", "wahrnehmen"] },
-    { "id": "la-944", "meanings": ["sicherlich", "wenigstens"] },
-    { "id": "la-945", "meanings": ["Hirsch"] },
-    { "id": "la-946", "meanings": ["aufhören", "nachlassen"] },
-    { "id": "la-947", "meanings": ["die Übrigen", "die anderen"] },
-    { "id": "la-948", "meanings": ["Speise", "Mahlzeit"] },
-    { "id": "la-949", "meanings": ["umgeben", "umgürten"] },
-    { "id": "la-950", "meanings": ["um... herum", "ungefähr"] },
-    { "id": "la-951", "meanings": ["ringsherum"] },
-    { "id": "la-952", "meanings": ["Burg", "Festung"] },
-    { "id": "la-953", "meanings": ["schnell", "bald"] },
-    { "id": "la-954", "meanings": ["bürgerlich", "höflich"] },
-    { "id": "la-955", "meanings": ["heimlich"] },
-    { "id": "la-956", "meanings": ["rufen", "schreien"] },
-    { "id": "la-957", "meanings": ["hell", "klar", "berühmt"] },
-    { "id": "la-958", "meanings": ["Flotte", "Abteilung"] },
-    { "id": "la-959", "meanings": ["schließen"] },
-    { "id": "la-960", "meanings": ["Schlüssel"] },
-    { "id": "la-961", "meanings": ["milde", "sanft"] },
-    { "id": "la-962", "meanings": ["Schutzbefohlener", "Klient"] },
-    { "id": "la-963", "meanings": ["Hügel", "Abhang"] },
-    { "id": "la-964", "meanings": ["kochen"] },
-    { "id": "la-965", "meanings": ["himmlisch"] },
-    { "id": "la-966", "meanings": ["zwingen", "versammeln"] },
-    { "id": "la-967", "meanings": ["erkennen", "erfahren"] },
-    { "id": "la-968", "meanings": ["bewohnen", "verehren", "pflegen"] },
-    { "id": "la-969", "meanings": ["Farbe"] },
-    { "id": "la-970", "meanings": ["Haar", "Laub"] },
-    { "id": "la-971", "meanings": ["Komet"] },
-    { "id": "la-972", "meanings": ["Höflichkeit", "Freundlichkeit"] },
-    { "id": "la-973", "meanings": ["essen"] },
-    { "id": "la-974", "meanings": ["Gefährte", "Begleiter"] },
-    { "id": "la-975", "meanings": ["vorbereiten", "erwerben"] },
-    { "id": "la-976", "meanings": ["erfahren", "entdecken"] },
-    { "id": "la-977", "meanings": ["Umfassung", "Umarmung"] },
-    { "id": "la-978", "meanings": ["anfüllen", "vollenden"] },
-    { "id": "la-979", "meanings": ["kaufen"] },
-    { "id": "la-980", "meanings": ["versuchen", "wagen"] },
-    { "id": "la-981", "meanings": ["zugestehen", "nachgeben"] },
-    { "id": "la-982", "meanings": ["Versammlung", "Rat"] },
-    { "id": "la-983", "meanings": ["übereinstimmen"] },
-    { "id": "la-984", "meanings": ["gründen", "bergen", "verstauen"] },
-    { "id": "la-985", "meanings": ["Bedingung", "Lage"] },
-    { "id": "la-986", "meanings": ["vertrauen"] },
-    { "id": "la-987", "meanings": ["vollenden", "fertigmachen"] },
-    { "id": "la-988", "meanings": ["gestehen", "bekennen"] },
-    { "id": "la-989", "meanings": ["bewahren", "erhalten"] },
-    { "id": "la-990", "meanings": ["beraten", "befragen"] }
-  ]
+  {
+    "id": "la-001",
+    "meanings": [
+      "von",
+      "von ... her"
+    ]
+  },
+  {
+    "id": "la-002",
+    "meanings": [
+      "und",
+      "und auch"
+    ]
+  },
+  {
+    "id": "la-003",
+    "meanings": [
+      "sich ereignen",
+      "zustossen"
+    ]
+  },
+  {
+    "id": "la-004",
+    "meanings": [
+      "annehmen",
+      "empfangen",
+      "erfahren"
+    ]
+  },
+  {
+    "id": "la-005",
+    "meanings": [
+      "zu",
+      "an",
+      "bei"
+    ]
+  },
+  {
+    "id": "la-006",
+    "meanings": [
+      "heranführen",
+      "veranlassen"
+    ]
+  },
+  {
+    "id": "la-007",
+    "meanings": [
+      "Ankunft"
+    ]
+  },
+  {
+    "id": "la-008",
+    "meanings": [
+      "Gebäude"
+    ]
+  },
+  {
+    "id": "la-009",
+    "meanings": [
+      "eben",
+      "gerecht",
+      "gleich"
+    ]
+  },
+  {
+    "id": "la-010",
+    "meanings": [
+      "Acker",
+      "Feld",
+      "Gebiet"
+    ]
+  },
+  {
+    "id": "la-011",
+    "meanings": [
+      "treiben",
+      "tun",
+      "handeln"
+    ]
+  },
+  {
+    "id": "la-012",
+    "meanings": [
+      "Heereszug",
+      "Schar"
+    ]
+  },
+  {
+    "id": "la-013",
+    "meanings": [
+      "jemand",
+      "irgendjemand"
+    ]
+  },
+  {
+    "id": "la-014",
+    "meanings": [
+      "ein anderer"
+    ]
+  },
+  {
+    "id": "la-015",
+    "meanings": [
+      "hoch",
+      "tief"
+    ]
+  },
+  {
+    "id": "la-016",
+    "meanings": [
+      "Freundschaft"
+    ]
+  },
+  {
+    "id": "la-017",
+    "meanings": [
+      "Freund"
+    ]
+  },
+  {
+    "id": "la-018",
+    "meanings": [
+      "verlieren",
+      "aufgeben"
+    ]
+  },
+  {
+    "id": "la-019",
+    "meanings": [
+      "lieben"
+    ]
+  },
+  {
+    "id": "la-020",
+    "meanings": [
+      "Liebe"
+    ]
+  },
+  {
+    "id": "la-021",
+    "meanings": [
+      "Geist",
+      "Sinn",
+      "Mut"
+    ]
+  },
+  {
+    "id": "la-022",
+    "meanings": [
+      "Jahr"
+    ]
+  },
+  {
+    "id": "la-023",
+    "meanings": [
+      "vor"
+    ]
+  },
+  {
+    "id": "la-024",
+    "meanings": [
+      "nennen",
+      "anrufen"
+    ]
+  },
+  {
+    "id": "la-025",
+    "meanings": [
+      "bei"
+    ]
+  },
+  {
+    "id": "la-026",
+    "meanings": [
+      "Wasser"
+    ]
+  },
+  {
+    "id": "la-027",
+    "meanings": [
+      "glauben",
+      "meinen"
+    ]
+  },
+  {
+    "id": "la-028",
+    "meanings": [
+      "Baum"
+    ]
+  },
+  {
+    "id": "la-029",
+    "meanings": [
+      "Waffen"
+    ]
+  },
+  {
+    "id": "la-030",
+    "meanings": [
+      "Kunst",
+      "Geschicklichkeit"
+    ]
+  },
+  {
+    "id": "la-031",
+    "meanings": [
+      "hinaufsteigen",
+      "besteigen"
+    ]
+  },
+  {
+    "id": "la-032",
+    "meanings": [
+      "aber",
+      "doch"
+    ]
+  },
+  {
+    "id": "la-033",
+    "meanings": [
+      "und",
+      "und auch"
+    ]
+  },
+  {
+    "id": "la-034",
+    "meanings": [
+      "Ansehen",
+      "Einfluss",
+      "Macht"
+    ]
+  },
+  {
+    "id": "la-035",
+    "meanings": [
+      "Kühnheit",
+      "Frechheit"
+    ]
+  },
+  {
+    "id": "la-036",
+    "meanings": [
+      "kühn",
+      "frech"
+    ]
+  },
+  {
+    "id": "la-037",
+    "meanings": [
+      "wagen"
+    ]
+  },
+  {
+    "id": "la-038",
+    "meanings": [
+      "hören"
+    ]
+  },
+  {
+    "id": "la-039",
+    "meanings": [
+      "wegtragen",
+      "wegnehmen"
+    ]
+  },
+  {
+    "id": "la-040",
+    "meanings": [
+      "oder"
+    ]
+  },
+  {
+    "id": "la-041",
+    "meanings": [
+      "aber",
+      "jedoch"
+    ]
+  },
+  {
+    "id": "la-042",
+    "meanings": [
+      "Hilfe"
+    ]
+  },
+  {
+    "id": "la-043",
+    "meanings": [
+      "Krieg"
+    ]
+  },
+  {
+    "id": "la-044",
+    "meanings": [
+      "gut"
+    ]
+  },
+  {
+    "id": "la-045",
+    "meanings": [
+      "Wohltat"
+    ]
+  },
+  {
+    "id": "la-046",
+    "meanings": [
+      "Tier",
+      "wildes Tier"
+    ]
+  },
+  {
+    "id": "la-047",
+    "meanings": [
+      "trinken"
+    ]
+  },
+  {
+    "id": "la-048",
+    "meanings": [
+      "gut"
+    ]
+  },
+  {
+    "id": "la-049",
+    "meanings": [
+      "kurz"
+    ]
+  },
+  {
+    "id": "la-050",
+    "meanings": [
+      "fallen"
+    ]
+  },
+  {
+    "id": "la-051",
+    "meanings": [
+      "Blutbad",
+      "Mord"
+    ]
+  },
+  {
+    "id": "la-052",
+    "meanings": [
+      "Himmel"
+    ]
+  },
+  {
+    "id": "la-053",
+    "meanings": [
+      "fassen",
+      "nehmen",
+      "fangen"
+    ]
+  },
+  {
+    "id": "la-054",
+    "meanings": [
+      "Gefangener"
+    ]
+  },
+  {
+    "id": "la-055",
+    "meanings": [
+      "Haupt",
+      "Kopf",
+      "Hauptstadt"
+    ]
+  },
+  {
+    "id": "la-056",
+    "meanings": [
+      "Lager"
+    ]
+  },
+  {
+    "id": "la-057",
+    "meanings": [
+      "Ursache",
+      "Grund",
+      "Prozess"
+    ]
+  },
+  {
+    "id": "la-058",
+    "meanings": [
+      "gehen",
+      "weichen"
+    ]
+  },
+  {
+    "id": "la-059",
+    "meanings": [
+      "schnell"
+    ]
+  },
+  {
+    "id": "la-060",
+    "meanings": [
+      "Schnelligkeit"
+    ]
+  },
+  {
+    "id": "la-061",
+    "meanings": [
+      "Mahlzeit",
+      "Essen"
+    ]
+  },
+  {
+    "id": "la-062",
+    "meanings": [
+      "meinen",
+      "schätzen"
+    ]
+  },
+  {
+    "id": "la-063",
+    "meanings": [
+      "hundert"
+    ]
+  },
+  {
+    "id": "la-064",
+    "meanings": [
+      "Wettstreit",
+      "Kampf"
+    ]
+  },
+  {
+    "id": "la-065",
+    "meanings": [
+      "sicher",
+      "gewiss"
+    ]
+  },
+  {
+    "id": "la-066",
+    "meanings": [
+      "die übrigen"
+    ]
+  },
+  {
+    "id": "la-067",
+    "meanings": [
+      "Speise",
+      "Nahrung"
+    ]
+  },
+  {
+    "id": "la-068",
+    "meanings": [
+      "bürgerlich",
+      "öffentlich"
+    ]
+  },
+  {
+    "id": "la-069",
+    "meanings": [
+      "Bürger"
+    ]
+  },
+  {
+    "id": "la-070",
+    "meanings": [
+      "Bürgerschaft",
+      "Staat"
+    ]
+  },
+  {
+    "id": "la-071",
+    "meanings": [
+      "rufen",
+      "schreien"
+    ]
+  },
+  {
+    "id": "la-072",
+    "meanings": [
+      "Geschrei",
+      "Lärm"
+    ]
+  },
+  {
+    "id": "la-073",
+    "meanings": [
+      "hell",
+      "klar",
+      "berühmt"
+    ]
+  },
+  {
+    "id": "la-074",
+    "meanings": [
+      "schliessen"
+    ]
+  },
+  {
+    "id": "la-075",
+    "meanings": [
+      "anfangen",
+      "beginnen"
+    ]
+  },
+  {
+    "id": "la-076",
+    "meanings": [
+      "versammeln",
+      "zwingen"
+    ]
+  },
+  {
+    "id": "la-077",
+    "meanings": [
+      "denken",
+      "beabsichtigen"
+    ]
+  },
+  {
+    "id": "la-078",
+    "meanings": [
+      "erkennen",
+      "erfahren"
+    ]
+  },
+  {
+    "id": "la-079",
+    "meanings": [
+      "Kohorte",
+      "Schar"
+    ]
+  },
+  {
+    "id": "la-080",
+    "meanings": [
+      "pflegen",
+      "verehren",
+      "bewohnen"
+    ]
+  },
+  {
+    "id": "la-081",
+    "meanings": [
+      "Begleiter"
+    ]
+  },
+  {
+    "id": "la-082",
+    "meanings": [
+      "anvertrauen",
+      "begehen"
+    ]
+  },
+  {
+    "id": "la-083",
+    "meanings": [
+      "gemeinsam",
+      "allgemein"
+    ]
+  },
+  {
+    "id": "la-084",
+    "meanings": [
+      "vergleichen",
+      "beschaffen"
+    ]
+  },
+  {
+    "id": "la-085",
+    "meanings": [
+      "mehrere",
+      "ziemlich viele"
+    ]
+  },
+  {
+    "id": "la-086",
+    "meanings": [
+      "zugestehen",
+      "weichen"
+    ]
+  },
+  {
+    "id": "la-087",
+    "meanings": [
+      "Bedingung",
+      "Lage"
+    ]
+  },
+  {
+    "id": "la-088",
+    "meanings": [
+      "zusammentragen",
+      "vergleichen"
+    ]
+  },
+  {
+    "id": "la-089",
+    "meanings": [
+      "beenden",
+      "fertigmachen"
+    ]
+  },
+  {
+    "id": "la-090",
+    "meanings": [
+      "stärken",
+      "behaupten"
+    ]
+  },
+  {
+    "id": "la-091",
+    "meanings": [
+      "werfen",
+      "mutmassen"
+    ]
+  },
+  {
+    "id": "la-092",
+    "meanings": [
+      "Gatte",
+      "Gattin"
+    ]
+  },
+  {
+    "id": "la-093",
+    "meanings": [
+      "versuchen"
+    ]
+  },
+  {
+    "id": "la-094",
+    "meanings": [
+      "Rat",
+      "Plan",
+      "Beschluss"
+    ]
+  },
+  {
+    "id": "la-095",
+    "meanings": [
+      "stehen bleiben",
+      "haltmachen"
+    ]
+  },
+  {
+    "id": "la-096",
+    "meanings": [
+      "aufstellen",
+      "festsetzen",
+      "beschliessen"
+    ]
+  },
+  {
+    "id": "la-097",
+    "meanings": [
+      "Gewohnheit"
+    ]
+  },
+  {
+    "id": "la-098",
+    "meanings": [
+      "Konsul"
+    ]
+  },
+  {
+    "id": "la-099",
+    "meanings": [
+      "eilen",
+      "kämpfen",
+      "behaupten"
+    ]
+  },
+  {
+    "id": "la-100",
+    "meanings": [
+      "zusammenhalten",
+      "enthalten"
+    ]
+  },
+  {
+    "id": "la-101",
+    "meanings": [
+      "gegen"
+    ]
+  },
+  {
+    "id": "la-102",
+    "meanings": [
+      "zusammenkommen",
+      "passen"
+    ]
+  },
+  {
+    "id": "la-103",
+    "meanings": [
+      "zusammenrufen"
+    ]
+  },
+  {
+    "id": "la-104",
+    "meanings": [
+      "Vorrat",
+      "Menge",
+      "Truppen"
+    ]
+  },
+  {
+    "id": "la-105",
+    "meanings": [
+      "Körper"
+    ]
+  },
+  {
+    "id": "la-106",
+    "meanings": [
+      "glauben",
+      "anvertrauen"
+    ]
+  },
+  {
+    "id": "la-107",
+    "meanings": [
+      "erschaffen",
+      "wählen"
+    ]
+  },
+  {
+    "id": "la-108",
+    "meanings": [
+      "Verbrechen",
+      "Anschuldigung"
+    ]
+  },
+  {
+    "id": "la-109",
+    "meanings": [
+      "grausam"
+    ]
+  },
+  {
+    "id": "la-110",
+    "meanings": [
+      "mit"
+    ]
+  },
+  {
+    "id": "la-111",
+    "meanings": [
+      "begehren",
+      "wünschen"
+    ]
+  },
+  {
+    "id": "la-112",
+    "meanings": [
+      "Begierde",
+      "Leidenschaft"
+    ]
+  },
+  {
+    "id": "la-113",
+    "meanings": [
+      "warum"
+    ]
+  },
+  {
+    "id": "la-114",
+    "meanings": [
+      "Sorge",
+      "Pflege"
+    ]
+  },
+  {
+    "id": "la-115",
+    "meanings": [
+      "sorgen für",
+      "pflegen"
+    ]
+  },
+  {
+    "id": "la-116",
+    "meanings": [
+      "laufen",
+      "rennen"
+    ]
+  },
+  {
+    "id": "la-117",
+    "meanings": [
+      "Wächter",
+      "Hüter"
+    ]
+  },
+  {
+    "id": "la-118",
+    "meanings": [
+      "verurteilen"
+    ]
+  },
+  {
+    "id": "la-119",
+    "meanings": [
+      "von ... her",
+      "über"
+    ]
+  },
+  {
+    "id": "la-120",
+    "meanings": [
+      "müssen",
+      "schulden"
+    ]
+  },
+  {
+    "id": "la-121",
+    "meanings": [
+      "zehn"
+    ]
+  },
+  {
+    "id": "la-122",
+    "meanings": [
+      "herabfallen",
+      "entscheiden"
+    ]
+  },
+  {
+    "id": "la-123",
+    "meanings": [
+      "beschliessen",
+      "entscheiden"
+    ]
+  },
+  {
+    "id": "la-124",
+    "meanings": [
+      "ausliefern",
+      "übergeben"
+    ]
+  },
+  {
+    "id": "la-125",
+    "meanings": [
+      "verteidigen",
+      "abwehren"
+    ]
+  },
+  {
+    "id": "la-126",
+    "meanings": [
+      "überbringen",
+      "melden"
+    ]
+  },
+  {
+    "id": "la-127",
+    "meanings": [
+      "dann",
+      "darauf"
+    ]
+  },
+  {
+    "id": "la-128",
+    "meanings": [
+      "erfreuen"
+    ]
+  },
+  {
+    "id": "la-129",
+    "meanings": [
+      "auswählen"
+    ]
+  },
+  {
+    "id": "la-130",
+    "meanings": [
+      "zeigen",
+      "darlegen"
+    ]
+  },
+  {
+    "id": "la-131",
+    "meanings": [
+      "schliesslich",
+      "endlich"
+    ]
+  },
+  {
+    "id": "la-132",
+    "meanings": [
+      "herabsteigen"
+    ]
+  },
+  {
+    "id": "la-133",
+    "meanings": [
+      "verlassen",
+      "im Stich lassen"
+    ]
+  },
+  {
+    "id": "la-134",
+    "meanings": [
+      "ersehnen",
+      "vermissen"
+    ]
+  },
+  {
+    "id": "la-135",
+    "meanings": [
+      "aufhören"
+    ]
+  },
+  {
+    "id": "la-136",
+    "meanings": [
+      "Gott"
+    ]
+  },
+  {
+    "id": "la-137",
+    "meanings": [
+      "rechts"
+    ]
+  },
+  {
+    "id": "la-138",
+    "meanings": [
+      "sagen",
+      "nennen"
+    ]
+  },
+  {
+    "id": "la-139",
+    "meanings": [
+      "Tag"
+    ]
+  },
+  {
+    "id": "la-140",
+    "meanings": [
+      "schwierig"
+    ]
+  },
+  {
+    "id": "la-141",
+    "meanings": [
+      "Würde",
+      "Rang"
+    ]
+  },
+  {
+    "id": "la-142",
+    "meanings": [
+      "würdig"
+    ]
+  },
+  {
+    "id": "la-143",
+    "meanings": [
+      "sorgfältig"
+    ]
+  },
+  {
+    "id": "la-144",
+    "meanings": [
+      "entlassen",
+      "wegschicken"
+    ]
+  },
+  {
+    "id": "la-145",
+    "meanings": [
+      "weggehen"
+    ]
+  },
+  {
+    "id": "la-146",
+    "meanings": [
+      "Unterricht",
+      "Ordnung",
+      "Disziplin"
+    ]
+  },
+  {
+    "id": "la-147",
+    "meanings": [
+      "lernen",
+      "erfahren"
+    ]
+  },
+  {
+    "id": "la-148",
+    "meanings": [
+      "lange Zeit"
+    ]
+  },
+  {
+    "id": "la-149",
+    "meanings": [
+      "verschieden"
+    ]
+  },
+  {
+    "id": "la-150",
+    "meanings": [
+      "teilen",
+      "trennen"
+    ]
+  },
+  {
+    "id": "la-151",
+    "meanings": [
+      "göttlich"
+    ]
+  },
+  {
+    "id": "la-152",
+    "meanings": [
+      "Reichtum"
+    ]
+  },
+  {
+    "id": "la-153",
+    "meanings": [
+      "geben"
+    ]
+  },
+  {
+    "id": "la-154",
+    "meanings": [
+      "lehren",
+      "unterrichten"
+    ]
+  },
+  {
+    "id": "la-155",
+    "meanings": [
+      "Schmerz"
+    ]
+  },
+  {
+    "id": "la-156",
+    "meanings": [
+      "List",
+      "Täuschung"
+    ]
+  },
+  {
+    "id": "la-157",
+    "meanings": [
+      "Herr"
+    ]
+  },
+  {
+    "id": "la-158",
+    "meanings": [
+      "Haus"
+    ]
+  },
+  {
+    "id": "la-159",
+    "meanings": [
+      "Geschenk"
+    ]
+  },
+  {
+    "id": "la-160",
+    "meanings": [
+      "zweifeln",
+      "zögern"
+    ]
+  },
+  {
+    "id": "la-161",
+    "meanings": [
+      "zweifelhaft"
+    ]
+  },
+  {
+    "id": "la-162",
+    "meanings": [
+      "führen",
+      "ziehen",
+      "meinen"
+    ]
+  },
+  {
+    "id": "la-163",
+    "meanings": [
+      "süss",
+      "angenehm"
+    ]
+  },
+  {
+    "id": "la-164",
+    "meanings": [
+      "während",
+      "solange bis"
+    ]
+  },
+  {
+    "id": "la-165",
+    "meanings": [
+      "zwei"
+    ]
+  },
+  {
+    "id": "la-166",
+    "meanings": [
+      "Führer",
+      "Feldherr"
+    ]
+  },
+  {
+    "id": "la-167",
+    "meanings": [
+      "aus",
+      "von ... aus"
+    ]
+  },
+  {
+    "id": "la-168",
+    "meanings": [
+      "siehe!",
+      "schau!"
+    ]
+  },
+  {
+    "id": "la-169",
+    "meanings": [
+      "herausführen"
+    ]
+  },
+  {
+    "id": "la-170",
+    "meanings": [
+      "bewirken",
+      "hervorbringen"
+    ]
+  },
+  {
+    "id": "la-171",
+    "meanings": [
+      "ich"
+    ]
+  },
+  {
+    "id": "la-172",
+    "meanings": [
+      "hinausgehen"
+    ]
+  },
+  {
+    "id": "la-173",
+    "meanings": [
+      "kaufen"
+    ]
+  },
+  {
+    "id": "la-174",
+    "meanings": [
+      "nämlich",
+      "denn"
+    ]
+  },
+  {
+    "id": "la-175",
+    "meanings": [
+      "dorthin"
+    ]
+  },
+  {
+    "id": "la-176",
+    "meanings": [
+      "Brief"
+    ]
+  },
+  {
+    "id": "la-177",
+    "meanings": [
+      "Reiter",
+      "Ritter"
+    ]
+  },
+  {
+    "id": "la-178",
+    "meanings": [
+      "Reiterei"
+    ]
+  },
+  {
+    "id": "la-179",
+    "meanings": [
+      "Pferd"
+    ]
+  },
+  {
+    "id": "la-180",
+    "meanings": [
+      "also",
+      "folglich"
+    ]
+  },
+  {
+    "id": "la-181",
+    "meanings": [
+      "irren",
+      "umherstreifen"
+    ]
+  },
+  {
+    "id": "la-182",
+    "meanings": [
+      "entreissen"
+    ]
+  },
+  {
+    "id": "la-183",
+    "meanings": [
+      "sein"
+    ]
+  },
+  {
+    "id": "la-184",
+    "meanings": [
+      "und"
+    ]
+  },
+  {
+    "id": "la-185",
+    "meanings": [
+      "auch",
+      "sogar"
+    ]
+  },
+  {
+    "id": "la-186",
+    "meanings": [
+      "wenn auch",
+      "obwohl"
+    ]
+  },
+  {
+    "id": "la-187",
+    "meanings": [
+      "entkommen",
+      "entweichen"
+    ]
+  },
+  {
+    "id": "la-188",
+    "meanings": [
+      "aus",
+      "von ... an"
+    ]
+  },
+  {
+    "id": "la-189",
+    "meanings": [
+      "hinausgehen",
+      "weggehen"
+    ]
+  },
+  {
+    "id": "la-190",
+    "meanings": [
+      "aufnehmen",
+      "auffangen"
+    ]
+  },
+  {
+    "id": "la-191",
+    "meanings": [
+      "antreiben",
+      "erregen"
+    ]
+  },
+  {
+    "id": "la-192",
+    "meanings": [
+      "Beispiel",
+      "Vorbild"
+    ]
+  },
+  {
+    "id": "la-193",
+    "meanings": [
+      "Heer"
+    ]
+  },
+  {
+    "id": "la-194",
+    "meanings": [
+      "meinen",
+      "glauben"
+    ]
+  },
+  {
+    "id": "la-195",
+    "meanings": [
+      "Ausgang",
+      "Ende"
+    ]
+  },
+  {
+    "id": "la-196",
+    "meanings": [
+      "erwarten"
+    ]
+  },
+  {
+    "id": "la-197",
+    "meanings": [
+      "vertreiben"
+    ]
+  },
+  {
+    "id": "la-198",
+    "meanings": [
+      "erkunden",
+      "erforschen"
+    ]
+  },
+  {
+    "id": "la-199",
+    "meanings": [
+      "ausstellen",
+      "darlegen"
+    ]
+  },
+  {
+    "id": "la-200",
+    "meanings": [
+      "erobern"
+    ]
+  },
+  {
+    "id": "la-201",
+    "meanings": [
+      "machen",
+      "tun"
+    ]
+  },
+  {
+    "id": "la-202",
+    "meanings": [
+      "leicht"
+    ]
+  },
+  {
+    "id": "la-203",
+    "meanings": [
+      "Tat",
+      "Untat"
+    ]
+  },
+  {
+    "id": "la-204",
+    "meanings": [
+      "Tat",
+      "Tatsache"
+    ]
+  },
+  {
+    "id": "la-205",
+    "meanings": [
+      "Möglichkeit",
+      "Fähigkeit"
+    ]
+  },
+  {
+    "id": "la-206",
+    "meanings": [
+      "täuschen"
+    ]
+  },
+  {
+    "id": "la-207",
+    "meanings": [
+      "falsch"
+    ]
+  },
+  {
+    "id": "la-208",
+    "meanings": [
+      "Ruf",
+      "Gerücht"
+    ]
+  },
+  {
+    "id": "la-209",
+    "meanings": [
+      "Familie",
+      "Hausgemeinschaft"
+    ]
+  },
+  {
+    "id": "la-210",
+    "meanings": [
+      "Schicksal",
+      "Götterspruch"
+    ]
+  },
+  {
+    "id": "la-211",
+    "meanings": [
+      "glücklich"
+    ]
+  },
+  {
+    "id": "la-212",
+    "meanings": [
+      "Frau"
+    ]
+  },
+  {
+    "id": "la-213",
+    "meanings": [
+      "tragen",
+      "bringen",
+      "ertragen"
+    ]
+  },
+  {
+    "id": "la-214",
+    "meanings": [
+      "Eisen",
+      "Schwert"
+    ]
+  },
+  {
+    "id": "la-215",
+    "meanings": [
+      "wild",
+      "roh"
+    ]
+  },
+  {
+    "id": "la-216",
+    "meanings": [
+      "müde",
+      "erschöpft"
+    ]
+  },
+  {
+    "id": "la-217",
+    "meanings": [
+      "Treue",
+      "Glaube",
+      "Vertrauen"
+    ]
+  },
+  {
+    "id": "la-218",
+    "meanings": [
+      "treu"
+    ]
+  },
+  {
+    "id": "la-219",
+    "meanings": [
+      "werden",
+      "geschehen",
+      "gemacht werden"
+    ]
+  },
+  {
+    "id": "la-220",
+    "meanings": [
+      "Tochter"
+    ]
+  },
+  {
+    "id": "la-221",
+    "meanings": [
+      "Sohn"
+    ]
+  },
+  {
+    "id": "la-222",
+    "meanings": [
+      "Ende",
+      "Grenze",
+      "Ziel"
+    ]
+  },
+  {
+    "id": "la-223",
+    "meanings": [
+      "benachbart"
+    ]
+  },
+  {
+    "id": "la-224",
+    "meanings": [
+      "fest",
+      "stark"
+    ]
+  },
+  {
+    "id": "la-225",
+    "meanings": [
+      "weinen"
+    ]
+  },
+  {
+    "id": "la-226",
+    "meanings": [
+      "Blume"
+    ]
+  },
+  {
+    "id": "la-227",
+    "meanings": [
+      "Fluss"
+    ]
+  },
+  {
+    "id": "la-228",
+    "meanings": [
+      "fliessen"
+    ]
+  },
+  {
+    "id": "la-229",
+    "meanings": [
+      "Bündnis",
+      "Vertrag"
+    ]
+  },
+  {
+    "id": "la-230",
+    "meanings": [
+      "Quelle"
+    ]
+  },
+  {
+    "id": "la-231",
+    "meanings": [
+      "Form",
+      "Gestalt",
+      "Schönheit"
+    ]
+  },
+  {
+    "id": "la-232",
+    "meanings": [
+      "vielleicht"
+    ]
+  },
+  {
+    "id": "la-233",
+    "meanings": [
+      "zufällig"
+    ]
+  },
+  {
+    "id": "la-234",
+    "meanings": [
+      "tapfer",
+      "stark"
+    ]
+  },
+  {
+    "id": "la-235",
+    "meanings": [
+      "Glück",
+      "Schicksal"
+    ]
+  },
+  {
+    "id": "la-236",
+    "meanings": [
+      "Marktplatz",
+      "Forum"
+    ]
+  },
+  {
+    "id": "la-237",
+    "meanings": [
+      "Graben"
+    ]
+  },
+  {
+    "id": "la-238",
+    "meanings": [
+      "brechen"
+    ]
+  },
+  {
+    "id": "la-239",
+    "meanings": [
+      "Bruder"
+    ]
+  },
+  {
+    "id": "la-240",
+    "meanings": [
+      "Betrug",
+      "Schaden"
+    ]
+  },
+  {
+    "id": "la-241",
+    "meanings": [
+      "Getreide"
+    ]
+  },
+  {
+    "id": "la-242",
+    "meanings": [
+      "Flucht"
+    ]
+  },
+  {
+    "id": "la-243",
+    "meanings": [
+      "fliehen",
+      "meiden"
+    ]
+  },
+  {
+    "id": "la-244",
+    "meanings": [
+      "giessen",
+      "vergiessen",
+      "zerstreuen"
+    ]
+  },
+  {
+    "id": "la-245",
+    "meanings": [
+      "Dieb"
+    ]
+  },
+  {
+    "id": "la-246",
+    "meanings": [
+      "Wut",
+      "Wahnsinn"
+    ]
+  },
+  {
+    "id": "la-247",
+    "meanings": [
+      "sich freuen"
+    ]
+  },
+  {
+    "id": "la-248",
+    "meanings": [
+      "Freude"
+    ]
+  },
+  {
+    "id": "la-249",
+    "meanings": [
+      "Geschlecht",
+      "Stamm",
+      "Volk"
+    ]
+  },
+  {
+    "id": "la-250",
+    "meanings": [
+      "Art",
+      "Geschlecht"
+    ]
+  },
+  {
+    "id": "la-251",
+    "meanings": [
+      "tragen",
+      "ausführen"
+    ]
+  },
+  {
+    "id": "la-252",
+    "meanings": [
+      "Schwert"
+    ]
+  },
+  {
+    "id": "la-253",
+    "meanings": [
+      "Ruhm",
+      "Ehre"
+    ]
+  },
+  {
+    "id": "la-254",
+    "meanings": [
+      "Dank",
+      "Gunst",
+      "Beliebtheit"
+    ]
+  },
+  {
+    "id": "la-255",
+    "meanings": [
+      "willkommen",
+      "dankbar",
+      "angenehm"
+    ]
+  },
+  {
+    "id": "la-256",
+    "meanings": [
+      "schwer",
+      "ernst"
+    ]
+  },
+  {
+    "id": "la-257",
+    "meanings": [
+      "haben",
+      "halten"
+    ]
+  },
+  {
+    "id": "la-258",
+    "meanings": [
+      "wohnen"
+    ]
+  },
+  {
+    "id": "la-259",
+    "meanings": [
+      "dieser",
+      "diese",
+      "dieses"
+    ]
+  },
+  {
+    "id": "la-260",
+    "meanings": [
+      "Winter"
+    ]
+  },
+  {
+    "id": "la-261",
+    "meanings": [
+      "Mensch"
+    ]
+  },
+  {
+    "id": "la-262",
+    "meanings": [
+      "Ehre",
+      "Ehrenamt"
+    ]
+  },
+  {
+    "id": "la-263",
+    "meanings": [
+      "Stunde"
+    ]
+  },
+  {
+    "id": "la-264",
+    "meanings": [
+      "ermahnen",
+      "auffordern"
+    ]
+  },
+  {
+    "id": "la-265",
+    "meanings": [
+      "Garten"
+    ]
+  },
+  {
+    "id": "la-266",
+    "meanings": [
+      "Gast",
+      "Fremder"
+    ]
+  },
+  {
+    "id": "la-267",
+    "meanings": [
+      "Feind"
+    ]
+  },
+  {
+    "id": "la-268",
+    "meanings": [
+      "hierher"
+    ]
+  },
+  {
+    "id": "la-269",
+    "meanings": [
+      "niedrig",
+      "bescheiden"
+    ]
+  },
+  {
+    "id": "la-270",
+    "meanings": [
+      "liegen"
+    ]
+  },
+  {
+    "id": "la-271",
+    "meanings": [
+      "werfen",
+      "schleudern"
+    ]
+  },
+  {
+    "id": "la-272",
+    "meanings": [
+      "schon",
+      "nun"
+    ]
+  },
+  {
+    "id": "la-273",
+    "meanings": [
+      "dort"
+    ]
+  },
+  {
+    "id": "la-274",
+    "meanings": [
+      "derselbe",
+      "dieselbe",
+      "dasselbe"
+    ]
+  },
+  {
+    "id": "la-275",
+    "meanings": [
+      "geeignet"
+    ]
+  },
+  {
+    "id": "la-276",
+    "meanings": [
+      "also",
+      "daher"
+    ]
+  },
+  {
+    "id": "la-277",
+    "meanings": [
+      "Feuer"
+    ]
+  },
+  {
+    "id": "la-278",
+    "meanings": [
+      "nicht wissen",
+      "unbekannt sein"
+    ]
+  },
+  {
+    "id": "la-279",
+    "meanings": [
+      "jener",
+      "jene",
+      "jenes"
+    ]
+  },
+  {
+    "id": "la-280",
+    "meanings": [
+      "dort"
+    ]
+  },
+  {
+    "id": "la-281",
+    "meanings": [
+      "Bild",
+      "Abbild"
+    ]
+  },
+  {
+    "id": "la-282",
+    "meanings": [
+      "Hindernis",
+      "Gepäck"
+    ]
+  },
+  {
+    "id": "la-283",
+    "meanings": [
+      "hindern",
+      "verhindern"
+    ]
+  },
+  {
+    "id": "la-284",
+    "meanings": [
+      "befehlen",
+      "herrschen"
+    ]
+  },
+  {
+    "id": "la-285",
+    "meanings": [
+      "Feldherr",
+      "Kaiser"
+    ]
+  },
+  {
+    "id": "la-286",
+    "meanings": [
+      "Befehl",
+      "Herrschaft",
+      "Reich"
+    ]
+  },
+  {
+    "id": "la-287",
+    "meanings": [
+      "Angriff",
+      "Schwung"
+    ]
+  },
+  {
+    "id": "la-288",
+    "meanings": [
+      "schlecht",
+      "böse"
+    ]
+  },
+  {
+    "id": "la-289",
+    "meanings": [
+      "in",
+      "auf",
+      "nach",
+      "gegen"
+    ]
+  },
+  {
+    "id": "la-290",
+    "meanings": [
+      "anzünden",
+      "entflammen"
+    ]
+  },
+  {
+    "id": "la-291",
+    "meanings": [
+      "hineinfallen",
+      "sich ereignen"
+    ]
+  },
+  {
+    "id": "la-292",
+    "meanings": [
+      "anfangen",
+      "beginnen"
+    ]
+  },
+  {
+    "id": "la-293",
+    "meanings": [
+      "antreiben",
+      "reizen"
+    ]
+  },
+  {
+    "id": "la-294",
+    "meanings": [
+      "bewohnen"
+    ]
+  },
+  {
+    "id": "la-295",
+    "meanings": [
+      "von dort",
+      "darauf"
+    ]
+  },
+  {
+    "id": "la-296",
+    "meanings": [
+      "anzeigen"
+    ]
+  },
+  {
+    "id": "la-297",
+    "meanings": [
+      "hineinführen",
+      "verleiten"
+    ]
+  },
+  {
+    "id": "la-298",
+    "meanings": [
+      "zu unternehmend"
+    ]
+  },
+  {
+    "id": "la-299",
+    "meanings": [
+      "unglücklich"
+    ]
+  },
+  {
+    "id": "la-300",
+    "meanings": [
+      "hineintragen",
+      "zufügen"
+    ]
+  },
+  {
+    "id": "la-301",
+    "meanings": [
+      "gewaltig",
+      "ungeheuer"
+    ]
+  },
+  {
+    "id": "la-302",
+    "meanings": [
+      "hineingehen",
+      "betreten"
+    ]
+  },
+  {
+    "id": "la-303",
+    "meanings": [
+      "Feind",
+      "persönlicher Feind"
+    ]
+  },
+  {
+    "id": "la-304",
+    "meanings": [
+      "Anfang",
+      "Beginn"
+    ]
+  },
+  {
+    "id": "la-305",
+    "meanings": [
+      "Unrecht",
+      "Beleidigung"
+    ]
+  },
+  {
+    "id": "la-306",
+    "meanings": [
+      "sagt er",
+      "sagte er"
+    ]
+  },
+  {
+    "id": "la-307",
+    "meanings": [
+      "Hinterhalt",
+      "Falle"
+    ]
+  },
+  {
+    "id": "la-308",
+    "meanings": [
+      "einrichten",
+      "unterrichten"
+    ]
+  },
+  {
+    "id": "la-309",
+    "meanings": [
+      "Insel",
+      "Mietshaus"
+    ]
+  },
+  {
+    "id": "la-310",
+    "meanings": [
+      "verstehen",
+      "einsehen"
+    ]
+  },
+  {
+    "id": "la-311",
+    "meanings": [
+      "zwischen",
+      "unter"
+    ]
+  },
+  {
+    "id": "la-312",
+    "meanings": [
+      "inzwischen"
+    ]
+  },
+  {
+    "id": "la-313",
+    "meanings": [
+      "töten"
+    ]
+  },
+  {
+    "id": "la-314",
+    "meanings": [
+      "unterbrechen"
+    ]
+  },
+  {
+    "id": "la-315",
+    "meanings": [
+      "innerhalb"
+    ]
+  },
+  {
+    "id": "la-316",
+    "meanings": [
+      "finden",
+      "erfinden"
+    ]
+  },
+  {
+    "id": "la-317",
+    "meanings": [
+      "unbesiegt"
+    ]
+  },
+  {
+    "id": "la-318",
+    "meanings": [
+      "neiden",
+      "beneiden"
+    ]
+  },
+  {
+    "id": "la-319",
+    "meanings": [
+      "einladen"
+    ]
+  },
+  {
+    "id": "la-320",
+    "meanings": [
+      "selbst"
+    ]
+  },
+  {
+    "id": "la-321",
+    "meanings": [
+      "Zorn"
+    ]
+  },
+  {
+    "id": "la-322",
+    "meanings": [
+      "zürnen",
+      "zornig sein"
+    ]
+  },
+  {
+    "id": "la-323",
+    "meanings": [
+      "er",
+      "sie",
+      "es",
+      "dieser"
+    ]
+  },
+  {
+    "id": "la-324",
+    "meanings": [
+      "dieser da"
+    ]
+  },
+  {
+    "id": "la-325",
+    "meanings": [
+      "so"
+    ]
+  },
+  {
+    "id": "la-326",
+    "meanings": [
+      "daher",
+      "deshalb"
+    ]
+  },
+  {
+    "id": "la-327",
+    "meanings": [
+      "ebenso"
+    ]
+  },
+  {
+    "id": "la-328",
+    "meanings": [
+      "Weg",
+      "Marsch",
+      "Reise"
+    ]
+  },
+  {
+    "id": "la-329",
+    "meanings": [
+      "wiederum",
+      "zum zweiten Mal"
+    ]
+  },
+  {
+    "id": "la-330",
+    "meanings": [
+      "befehlen"
+    ]
+  },
+  {
+    "id": "la-331",
+    "meanings": [
+      "angenehm",
+      "erfreulich"
+    ]
+  },
+  {
+    "id": "la-332",
+    "meanings": [
+      "Richter"
+    ]
+  },
+  {
+    "id": "la-333",
+    "meanings": [
+      "urteilen",
+      "entscheiden"
+    ]
+  },
+  {
+    "id": "la-334",
+    "meanings": [
+      "Urteil",
+      "Gericht"
+    ]
+  },
+  {
+    "id": "la-335",
+    "meanings": [
+      "verbinden"
+    ]
+  },
+  {
+    "id": "la-336",
+    "meanings": [
+      "Recht"
+    ]
+  },
+  {
+    "id": "la-337",
+    "meanings": [
+      "gerecht"
+    ]
+  },
+  {
+    "id": "la-338",
+    "meanings": [
+      "helfen",
+      "erfreuen"
+    ]
+  },
+  {
+    "id": "la-339",
+    "meanings": [
+      "junger Mann"
+    ]
+  },
+  {
+    "id": "la-340",
+    "meanings": [
+      "Arbeit",
+      "Mühe"
+    ]
+  },
+  {
+    "id": "la-341",
+    "meanings": [
+      "arbeiten",
+      "leiden"
+    ]
+  },
+  {
+    "id": "la-342",
+    "meanings": [
+      "Träne"
+    ]
+  },
+  {
+    "id": "la-343",
+    "meanings": [
+      "froh",
+      "fröhlich"
+    ]
+  },
+  {
+    "id": "la-344",
+    "meanings": [
+      "breit",
+      "weit"
+    ]
+  },
+  {
+    "id": "la-345",
+    "meanings": [
+      "Lob"
+    ]
+  },
+  {
+    "id": "la-346",
+    "meanings": [
+      "Gesandtschaft"
+    ]
+  },
+  {
+    "id": "la-347",
+    "meanings": [
+      "Gesandter",
+      "Unterfeldherr"
+    ]
+  },
+  {
+    "id": "la-348",
+    "meanings": [
+      "lesen",
+      "sammeln"
+    ]
+  },
+  {
+    "id": "la-349",
+    "meanings": [
+      "Legion"
+    ]
+  },
+  {
+    "id": "la-350",
+    "meanings": [
+      "Gesetz"
+    ]
+  },
+  {
+    "id": "la-351",
+    "meanings": [
+      "frei"
+    ]
+  },
+  {
+    "id": "la-352",
+    "meanings": [
+      "Buch"
+    ]
+  },
+  {
+    "id": "la-353",
+    "meanings": [
+      "befreien"
+    ]
+  },
+  {
+    "id": "la-354",
+    "meanings": [
+      "Kinder"
+    ]
+  },
+  {
+    "id": "la-355",
+    "meanings": [
+      "Freiheit"
+    ]
+  },
+  {
+    "id": "la-356",
+    "meanings": [
+      "es ist erlaubt"
+    ]
+  },
+  {
+    "id": "la-357",
+    "meanings": [
+      "Buchstabe",
+      "Brief"
+    ]
+  },
+  {
+    "id": "la-358",
+    "meanings": [
+      "Ort",
+      "Stelle"
+    ]
+  },
+  {
+    "id": "la-359",
+    "meanings": [
+      "lang"
+    ]
+  },
+  {
+    "id": "la-360",
+    "meanings": [
+      "sprechen"
+    ]
+  },
+  {
+    "id": "la-361",
+    "meanings": [
+      "spielen"
+    ]
+  },
+  {
+    "id": "la-362",
+    "meanings": [
+      "Licht",
+      "Auge"
+    ]
+  },
+  {
+    "id": "la-363",
+    "meanings": [
+      "Licht"
+    ]
+  },
+  {
+    "id": "la-364",
+    "meanings": [
+      "mehr"
+    ]
+  },
+  {
+    "id": "la-365",
+    "meanings": [
+      "Lehrer",
+      "Meister"
+    ]
+  },
+  {
+    "id": "la-366",
+    "meanings": [
+      "Beamter",
+      "Amt"
+    ]
+  },
+  {
+    "id": "la-367",
+    "meanings": [
+      "Grösse"
+    ]
+  },
+  {
+    "id": "la-368",
+    "meanings": [
+      "gross"
+    ]
+  },
+  {
+    "id": "la-369",
+    "meanings": [
+      "größer"
+    ]
+  },
+  {
+    "id": "la-370",
+    "meanings": [
+      "schlecht",
+      "böse"
+    ]
+  },
+  {
+    "id": "la-371",
+    "meanings": [
+      "anvertrauen",
+      "übertragen"
+    ]
+  },
+  {
+    "id": "la-372",
+    "meanings": [
+      "bleiben",
+      "erwarten"
+    ]
+  },
+  {
+    "id": "la-373",
+    "meanings": [
+      "Hand",
+      "Schar"
+    ]
+  },
+  {
+    "id": "la-374",
+    "meanings": [
+      "Meer"
+    ]
+  },
+  {
+    "id": "la-375",
+    "meanings": [
+      "Ehemann"
+    ]
+  },
+  {
+    "id": "la-376",
+    "meanings": [
+      "Mutter"
+    ]
+  },
+  {
+    "id": "la-377",
+    "meanings": [
+      "am meisten",
+      "besonders"
+    ]
+  },
+  {
+    "id": "la-378",
+    "meanings": [
+      "der grösste"
+    ]
+  },
+  {
+    "id": "la-379",
+    "meanings": [
+      "der mittlere",
+      "mitten in"
+    ]
+  },
+  {
+    "id": "la-380",
+    "meanings": [
+      "Gedächtnis",
+      "Erinnerung"
+    ]
+  },
+  {
+    "id": "la-381",
+    "meanings": [
+      "Geist",
+      "Sinn",
+      "Verstand"
+    ]
+  },
+  {
+    "id": "la-382",
+    "meanings": [
+      "Monat"
+    ]
+  },
+  {
+    "id": "la-383",
+    "meanings": [
+      "Handel"
+    ]
+  },
+  {
+    "id": "la-384",
+    "meanings": [
+      "Furcht",
+      "Angst"
+    ]
+  },
+  {
+    "id": "la-385",
+    "meanings": [
+      "mein"
+    ]
+  },
+  {
+    "id": "la-386",
+    "meanings": [
+      "Soldat"
+    ]
+  },
+  {
+    "id": "la-387",
+    "meanings": [
+      "tausend"
+    ]
+  },
+  {
+    "id": "la-388",
+    "meanings": [
+      "am wenigsten",
+      "keineswegs"
+    ]
+  },
+  {
+    "id": "la-389",
+    "meanings": [
+      "kleiner"
+    ]
+  },
+  {
+    "id": "la-390",
+    "meanings": [
+      "arm",
+      "elend"
+    ]
+  },
+  {
+    "id": "la-391",
+    "meanings": [
+      "schicken",
+      "gehen lassen"
+    ]
+  },
+  {
+    "id": "la-392",
+    "meanings": [
+      "Art",
+      "Weise",
+      "Mass"
+    ]
+  },
+  {
+    "id": "la-393",
+    "meanings": [
+      "Stadtmauern"
+    ]
+  },
+  {
+    "id": "la-394",
+    "meanings": [
+      "weich",
+      "angenehm"
+    ]
+  },
+  {
+    "id": "la-395",
+    "meanings": [
+      "ermahnen",
+      "warnen"
+    ]
+  },
+  {
+    "id": "la-396",
+    "meanings": [
+      "Berg"
+    ]
+  },
+  {
+    "id": "la-397",
+    "meanings": [
+      "Tod"
+    ]
+  },
+  {
+    "id": "la-398",
+    "meanings": [
+      "Sitte",
+      "Brauch"
+    ]
+  },
+  {
+    "id": "la-399",
+    "meanings": [
+      "bewegen"
+    ]
+  },
+  {
+    "id": "la-400",
+    "meanings": [
+      "bald"
+    ]
+  },
+  {
+    "id": "la-401",
+    "meanings": [
+      "Menge",
+      "Vielzahl"
+    ]
+  },
+  {
+    "id": "la-402",
+    "meanings": [
+      "viel"
+    ]
+  },
+  {
+    "id": "la-403",
+    "meanings": [
+      "Amt",
+      "Geschenk",
+      "Aufgabe"
+    ]
+  },
+  {
+    "id": "la-404",
+    "meanings": [
+      "Mauer"
+    ]
+  },
+  {
+    "id": "la-405",
+    "meanings": [
+      "denn",
+      "nämlich"
+    ]
+  },
+  {
+    "id": "la-406",
+    "meanings": [
+      "erzählen"
+    ]
+  },
+  {
+    "id": "la-407",
+    "meanings": [
+      "geboren werden"
+    ]
+  },
+  {
+    "id": "la-408",
+    "meanings": [
+      "Volk",
+      "Stamm"
+    ]
+  },
+  {
+    "id": "la-409",
+    "meanings": [
+      "Natur",
+      "Wesen"
+    ]
+  },
+  {
+    "id": "la-410",
+    "meanings": [
+      "Schiff"
+    ]
+  },
+  {
+    "id": "la-411",
+    "meanings": [
+      "dass nicht",
+      "damit nicht"
+    ]
+  },
+  {
+    "id": "la-412",
+    "meanings": [
+      "und nicht",
+      "auch nicht"
+    ]
+  },
+  {
+    "id": "la-413",
+    "meanings": [
+      "notwendig"
+    ]
+  },
+  {
+    "id": "la-414",
+    "meanings": [
+      "leugnen",
+      "verweigern"
+    ]
+  },
+  {
+    "id": "la-415",
+    "meanings": [
+      "Geschäft",
+      "Aufgabe"
+    ]
+  },
+  {
+    "id": "la-416",
+    "meanings": [
+      "niemand"
+    ]
+  },
+  {
+    "id": "la-417",
+    "meanings": [
+      "und nicht",
+      "auch nicht"
+    ]
+  },
+  {
+    "id": "la-418",
+    "meanings": [
+      "ich weiss nicht"
+    ]
+  },
+  {
+    "id": "la-419",
+    "meanings": [
+      "nichts"
+    ]
+  },
+  {
+    "id": "la-420",
+    "meanings": [
+      "wenn nicht",
+      "ausser"
+    ]
+  },
+  {
+    "id": "la-421",
+    "meanings": [
+      "adelig",
+      "vornehm"
+    ]
+  },
+  {
+    "id": "la-422",
+    "meanings": [
+      "schaden"
+    ]
+  },
+  {
+    "id": "la-423",
+    "meanings": [
+      "nachts"
+    ]
+  },
+  {
+    "id": "la-424",
+    "meanings": [
+      "nicht wollen"
+    ]
+  },
+  {
+    "id": "la-425",
+    "meanings": [
+      "Name"
+    ]
+  },
+  {
+    "id": "la-426",
+    "meanings": [
+      "nicht"
+    ]
+  },
+  {
+    "id": "la-427",
+    "meanings": [
+      "unser"
+    ]
+  },
+  {
+    "id": "la-428",
+    "meanings": [
+      "bekannt"
+    ]
+  },
+  {
+    "id": "la-429",
+    "meanings": [
+      "neu"
+    ]
+  },
+  {
+    "id": "la-430",
+    "meanings": [
+      "Nacht"
+    ]
+  },
+  {
+    "id": "la-431",
+    "meanings": [
+      "kein"
+    ]
+  },
+  {
+    "id": "la-432",
+    "meanings": [
+      "etwa? (Fragepartikel)"
+    ]
+  },
+  {
+    "id": "la-433",
+    "meanings": [
+      "Zahl",
+      "Anzahl"
+    ]
+  },
+  {
+    "id": "la-434",
+    "meanings": [
+      "niemals"
+    ]
+  },
+  {
+    "id": "la-435",
+    "meanings": [
+      "nun",
+      "jetzt"
+    ]
+  },
+  {
+    "id": "la-436",
+    "meanings": [
+      "melden",
+      "ankündigen"
+    ]
+  },
+  {
+    "id": "la-437",
+    "meanings": [
+      "Bote",
+      "Nachricht"
+    ]
+  },
+  {
+    "id": "la-438",
+    "meanings": [
+      "wegen"
+    ]
+  },
+  {
+    "id": "la-439",
+    "meanings": [
+      "Geisel"
+    ]
+  },
+  {
+    "id": "la-440",
+    "meanings": [
+      "töten",
+      "niederschlagen"
+    ]
+  },
+  {
+    "id": "la-441",
+    "meanings": [
+      "besetzen",
+      "einnehmen"
+    ]
+  },
+  {
+    "id": "la-442",
+    "meanings": [
+      "Auge"
+    ]
+  },
+  {
+    "id": "la-443",
+    "meanings": [
+      "Dienst",
+      "Pflicht"
+    ]
+  },
+  {
+    "id": "la-444",
+    "meanings": [
+      "jeder",
+      "ganz",
+      "alle"
+    ]
+  },
+  {
+    "id": "la-445",
+    "meanings": [
+      "Last"
+    ]
+  },
+  {
+    "id": "la-446",
+    "meanings": [
+      "Mühe",
+      "Arbeit",
+      "Hilfe"
+    ]
+  },
+  {
+    "id": "la-447",
+    "meanings": [
+      "es gehört sich",
+      "man muss"
+    ]
+  },
+  {
+    "id": "la-448",
+    "meanings": [
+      "Stadt"
+    ]
+  },
+  {
+    "id": "la-449",
+    "meanings": [
+      "unterdrücken",
+      "bedrängen"
+    ]
+  },
+  {
+    "id": "la-450",
+    "meanings": [
+      "angreifen",
+      "belagern"
+    ]
+  },
+  {
+    "id": "la-451",
+    "meanings": [
+      "Kraft",
+      "Hilfe",
+      "Reichtum"
+    ]
+  },
+  {
+    "id": "la-452",
+    "meanings": [
+      "Werk",
+      "Arbeit"
+    ]
+  },
+  {
+    "id": "la-453",
+    "meanings": [
+      "bitten",
+      "beten"
+    ]
+  },
+  {
+    "id": "la-454",
+    "meanings": [
+      "Rede"
+    ]
+  },
+  {
+    "id": "la-455",
+    "meanings": [
+      "Ordnung",
+      "Reihe"
+    ]
+  },
+  {
+    "id": "la-456",
+    "meanings": [
+      "aufgehen",
+      "entstehen"
+    ]
+  },
+  {
+    "id": "la-457",
+    "meanings": [
+      "schmücken",
+      "ausstatten"
+    ]
+  },
+  {
+    "id": "la-458",
+    "meanings": [
+      "Mund",
+      "Gesicht"
+    ]
+  },
+  {
+    "id": "la-459",
+    "meanings": [
+      "zeigen",
+      "darlegen"
+    ]
+  },
+  {
+    "id": "la-460",
+    "meanings": [
+      "Freizeit",
+      "Ruhe"
+    ]
+  },
+  {
+    "id": "la-461",
+    "meanings": [
+      "fast",
+      "beinahe"
+    ]
+  },
+  {
+    "id": "la-462",
+    "meanings": [
+      "vorbereiten",
+      "erwerben"
+    ]
+  },
+  {
+    "id": "la-463",
+    "meanings": [
+      "bereit"
+    ]
+  },
+  {
+    "id": "la-464",
+    "meanings": [
+      "gehorchen"
+    ]
+  },
+  {
+    "id": "la-465",
+    "meanings": [
+      "Teil",
+      "Seite"
+    ]
+  },
+  {
+    "id": "la-466",
+    "meanings": [
+      "klein"
+    ]
+  },
+  {
+    "id": "la-467",
+    "meanings": [
+      "Schritt"
+    ]
+  },
+  {
+    "id": "la-468",
+    "meanings": [
+      "Vater"
+    ]
+  },
+  {
+    "id": "la-469",
+    "meanings": [
+      "erleiden",
+      "ertragen",
+      "zulassen"
+    ]
+  },
+  {
+    "id": "la-470",
+    "meanings": [
+      "Heimat"
+    ]
+  },
+  {
+    "id": "la-471",
+    "meanings": [
+      "wenige"
+    ]
+  },
+  {
+    "id": "la-472",
+    "meanings": [
+      "ein wenig"
+    ]
+  },
+  {
+    "id": "la-473",
+    "meanings": [
+      "Frieden"
+    ]
+  },
+  {
+    "id": "la-474",
+    "meanings": [
+      "Geld"
+    ]
+  },
+  {
+    "id": "la-475",
+    "meanings": [
+      "treiben",
+      "vertreiben"
+    ]
+  },
+  {
+    "id": "la-476",
+    "meanings": [
+      "durch"
+    ]
+  },
+  {
+    "id": "la-477",
+    "meanings": [
+      "verlieren",
+      "verderben"
+    ]
+  },
+  {
+    "id": "la-478",
+    "meanings": [
+      "vollenden"
+    ]
+  },
+  {
+    "id": "la-479",
+    "meanings": [
+      "Gefahr"
+    ]
+  },
+  {
+    "id": "la-480",
+    "meanings": [
+      "zugrunde gehen",
+      "umkommen"
+    ]
+  },
+  {
+    "id": "la-481",
+    "meanings": [
+      "erlauben",
+      "überlassen"
+    ]
+  },
+  {
+    "id": "la-482",
+    "meanings": [
+      "überzeugen",
+      "überreden"
+    ]
+  },
+  {
+    "id": "la-483",
+    "meanings": [
+      "gelangen",
+      "ankommen"
+    ]
+  },
+  {
+    "id": "la-484",
+    "meanings": [
+      "Fuss"
+    ]
+  },
+  {
+    "id": "la-485",
+    "meanings": [
+      "erstreben",
+      "bitten",
+      "angreifen"
+    ]
+  },
+  {
+    "id": "la-486",
+    "meanings": [
+      "Philosoph"
+    ]
+  },
+  {
+    "id": "la-487",
+    "meanings": [
+      "Frömmigkeit",
+      "Pflichtgefühl"
+    ]
+  },
+  {
+    "id": "la-488",
+    "meanings": [
+      "gefallen"
+    ]
+  },
+  {
+    "id": "la-489",
+    "meanings": [
+      "Volk",
+      "Plejis"
+    ]
+  },
+  {
+    "id": "la-490",
+    "meanings": [
+      "voll"
+    ]
+  },
+  {
+    "id": "la-491",
+    "meanings": [
+      "die meisten"
+    ]
+  },
+  {
+    "id": "la-492",
+    "meanings": [
+      "Strafe"
+    ]
+  },
+  {
+    "id": "la-493",
+    "meanings": [
+      "Dichter"
+    ]
+  },
+  {
+    "id": "la-494",
+    "meanings": [
+      "stellen",
+      "setzen",
+      "legen"
+    ]
+  },
+  {
+    "id": "la-495",
+    "meanings": [
+      "Volk"
+    ]
+  },
+  {
+    "id": "la-496",
+    "meanings": [
+      "Tor",
+      "Tür"
+    ]
+  },
+  {
+    "id": "la-497",
+    "meanings": [
+      "tragen",
+      "bringen"
+    ]
+  },
+  {
+    "id": "la-498",
+    "meanings": [
+      "Hafen"
+    ]
+  },
+  {
+    "id": "la-499",
+    "meanings": [
+      "fordern"
+    ]
+  },
+  {
+    "id": "la-500",
+    "meanings": [
+      "können"
+    ]
+  },
+  {
+    "id": "la-501",
+    "meanings": [
+      "nach",
+      "hinter",
+      "danach"
+    ]
+  },
+  {
+    "id": "la-502",
+    "meanings": [
+      "danach",
+      "hernach",
+      "nachher"
+    ]
+  },
+  {
+    "id": "la-503",
+    "meanings": [
+      "nachfolgend",
+      "zukünftig",
+      "nächstfolgend"
+    ]
+  },
+  {
+    "id": "la-504",
+    "meanings": [
+      "nachdem"
+    ]
+  },
+  {
+    "id": "la-505",
+    "meanings": [
+      "fordern",
+      "verlangen",
+      "beantragen"
+    ]
+  },
+  {
+    "id": "la-506",
+    "meanings": [
+      "mächtig",
+      "fähig",
+      "einflussreich"
+    ]
+  },
+  {
+    "id": "la-507",
+    "meanings": [
+      "Macht",
+      "Kraft",
+      "Einfluss"
+    ]
+  },
+  {
+    "id": "la-508",
+    "meanings": [
+      "Macht",
+      "Gewalt",
+      "Möglichkeit"
+    ]
+  },
+  {
+    "id": "la-509",
+    "meanings": [
+      "lieber",
+      "eher",
+      "vorzugsweise"
+    ]
+  },
+  {
+    "id": "la-510",
+    "meanings": [
+      "vor",
+      "wegen",
+      "im Vergleich zu"
+    ]
+  },
+  {
+    "id": "la-511",
+    "meanings": [
+      "bieten",
+      "gewähren",
+      "darbieten"
+    ]
+  },
+  {
+    "id": "la-512",
+    "meanings": [
+      "steil",
+      "jäh",
+      "übereilt"
+    ]
+  },
+  {
+    "id": "la-513",
+    "meanings": [
+      "Beute",
+      "Raub"
+    ]
+  },
+  {
+    "id": "la-514",
+    "meanings": [
+      "bekannt machen",
+      "preisen",
+      "ankündigen"
+    ]
+  },
+  {
+    "id": "la-515",
+    "meanings": [
+      "Gut",
+      "Grundstück",
+      "Landgut"
+    ]
+  },
+  {
+    "id": "la-516",
+    "meanings": [
+      "vorstehen",
+      "befehligen",
+      "leiten"
+    ]
+  },
+  {
+    "id": "la-517",
+    "meanings": [
+      "Präfekt",
+      "Vorsteher",
+      "Befehlshaber"
+    ]
+  },
+  {
+    "id": "la-518",
+    "meanings": [
+      "Belohnung",
+      "Preis",
+      "Gewinn"
+    ]
+  },
+  {
+    "id": "la-519",
+    "meanings": [
+      "gegenwärtig",
+      "anwesend",
+      "augenblicklich"
+    ]
+  },
+  {
+    "id": "la-520",
+    "meanings": [
+      "Schutzwache",
+      "Besatzung",
+      "Schutz"
+    ]
+  },
+  {
+    "id": "la-521",
+    "meanings": [
+      "hervorragen",
+      "leisten",
+      "liefern",
+      "übertreffen"
+    ]
+  },
+  {
+    "id": "la-522",
+    "meanings": [
+      "außer",
+      "vorbei an",
+      "abgesehen von"
+    ]
+  },
+  {
+    "id": "la-523",
+    "meanings": [
+      "außerdem",
+      "überdies",
+      "ferner"
+    ]
+  },
+  {
+    "id": "la-524",
+    "meanings": [
+      "Prätor",
+      "Richter",
+      "Befehlshaber"
+    ]
+  },
+  {
+    "id": "la-525",
+    "meanings": [
+      "Gebete",
+      "Bitten",
+      "Flehen"
+    ]
+  },
+  {
+    "id": "la-526",
+    "meanings": [
+      "ergreifen",
+      "fassen",
+      "packen"
+    ]
+  },
+  {
+    "id": "la-527",
+    "meanings": [
+      "drücken",
+      "pressen",
+      "drängen"
+    ]
+  },
+  {
+    "id": "la-528",
+    "meanings": [
+      "Preis",
+      "Wert",
+      "Lohn"
+    ]
+  },
+  {
+    "id": "la-529",
+    "meanings": [
+      "am Vortage",
+      "den Tag zuvor"
+    ]
+  },
+  {
+    "id": "la-530",
+    "meanings": [
+      "zuerst",
+      "zunächst",
+      "erstmals"
+    ]
+  },
+  {
+    "id": "la-531",
+    "meanings": [
+      "erster",
+      "vorderster"
+    ]
+  },
+  {
+    "id": "la-532",
+    "meanings": [
+      "Fürst",
+      "Anführer",
+      "Erster",
+      "Princeps"
+    ]
+  },
+  {
+    "id": "la-533",
+    "meanings": [
+      "früher",
+      "vormalig",
+      "vorderer"
+    ]
+  },
+  {
+    "id": "la-534",
+    "meanings": [
+      "früher",
+      "zuvor",
+      "eher"
+    ]
+  },
+  {
+    "id": "la-535",
+    "meanings": [
+      "privat",
+      "nicht öffentlich",
+      "bürgerlich"
+    ]
+  },
+  {
+    "id": "la-536",
+    "meanings": [
+      "für",
+      "zugunsten von",
+      "anstatt",
+      "vor"
+    ]
+  },
+  {
+    "id": "la-537",
+    "meanings": [
+      "billigen",
+      "beweisen",
+      "prüfen",
+      "gutheißen"
+    ]
+  },
+  {
+    "id": "la-538",
+    "meanings": [
+      "vorrücken",
+      "fortschreiten",
+      "gelingen"
+    ]
+  },
+  {
+    "id": "la-539",
+    "meanings": [
+      "fern",
+      "weit weg",
+      "in der Ferne"
+    ]
+  },
+  {
+    "id": "la-540",
+    "meanings": [
+      "führen",
+      "vorführen",
+      "hervorführen",
+      "verlängern"
+    ]
+  },
+  {
+    "id": "la-541",
+    "meanings": [
+      "Schlacht",
+      "Gefecht",
+      "Kampf"
+    ]
+  },
+  {
+    "id": "la-542",
+    "meanings": [
+      "tatsächlich",
+      "sicher",
+      "gewiss",
+      "in der Tat"
+    ]
+  },
+  {
+    "id": "la-543",
+    "meanings": [
+      "vortragen",
+      "vorbringen",
+      "vorlegen",
+      "bekanntmachen"
+    ]
+  },
+  {
+    "id": "la-544",
+    "meanings": [
+      "aufbrechen",
+      "abreisen",
+      "ausgehen",
+      "starten"
+    ]
+  },
+  {
+    "id": "la-545",
+    "meanings": [
+      "verhindern",
+      "verbieten",
+      "hindern",
+      "abhalten"
+    ]
+  },
+  {
+    "id": "la-546",
+    "meanings": [
+      "werfen",
+      "hinwerfen",
+      "vorwerfen"
+    ]
+  },
+  {
+    "id": "la-547",
+    "meanings": [
+      "nahe",
+      "beinahe",
+      "fast"
+    ]
+  },
+  {
+    "id": "la-548",
+    "meanings": [
+      "eilen",
+      "sich beeilen",
+      "rasch handeln"
+    ]
+  },
+  {
+    "id": "la-549",
+    "meanings": [
+      "darlegen",
+      "vorschlagen",
+      "bekannt machen"
+    ]
+  },
+  {
+    "id": "la-550",
+    "meanings": [
+      "eigen",
+      "charakteristisch",
+      "typisch",
+      "besonders"
+    ]
+  },
+  {
+    "id": "la-551",
+    "meanings": [
+      "wegen",
+      "um ... willen",
+      "weil"
+    ]
+  },
+  {
+    "id": "la-552",
+    "meanings": [
+      "deshalb",
+      "deswegen",
+      "aus diesem Grund"
+    ]
+  },
+  {
+    "id": "la-553",
+    "meanings": [
+      "vorausblicken",
+      "Aussicht haben",
+      "sorgen für"
+    ]
+  },
+  {
+    "id": "la-554",
+    "meanings": [
+      "sofort",
+      "gleich",
+      "sogleich",
+      "unverzüglich"
+    ]
+  },
+  {
+    "id": "la-555",
+    "meanings": [
+      "Provinz",
+      "Amtsbereich",
+      "Aufgabengebiet"
+    ]
+  },
+  {
+    "id": "la-556",
+    "meanings": [
+      "nächster",
+      "benachbart",
+      "nächstgelegen"
+    ]
+  },
+  {
+    "id": "la-557",
+    "meanings": [
+      "klug",
+      "erfahren",
+      "verständig",
+      "umsichtig"
+    ]
+  },
+  {
+    "id": "la-558",
+    "meanings": [
+      "öffentlich",
+      "staatlich",
+      "das Volk betreffend"
+    ]
+  },
+  {
+    "id": "la-559",
+    "meanings": [
+      "Scham",
+      "Schamgefühl",
+      "Anstand",
+      "Sittsamkeit"
+    ]
+  },
+  {
+    "id": "la-560",
+    "meanings": [
+      "Mädchen"
+    ]
+  },
+  {
+    "id": "la-561",
+    "meanings": [
+      "Knabe",
+      "Kind",
+      "Junge"
+    ]
+  },
+  {
+    "id": "la-562",
+    "meanings": [
+      "Kampf",
+      "Gefecht",
+      "Schlecht"
+    ]
+  },
+  {
+    "id": "la-563",
+    "meanings": [
+      "kämpfen",
+      "streiten",
+      "fechten"
+    ]
+  },
+  {
+    "id": "la-564",
+    "meanings": [
+      "schön",
+      "hübsch",
+      "ansehnlich"
+    ]
+  },
+  {
+    "id": "la-565",
+    "meanings": [
+      "schlagen",
+      "stoßen",
+      "antreiben",
+      "beunruhigen"
+    ]
+  },
+  {
+    "id": "la-566",
+    "meanings": [
+      "denken",
+      "glauben",
+      "meinen",
+      "schätzen"
+    ]
+  },
+  {
+    "id": "la-567",
+    "meanings": [
+      "wo",
+      "durch welchen Weg",
+      "wie weit"
+    ]
+  },
+  {
+    "id": "la-568",
+    "meanings": [
+      "vierzig"
+    ]
+  },
+  {
+    "id": "la-569",
+    "meanings": [
+      "Vierfüßler",
+      "vierläufiges Tier"
+    ]
+  },
+  {
+    "id": "la-570",
+    "meanings": [
+      "suchen",
+      "fragen",
+      "untersuchen"
+    ]
+  },
+  {
+    "id": "la-571",
+    "meanings": [
+      "Frage",
+      "Untersuchung",
+      "Verhör"
+    ]
+  },
+  {
+    "id": "la-572",
+    "meanings": [
+      "Quästor (Finanzbeamter)"
+    ]
+  },
+  {
+    "id": "la-573",
+    "meanings": [
+      "wie beschaffen",
+      "von welcher Art",
+      "wie"
+    ]
+  },
+  {
+    "id": "la-574",
+    "meanings": [
+      "wie",
+      "als",
+      "so ... wie"
+    ]
+  },
+  {
+    "id": "la-575",
+    "meanings": [
+      "obwohl",
+      "wenngleich",
+      "obgleich"
+    ]
+  },
+  {
+    "id": "la-576",
+    "meanings": [
+      "obwohl",
+      "wie sehr auch immer",
+      "wenn auch noch so"
+    ]
+  },
+  {
+    "id": "la-577",
+    "meanings": [
+      "wann",
+      "wenn",
+      "da",
+      "weil"
+    ]
+  },
+  {
+    "id": "la-578",
+    "meanings": [
+      "wie groß",
+      "wie viel",
+      "wie bedeutend"
+    ]
+  },
+  {
+    "id": "la-579",
+    "meanings": [
+      "warum",
+      "weshalb",
+      "daher",
+      "deshalb"
+    ]
+  },
+  {
+    "id": "la-580",
+    "meanings": [
+      "vierter"
+    ]
+  },
+  {
+    "id": "la-581",
+    "meanings": [
+      "gleichsam",
+      "wie",
+      "als ob",
+      "sozusagen"
+    ]
+  },
+  {
+    "id": "la-582",
+    "meanings": [
+      "vier"
+    ]
+  },
+  {
+    "id": "la-583",
+    "meanings": [
+      "und (Anhängepartikel)",
+      "und auch"
+    ]
+  },
+  {
+    "id": "la-584",
+    "meanings": [
+      "wie",
+      "auf welche Weise",
+      "in derselben Weise wie"
+    ]
+  },
+  {
+    "id": "la-585",
+    "meanings": [
+      "klagen",
+      "sich beklagen",
+      "jammern"
+    ]
+  },
+  {
+    "id": "la-586",
+    "meanings": [
+      "welcher",
+      "der",
+      "wer"
+    ]
+  },
+  {
+    "id": "la-587",
+    "meanings": [
+      "weil",
+      "da"
+    ]
+  },
+  {
+    "id": "la-588",
+    "meanings": [
+      "wer auch immer",
+      "welcher auch immer"
+    ]
+  },
+  {
+    "id": "la-589",
+    "meanings": [
+      "was",
+      "was auch"
+    ]
+  },
+  {
+    "id": "la-590",
+    "meanings": [
+      "ein gewisser",
+      "jemand",
+      "irgendein"
+    ]
+  },
+  {
+    "id": "la-591",
+    "meanings": [
+      "zwar",
+      "freilich",
+      "wenigstens",
+      "in der Tat"
+    ]
+  },
+  {
+    "id": "la-592",
+    "meanings": [
+      "Ruhe",
+      "Rast",
+      "Stille",
+      "Schlaf"
+    ]
+  },
+  {
+    "id": "la-593",
+    "meanings": [
+      "ruhen",
+      "sich ausruhen",
+      "ruhig sein"
+    ]
+  },
+  {
+    "id": "la-594",
+    "meanings": [
+      "dass nicht",
+      "ja sogar",
+      "vielmehr",
+      "nein sogar"
+    ]
+  },
+  {
+    "id": "la-595",
+    "meanings": [
+      "fünfhundert"
+    ]
+  },
+  {
+    "id": "la-596",
+    "meanings": [
+      "fünf"
+    ]
+  },
+  {
+    "id": "la-597",
+    "meanings": [
+      "fünfter"
+    ]
+  },
+  {
+    "id": "la-598",
+    "meanings": [
+      "wer",
+      "was",
+      "irgendjemand",
+      "irgendetwas"
+    ]
+  },
+  {
+    "id": "la-599",
+    "meanings": [
+      "irgendjemand",
+      "irgendetwas (nach Verneinung)"
+    ]
+  },
+  {
+    "id": "la-600",
+    "meanings": [
+      "jeder einzelne",
+      "jeder",
+      "ein jeder"
+    ]
+  },
+  {
+    "id": "la-601",
+    "meanings": [
+      "wer auch immer",
+      "was auch immer"
+    ]
+  },
+  {
+    "id": "la-602",
+    "meanings": [
+      "wohin",
+      "wozu",
+      "woraufhin"
+    ]
+  },
+  {
+    "id": "la-603",
+    "meanings": [
+      "weil",
+      "dass",
+      "was",
+      "das Faktum dass"
+    ]
+  },
+  {
+    "id": "la-604",
+    "meanings": [
+      "dass nicht",
+      "damit nicht",
+      "um zu verhindern dass"
+    ]
+  },
+  {
+    "id": "la-605",
+    "meanings": [
+      "wie",
+      "auf welche Weise"
+    ]
+  },
+  {
+    "id": "la-606",
+    "meanings": [
+      "weil",
+      "da",
+      "nachdem"
+    ]
+  },
+  {
+    "id": "la-607",
+    "meanings": [
+      "auch",
+      "ebenfalls",
+      "sogar"
+    ]
+  },
+  {
+    "id": "la-608",
+    "meanings": [
+      "wie viele",
+      "so viele"
+    ]
+  },
+  {
+    "id": "la-609",
+    "meanings": [
+      "täglich",
+      "jeden Tag"
+    ]
+  },
+  {
+    "id": "la-610",
+    "meanings": [
+      "wie oft",
+      "sooft",
+      "wie viele Male"
+    ]
+  },
+  {
+    "id": "la-611",
+    "meanings": [
+      "Wurzel",
+      "Basis",
+      "Fuß"
+    ]
+  },
+  {
+    "id": "la-612",
+    "meanings": [
+      "Ast",
+      "Zweig"
+    ]
+  },
+  {
+    "id": "la-613",
+    "meanings": [
+      "reißen",
+      "rauben",
+      "entreißen",
+      "schnell tragen"
+    ]
+  },
+  {
+    "id": "la-614",
+    "meanings": [
+      "selten",
+      "dünn",
+      "weitmaschig",
+      "weit auseinander"
+    ]
+  },
+  {
+    "id": "la-615",
+    "meanings": [
+      "Vernunft",
+      "Rechnung",
+      "Art und Weise",
+      "Grund"
+    ]
+  },
+  {
+    "id": "la-616",
+    "meanings": [
+      "Floß",
+      "Boot",
+      "Floss"
+    ]
+  },
+  {
+    "id": "la-617",
+    "meanings": [
+      "frisch",
+      "neu",
+      "jung",
+      "kürzlich"
+    ]
+  },
+  {
+    "id": "la-618",
+    "meanings": [
+      "zurücknehmen",
+      "aufnehmen",
+      "empfangen",
+      "zurückgewinnen"
+    ]
+  },
+  {
+    "id": "la-619",
+    "meanings": [
+      "vorlesen",
+      "vortragen",
+      "rezitieren"
+    ]
+  },
+  {
+    "id": "la-620",
+    "meanings": [
+      "gerade",
+      "richtig",
+      "aufrecht",
+      "korrekt"
+    ]
+  },
+  {
+    "id": "la-621",
+    "meanings": [
+      "wiedergewinnen",
+      "sich erholen",
+      "zurückbekommen"
+    ]
+  },
+  {
+    "id": "la-622",
+    "meanings": [
+      "zurückgeben",
+      "zurückerstatten",
+      "liefern"
+    ]
+  },
+  {
+    "id": "la-623",
+    "meanings": [
+      "zurückgehen",
+      "zurückkehren",
+      "heimkehren"
+    ]
+  },
+  {
+    "id": "la-624",
+    "meanings": [
+      "zurückführen",
+      "zurückbringen",
+      "zurückleiten"
+    ]
+  },
+  {
+    "id": "la-625",
+    "meanings": [
+      "zurücktragen",
+      "berichten",
+      "erwähnen",
+      "melden"
+    ]
+  },
+  {
+    "id": "la-626",
+    "meanings": [
+      "wiederherstellen",
+      "reparieren",
+      "erneuern",
+      "sich erholen"
+    ]
+  },
+  {
+    "id": "la-627",
+    "meanings": [
+      "Königin"
+    ]
+  },
+  {
+    "id": "la-628",
+    "meanings": [
+      "Gegend",
+      "Gebiet",
+      "Region",
+      "Landstrich"
+    ]
+  },
+  {
+    "id": "la-629",
+    "meanings": [
+      "königlich",
+      "dem König gehörig"
+    ]
+  },
+  {
+    "id": "la-630",
+    "meanings": [
+      "herrschen",
+      "regieren",
+      "König sein"
+    ]
+  },
+  {
+    "id": "la-631",
+    "meanings": [
+      "Königreich",
+      "Herrschaft",
+      "Reich"
+    ]
+  },
+  {
+    "id": "la-632",
+    "meanings": [
+      "lenken",
+      "regieren",
+      "führen",
+      "leiten"
+    ]
+  },
+  {
+    "id": "la-633",
+    "meanings": [
+      "Religion",
+      "Frömmigkeit",
+      "religiöse Pflicht"
+    ]
+  },
+  {
+    "id": "la-634",
+    "meanings": [
+      "verlassen",
+      "zurücklassen",
+      "aufgeben"
+    ]
+  },
+  {
+    "id": "la-635",
+    "meanings": [
+      "übrig",
+      "restlich",
+      "übriggeblieben"
+    ]
+  },
+  {
+    "id": "la-636",
+    "meanings": [
+      "Heilmittel",
+      "Abhilfe",
+      "Gegenmittel"
+    ]
+  },
+  {
+    "id": "la-637",
+    "meanings": [
+      "Ruder",
+      "Ruderblatt"
+    ]
+  },
+  {
+    "id": "la-638",
+    "meanings": [
+      "erneuern",
+      "wiederherstellen",
+      "wiederholen"
+    ]
+  },
+  {
+    "id": "la-639",
+    "meanings": [
+      "finden",
+      "entdecken",
+      "erfinden",
+      "herausfinden"
+    ]
+  },
+  {
+    "id": "la-640",
+    "meanings": [
+      "wiederholen",
+      "zurückfordern",
+      "zurückkehren zu"
+    ]
+  },
+  {
+    "id": "la-641",
+    "meanings": [
+      "zurücklegen",
+      "ablegen",
+      "aufbewahren",
+      "ersetzen"
+    ]
+  },
+  {
+    "id": "la-642",
+    "meanings": [
+      "Sache",
+      "Ding",
+      "Angelegenheit",
+      "Tatsache"
+    ]
+  },
+  {
+    "id": "la-643",
+    "meanings": [
+      "widerstehen",
+      "Widerstand leisten",
+      "sich widersetzen"
+    ]
+  },
+  {
+    "id": "la-644",
+    "meanings": [
+      "zurückblicken",
+      "beachten",
+      "berücksichtigen",
+      "Rücksicht nehmen"
+    ]
+  },
+  {
+    "id": "la-645",
+    "meanings": [
+      "antworten",
+      "entsprechen",
+      "erwidern"
+    ]
+  },
+  {
+    "id": "la-646",
+    "meanings": [
+      "Staat",
+      "Gemeinwesen",
+      "Republik",
+      "öffentliche Sache"
+    ]
+  },
+  {
+    "id": "la-647",
+    "meanings": [
+      "wiederherstellen",
+      "zurückgeben",
+      "erneuern"
+    ]
+  },
+  {
+    "id": "la-648",
+    "meanings": [
+      "festhalten",
+      "zurückhalten",
+      "behalten",
+      "aufrechterhalten"
+    ]
+  },
+  {
+    "id": "la-649",
+    "meanings": [
+      "Angeklagter",
+      "Schuldner",
+      "Beklagter"
+    ]
+  },
+  {
+    "id": "la-650",
+    "meanings": [
+      "zurückkehren",
+      "umkehren",
+      "sich wenden"
+    ]
+  },
+  {
+    "id": "la-651",
+    "meanings": [
+      "zurückrufen",
+      "widerrufen",
+      "zurückbeordern"
+    ]
+  },
+  {
+    "id": "la-652",
+    "meanings": [
+      "König"
+    ]
+  },
+  {
+    "id": "la-653",
+    "meanings": [
+      "lachen",
+      "lächeln"
+    ]
+  },
+  {
+    "id": "la-654",
+    "meanings": [
+      "Ufer",
+      "Flussufer"
+    ]
+  },
+  {
+    "id": "la-655",
+    "meanings": [
+      "Gelächter",
+      "Lachen"
+    ]
+  },
+  {
+    "id": "la-656",
+    "meanings": [
+      "Ritus",
+      "Brauch",
+      "Zeremonie",
+      "Riten"
+    ]
+  },
+  {
+    "id": "la-657",
+    "meanings": [
+      "Bach",
+      "Kanal",
+      "Rinnsal",
+      "Wassergraben"
+    ]
+  },
+  {
+    "id": "la-658",
+    "meanings": [
+      "stark",
+      "kräftig",
+      "robust",
+      "fest"
+    ]
+  },
+  {
+    "id": "la-659",
+    "meanings": [
+      "bitten",
+      "fragen",
+      "anfragen",
+      "beantragen"
+    ]
+  },
+  {
+    "id": "la-660",
+    "meanings": [
+      "Rad"
+    ]
+  },
+  {
+    "id": "la-661",
+    "meanings": [
+      "rot",
+      "rötlich",
+      "errötend"
+    ]
+  },
+  {
+    "id": "la-662",
+    "meanings": [
+      "roh",
+      "ungelernt",
+      "unerfahren",
+      "unbehauen"
+    ]
+  },
+  {
+    "id": "la-663",
+    "meanings": [
+      "stürmen",
+      "stürzen",
+      "eilen",
+      "zusammenbrechen"
+    ]
+  },
+  {
+    "id": "la-664",
+    "meanings": [
+      "Ruin",
+      "Einsturz",
+      "Untergang",
+      "Verfall"
+    ]
+  },
+  {
+    "id": "la-665",
+    "meanings": [
+      "Gerücht",
+      "Ruf",
+      "Klatsch"
+    ]
+  },
+  {
+    "id": "la-666",
+    "meanings": [
+      "brechen",
+      "zerbrechen",
+      "zerreißen",
+      "sprengen"
+    ]
+  },
+  {
+    "id": "la-667",
+    "meanings": [
+      "wieder",
+      "wiederum",
+      "zurück",
+      "andererseits"
+    ]
+  },
+  {
+    "id": "la-668",
+    "meanings": [
+      "Land",
+      "Landgut",
+      "ländliche Gegend",
+      "das Feld"
+    ]
+  },
+  {
+    "id": "la-669",
+    "meanings": [
+      "heilig",
+      "geweiht",
+      "den Göttern gehörig"
+    ]
+  },
+  {
+    "id": "la-670",
+    "meanings": [
+      "Priester",
+      "Priesterin"
+    ]
+  },
+  {
+    "id": "la-671",
+    "meanings": [
+      "Opfer",
+      "Opferdarbringung",
+      "Opferfeier"
+    ]
+  },
+  {
+    "id": "la-672",
+    "meanings": [
+      "Zeitalter",
+      "Jahrhundert",
+      "Generation",
+      "Weltzeitalter"
+    ]
+  },
+  {
+    "id": "la-673",
+    "meanings": [
+      "oft",
+      "häufig",
+      "immer wieder"
+    ]
+  },
+  {
+    "id": "la-674",
+    "meanings": [
+      "wild",
+      "grausam",
+      "wütend",
+      "rasend"
+    ]
+  },
+  {
+    "id": "la-675",
+    "meanings": [
+      "Pfeil"
+    ]
+  },
+  {
+    "id": "la-676",
+    "meanings": [
+      "Gesundheit",
+      "Heil",
+      "Sicherheit",
+      "Gruß"
+    ]
+  },
+  {
+    "id": "la-677",
+    "meanings": [
+      "grüßen",
+      "begrüßen",
+      "einen Gruß entbieten"
+    ]
+  },
+  {
+    "id": "la-678",
+    "meanings": [
+      "heil",
+      "unverletzt",
+      "wohlbehalten",
+      "gesund"
+    ]
+  },
+  {
+    "id": "la-679",
+    "meanings": [
+      "heilig",
+      "geweiht",
+      "unverletzlich",
+      "ehrwürdig"
+    ]
+  },
+  {
+    "id": "la-680",
+    "meanings": [
+      "Blut"
+    ]
+  },
+  {
+    "id": "la-681",
+    "meanings": [
+      "gesund",
+      "vernünftig",
+      "normal"
+    ]
+  },
+  {
+    "id": "la-682",
+    "meanings": [
+      "schmecken",
+      "weise sein",
+      "Verstand haben"
+    ]
+  },
+  {
+    "id": "la-683",
+    "meanings": [
+      "weise",
+      "klug",
+      "verständig"
+    ]
+  },
+  {
+    "id": "la-684",
+    "meanings": [
+      "Weisheit",
+      "Klugheit",
+      "Verstand"
+    ]
+  },
+  {
+    "id": "la-685",
+    "meanings": [
+      "genug",
+      "ausreichend",
+      "hinlänglich"
+    ]
+  },
+  {
+    "id": "la-686",
+    "meanings": [
+      "Felsen",
+      "Stein",
+      "Felsbrocken"
+    ]
+  },
+  {
+    "id": "la-687",
+    "meanings": [
+      "Verbrechen",
+      "Frevel",
+      "Greueltat"
+    ]
+  },
+  {
+    "id": "la-688",
+    "meanings": [
+      "Wissen",
+      "Kenntnisse",
+      "Wissenschaft",
+      "Fertigkeit"
+    ]
+  },
+  {
+    "id": "la-689",
+    "meanings": [
+      "offensichtlich",
+      "nämlich",
+      "natürlich",
+      "das heißt"
+    ]
+  },
+  {
+    "id": "la-690",
+    "meanings": [
+      "wissen",
+      "kennen",
+      "verstehen"
+    ]
+  },
+  {
+    "id": "la-691",
+    "meanings": [
+      "schreiben"
+    ]
+  },
+  {
+    "id": "la-692",
+    "meanings": [
+      "Schild"
+    ]
+  },
+  {
+    "id": "la-693",
+    "meanings": [
+      "sich (Reflexivpronomen)",
+      "sich selbst"
+    ]
+  },
+  {
+    "id": "la-694",
+    "meanings": [
+      "gemäß",
+      "nach",
+      "entsprechend",
+      "entlang"
+    ]
+  },
+  {
+    "id": "la-695",
+    "meanings": [
+      "zweiter",
+      "günstig",
+      "nachfolgend"
+    ]
+  },
+  {
+    "id": "la-696",
+    "meanings": [
+      "Beil",
+      "Axt"
+    ]
+  },
+  {
+    "id": "la-697",
+    "meanings": [
+      "aber",
+      "jedoch",
+      "doch"
+    ]
+  },
+  {
+    "id": "la-698",
+    "meanings": [
+      "sitzen",
+      "sich setzen"
+    ]
+  },
+  {
+    "id": "la-699",
+    "meanings": [
+      "Sitz",
+      "Wohnsitz",
+      "Heimat",
+      "Aufenthaltsort"
+    ]
+  },
+  {
+    "id": "la-700",
+    "meanings": [
+      "einmal",
+      "ein einziges Mal"
+    ]
+  },
+  {
+    "id": "la-701",
+    "meanings": [
+      "immer",
+      "stets",
+      "immerzu"
+    ]
+  },
+  {
+    "id": "la-702",
+    "meanings": [
+      "Senator"
+    ]
+  },
+  {
+    "id": "la-703",
+    "meanings": [
+      "Senat"
+    ]
+  },
+  {
+    "id": "la-704",
+    "meanings": [
+      "alter Mann",
+      "Greis"
+    ]
+  },
+  {
+    "id": "la-705",
+    "meanings": [
+      "Alter",
+      "Greisenalter",
+      "hohes Alter"
+    ]
+  },
+  {
+    "id": "la-706",
+    "meanings": [
+      "Sinn",
+      "Gefühl",
+      "Wahrnehmung",
+      "Empfindung"
+    ]
+  },
+  {
+    "id": "la-707",
+    "meanings": [
+      "Meinung",
+      "Ansicht",
+      "Urteil",
+      "Satz"
+    ]
+  },
+  {
+    "id": "la-708",
+    "meanings": [
+      "fühlen",
+      "wahrnehmen",
+      "denken",
+      "spüren"
+    ]
+  },
+  {
+    "id": "la-709",
+    "meanings": [
+      "trennen",
+      "absondern",
+      "scheiden",
+      "abgrenzen"
+    ]
+  },
+  {
+    "id": "la-710",
+    "meanings": [
+      "sieben"
+    ]
+  },
+  {
+    "id": "la-711",
+    "meanings": [
+      "Grab",
+      "Grabmal",
+      "Grabstätte"
+    ]
+  },
+  {
+    "id": "la-712",
+    "meanings": [
+      "folgen",
+      "verfolgen",
+      "nachfolgen"
+    ]
+  },
+  {
+    "id": "la-713",
+    "meanings": [
+      "Rede",
+      "Gespräch",
+      "Unterhaltung",
+      "Sprache"
+    ]
+  },
+  {
+    "id": "la-714",
+    "meanings": [
+      "kriechen",
+      "sich schleichen",
+      "sich ausbreiten"
+    ]
+  },
+  {
+    "id": "la-715",
+    "meanings": [
+      "retten",
+      "bewahren",
+      "beobachten",
+      "schützen"
+    ]
+  },
+  {
+    "id": "la-716",
+    "meanings": [
+      "dienen",
+      "Sklave sein",
+      "unterworfen sein"
+    ]
+  },
+  {
+    "id": "la-717",
+    "meanings": [
+      "Sklaverei",
+      "Knechtschaft",
+      "Unfreiheit"
+    ]
+  },
+  {
+    "id": "la-718",
+    "meanings": [
+      "Sklave",
+      "Diener"
+    ]
+  },
+  {
+    "id": "la-719",
+    "meanings": [
+      "oder wenn",
+      "entweder ... oder",
+      "oder ob"
+    ]
+  },
+  {
+    "id": "la-720",
+    "meanings": [
+      "streng",
+      "ernst",
+      "hart",
+      "unnachgiebig"
+    ]
+  },
+  {
+    "id": "la-721",
+    "meanings": [
+      "sechs"
+    ]
+  },
+  {
+    "id": "la-722",
+    "meanings": [
+      "wenn",
+      "falls",
+      "sofern"
+    ]
+  },
+  {
+    "id": "la-723",
+    "meanings": [
+      "so",
+      "auf diese Weise",
+      "auf diese Art"
+    ]
+  },
+  {
+    "id": "la-724",
+    "meanings": [
+      "trocken",
+      "dürr",
+      "durstig"
+    ]
+  },
+  {
+    "id": "la-725",
+    "meanings": [
+      "Stern",
+      "Gestirn",
+      "Sternbild"
+    ]
+  },
+  {
+    "id": "la-726",
+    "meanings": [
+      "Zeichen",
+      "Signal",
+      "Feldzeichen",
+      "Siegel"
+    ]
+  },
+  {
+    "id": "la-727",
+    "meanings": [
+      "Stille",
+      "Schweigen",
+      "Ruhe"
+    ]
+  },
+  {
+    "id": "la-728",
+    "meanings": [
+      "schweigen",
+      "still sein",
+      "ruhig sein"
+    ]
+  },
+  {
+    "id": "la-729",
+    "meanings": [
+      "Wald",
+      "Forst",
+      "Gehölz"
+    ]
+  },
+  {
+    "id": "la-730",
+    "meanings": [
+      "ähnlich",
+      "gleich",
+      "vergleichbar"
+    ]
+  },
+  {
+    "id": "la-731",
+    "meanings": [
+      "gleichzeitig",
+      "zugleich",
+      "zur selben Zeit"
+    ]
+  },
+  {
+    "id": "la-732",
+    "meanings": [
+      "vortäuschen",
+      "heucheln",
+      "nachahmen",
+      "simulieren"
+    ]
+  },
+  {
+    "id": "la-733",
+    "meanings": [
+      "ohne",
+      "frei von"
+    ]
+  },
+  {
+    "id": "la-734",
+    "meanings": [
+      "je einer",
+      "einzeln",
+      "jeden für sich"
+    ]
+  },
+  {
+    "id": "la-735",
+    "meanings": [
+      "lassen",
+      "erlauben",
+      "zulassen",
+      "geschehen lassen"
+    ]
+  },
+  {
+    "id": "la-736",
+    "meanings": [
+      "link",
+      "unheilvoll",
+      "ungünstig",
+      "sinister"
+    ]
+  },
+  {
+    "id": "la-737",
+    "meanings": [
+      "Busen",
+      "Bucht",
+      "Falte",
+      "Gewandfalte"
+    ]
+  },
+  {
+    "id": "la-738",
+    "meanings": [
+      "Durst"
+    ]
+  },
+  {
+    "id": "la-739",
+    "meanings": [
+      "gelegen",
+      "befindlich",
+      "liegend"
+    ]
+  },
+  {
+    "id": "la-740",
+    "meanings": [
+      "oder wenn",
+      "ob ... oder",
+      "sei es ... oder"
+    ]
+  },
+  {
+    "id": "la-741",
+    "meanings": [
+      "Gemeinschaft",
+      "Gesellschaft",
+      "Bündnis",
+      "Partnerschaft"
+    ]
+  },
+  {
+    "id": "la-742",
+    "meanings": [
+      "Bundesgenosse",
+      "Gefährte",
+      "Verbündeter"
+    ]
+  },
+  {
+    "id": "la-743",
+    "meanings": [
+      "Sonne"
+    ]
+  },
+  {
+    "id": "la-744",
+    "meanings": [
+      "gewohnt sein",
+      "pflegen",
+      "es zu tun pflegen"
+    ]
+  },
+  {
+    "id": "la-745",
+    "meanings": [
+      "Einsamkeit",
+      "Verlassenheit",
+      "Wüste",
+      "Öde"
+    ]
+  },
+  {
+    "id": "la-746",
+    "meanings": [
+      "besorgt",
+      "ängstlich",
+      "unruhig",
+      "aufgewühlt"
+    ]
+  },
+  {
+    "id": "la-747",
+    "meanings": [
+      "nur",
+      "allein (Adverb)"
+    ]
+  },
+  {
+    "id": "la-748",
+    "meanings": [
+      "allein",
+      "einzig",
+      "unverheiratet"
+    ]
+  },
+  {
+    "id": "la-749",
+    "meanings": [
+      "lösen",
+      "befreien",
+      "bezahlen",
+      "auflösen"
+    ]
+  },
+  {
+    "id": "la-750",
+    "meanings": [
+      "Traum"
+    ]
+  },
+  {
+    "id": "la-751",
+    "meanings": [
+      "Schlaf"
+    ]
+  },
+  {
+    "id": "la-752",
+    "meanings": [
+      "Lärm",
+      "Geräusch",
+      "Klang",
+      "Dröhnen"
+    ]
+  },
+  {
+    "id": "la-753",
+    "meanings": [
+      "Laut",
+      "Ton",
+      "Klang",
+      "Geräusch"
+    ]
+  },
+  {
+    "id": "la-754",
+    "meanings": [
+      "Schwester"
+    ]
+  },
+  {
+    "id": "la-755",
+    "meanings": [
+      "Los",
+      "Schicksal",
+      "Geschick",
+      "Orakel"
+    ]
+  },
+  {
+    "id": "la-756",
+    "meanings": [
+      "streuen",
+      "verstreuen",
+      "besprenkeln",
+      "ausstreuen"
+    ]
+  },
+  {
+    "id": "la-757",
+    "meanings": [
+      "Raum",
+      "Abstand",
+      "Zeit",
+      "Platz",
+      "Strecke"
+    ]
+  },
+  {
+    "id": "la-758",
+    "meanings": [
+      "Aussehen",
+      "Art",
+      "Gestalt",
+      "Schein",
+      "Form"
+    ]
+  },
+  {
+    "id": "la-759",
+    "meanings": [
+      "schauen",
+      "betrachten",
+      "besichtigen",
+      "blicken auf"
+    ]
+  },
+  {
+    "id": "la-760",
+    "meanings": [
+      "hoffen",
+      "erwarten",
+      "sich erhoffen"
+    ]
+  },
+  {
+    "id": "la-761",
+    "meanings": [
+      "Hoffnung"
+    ]
+  },
+  {
+    "id": "la-762",
+    "meanings": [
+      "Atem",
+      "Geist",
+      "Hauch",
+      "Seele"
+    ]
+  },
+  {
+    "id": "la-763",
+    "meanings": [
+      "glänzen",
+      "leuchten",
+      "strahlen"
+    ]
+  },
+  {
+    "id": "la-764",
+    "meanings": [
+      "Beute",
+      "Waffen eines besiegten Feindes",
+      "Siegestrophäen"
+    ]
+  },
+  {
+    "id": "la-765",
+    "meanings": [
+      "freiwillig",
+      "aus eigenem Willen",
+      "von selbst"
+    ]
+  },
+  {
+    "id": "la-766",
+    "meanings": [
+      "stehen",
+      "aufrecht stehen"
+    ]
+  },
+  {
+    "id": "la-767",
+    "meanings": [
+      "sofort",
+      "gleich",
+      "auf der Stelle",
+      "unverzüglich"
+    ]
+  },
+  {
+    "id": "la-768",
+    "meanings": [
+      "Posten",
+      "Station",
+      "Standort",
+      "Garnison"
+    ]
+  },
+  {
+    "id": "la-769",
+    "meanings": [
+      "aufstellen",
+      "beschließen",
+      "entscheiden",
+      "festsetzen"
+    ]
+  },
+  {
+    "id": "la-770",
+    "meanings": [
+      "Zustand",
+      "Lage",
+      "Stellung",
+      "Status"
+    ]
+  },
+  {
+    "id": "la-771",
+    "meanings": [
+      "Stern",
+      "Gestirn"
+    ]
+  },
+  {
+    "id": "la-772",
+    "meanings": [
+      "ausbreiten",
+      "fällen",
+      "ebnen",
+      "niederwerfen"
+    ]
+  },
+  {
+    "id": "la-773",
+    "meanings": [
+      "Sold",
+      "Tribut",
+      "Militärdienst"
+    ]
+  },
+  {
+    "id": "la-774",
+    "meanings": [
+      "Stamm",
+      "Ursprung",
+      "Geschlecht",
+      "Wurzel"
+    ]
+  },
+  {
+    "id": "la-775",
+    "meanings": [
+      "stehen",
+      "feststehen",
+      "bestehen"
+    ]
+  },
+  {
+    "id": "la-776",
+    "meanings": [
+      "Lärm",
+      "Getöse",
+      "Geräusch",
+      "Poltern"
+    ]
+  },
+  {
+    "id": "la-777",
+    "meanings": [
+      "eifrig sein",
+      "studieren",
+      "sich widmen",
+      "betreiben"
+    ]
+  },
+  {
+    "id": "la-778",
+    "meanings": [
+      "Eifer",
+      "Leidenschaft",
+      "Studium",
+      "Streben"
+    ]
+  },
+  {
+    "id": "la-779",
+    "meanings": [
+      "Dummheit",
+      "Torheit",
+      "Unvernunft"
+    ]
+  },
+  {
+    "id": "la-780",
+    "meanings": [
+      "dumm",
+      "töricht",
+      "albern"
+    ]
+  },
+  {
+    "id": "la-781",
+    "meanings": [
+      "staunen",
+      "erstarrt sein",
+      "betäubt sein",
+      "fassungslos sein"
+    ]
+  },
+  {
+    "id": "la-782",
+    "meanings": [
+      "raten",
+      "überreden",
+      "empfehlen",
+      "ans Herz legen"
+    ]
+  },
+  {
+    "id": "la-783",
+    "meanings": [
+      "unter",
+      "unterhalb",
+      "an den Fuß von"
+    ]
+  },
+  {
+    "id": "la-784",
+    "meanings": [
+      "plötzlich",
+      "unerwartet",
+      "urplötzlich"
+    ]
+  },
+  {
+    "id": "la-785",
+    "meanings": [
+      "plötzlich",
+      "unverhofft",
+      "unerwartet"
+    ]
+  },
+  {
+    "id": "la-786",
+    "meanings": [
+      "Hilfe",
+      "Reserve",
+      "Unterstützung",
+      "Verstärkung"
+    ]
+  },
+  {
+    "id": "la-787",
+    "meanings": [
+      "folgen",
+      "nachfolgen",
+      "gelingen",
+      "treten unter"
+    ]
+  },
+  {
+    "id": "la-788",
+    "meanings": [
+      "seiner selbst",
+      "ihrer selbst",
+      "sich (Reflexivpronomen)"
+    ]
+  },
+  {
+    "id": "la-789",
+    "meanings": [
+      "nehmen",
+      "sich nehmen",
+      "aufnehmen",
+      "verbrauchen"
+    ]
+  },
+  {
+    "id": "la-790",
+    "meanings": [
+      "Summe",
+      "Gesamtheit",
+      "Hauptpunkt",
+      "Gipfel"
+    ]
+  },
+  {
+    "id": "la-791",
+    "meanings": [
+      "höchster",
+      "größter",
+      "oberster",
+      "äußerster"
+    ]
+  },
+  {
+    "id": "la-792",
+    "meanings": [
+      "über",
+      "oberhalb",
+      "jenseits",
+      "darüber hinaus"
+    ]
+  },
+  {
+    "id": "la-793",
+    "meanings": [
+      "überwinden",
+      "besiegen",
+      "übertreffen",
+      "überstehen"
+    ]
+  },
+  {
+    "id": "la-794",
+    "meanings": [
+      "stolz",
+      "hochmütig",
+      "arrogant",
+      "überheblich"
+    ]
+  },
+  {
+    "id": "la-795",
+    "meanings": [
+      "die Götter oben",
+      "die Oberen",
+      "die Himmlischen"
+    ]
+  },
+  {
+    "id": "la-796",
+    "meanings": [
+      "obere",
+      "höhere",
+      "auf der Oberseite"
+    ]
+  },
+  {
+    "id": "la-797",
+    "meanings": [
+      "Strafe",
+      "Hinrichtung",
+      "Folter",
+      "Bestrafung"
+    ]
+  },
+  {
+    "id": "la-798",
+    "meanings": [
+      "oben",
+      "oberhalb",
+      "zuvor",
+      "darüber"
+    ]
+  },
+  {
+    "id": "la-799",
+    "meanings": [
+      "aufstehen",
+      "sich erheben",
+      "emporsteigen"
+    ]
+  },
+  {
+    "id": "la-800",
+    "meanings": [
+      "unternehmen",
+      "auf sich nehmen",
+      "empfangen",
+      "stützen"
+    ]
+  },
+  {
+    "id": "la-801",
+    "meanings": [
+      "aufschauen",
+      "bewundern",
+      "verdächtigen",
+      "argwöhnen"
+    ]
+  },
+  {
+    "id": "la-802",
+    "meanings": [
+      "Verdacht",
+      "Argwohn",
+      "Misstrauen"
+    ]
+  },
+  {
+    "id": "la-803",
+    "meanings": [
+      "stützen",
+      "aushalten",
+      "durchhalten",
+      "ertragen",
+      "standhalten"
+    ]
+  },
+  {
+    "id": "la-804",
+    "meanings": [
+      "sein",
+      "ihr",
+      "sein eigener",
+      "der eigene"
+    ]
+  },
+  {
+    "id": "la-805",
+    "meanings": [
+      "Werkstatt",
+      "Laden",
+      "Wirtshaus",
+      "Bude"
+    ]
+  },
+  {
+    "id": "la-806",
+    "meanings": [
+      "Brett",
+      "Tafel",
+      "Schreibtafel",
+      "Gemälde"
+    ]
+  },
+  {
+    "id": "la-807",
+    "meanings": [
+      "schweigen",
+      "still sein",
+      "nichts sagen"
+    ]
+  },
+  {
+    "id": "la-808",
+    "meanings": [
+      "still",
+      "schweigend",
+      "wortkarg",
+      "unausgesprochen"
+    ]
+  },
+  {
+    "id": "la-809",
+    "meanings": [
+      "solch",
+      "derartig",
+      "von der Art"
+    ]
+  },
+  {
+    "id": "la-810",
+    "meanings": [
+      "so",
+      "so sehr",
+      "in dem Maße"
+    ]
+  },
+  {
+    "id": "la-811",
+    "meanings": [
+      "jedoch",
+      "dennoch",
+      "trotzdem",
+      "gleichwohl"
+    ]
+  },
+  {
+    "id": "la-812",
+    "meanings": [
+      "wie",
+      "gleichsam",
+      "als ob",
+      "sozusagen"
+    ]
+  },
+  {
+    "id": "la-813",
+    "meanings": [
+      "endlich",
+      "schließlich",
+      "zuletzt",
+      "am Ende"
+    ]
+  },
+  {
+    "id": "la-814",
+    "meanings": [
+      "berühren",
+      "anrühren",
+      "treffen",
+      "erfassen"
+    ]
+  },
+  {
+    "id": "la-815",
+    "meanings": [
+      "nur",
+      "lediglich",
+      "so viel"
+    ]
+  },
+  {
+    "id": "la-816",
+    "meanings": [
+      "so groß",
+      "so bedeutend",
+      "so viel",
+      "derartig"
+    ]
+  },
+  {
+    "id": "la-817",
+    "meanings": [
+      "langsam",
+      "träge",
+      "spät",
+      "zögernd"
+    ]
+  },
+  {
+    "id": "la-818",
+    "meanings": [
+      "Dach",
+      "Haus",
+      "Decke",
+      "Obdach"
+    ]
+  },
+  {
+    "id": "la-819",
+    "meanings": [
+      "bedecken",
+      "schützen",
+      "verbergen",
+      "verdecken"
+    ]
+  },
+  {
+    "id": "la-820",
+    "meanings": [
+      "Waffe",
+      "Wurfspieß",
+      "Geschoss",
+      "Wurf"
+    ]
+  },
+  {
+    "id": "la-821",
+    "meanings": [
+      "leichtsinnig",
+      "ohne Grund",
+      "blindlings",
+      "ziellos"
+    ]
+  },
+  {
+    "id": "la-822",
+    "meanings": [
+      "mäßigen",
+      "zügeln",
+      "regeln",
+      "in Schranken halten"
+    ]
+  },
+  {
+    "id": "la-823",
+    "meanings": [
+      "Sturm",
+      "Unwetter",
+      "Jahreszeit",
+      "Unwetter"
+    ]
+  },
+  {
+    "id": "la-824",
+    "meanings": [
+      "Tempel",
+      "Heiligtum",
+      "Kultstätte"
+    ]
+  },
+  {
+    "id": "la-825",
+    "meanings": [
+      "Zeit",
+      "Zeitraum",
+      "Jahreszeit",
+      "Gelegenheit"
+    ]
+  },
+  {
+    "id": "la-826",
+    "meanings": [
+      "ausstrecken",
+      "sich erstrecken",
+      "streben",
+      "zielen"
+    ]
+  },
+  {
+    "id": "la-827",
+    "meanings": [
+      "Dunkelheit",
+      "Finsternis",
+      "Schatten",
+      "Nacht"
+    ]
+  },
+  {
+    "id": "la-828",
+    "meanings": [
+      "halten",
+      "festhalten",
+      "behalten",
+      "einnehmen"
+    ]
+  },
+  {
+    "id": "la-829",
+    "meanings": [
+      "versuchen",
+      "prüfen",
+      "angreifen",
+      "erproben"
+    ]
+  },
+  {
+    "id": "la-830",
+    "meanings": [
+      "dünn",
+      "schlank",
+      "gering",
+      "mager",
+      "fein"
+    ]
+  },
+  {
+    "id": "la-831",
+    "meanings": [
+      "dreimal"
+    ]
+  },
+  {
+    "id": "la-832",
+    "meanings": [
+      "Rücken",
+      "Hinterseite",
+      "Rückseite"
+    ]
+  },
+  {
+    "id": "la-833",
+    "meanings": [
+      "Erde",
+      "Land",
+      "Boden",
+      "Erdreich"
+    ]
+  },
+  {
+    "id": "la-834",
+    "meanings": [
+      "erschrecken",
+      "ängstigen",
+      "in Schrecken versetzen"
+    ]
+  },
+  {
+    "id": "la-835",
+    "meanings": [
+      "schrecklich",
+      "furchtbar",
+      "entsetzlich"
+    ]
+  },
+  {
+    "id": "la-836",
+    "meanings": [
+      "Schrecken",
+      "Entsetzen",
+      "Terror",
+      "Grauen"
+    ]
+  },
+  {
+    "id": "la-837",
+    "meanings": [
+      "dritter"
+    ]
+  },
+  {
+    "id": "la-838",
+    "meanings": [
+      "Zeugnis",
+      "Beweis",
+      "Aussage",
+      "Zeugenaussage"
+    ]
+  },
+  {
+    "id": "la-839",
+    "meanings": [
+      "Zeuge",
+      "Zeugin"
+    ]
+  },
+  {
+    "id": "la-840",
+    "meanings": [
+      "Theater",
+      "Schauplatz",
+      "Zuschauerraum"
+    ]
+  },
+  {
+    "id": "la-841",
+    "meanings": [
+      "fürchten",
+      "sich fürchten",
+      "Angst haben vor"
+    ]
+  },
+  {
+    "id": "la-842",
+    "meanings": [
+      "furchtsam",
+      "ängstlich",
+      "feige",
+      "schüchtern"
+    ]
+  },
+  {
+    "id": "la-843",
+    "meanings": [
+      "Furcht",
+      "Angst",
+      "Schrecken",
+      "Grauen"
+    ]
+  },
+  {
+    "id": "la-844",
+    "meanings": [
+      "Toga",
+      "römisches Bürgergewand"
+    ]
+  },
+  {
+    "id": "la-845",
+    "meanings": [
+      "heben",
+      "aufheben",
+      "entfernen",
+      "vernichten",
+      "wegnehmen"
+    ]
+  },
+  {
+    "id": "la-846",
+    "meanings": [
+      "Folter",
+      "Qual",
+      "Belagerungsmaschine",
+      "Folterinstrument"
+    ]
+  },
+  {
+    "id": "la-847",
+    "meanings": [
+      "so viele",
+      "ebensoviele"
+    ]
+  },
+  {
+    "id": "la-848",
+    "meanings": [
+      "ebenso viele",
+      "genau so viele"
+    ]
+  },
+  {
+    "id": "la-849",
+    "meanings": [
+      "so oft",
+      "so viele Male",
+      "ebensoviele Male"
+    ]
+  },
+  {
+    "id": "la-850",
+    "meanings": [
+      "ganz",
+      "gesamt",
+      "alle",
+      "vollständig"
+    ]
+  },
+  {
+    "id": "la-851",
+    "meanings": [
+      "ziehen",
+      "schleppen",
+      "wegschleppen"
+    ]
+  },
+  {
+    "id": "la-852",
+    "meanings": [
+      "übergeben",
+      "ausliefern",
+      "verraten",
+      "weitergeben"
+    ]
+  },
+  {
+    "id": "la-853",
+    "meanings": [
+      "ziehen",
+      "schleppen",
+      "zerren",
+      "anziehen"
+    ]
+  },
+  {
+    "id": "la-854",
+    "meanings": [
+      "über",
+      "durch",
+      "jenseits",
+      "quer durch"
+    ]
+  },
+  {
+    "id": "la-855",
+    "meanings": [
+      "überqueren",
+      "hindurchgehen",
+      "vorübergehen",
+      "passieren"
+    ]
+  },
+  {
+    "id": "la-856",
+    "meanings": [
+      "dreihundert"
+    ]
+  },
+  {
+    "id": "la-857",
+    "meanings": [
+      "zittern",
+      "beben",
+      "erschaudern",
+      "erzittern"
+    ]
+  },
+  {
+    "id": "la-858",
+    "meanings": [
+      "drei"
+    ]
+  },
+  {
+    "id": "la-859",
+    "meanings": [
+      "Tribunat",
+      "Amt des Tribuns",
+      "Tribunenzeit"
+    ]
+  },
+  {
+    "id": "la-860",
+    "meanings": [
+      "Tribun",
+      "Volkstribun",
+      "Militärtribun"
+    ]
+  },
+  {
+    "id": "la-861",
+    "meanings": [
+      "zuteilen",
+      "gewähren",
+      "zuschreiben",
+      "beimessen"
+    ]
+  },
+  {
+    "id": "la-862",
+    "meanings": [
+      "Tribus",
+      "Stamm",
+      "Bezirk",
+      "Volksabteilung"
+    ]
+  },
+  {
+    "id": "la-863",
+    "meanings": [
+      "traurig",
+      "düster",
+      "betrübt",
+      "sorgenvoll"
+    ]
+  },
+  {
+    "id": "la-864",
+    "meanings": [
+      "Triumph",
+      "Siegeszug",
+      "Triumphzug"
+    ]
+  },
+  {
+    "id": "la-865",
+    "meanings": [
+      "du"
+    ]
+  },
+  {
+    "id": "la-866",
+    "meanings": [
+      "schützen",
+      "bewachen",
+      "beobachten",
+      "im Auge behalten"
+    ]
+  },
+  {
+    "id": "la-867",
+    "meanings": [
+      "dann",
+      "damals",
+      "zu dem Zeitpunkt"
+    ]
+  },
+  {
+    "id": "la-868",
+    "meanings": [
+      "Aufruhr",
+      "Lärm",
+      "Unruhe",
+      "Tumult"
+    ]
+  },
+  {
+    "id": "la-869",
+    "meanings": [
+      "Hügel",
+      "Grabhügel",
+      "Erdhügel"
+    ]
+  },
+  {
+    "id": "la-870",
+    "meanings": [
+      "dann",
+      "zu jener Zeit",
+      "in dem Augenblick"
+    ]
+  },
+  {
+    "id": "la-871",
+    "meanings": [
+      "Menge",
+      "Schar",
+      "Aufruhr",
+      "Gedränge"
+    ]
+  },
+  {
+    "id": "la-872",
+    "meanings": [
+      "verwirren",
+      "aufwühlen",
+      "stören",
+      "in Aufruhr bringen"
+    ]
+  },
+  {
+    "id": "la-873",
+    "meanings": [
+      "hässlich",
+      "schändlich",
+      "unehrenhaft",
+      "schmachvoll"
+    ]
+  },
+  {
+    "id": "la-874",
+    "meanings": [
+      "Turm"
+    ]
+  },
+  {
+    "id": "la-875",
+    "meanings": [
+      "sicher",
+      "gefahrlos",
+      "geschützt"
+    ]
+  },
+  {
+    "id": "la-876",
+    "meanings": [
+      "dein",
+      "deine",
+      "deiner"
+    ]
+  },
+  {
+    "id": "la-877",
+    "meanings": [
+      "wo",
+      "wann",
+      "wo auch immer"
+    ]
+  },
+  {
+    "id": "la-878",
+    "meanings": [
+      "überall",
+      "an jedem Ort"
+    ]
+  },
+  {
+    "id": "la-879",
+    "meanings": [
+      "rächen",
+      "Rache nehmen",
+      "bestrafen"
+    ]
+  },
+  {
+    "id": "la-880",
+    "meanings": [
+      "irgendein",
+      "irgendjemand",
+      "irgendetwas"
+    ]
+  },
+  {
+    "id": "la-881",
+    "meanings": [
+      "letzter",
+      "äußerster",
+      "fernster",
+      "hinterster"
+    ]
+  },
+  {
+    "id": "la-882",
+    "meanings": [
+      "jenseits",
+      "über ... hinaus",
+      "weiter",
+      "auf der anderen Seite"
+    ]
+  },
+  {
+    "id": "la-883",
+    "meanings": [
+      "freiwillig",
+      "von sich aus",
+      "darüber hinaus",
+      "von selbst"
+    ]
+  },
+  {
+    "id": "la-884",
+    "meanings": [
+      "Schatten",
+      "Dunkel",
+      "Geist",
+      "Schemen"
+    ]
+  },
+  {
+    "id": "la-885",
+    "meanings": [
+      "jemals",
+      "je",
+      "irgendwann"
+    ]
+  },
+  {
+    "id": "la-886",
+    "meanings": [
+      "zusammen",
+      "zugleich",
+      "gleichzeitig"
+    ]
+  },
+  {
+    "id": "la-887",
+    "meanings": [
+      "Welle",
+      "Wasser",
+      "Flut"
+    ]
+  },
+  {
+    "id": "la-888",
+    "meanings": [
+      "woher",
+      "von wo",
+      "von welchem Ort"
+    ]
+  },
+  {
+    "id": "la-889",
+    "meanings": [
+      "elf"
+    ]
+  },
+  {
+    "id": "la-890",
+    "meanings": [
+      "von allen Seiten",
+      "überall",
+      "auf allen Seiten"
+    ]
+  },
+  {
+    "id": "la-891",
+    "meanings": [
+      "alle zusammen",
+      "gesamt",
+      "allgemein",
+      "universal"
+    ]
+  },
+  {
+    "id": "la-892",
+    "meanings": [
+      "einer",
+      "ein einziger",
+      "eine"
+    ]
+  },
+  {
+    "id": "la-893",
+    "meanings": [
+      "Stadt",
+      "ummauerte Stadt"
+    ]
+  },
+  {
+    "id": "la-894",
+    "meanings": [
+      "drängen",
+      "treiben",
+      "unter Druck setzen",
+      "bedrängen"
+    ]
+  },
+  {
+    "id": "la-895",
+    "meanings": [
+      "irgendwo",
+      "an irgendeinem Ort",
+      "irgendwohin"
+    ]
+  },
+  {
+    "id": "la-896",
+    "meanings": [
+      "bis",
+      "ununterbrochen",
+      "soweit",
+      "so lange"
+    ]
+  },
+  {
+    "id": "la-897",
+    "meanings": [
+      "Gebrauch",
+      "Erfahrung",
+      "Nutzen",
+      "Übung"
+    ]
+  },
+  {
+    "id": "la-898",
+    "meanings": [
+      "wie",
+      "als",
+      "damit",
+      "sodass",
+      "auf dass"
+    ]
+  },
+  {
+    "id": "la-899",
+    "meanings": [
+      "welcher von beiden",
+      "welche von beiden"
+    ]
+  },
+  {
+    "id": "la-900",
+    "meanings": [
+      "jeder von beiden",
+      "beide",
+      "beide zusammen"
+    ]
+  },
+  {
+    "id": "la-901",
+    "meanings": [
+      "nützlich",
+      "vorteilhaft",
+      "dienlich",
+      "brauchbar"
+    ]
+  },
+  {
+    "id": "la-902",
+    "meanings": [
+      "wenn doch",
+      "hätte doch",
+      "wollte doch"
+    ]
+  },
+  {
+    "id": "la-903",
+    "meanings": [
+      "gebrauchen",
+      "benutzen",
+      "verwenden",
+      "sich bedienen"
+    ]
+  },
+  {
+    "id": "la-904",
+    "meanings": [
+      "ob (in doppelter Frage)"
+    ]
+  },
+  {
+    "id": "la-905",
+    "meanings": [
+      "Ehefrau",
+      "Gattin",
+      "Frau"
+    ]
+  },
+  {
+    "id": "la-906",
+    "meanings": [
+      "leer",
+      "frei",
+      "unbesetzt",
+      "müßig"
+    ]
+  },
+  {
+    "id": "la-907",
+    "meanings": [
+      "Furt",
+      "Untiefe",
+      "Seichte",
+      "Wassertiefe"
+    ]
+  },
+  {
+    "id": "la-908",
+    "meanings": [
+      "weh!",
+      "ach!",
+      "wehe!"
+    ]
+  },
+  {
+    "id": "la-909",
+    "meanings": [
+      "wandernd",
+      "umherstreifend",
+      "unbestimmt",
+      "nomadisch"
+    ]
+  },
+  {
+    "id": "la-910",
+    "meanings": [
+      "sehr",
+      "stark",
+      "äußerst",
+      "überaus"
+    ]
+  },
+  {
+    "id": "la-911",
+    "meanings": [
+      "leb wohl",
+      "auf Wiedersehen",
+      "sei gesund"
+    ]
+  },
+  {
+    "id": "la-912",
+    "meanings": [
+      "stark sein",
+      "gesund sein",
+      "können",
+      "gelten"
+    ]
+  },
+  {
+    "id": "la-913",
+    "meanings": [
+      "Gesundheit",
+      "Gesundheitszustand",
+      "körperliche Verfassung"
+    ]
+  },
+  {
+    "id": "la-914",
+    "meanings": [
+      "stark",
+      "kräftig",
+      "mächtig",
+      "robust"
+    ]
+  },
+  {
+    "id": "la-915",
+    "meanings": [
+      "Tal",
+      "Talsenke"
+    ]
+  },
+  {
+    "id": "la-916",
+    "meanings": [
+      "Wall",
+      "Schutzwall",
+      "Palisade",
+      "Befestigung"
+    ]
+  },
+  {
+    "id": "la-917",
+    "meanings": [
+      "leer",
+      "nichtig",
+      "eitel",
+      "hohl",
+      "falsch"
+    ]
+  },
+  {
+    "id": "la-918",
+    "meanings": [
+      "verschieden",
+      "mannigfaltig",
+      "bunt",
+      "vielfältig"
+    ]
+  },
+  {
+    "id": "la-919",
+    "meanings": [
+      "Gefäß",
+      "Behälter",
+      "Krug",
+      "Schüssel"
+    ]
+  },
+  {
+    "id": "la-920",
+    "meanings": [
+      "verwüsten",
+      "verheeren",
+      "zerstören"
+    ]
+  },
+  {
+    "id": "la-921",
+    "meanings": [
+      "riesig",
+      "ungeheuer",
+      "öde",
+      "verlassen"
+    ]
+  },
+  {
+    "id": "la-922",
+    "meanings": [
+      "Prophet",
+      "Dichter",
+      "Seher"
+    ]
+  },
+  {
+    "id": "la-923",
+    "meanings": [
+      "oder (Anhängepartikel)"
+    ]
+  },
+  {
+    "id": "la-924",
+    "meanings": [
+      "fahren",
+      "befördern",
+      "transportieren",
+      "tragen"
+    ]
+  },
+  {
+    "id": "la-925",
+    "meanings": [
+      "oder",
+      "selbst",
+      "auch nur",
+      "mindestens"
+    ]
+  },
+  {
+    "id": "la-926",
+    "meanings": [
+      "schnell",
+      "flink",
+      "rasch",
+      "behend"
+    ]
+  },
+  {
+    "id": "la-927",
+    "meanings": [
+      "Segel",
+      "Vorhang",
+      "Plane"
+    ]
+  },
+  {
+    "id": "la-928",
+    "meanings": [
+      "wie",
+      "gleichsam",
+      "als ob",
+      "sozusagen"
+    ]
+  },
+  {
+    "id": "la-929",
+    "meanings": [
+      "verehren",
+      "anbeten",
+      "ehrfurchtsvoll huldigen"
+    ]
+  },
+  {
+    "id": "la-930",
+    "meanings": [
+      "Vergebung",
+      "Erlaubnis",
+      "Gunst",
+      "Nachsicht"
+    ]
+  },
+  {
+    "id": "la-931",
+    "meanings": [
+      "kommen",
+      "ankommen",
+      "gelangen"
+    ]
+  },
+  {
+    "id": "la-932",
+    "meanings": [
+      "Wind"
+    ]
+  },
+  {
+    "id": "la-933",
+    "meanings": [
+      "Frühling",
+      "Frühjahr"
+    ]
+  },
+  {
+    "id": "la-934",
+    "meanings": [
+      "schlagen",
+      "peitschen",
+      "hauen",
+      "geißeln"
+    ]
+  },
+  {
+    "id": "la-935",
+    "meanings": [
+      "Wort",
+      "Ausdruck",
+      "Verb"
+    ]
+  },
+  {
+    "id": "la-936",
+    "meanings": [
+      "wahrhaftig",
+      "wirklich",
+      "in Wahrheit",
+      "richtig"
+    ]
+  },
+  {
+    "id": "la-937",
+    "meanings": [
+      "fürchten",
+      "scheuen",
+      "in Ehrfurcht stehen vor",
+      "respektieren"
+    ]
+  },
+  {
+    "id": "la-938",
+    "meanings": [
+      "jedoch",
+      "freilich",
+      "wahrhaftig",
+      "aber in Wahrheit"
+    ]
+  },
+  {
+    "id": "la-939",
+    "meanings": [
+      "sich aufhalten",
+      "beschäftigt sein",
+      "leben",
+      "sich bewegen"
+    ]
+  },
+  {
+    "id": "la-940",
+    "meanings": [
+      "Vers",
+      "Gedichtzeile",
+      "Verszeile"
+    ]
+  },
+  {
+    "id": "la-941",
+    "meanings": [
+      "wenden",
+      "drehen",
+      "verändern",
+      "umkehren"
+    ]
+  },
+  {
+    "id": "la-942",
+    "meanings": [
+      "aber",
+      "jedoch",
+      "doch",
+      "Wahrheit"
+    ]
+  },
+  {
+    "id": "la-943",
+    "meanings": [
+      "wahr",
+      "wirklich",
+      "echt",
+      "eigentlich"
+    ]
+  },
+  {
+    "id": "la-944",
+    "meanings": [
+      "Abend",
+      "Abendstern",
+      "Westen"
+    ]
+  },
+  {
+    "id": "la-945",
+    "meanings": [
+      "euer",
+      "Ihr",
+      "eures (Possessivpronomen Plural)"
+    ]
+  },
+  {
+    "id": "la-946",
+    "meanings": [
+      "Fußspur",
+      "Spur",
+      "Abdruck",
+      "Fußstapfe"
+    ]
+  },
+  {
+    "id": "la-947",
+    "meanings": [
+      "Kleidung",
+      "Gewand",
+      "Tracht"
+    ]
+  },
+  {
+    "id": "la-948",
+    "meanings": [
+      "verbieten",
+      "untersagen",
+      "nicht erlauben"
+    ]
+  },
+  {
+    "id": "la-949",
+    "meanings": [
+      "alt",
+      "althergebracht",
+      "uralt"
+    ]
+  },
+  {
+    "id": "la-950",
+    "meanings": [
+      "Weg",
+      "Straße",
+      "Pfad",
+      "Reise"
+    ]
+  },
+  {
+    "id": "la-951",
+    "meanings": [
+      "Wanderer",
+      "Reisender",
+      "Fußgänger"
+    ]
+  },
+  {
+    "id": "la-952",
+    "meanings": [
+      "schwingen",
+      "erschüttern",
+      "schleudern",
+      "zittern"
+    ]
+  },
+  {
+    "id": "la-953",
+    "meanings": [
+      "benachbart",
+      "nahe",
+      "angrenzend",
+      "Nachbar"
+    ]
+  },
+  {
+    "id": "la-954",
+    "meanings": [
+      "Sieger",
+      "Überwinder",
+      "Triumphator"
+    ]
+  },
+  {
+    "id": "la-955",
+    "meanings": [
+      "Sieg"
+    ]
+  },
+  {
+    "id": "la-956",
+    "meanings": [
+      "sehen",
+      "erblicken",
+      "wahrnehmen"
+    ]
+  },
+  {
+    "id": "la-957",
+    "meanings": [
+      "gedeihen",
+      "stark sein",
+      "blühen",
+      "kräftig sein"
+    ]
+  },
+  {
+    "id": "la-958",
+    "meanings": [
+      "Wache",
+      "Nachtwache",
+      "Wachsamkeit",
+      "Schlaflosigkeit"
+    ]
+  },
+  {
+    "id": "la-959",
+    "meanings": [
+      "zwanzig"
+    ]
+  },
+  {
+    "id": "la-960",
+    "meanings": [
+      "billig",
+      "wertlos",
+      "niedrig",
+      "gering"
+    ]
+  },
+  {
+    "id": "la-961",
+    "meanings": [
+      "Landhaus",
+      "Gutshof",
+      "Villa",
+      "Landgut"
+    ]
+  },
+  {
+    "id": "la-962",
+    "meanings": [
+      "siegen",
+      "besiegen",
+      "überwältigen",
+      "gewinnen"
+    ]
+  },
+  {
+    "id": "la-963",
+    "meanings": [
+      "Kette",
+      "Fessel",
+      "Band",
+      "Beschränkung"
+    ]
+  },
+  {
+    "id": "la-964",
+    "meanings": [
+      "Beschützer",
+      "Rächer",
+      "Bürge",
+      "Befreier"
+    ]
+  },
+  {
+    "id": "la-965",
+    "meanings": [
+      "Wein"
+    ]
+  },
+  {
+    "id": "la-966",
+    "meanings": [
+      "verletzen",
+      "entweihen",
+      "schänden",
+      "entehren"
+    ]
+  },
+  {
+    "id": "la-967",
+    "meanings": [
+      "Mann",
+      "Gatte",
+      "Held",
+      "Krieger"
+    ]
+  },
+  {
+    "id": "la-968",
+    "meanings": [
+      "Jungfrau",
+      "Mädchen",
+      "Jungfer"
+    ]
+  },
+  {
+    "id": "la-969",
+    "meanings": [
+      "Tugend",
+      "Tapferkeit",
+      "Tüchtigkeit",
+      "Mannhaftigkeit"
+    ]
+  },
+  {
+    "id": "la-970",
+    "meanings": [
+      "Kraft",
+      "Gewalt",
+      "Macht",
+      "Energie"
+    ]
+  },
+  {
+    "id": "la-971",
+    "meanings": [
+      "besuchen",
+      "nachsehen",
+      "besichtigen",
+      "gehen zu"
+    ]
+  },
+  {
+    "id": "la-972",
+    "meanings": [
+      "Leben"
+    ]
+  },
+  {
+    "id": "la-973",
+    "meanings": [
+      "meiden",
+      "vermeiden",
+      "entgehen",
+      "fliehen"
+    ]
+  },
+  {
+    "id": "la-974",
+    "meanings": [
+      "Fehler",
+      "Laster",
+      "Mangel",
+      "Makel"
+    ]
+  },
+  {
+    "id": "la-975",
+    "meanings": [
+      "leben",
+      "am Leben sein",
+      "existieren"
+    ]
+  },
+  {
+    "id": "la-976",
+    "meanings": [
+      "lebendig",
+      "lebend",
+      "am Leben"
+    ]
+  },
+  {
+    "id": "la-977",
+    "meanings": [
+      "kaum",
+      "mit Mühe",
+      "schwerlich",
+      "kaum noch"
+    ]
+  },
+  {
+    "id": "la-978",
+    "meanings": [
+      "rufen",
+      "einladen",
+      "nennen",
+      "aufrufen"
+    ]
+  },
+  {
+    "id": "la-979",
+    "meanings": [
+      "fliegen",
+      "flattern"
+    ]
+  },
+  {
+    "id": "la-980",
+    "meanings": [
+      "wollen",
+      "wünschen",
+      "bereit sein",
+      "beabsichtigen"
+    ]
+  },
+  {
+    "id": "la-981",
+    "meanings": [
+      "Wille",
+      "Wunsch",
+      "Absicht",
+      "Gesinnung"
+    ]
+  },
+  {
+    "id": "la-982",
+    "meanings": [
+      "Vergnügen",
+      "Genuss",
+      "Freude",
+      "Lust"
+    ]
+  },
+  {
+    "id": "la-983",
+    "meanings": [
+      "wälzen",
+      "drehen",
+      "rollen",
+      "wickeln"
+    ]
+  },
+  {
+    "id": "la-984",
+    "meanings": [
+      "Gelübde",
+      "Gebet",
+      "Wunsch",
+      "Weihgeschenk"
+    ]
+  },
+  {
+    "id": "la-985",
+    "meanings": [
+      "Stimme",
+      "Laut",
+      "Ruf",
+      "Ausspruch"
+    ]
+  },
+  {
+    "id": "la-986",
+    "meanings": [
+      "das gemeine Volk",
+      "die Masse",
+      "die Menge",
+      "das Volk"
+    ]
+  },
+  {
+    "id": "la-987",
+    "meanings": [
+      "Wunde",
+      "Verletzung",
+      "Hieb"
+    ]
+  },
+  {
+    "id": "la-988",
+    "meanings": [
+      "Gesicht",
+      "Miene",
+      "Ausdruck",
+      "Antlitz"
+    ]
+  },
+  {
+    "id": "la-989",
+    "meanings": [
+      "Westwind",
+      "sanfte Brise",
+      "Zephyr"
+    ]
+  },
+  {
+    "id": "la-990",
+    "meanings": [
+      "Gürtel",
+      "Zone",
+      "Erdzone",
+      "Band"
+    ]
+  }
+]
