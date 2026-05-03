@@ -5,7 +5,7 @@
     "providerVoices": {
       "azure": "it-IT-ElsaNeural"
     },
-    "forms": ["kanji"],
+    "forms": ["word"],
     "vocabFile": "vocabulary_it.json",
     "translations": {
       "en": "vocabulary_it-en.json",
