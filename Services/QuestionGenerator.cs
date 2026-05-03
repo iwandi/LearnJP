@@ -62,22 +62,22 @@ public sealed class QuestionGenerator : IQuestionGenerator
 
         // Kana stays excluded from general practice unless the user explicitly opts in via
         // the include list — matches the prior "no filter excludes kana" behaviour.
-        bool kanaAllowed = includeSet.Contains("hiragana") || includeSet.Contains("katakana");
+        bool glyphAllowed = _packs?.Active?.GlyphTags.Any() ?? false;
 
         IEnumerable<Word> filteredEnum = pool;
         if (includeSet.Count > 0)
             filteredEnum = filteredEnum.Where(w => w.Tags.Any(t => includeSet.Contains(t)));
         if (excludeSet.Count > 0)
             filteredEnum = filteredEnum.Where(w => !w.Tags.Any(t => excludeSet.Contains(t)));
-        if (!kanaAllowed)
-            filteredEnum = filteredEnum.Where(w => CategoryOf(w) != WordCategory.Kana);
+        if (!glyphAllowed)
+            filteredEnum = filteredEnum.Where(w => CategoryOf(w) != WordCategory.Glyph);
 
         var filtered = filteredEnum.ToList();
         // Need at least one target plus one distractor — fall back to the default
         // (kana-excluded) pool if the user's filter yields too few hits.
         pool = filtered.Count >= 2
             ? filtered
-            : _vocab.All.Where(w => CategoryOf(w) != WordCategory.Kana).ToList();
+            : _vocab.All.Where(w => CategoryOf(w) != WordCategory.Glyph).ToList();
 
         if (pool.Count < 2) return null;
 
@@ -662,20 +662,13 @@ public sealed class QuestionGenerator : IQuestionGenerator
     /// id-prefix detection is applied as a fallback so out-of-band callers (e.g. the sim
     /// that runs without a language pack) still behave correctly.
     /// </summary>
-    private enum WordCategory { Kana, General }
+    private enum WordCategory { Glyph, General }
 
     private WordCategory CategoryOf(Word w)
     {
         var pack = _packs?.Active;
         if (pack is not null && pack.Behavior.IsGlyphEntry(w, pack.GlyphTags))
-            return WordCategory.Kana;
-        if (pack is null)
-        {
-            // Fallback heuristic for callers that haven't loaded a language pack.
-            if (w.Id.StartsWith("h-", StringComparison.Ordinal)) return WordCategory.Kana;
-            if (w.Id.StartsWith("k-", StringComparison.Ordinal)) return WordCategory.Kana;
-            if (w.Tags.Contains("hiragana") || w.Tags.Contains("katakana")) return WordCategory.Kana;
-        }
+            return WordCategory.Glyph;
         return WordCategory.General;
     }
 

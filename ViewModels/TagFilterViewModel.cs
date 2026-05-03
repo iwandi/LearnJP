@@ -48,6 +48,7 @@ public sealed class TagFilterViewModel : BaseViewModel
 {
     private readonly IVocabularyService _vocab;
     private readonly ISettingsService _settings;
+    private readonly ILanguagePackService _packs;
 
     public ObservableCollection<TagOption> Tags { get; } = new();
 
@@ -79,10 +80,11 @@ public sealed class TagFilterViewModel : BaseViewModel
         }
     }
 
-    public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings)
+    public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings, ILanguagePackService packs)
     {
         _vocab = vocab;
         _settings = settings;
+        _packs = packs;
     }
 
     public void ToggleInclude(TagOption opt)
@@ -132,7 +134,7 @@ public sealed class TagFilterViewModel : BaseViewModel
         }
 
         // Tags pinned to the top of the list (after "no filter") regardless of count.
-        var pinned = new[] { "hiragana", "katakana" };
+        var pinned = _packs.Active?.GlyphTags;
         var rest = counts
             .Where(kv => !pinned.Contains(kv.Key, StringComparer.OrdinalIgnoreCase))
             .OrderByDescending(kv => kv.Value)

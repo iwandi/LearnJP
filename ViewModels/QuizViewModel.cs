@@ -224,7 +224,7 @@ public sealed class QuizViewModel : BaseViewModel
 
             // Kana drills skip the initial auto-TTS (the prompt is the pronunciation),
             // but still vocalise after the answer is revealed.
-            if (q.Direction == QuestionDirection.TargetToBase && !IsKanaWord(q.Target))
+            if (q.Direction == QuestionDirection.TargetToBase && !IsGlyph(q.Target))
                 _ = _tts.SpeakAsync(q.TtsText);
 
             // Warm the TTS cache for the active "new term" frontier so when one of those
@@ -235,7 +235,7 @@ public sealed class QuizViewModel : BaseViewModel
             if (behavior is not null)
             {
                 var frontierTexts = _gen.CurrentNewTermFrontier
-                    .Where(w => !IsKanaWord(w))
+                    .Where(w => !IsGlyph(w))
                     .Select(behavior.TtsText)
                     .Where(s => !string.IsNullOrWhiteSpace(s))
                     .ToList();
@@ -332,7 +332,7 @@ public sealed class QuizViewModel : BaseViewModel
     /// any auto-TTS would speak the answer aloud. Manual speak buttons stay enabled. Now
     /// dispatched to the active language's behaviour module instead of hardcoding kana logic.
     /// </summary>
-    private bool IsKanaWord(Word w)
+    private bool IsGlyph(Word w)
     {
         var pack = _packs.Active;
         if (pack is null) return false;
