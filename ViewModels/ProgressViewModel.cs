@@ -165,38 +165,32 @@ public sealed class ProgressViewModel : BaseViewModel
 
     private async Task AdjustRowAsync(WordProgressRow row, double delta)
     {
+        // Capture old proficiency state for incremental stat update.
+        var oldP = _store.Get(row.WordId);
+        bool wasKnown     = oldP.IsKnown;
+        bool wasMastered  = oldP.IsMastered;
+
         await _store.AdjustScoresAsync(row.WordId, delta);
         var p = _store.Get(row.WordId);
         row.Overall      = p.Overall;
         row.OverallText  = $"{p.Overall:0}%";
         row.OverallColor = ColorFor(p.Overall);
+
+        // Incrementally adjust Known / Mastered counts.
+        if (!wasKnown    && p.IsKnown)    Known++;
+        else if (wasKnown    && !p.IsKnown)    Known--;
+        if (!wasMastered && p.IsMastered) Mastered++;
+        else if (wasMastered && !p.IsMastered) Mastered--;
+        Summary = string.Format(_loc["progress_summary_format"], Mastered, Total, Known, Seen);
+
         RebuildChartValues();
-        RebuildSummaryStats();
     }
 
     private void RebuildChartValues()
     {
-        // The chart always shows all words sorted most→least proficient.
-        ChartValues = _allRows
-            .OrderByDescending(r => r.Overall)
-            .Select(r => r.Overall)
-            .ToList();
-    }
-
-    private void RebuildSummaryStats()
-    {
-        int seen = 0, known = 0, mastered = 0;
-        foreach (var w in _vocab.All)
-        {
-            var p = _store.Get(w.Id);
-            if (p.TotalSeen > 0) seen++;
-            if (p.IsKnown)       known++;
-            if (p.IsMastered)    mastered++;
-        }
-        Seen     = seen;
-        Known    = known;
-        Mastered = mastered;
-        Summary  = string.Format(_loc["progress_summary_format"], Mastered, Total, Known, Seen);
+        // _allRows is already sorted descending by Overall (set during RefreshAsync).
+        // Individual adjust calls update row.Overall in-place; chart reflects current values.
+        ChartValues = _allRows.Select(r => r.Overall).ToList();
     }
 
     private void ApplyFilter()
