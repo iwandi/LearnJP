@@ -131,10 +131,13 @@ public sealed class JapaneseBehavior : LanguageBehavior
 
     public override string TransliterationForm(Word w) => FormOf(w, "romaji");
     public override string PhoneticForm(Word w) => FormOf(w, "kana");
-    // Use kanji when available (matches TtsPregen output), fall back to kana.
-    // Kana-only would name the pre-generated bundled asset file differently from what
-    // TtsPregen produced under the word-ID scheme, so words with a kanji form would miss.
-    public override string TtsText(Word w) => PrimaryForm(w);
+    // Use kana for TTS to guarantee unambiguous pronunciation — bundled assets are
+    // looked up by word ID, so the text value does not affect bundled-asset resolution.
+    public override string TtsText(Word w)
+    {
+        var kana = FormOf(w, "kana");
+        return string.IsNullOrEmpty(kana) ? PrimaryForm(w) : kana;
+    }
 
     public override IReadOnlyList<DisplayOption> DisplayOptions => _options;
     private static readonly DisplayOption[] _options =
