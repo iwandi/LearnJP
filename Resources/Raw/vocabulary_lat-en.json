@@ -10,8 +10,8 @@
   {
     "id": "la-002",
     "meanings": [
-      "and",
-      "and also"
+      "and (before consonants)",
+      "and"
     ]
   },
   {
@@ -228,8 +228,8 @@
   {
     "id": "la-033",
     "meanings": [
-      "and",
-      "and also"
+      "and also",
+      "and"
     ]
   },
   {
@@ -637,8 +637,9 @@
   {
     "id": "la-091",
     "meanings": [
-      "to throw",
-      "to hurl"
+      "to fling",
+      "to hurl",
+      "to throw together"
     ]
   },
   {
@@ -1183,8 +1184,8 @@
   {
     "id": "la-167",
     "meanings": [
-      "out of",
-      "from"
+      "from (before consonants)",
+      "out of"
     ]
   },
   {
@@ -4156,6 +4157,7 @@
   {
     "id": "la-583",
     "meanings": [
+      "and (enclitic, -que)",
       "and"
     ]
   },
@@ -4280,7 +4282,7 @@
   {
     "id": "la-601",
     "meanings": [
-      "whoever",
+      "whoever (emphatic)",
       "whatever"
     ]
   },
@@ -5158,8 +5160,8 @@
   {
     "id": "la-719",
     "meanings": [
-      "or if",
-      "whether... or"
+      "whether... or (variant of sive)",
+      "or if"
     ]
   },
   {
@@ -5889,8 +5891,8 @@
   {
     "id": "la-812",
     "meanings": [
+      "as though",
       "just as",
-      "as if",
       "like"
     ]
   },
@@ -6812,9 +6814,9 @@
   {
     "id": "la-928",
     "meanings": [
-      "just as",
-      "as if",
-      "like"
+      "just as (for example)",
+      "like",
+      "as if"
     ]
   },
   {

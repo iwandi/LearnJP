@@ -9,8 +9,8 @@
   {
     "id": "la-002",
     "meanings": [
-      "und",
-      "und auch"
+      "und (vor Konsonanten)",
+      "und"
     ]
   },
   {
@@ -219,8 +219,8 @@
   {
     "id": "la-033",
     "meanings": [
-      "und",
-      "und auch"
+      "und auch",
+      "und"
     ]
   },
   {
@@ -610,6 +610,7 @@
   {
     "id": "la-091",
     "meanings": [
+      "schleudern",
       "werfen",
       "mutmassen"
     ]
@@ -1115,7 +1116,7 @@
   {
     "id": "la-167",
     "meanings": [
-      "aus",
+      "aus (vor Konsonanten)",
       "von ... aus"
     ]
   },
@@ -3686,9 +3687,9 @@
   {
     "id": "la-546",
     "meanings": [
-      "werfen",
+      "vorwerfen",
       "hinwerfen",
-      "vorwerfen"
+      "werfen"
     ]
   },
   {
@@ -4117,7 +4118,7 @@
   {
     "id": "la-601",
     "meanings": [
-      "wer auch immer",
+      "wer auch immer (verstärkt)",
       "was auch immer"
     ]
   },
@@ -5066,8 +5067,8 @@
   {
     "id": "la-719",
     "meanings": [
+      "entweder ... oder (Kurzform)",
       "oder wenn",
-      "entweder ... oder",
       "oder ob"
     ]
   },
@@ -5842,9 +5843,9 @@
   {
     "id": "la-812",
     "meanings": [
-      "wie",
-      "gleichsam",
+      "gleichwie",
       "als ob",
+      "wie",
       "sozusagen"
     ]
   },
@@ -6811,7 +6812,7 @@
   {
     "id": "la-928",
     "meanings": [
-      "wie",
+      "wie (zum Beispiel)",
       "gleichsam",
       "als ob",
       "sozusagen"
