@@ -35,9 +35,9 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
-	  <EnableLLVM>True</EnableLLVM>
+	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningKeyAlias>release</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyAlias>release2</AndroidSigningKeyAlias>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
@@ -58,10 +58,9 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
-	  <EnableLLVM>True</EnableLLVM>
-	  <AndroidLinkTool>r8</AndroidLinkTool>
+	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningKeyAlias>release</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyAlias>release2</AndroidSigningKeyAlias>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
