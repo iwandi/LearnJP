@@ -6,7 +6,9 @@
              x:DataType="vm:ProgressViewModel"
              Title="Progress">
 
-    <Grid RowDefinitions="Auto,*,Auto" Padding="16" RowSpacing="10">
+    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Padding="16" RowSpacing="10">
+
+        <!-- Summary card -->
         <Border Grid.Row="0"
                 StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
@@ -33,7 +35,25 @@
             </Grid>
         </Border>
 
-        <CollectionView Grid.Row="1" ItemsSource="{Binding Rows}">
+        <!-- Proficiency chart -->
+        <Border Grid.Row="1"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F0F1FA, Dark=#161626}"
+                StrokeShape="RoundRectangle 12"
+                Padding="8,6">
+            <GraphicsView x:Name="ProgressChart" HeightRequest="72" />
+        </Border>
+
+        <!-- Search bar -->
+        <SearchBar Grid.Row="2"
+                   Text="{Binding SearchText}"
+                   Placeholder="{Binding Loc[progress_search_placeholder]}"
+                   BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                   HeightRequest="44"
+                   CancelButtonColor="{StaticResource Primary}" />
+
+        <!-- Word list -->
+        <CollectionView Grid.Row="3" ItemsSource="{Binding FilteredRows}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="6" />
             </CollectionView.ItemsLayout>
@@ -43,22 +63,71 @@
                             BackgroundColor="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}"
                             StrokeShape="RoundRectangle 10"
                             Padding="12,8">
-                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="2">
-                            <Label Grid.Column="0" Grid.Row="0" Text="{Binding Display}" FontSize="20" FontAttributes="Bold" />
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding OverallText}" FontAttributes="Bold" TextColor="{Binding OverallColor}" />
-                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Reading}" Style="{StaticResource MutedLabel}" />
-                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding Meaning}" />
-                            <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding CriterionBreakdown}" FontSize="11" TextColor="{StaticResource MutedText}" HorizontalOptions="End" />
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="2">
+                            <!-- Word info -->
+                            <Label Grid.Column="0" Grid.Row="0"
+                                   Text="{Binding Display}"
+                                   FontSize="20" FontAttributes="Bold" />
+                            <Label Grid.Column="0" Grid.Row="1"
+                                   Text="{Binding Reading}"
+                                   Style="{StaticResource MutedLabel}" />
+                            <Label Grid.Column="0" Grid.Row="2"
+                                   Text="{Binding Meaning}" />
+
+                            <!-- Controls: speak, proficiency %, adjust buttons -->
+                            <VerticalStackLayout Grid.Column="1" Grid.RowSpan="3"
+                                                 VerticalOptions="Center"
+                                                 HorizontalOptions="End"
+                                                 Spacing="4">
+                                <Button Text="🔊"
+                                        Command="{Binding SpeakCommand}"
+                                        BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
+                                        TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                                        CornerRadius="10"
+                                        HeightRequest="36"
+                                        WidthRequest="44"
+                                        FontSize="18"
+                                        Padding="0" />
+                                <Label Text="{Binding OverallText}"
+                                       FontAttributes="Bold"
+                                       TextColor="{Binding OverallColor}"
+                                       HorizontalOptions="Center"
+                                       FontSize="14" />
+                                <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                                    <Button Text="▲"
+                                            Command="{Binding AdjustUpCommand}"
+                                            BackgroundColor="{AppThemeBinding Light=#DFF5E8, Dark=#1A3028}"
+                                            TextColor="{AppThemeBinding Light=#2E7D52, Dark=#7BC47F}"
+                                            CornerRadius="8"
+                                            HeightRequest="32"
+                                            WidthRequest="36"
+                                            FontSize="14"
+                                            Padding="0" />
+                                    <Button Text="▼"
+                                            Command="{Binding AdjustDownCommand}"
+                                            BackgroundColor="{AppThemeBinding Light=#FDECEA, Dark=#301A1E}"
+                                            TextColor="{AppThemeBinding Light=#B71C1C, Dark=#E5556B}"
+                                            CornerRadius="8"
+                                            HeightRequest="32"
+                                            WidthRequest="36"
+                                            FontSize="14"
+                                            Padding="0" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
-            <Button Grid.Column="0" Text="{Binding Loc[progress_refresh]}" Style="{StaticResource PrimaryButton}" Command="{Binding RefreshCommand}" />
-            <Button Grid.Column="1" Text="{Binding Loc[progress_reset]}" Command="{Binding ResetCommand}"
-                    BackgroundColor="{StaticResource Danger}" TextColor="White" CornerRadius="12" HeightRequest="48" />
-        </Grid>
+        <!-- Bottom bar: reset only -->
+        <Button Grid.Row="4"
+                Text="{Binding Loc[progress_reset]}"
+                Command="{Binding ResetCommand}"
+                BackgroundColor="{StaticResource Danger}"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="48" />
     </Grid>
 </ContentPage>
+

@@ -100,8 +100,12 @@ public sealed class LocalizationService : ILocalizationService
             ["progress_seen"]                  = "Seen",
             ["progress_known"]                 = "Known",
             ["progress_mastered"]              = "Mastered",
-            ["progress_refresh"]               = "Refresh",
             ["progress_reset"]                 = "Reset progress",
+            ["progress_search_placeholder"]    = "Search terms…",
+            ["progress_reset_confirm_title"]   = "Reset Progress",
+            ["progress_reset_confirm_message"] = "This will permanently delete all your progress. Are you sure?",
+            ["progress_reset_confirm_yes"]     = "Reset",
+            ["progress_reset_confirm_cancel"]  = "Cancel",
             // {0}=mastered, {1}=total, {2}=known, {3}=seen
             ["progress_summary_format"]        = "{0}/{1} mastered · {2} known · {3} encountered",
 
@@ -175,8 +179,12 @@ public sealed class LocalizationService : ILocalizationService
             ["progress_seen"]                  = "Gesehen",
             ["progress_known"]                 = "Bekannt",
             ["progress_mastered"]              = "Gemeistert",
-            ["progress_refresh"]               = "Aktualisieren",
             ["progress_reset"]                 = "Fortschritt zurücksetzen",
+            ["progress_search_placeholder"]    = "Begriffe suchen…",
+            ["progress_reset_confirm_title"]   = "Fortschritt zurücksetzen",
+            ["progress_reset_confirm_message"] = "Dadurch wird der gesamte Fortschritt dauerhaft gelöscht. Bist du sicher?",
+            ["progress_reset_confirm_yes"]     = "Zurücksetzen",
+            ["progress_reset_confirm_cancel"]  = "Abbrechen",
             ["progress_summary_format"]        = "{0}/{1} gemeistert · {2} bekannt · {3} gesehen",
 
             // Tag filter / mode page

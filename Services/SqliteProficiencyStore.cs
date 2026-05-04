@@ -477,6 +477,14 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
         return s;
     }
 
+    public async Task AdjustScoresAsync(string wordId, double delta)
+    {
+        var p = Get(wordId);
+        foreach (var c in ProficiencyCriterionExtensions.All)
+            p.Scores[c] = Math.Clamp(p.GetScore(c) + delta, 0, 100);
+        await PersistWordAsync(p);
+    }
+
     /// <summary>Mirrors the original ProficiencyStore.ComputeInterval — kept identical.</summary>
     private static int ComputeInterval(double overall, bool correct)
     {

@@ -43,4 +43,11 @@ public interface IProficiencyStore
     /// validation pass to enumerate eligible re-test candidates without scanning every pair.
     /// </summary>
     IReadOnlyCollection<string> GetConfusedTargetIds();
+
+    /// <summary>
+    /// Nudges every criterion score for <paramref name="wordId"/> by <paramref name="delta"/>
+    /// percentage points (clamped to 0–100). Creates the proficiency record if it doesn't
+    /// exist yet. Used by the manual +/- controls on the Progress page.
+    /// </summary>
+    Task AdjustScoresAsync(string wordId, double delta);
 }
