@@ -233,22 +233,22 @@ public sealed class QuizViewModel : BaseViewModel
             // Kana drills skip the initial auto-TTS (the prompt is the pronunciation),
             // but still vocalise after the answer is revealed.
             if (q.Direction == QuestionDirection.TargetToBase && !IsGlyph(q.Target))
-                _ = _tts.SpeakAsync(q.TtsText);
+                _ = _tts.SpeakAsync(q.TtsText, q.TtsWordId);
 
             // Warm the TTS cache for the active "new term" frontier so when one of those
             // words surfaces, the audio is already on disk instead of waiting on synthesis.
-            // Pulls TTS text via the active language behaviour so e.g. JP picks kana while
-            // Italian picks the headword field directly.
+            // Pulls TTS text via the active language behaviour so e.g. JP picks kanji/kana
+            // while Italian picks the headword field directly.
             var behavior = _packs.Active?.Behavior;
             if (behavior is not null)
             {
-                var frontierTexts = _gen.CurrentNewTermFrontier
+                var frontierItems = _gen.CurrentNewTermFrontier
                     .Where(w => !IsGlyph(w))
-                    .Select(behavior.TtsText)
-                    .Where(s => !string.IsNullOrWhiteSpace(s))
+                    .Select(w => (wordId: w.Id, text: behavior.TtsText(w)))
+                    .Where(t => !string.IsNullOrWhiteSpace(t.text))
                     .ToList();
-                if (frontierTexts.Count > 0)
-                    _ = _tts.PrefetchAsync(frontierTexts);
+                if (frontierItems.Count > 0)
+                    _ = _tts.PrefetchAsync(frontierItems);
             }
         }
         finally { IsLoading = false; }
@@ -288,18 +288,17 @@ public sealed class QuizViewModel : BaseViewModel
         }
 
         // Wait for the effect to finish (plus a small gap), then speak the JP — covers EN→JP too.
-        var ttsText = _current.TtsText;
-        _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, ttsText);
+        _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText, _current.TtsWordId);
 
         await ScheduleAutoAdvance(correct ? FeedbackCorrect : FeedbackWrong);
     }
 
-    private async Task SpeakAfterAsync(TimeSpan delay, string text)
+    private async Task SpeakAfterAsync(TimeSpan delay, string text, string? wordId = null)
     {
         try
         {
             if (delay > TimeSpan.Zero) await Task.Delay(delay);
-            await _tts.SpeakAsync(text);
+            await _tts.SpeakAsync(text, wordId);
         }
         catch { /* ignore */ }
     }
@@ -330,7 +329,7 @@ public sealed class QuizViewModel : BaseViewModel
             catch { /* best effort */ }
         }
 
-        _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText);
+        _ttsTask = SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText, _current.TtsWordId);
 
         await ScheduleAutoAdvance(FeedbackWrong);
     }
@@ -351,19 +350,19 @@ public sealed class QuizViewModel : BaseViewModel
     {
         if (_current is null) return;
         var effectDuration = _sounds.Play(SoundEffect.Click);
-        await SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText);
+        await SpeakAfterAsync(effectDuration + PostEffectPause, _current.TtsText, _current.TtsWordId);
     }
 
     public async Task SpeakOptionAsync(QuizOptionVm opt)
     {
         // Route through the active language's behaviour so we feed the TTS engine the right
-        // form (e.g. kana for JP, the primary form for monolithic languages).
+        // form (e.g. kanji/kana for JP, the primary form for monolithic languages).
         var behavior = _packs.Active?.Behavior;
         if (behavior is null) return;
         var text = behavior.TtsText(opt.Source.Word);
         if (string.IsNullOrWhiteSpace(text)) return;
         var effectDuration = _sounds.Play(SoundEffect.Click);
-        await SpeakAfterAsync(effectDuration + PostEffectPause, text);
+        await SpeakAfterAsync(effectDuration + PostEffectPause, text, opt.Source.Word.Id);
     }
 
     private async Task ScheduleAutoAdvance(TimeSpan delay)

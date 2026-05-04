@@ -23,18 +23,23 @@ public sealed class AzureTtsClient : IDisposable
 
     /// <summary>
     /// Returns audio bytes for the given text. Lookup order:
-    /// 1. Bundled app assets (pre-generated, shipped with the app)
+    /// 1. Bundled app assets (pre-generated, shipped with the app) — looked up by word ID
+    ///    when <paramref name="wordId"/> is provided, skipped otherwise.
     /// 2. Mutable file cache (synthesized at runtime and persisted)
     /// 3. Azure TTS API (live synthesis; result is stored in the file cache)
     /// Returns null on any synthesis failure.
     /// </summary>
-    public async Task<byte[]?> SynthesizeAsync(string text, string languageTag, string voiceName, CancellationToken ct = default)
+    public async Task<byte[]?> SynthesizeAsync(string text, string languageTag, string voiceName, string? wordId = null, CancellationToken ct = default)
     {
         if (string.IsNullOrWhiteSpace(text)) return null;
 
         // 1. Bundled assets — fastest, no network or writable-storage I/O.
-        var bundled = await _bundled.GetAsync(ProviderName, voiceName, languageTag, text, ct);
-        if (bundled is { Length: > TtsCacheKey.MinAudioBytes }) return bundled;
+        //    Requires a word ID; arbitrary/synthesised text has no bundled file.
+        if (!string.IsNullOrWhiteSpace(wordId))
+        {
+            var bundled = await _bundled.GetAsync(ProviderName, voiceName, languageTag, wordId, ct);
+            if (bundled is { Length: > TtsCacheKey.MinAudioBytes }) return bundled;
+        }
 
         // 2. Mutable file cache — previously synthesized audio stored on device.
         var cached = await _cache.GetAsync(ProviderName, voiceName, languageTag, text, ct);

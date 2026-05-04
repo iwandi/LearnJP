@@ -3,9 +3,11 @@
 /// Walks every language pack and every vocabulary entry, synthesises the target-language
 /// audio via the Azure TTS REST API and writes the result to a local output directory.
 ///
-/// Output files are named with the same SHA-256 scheme that FileTtsCache uses
-/// (provider|lang|voice|text), so the generated files can be dropped directly into the
-/// app's tts-cache folder on any device to skip network synthesis at runtime.
+/// Output files are stored as:
+///   <outputDirectory>/azure/<locale>/<voice>/<wordId>.<ext>
+///
+/// This mirrors the layout BundledTtsAssets expects inside Resources/Raw/tts-assets/:
+///   tts-assets/azure/<locale>/<voice>/<wordId>.<ext>
 ///
 /// Audio formats (set via "outputFormat" in the config, no transcoding needed):
 ///   webm-24khz-16bit-mono-opus  (default) — WebM/Opus; best quality/size ratio, natively
@@ -23,7 +25,6 @@
 /// then under Tools/TtsPregen/ relative to the solution root.
 
 using System.Net.Http;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -169,10 +170,11 @@ foreach (var (pack, words) in packs)
     var kanjiIdx  = formKeys.IndexOf("kanji");
     var kanaIdx   = formKeys.IndexOf("kana");
 
-    Console.WriteLine($"=== {pack.Id} | {locale} | {voice} ===");
+    // Files go under <outputDir>/azure/<locale>/<voice>/
+    var voiceDir = Path.Combine(outputDir, "azure", locale, voice);
+    Directory.CreateDirectory(voiceDir);
 
-    // Deduplicate by tts-text within this pack to avoid re-synthesising the same sound.
-    var seenTexts = new HashSet<string>(StringComparer.Ordinal);
+    Console.WriteLine($"=== {pack.Id} | {locale} | {voice} ===");
 
     var semaphore = new SemaphoreSlim(concurrency, concurrency);
     var tasks = new List<Task>();
@@ -197,12 +199,17 @@ foreach (var (pack, words) in packs)
         }
 
         if (string.IsNullOrWhiteSpace(ttsText)) continue;
-        if (!seenTexts.Add(ttsText)) { totalSkipped++; continue; }
 
-        // Compute the cache key the app uses so the files are drop-in replacements.
-        var cacheKey  = $"azure|{locale}|{voice}|{ttsText}";
-        var fileName  = CacheFileName(cacheKey, fileExtension);
-        var filePath  = Path.Combine(outputDir, fileName);
+        // Ensure the word ID is safe for use as a filename before writing to disk.
+        if (word.Id.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 || word.Id.Contains(".."))
+        {
+            Console.WriteLine($"  [SKIP] {word.Id}: word ID contains invalid path characters");
+            totalSkipped++;
+            continue;
+        }
+
+        // File is named by word ID — no hashing, no collisions.
+        var filePath = Path.Combine(voiceDir, word.Id + fileExtension);
 
         if (!cfg.Overwrite && File.Exists(filePath))
         {
@@ -250,19 +257,11 @@ foreach (var (pack, words) in packs)
 Console.WriteLine($"Done. Generated: {totalGenerated}  Skipped: {totalSkipped}  Failed: {totalFailed}");
 Console.WriteLine($"Output: {outputDir}");
 Console.WriteLine();
-Console.WriteLine($"To pre-populate the app cache, copy the {fileExtension} files to the device's");
-Console.WriteLine("  AppData/LearnJP/tts-cache/  directory.");
+Console.WriteLine("Files are stored under: <outputDir>/azure/<locale>/<voice>/<wordId>.<ext>");
+Console.WriteLine("Copy the directory structure to Resources/Raw/tts-assets/ to bundle them with the app.");
 return totalFailed > 0 ? 2 : 0;
 
 // ── Helpers ────────────────────────────────────────────────────────────────────────────────────
-
-static string CacheFileName(string cacheKey, string extension)
-{
-    var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(cacheKey));
-    // Use lowercase to match the MAUI Android build, which lowercases all MauiAsset
-    // filenames. The runtime lookup in BundledTtsAssets also uses lowercase.
-    return Convert.ToHexString(bytes).ToLowerInvariant() + extension;
-}
 
 /// <summary>Derives a file extension from an Azure TTS output-format string.
 /// Examples: "webm-24khz-16bit-mono-opus" → ".webm",

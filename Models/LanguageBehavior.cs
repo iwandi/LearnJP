@@ -132,8 +132,8 @@ public sealed class JapaneseBehavior : LanguageBehavior
     public override string TransliterationForm(Word w) => FormOf(w, "romaji");
     public override string PhoneticForm(Word w) => FormOf(w, "kana");
     // Use kanji when available (matches TtsPregen output), fall back to kana.
-    // Kana-only would produce a different hash from the pre-generated bundled assets,
-    // causing cache misses for every word that has a kanji form.
+    // Kana-only would name the pre-generated bundled asset file differently from what
+    // TtsPregen produced under the word-ID scheme, so words with a kanji form would miss.
     public override string TtsText(Word w) => PrimaryForm(w);
 
     public override IReadOnlyList<DisplayOption> DisplayOptions => _options;

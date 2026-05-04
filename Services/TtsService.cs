@@ -38,7 +38,7 @@ public sealed class TtsService : ITtsService
         };
     }
 
-    public Task SpeakAsync(string text, CancellationToken ct = default)
+    public Task SpeakAsync(string text, string? wordId = null, CancellationToken ct = default)
     {
         if (string.IsNullOrWhiteSpace(text)) return Task.CompletedTask;
         if (!IsEnabled()) return Task.CompletedTask;
@@ -46,7 +46,7 @@ public sealed class TtsService : ITtsService
 
         return CurrentProvider() switch
         {
-            TtsProvider.Azure => SpeakAzureAsync(text, locale, voice, ct),
+            TtsProvider.Azure => SpeakAzureAsync(text, locale, voice, wordId, ct),
             _                 => SpeakSystemAsync(text, locale, ct)
         };
     }
@@ -56,15 +56,15 @@ public sealed class TtsService : ITtsService
         try { _cts?.Cancel(); } catch { /* ignore */ }
     }
 
-    public async Task PrefetchAsync(IEnumerable<string> texts, CancellationToken ct = default)
+    public async Task PrefetchAsync(IEnumerable<(string wordId, string text)> items, CancellationToken ct = default)
     {
-        if (texts is null) return;
+        if (items is null) return;
         if (!IsEnabled()) return;
         // Only Azure has a persistent cache to warm; system TTS goes straight to the OS engine.
         if (CurrentProvider() != TtsProvider.Azure) return;
         if (!TryResolveTarget(out var locale, out var voice)) return;
 
-        foreach (var text in texts)
+        foreach (var (wordId, text) in items)
         {
             if (ct.IsCancellationRequested) return;
             if (string.IsNullOrWhiteSpace(text)) continue;
@@ -72,7 +72,7 @@ public sealed class TtsService : ITtsService
             {
                 if (!_prefetched.Add(text)) continue;
             }
-            try { await _azure.SynthesizeAsync(text, locale, voice, ct); }
+            try { await _azure.SynthesizeAsync(text, locale, voice, wordId, ct); }
             catch { /* best effort */ }
         }
     }
@@ -101,11 +101,11 @@ public sealed class TtsService : ITtsService
         return true;
     }
 
-    private async Task SpeakAzureAsync(string text, string locale, string voice, CancellationToken ct)
+    private async Task SpeakAzureAsync(string text, string locale, string voice, string? wordId, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(voice)) return; // Azure requires an explicit voice name.
 
-        var wav = await _azure.SynthesizeAsync(text, locale, voice, ct);
+        var wav = await _azure.SynthesizeAsync(text, locale, voice, wordId, ct);
         if (wav is null || wav.Length < 64) return;
 
         var volume = 1.0;

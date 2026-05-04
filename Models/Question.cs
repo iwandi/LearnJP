@@ -22,6 +22,10 @@ public sealed class Question
     public string? PromptFurigana { get; init; }
     public required IReadOnlyList<QuestionOption> Options { get; init; }
     public required string TtsText { get; init; }
+    /// <summary>Vocabulary word ID of the target, used to resolve pre-generated bundled TTS
+    /// audio without hashing. Matches the file name under
+    /// <c>tts-assets/&lt;provider&gt;/&lt;lang&gt;/&lt;voice&gt;/&lt;wordId&gt;.&lt;ext&gt;</c>.</summary>
+    public required string TtsWordId { get; init; }
     public required double TargetProficiencyAtAsk { get; init; }
     /// <summary>True when the picker drew this word from the strategy's active focus set.</summary>
     public bool IsInReinforcementSet { get; init; }

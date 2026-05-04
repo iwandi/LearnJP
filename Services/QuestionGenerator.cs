@@ -139,6 +139,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
             PromptFurigana = rendered.Furigana,
             Options = options,
             TtsText = ttsText,
+            TtsWordId = target.Id,
             TargetProficiencyAtAsk = prof.Overall,
             IsInReinforcementSet = IsInActiveFocusSet(strategy, target.Id),
             IsValidation = isValidation
