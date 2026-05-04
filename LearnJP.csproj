@@ -22,6 +22,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<AndroidSigningKeyStore>Sign.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
@@ -29,6 +30,53 @@
 		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
 		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <EnableLLVM>True</EnableLLVM>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningKeyAlias>release</AndroidSigningKeyAlias>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-maccatalyst|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <EnableLLVM>True</EnableLLVM>
+	  <AndroidLinkTool>r8</AndroidLinkTool>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningKeyAlias>release</AndroidSigningKeyAlias>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-maccatalyst|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
+	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
 	</PropertyGroup>
 
 	<ItemGroup>
