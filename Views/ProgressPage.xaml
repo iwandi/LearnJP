@@ -15,19 +15,19 @@
             <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,Auto" RowSpacing="4">
                 <Label Grid.ColumnSpan="4" Text="{Binding Summary}" Style="{StaticResource HeadlineLabel}" />
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-                    <Label Text="Total" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Loc[progress_total]}" Style="{StaticResource MutedLabel}" />
                     <Label Text="{Binding Total}" FontSize="22" FontAttributes="Bold" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                    <Label Text="Seen" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Loc[progress_seen]}" Style="{StaticResource MutedLabel}" />
                     <Label Text="{Binding Seen}" FontSize="22" FontAttributes="Bold" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-                    <Label Text="Known" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Loc[progress_known]}" Style="{StaticResource MutedLabel}" />
                     <Label Text="{Binding Known}" FontSize="22" FontAttributes="Bold" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Grid.Row="1" Grid.Column="3">
-                    <Label Text="Mastered" Style="{StaticResource MutedLabel}" />
+                    <Label Text="{Binding Loc[progress_mastered]}" Style="{StaticResource MutedLabel}" />
                     <Label Text="{Binding Mastered}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource Success}" />
                 </VerticalStackLayout>
             </Grid>
@@ -56,8 +56,8 @@
         </CollectionView>
 
         <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="10">
-            <Button Grid.Column="0" Text="Refresh" Style="{StaticResource PrimaryButton}" Command="{Binding RefreshCommand}" />
-            <Button Grid.Column="1" Text="Reset progress" Command="{Binding ResetCommand}"
+            <Button Grid.Column="0" Text="{Binding Loc[progress_refresh]}" Style="{StaticResource PrimaryButton}" Command="{Binding RefreshCommand}" />
+            <Button Grid.Column="1" Text="{Binding Loc[progress_reset]}" Command="{Binding ResetCommand}"
                     BackgroundColor="{StaticResource Danger}" TextColor="White" CornerRadius="12" HeightRequest="48" />
         </Grid>
     </Grid>

@@ -21,12 +21,15 @@ public sealed class ProgressViewModel : BaseViewModel
     private readonly IVocabularyService _vocab;
     private readonly IProficiencyStore _store;
     private readonly ILanguagePackService _packs;
+    private readonly ILocalizationService _loc;
 
     private string _summary = "";
     private int _total;
     private int _seen;
     private int _known;
     private int _mastered;
+
+    public ILocalizationService Loc => _loc;
 
     public ObservableCollection<WordProgressRow> Rows { get; } = new();
 
@@ -39,11 +42,12 @@ public sealed class ProgressViewModel : BaseViewModel
     public ICommand RefreshCommand { get; }
     public ICommand ResetCommand { get; }
 
-    public ProgressViewModel(IVocabularyService vocab, IProficiencyStore store, ILanguagePackService packs)
+    public ProgressViewModel(IVocabularyService vocab, IProficiencyStore store, ILanguagePackService packs, ILocalizationService loc)
     {
         _vocab = vocab;
         _store = store;
         _packs = packs;
+        _loc = loc;
         RefreshCommand = new Command(async () => await RefreshAsync());
         ResetCommand = new Command(async () =>
         {
@@ -93,7 +97,7 @@ public sealed class ProgressViewModel : BaseViewModel
         Seen = seen;
         Known = known;
         Mastered = mastered;
-        Summary = $"{Mastered}/{Total} mastered · {Known} known · {Seen} encountered";
+        Summary = string.Format(_loc["progress_summary_format"], Mastered, Total, Known, Seen);
     }
 
     private static string ShortLabel(ProficiencyCriterion c) => c switch

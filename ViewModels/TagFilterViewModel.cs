@@ -49,7 +49,9 @@ public sealed class TagFilterViewModel : BaseViewModel
     private readonly IVocabularyService _vocab;
     private readonly ISettingsService _settings;
     private readonly ILanguagePackService _packs;
+    private readonly ILocalizationService _loc;
 
+    public ILocalizationService Loc => _loc;
     public ObservableCollection<TagOption> Tags { get; } = new();
 
     public string ActiveFilterDisplay
@@ -58,11 +60,11 @@ public sealed class TagFilterViewModel : BaseViewModel
         {
             var inc = _settings.ActiveIncludeTags;
             var exc = _settings.ActiveExcludeTags;
-            if (inc.Count == 0 && exc.Count == 0) return "No filter — drawing from the full vocabulary.";
+            if (inc.Count == 0 && exc.Count == 0) return _loc["filter_active_no_filter"];
             var parts = new List<string>();
             if (inc.Count > 0) parts.Add("+ " + string.Join(", ", inc));
             if (exc.Count > 0) parts.Add("− " + string.Join(", ", exc));
-            return "Filter: " + string.Join("   ", parts);
+            return _loc["filter_active_prefix"] + string.Join("   ", parts);
         }
     }
 
@@ -80,11 +82,12 @@ public sealed class TagFilterViewModel : BaseViewModel
         }
     }
 
-    public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings, ILanguagePackService packs)
+    public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings, ILanguagePackService packs, ILocalizationService loc)
     {
         _vocab = vocab;
         _settings = settings;
         _packs = packs;
+        _loc = loc;
     }
 
     public void ToggleInclude(TagOption opt)
@@ -148,7 +151,7 @@ public sealed class TagFilterViewModel : BaseViewModel
         Tags.Add(new TagOption
         {
             Tag = string.Empty,
-            Display = "(no filter — clear all)",
+            Display = _loc["filter_no_filter"],
             WordCount = _vocab.All.Count,
             IsNoFilter = true
         });

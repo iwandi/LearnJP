@@ -9,6 +9,7 @@ public sealed class LanguageOption : BaseViewModel
     private bool _isActive;
 
     public required LanguagePack Pack { get; init; }
+    public required ILocalizationService Loc { get; init; }
     public string Id => Pack.Id;
     public string DisplayName => Pack.DisplayName;
     public string Subtitle => Pack.TtsLocale;
@@ -23,7 +24,7 @@ public sealed class LanguageOption : BaseViewModel
         ? Color.FromArgb("#4CAF7A")
         : (Application.Current?.RequestedTheme == AppTheme.Dark ? Color.FromArgb("#1B1B2E") : Color.FromArgb("#F7F8FF"));
 
-    public string SelectButtonText => _isActive ? "Active" : "Select";
+    public string SelectButtonText => _isActive ? Loc["lang_active_button"] : Loc["lang_select_button"];
 }
 
 public sealed class BaseLanguageOption
@@ -36,10 +37,12 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
 {
     private readonly ILanguagePackService _packs;
     private readonly ISettingsService _settings;
+    private readonly ILocalizationService _loc;
     private string _activeName = string.Empty;
     private BaseLanguageOption? _selectedBase;
     private bool _suppressBaseChange;
 
+    public ILocalizationService Loc => _loc;
     public ObservableCollection<LanguageOption> Languages { get; } = new();
     public ObservableCollection<BaseLanguageOption> BaseLanguages { get; } = new();
 
@@ -60,10 +63,11 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         }
     }
 
-    public LanguageSelectionViewModel(ILanguagePackService packs, ISettingsService settings)
+    public LanguageSelectionViewModel(ILanguagePackService packs, ISettingsService settings, ILocalizationService loc)
     {
         _packs = packs;
         _settings = settings;
+        _loc = loc;
     }
 
     public async Task RefreshAsync()
@@ -108,6 +112,7 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
             Languages.Add(new LanguageOption
             {
                 Pack = p,
+                Loc = _loc,
                 IsActive = string.Equals(p.Id, activeId, StringComparison.OrdinalIgnoreCase)
             });
         }
@@ -123,19 +128,19 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
     }
 
     /// <summary>Human-readable name for a base-language code; falls back to the code itself.</summary>
-    private static string LanguageDisplay(string code) => code.ToLowerInvariant() switch
+    private string LanguageDisplay(string code) => code.ToLowerInvariant() switch
     {
-        "en" => "English",
-        "de" => "German",
-        "fr" => "French",
-        "es" => "Spanish",
-        "it" => "Italian",
-        "pt" => "Portuguese",
-        "nl" => "Dutch",
-        "ru" => "Russian",
-        "zh" => "Chinese",
-        "ja" => "Japanese",
-        "ko" => "Korean",
+        "en" => _loc["lang_english"],
+        "de" => _loc["lang_german"],
+        "fr" => _loc["lang_french"],
+        "es" => _loc["lang_spanish"],
+        "it" => _loc["lang_italian"],
+        "pt" => _loc["lang_portuguese"],
+        "nl" => _loc["lang_dutch"],
+        "ru" => _loc["lang_russian"],
+        "zh" => _loc["lang_chinese"],
+        "ja" => _loc["lang_japanese"],
+        "ko" => _loc["lang_korean"],
         _    => code
     };
 }

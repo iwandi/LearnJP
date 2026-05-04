@@ -58,7 +58,7 @@
                     </VerticalStackLayout>
 
                     <Button Grid.Row="1"
-                            Text="🔊  Hear it again"
+                            Text="{Binding Loc[quiz_hear_again]}"
                             Clicked="OnSpeakClicked"
                             IsVisible="{Binding ShowPromptSpeakButton}"
                             Style="{StaticResource PrimaryButton}"
@@ -103,14 +103,14 @@
 
             <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="8">
                 <Button Grid.Column="0"
-                        Text="I don't know"
+                        Text="{Binding Loc[quiz_dont_know]}"
                         BackgroundColor="{AppThemeBinding Light=#FFE4D2, Dark=#3A2A1F}"
                         TextColor="{AppThemeBinding Light=#7A4A1A, Dark=#FFB86B}"
                         CornerRadius="12"
                         HeightRequest="44"
                         Clicked="OnDontKnowClicked" />
                 <Button Grid.Column="1"
-                        Text="Skip ▶"
+                        Text="{Binding Loc[quiz_skip]}"
                         BackgroundColor="{AppThemeBinding Light=#E2E4F0, Dark=#2A2A40}"
                         TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
                         CornerRadius="12"

@@ -38,19 +38,31 @@ public sealed class DisplayFlagVm : BaseViewModel
     }
 }
 
+/// <summary>Entry in the UI-language override picker. The empty code means auto-detect.</summary>
+public sealed class UiLanguageOption
+{
+    public required string Code { get; init; }
+    public required string Display { get; init; }
+}
+
 public sealed class SettingsViewModel : BaseViewModel
 {
     private readonly ISettingsService _settings;
     private readonly ILanguagePackService _packs;
+    private readonly ILocalizationService _loc;
 
-    public SettingsViewModel(ISettingsService settings, ILanguagePackService packs)
+    public ILocalizationService Loc => _loc;
+
+    public SettingsViewModel(ISettingsService settings, ILanguagePackService packs, ILocalizationService loc)
     {
         _settings = settings;
         _packs = packs;
+        _loc = loc;
         TtsProviders = new ObservableCollection<TtsProvider>(Enum.GetValues<TtsProvider>());
         // Rebuild the dynamic toggle list whenever the user picks a different language pack.
         _packs.ActiveChanged += (_, _) => RebuildDisplayFlags();
         RebuildDisplayFlags();
+        BuildUiLanguageOptions();
     }
 
     public ObservableCollection<TtsProvider> TtsProviders { get; }
@@ -147,5 +159,34 @@ public sealed class SettingsViewModel : BaseViewModel
         foreach (var opt in pack.Behavior.DisplayOptions)
             DisplayFlags.Add(new DisplayFlagVm(_settings, pack.Id, opt));
         OnPropertyChanged(nameof(HasDisplayFlags));
+    }
+
+    // ── UI language override ──────────────────────────────────────────────────────
+
+    public ObservableCollection<UiLanguageOption> UiLanguageOptions { get; } = new();
+
+    private UiLanguageOption? _selectedUiLanguage;
+
+    public UiLanguageOption? SelectedUiLanguage
+    {
+        get => _selectedUiLanguage;
+        set
+        {
+            if (!SetProperty(ref _selectedUiLanguage, value) || value is null) return;
+            _loc.ApplyOverride(string.IsNullOrEmpty(value.Code) ? null : value.Code);
+        }
+    }
+
+    private void BuildUiLanguageOptions()
+    {
+        UiLanguageOptions.Clear();
+        UiLanguageOptions.Add(new UiLanguageOption { Code = string.Empty, Display = _loc["settings_ui_language_auto"] });
+        UiLanguageOptions.Add(new UiLanguageOption { Code = "en", Display = "English" });
+        UiLanguageOptions.Add(new UiLanguageOption { Code = "de", Display = "Deutsch" });
+
+        var current = _settings.UiLanguageOverride;
+        _selectedUiLanguage = UiLanguageOptions.FirstOrDefault(
+            o => string.Equals(o.Code, current, StringComparison.OrdinalIgnoreCase))
+            ?? UiLanguageOptions[0];
     }
 }

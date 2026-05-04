@@ -131,7 +131,7 @@ public sealed class QuizViewModel : BaseViewModel
     {
         var include = _settings.ActiveIncludeTags;
         var exclude = _settings.ActiveExcludeTags;
-        ActiveFilterDisplay = BuildFilterDisplay(include, exclude);
+        ActiveFilterDisplay = BuildFilterDisplay(include, exclude, Loc);
         var filterKey = string.Join("|", include) + "::" + string.Join("|", exclude);
 
         var currentStrategy = _settings.SelectedLearningStrategy;
@@ -171,18 +171,20 @@ public sealed class QuizViewModel : BaseViewModel
         return string.Join("|", parts);
     }
 
-    private static string BuildFilterDisplay(IReadOnlyList<string> include, IReadOnlyList<string> exclude)
+    private static string BuildFilterDisplay(IReadOnlyList<string> include, IReadOnlyList<string> exclude, ILocalizationService loc)
     {
         if (include.Count == 0 && exclude.Count == 0) return string.Empty;
         var parts = new List<string>();
         if (include.Count > 0) parts.Add("+" + string.Join(",", include));
         if (exclude.Count > 0) parts.Add("−" + string.Join(",", exclude));
-        return "Filter: " + string.Join("  ", parts);
+        return loc["quiz_filter_prefix"] + string.Join("  ", parts);
     }
 
     private readonly ILanguagePackService _packs;
 
-    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds, ILanguagePackService packs)
+    public ILocalizationService Loc { get; }
+
+    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds, ILanguagePackService packs, ILocalizationService loc)
     {
         _gen = gen;
         _store = store;
@@ -190,6 +192,7 @@ public sealed class QuizViewModel : BaseViewModel
         _settings = settings;
         _sounds = sounds;
         _packs = packs;
+        Loc = loc;
         try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Fsrs; }
     }
 
@@ -202,7 +205,7 @@ public sealed class QuizViewModel : BaseViewModel
             var q = await _gen.NextAsync(_selectedStrategy);
             if (q is null)
             {
-                Prompt = "No vocabulary loaded.";
+                Prompt = Loc["quiz_no_vocab"];
                 Options.Clear();
                 return;
             }

@@ -49,4 +49,11 @@ public interface ISettingsService
     /// <summary>Returns a read-only view of all display flags for the given pack, suitable
     /// for passing to <see cref="LanguageBehavior"/>'s render methods.</summary>
     IDisplayFlags DisplayFlagsFor(string packId);
+
+    /// <summary>
+    /// ISO 639-1 language code chosen by the user to override UI language auto-detection
+    /// (e.g. "en", "de"). Empty string means auto-detect from
+    /// <see cref="System.Globalization.CultureInfo.CurrentUICulture"/>.
+    /// </summary>
+    string UiLanguageOverride { get; set; }
 }

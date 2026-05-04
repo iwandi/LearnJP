@@ -1,15 +1,20 @@
+using LearnJP.Services;
+
 namespace LearnJP;
 
 public partial class App : Application
 {
-    public App()
+    private readonly ILocalizationService _loc;
+
+    public App(ILocalizationService loc)
     {
+        _loc = loc;
         InitializeComponent();
     }
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        var window = new Window(new AppShell());
+        var window = new Window(new AppShell(_loc));
 
 #if WINDOWS
         const double width = 412;   // ≈ Pixel 5 logical width

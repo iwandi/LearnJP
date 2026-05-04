@@ -17,6 +17,7 @@ public sealed class SettingsService : ISettingsService
     private const string KeyTrackProf     = "settings.count_for_proficiency";
     private const string KeyActiveLang    = "settings.active_language_id";
     private const string KeyBaseLang      = "settings.base_language_id";
+    private const string KeyUiLang        = "settings.ui_language_override";
 
     // Display flags are stored under "settings.display.<packId>.<flagKey>" so the keyspace
     // stays self-describing and per-pack values don't collide.
@@ -124,6 +125,12 @@ public sealed class SettingsService : ISettingsService
     {
         get => Read(KeyBaseLang, "en");
         set => Write(KeyBaseLang, string.IsNullOrWhiteSpace(value) ? "en" : value);
+    }
+
+    public string UiLanguageOverride
+    {
+        get => Read(KeyUiLang, string.Empty);
+        set => Write(KeyUiLang, value ?? string.Empty);
     }
 
     public bool GetDisplayFlag(string packId, string key, bool defaultValue) =>

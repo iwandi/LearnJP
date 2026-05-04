@@ -14,7 +14,7 @@
                 StrokeShape="RoundRectangle 12"
                 Padding="14">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                <Label Grid.Column="0" Text="Strategy" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
+                <Label Grid.Column="0" Text="{Binding Loc[filter_strategy]}" Style="{StaticResource MutedLabel}" VerticalOptions="Center" />
                 <Picker Grid.Column="1"
                         ItemsSource="{Binding Strategies}"
                         SelectedItem="{Binding SelectedStrategy, Mode=TwoWay}" />
