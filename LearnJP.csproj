@@ -38,21 +38,25 @@
 	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningKeyAlias>release4</AndroidSigningKeyAlias>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-maccatalyst|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
@@ -61,21 +65,25 @@
 	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningKeyAlias>release4</AndroidSigningKeyAlias>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-maccatalyst|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationId>com.ackermanna.vocabmeister</ApplicationId>
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
