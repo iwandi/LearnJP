@@ -36,7 +36,7 @@
 
             <Label Text="Audio" Style="{StaticResource HeadlineLabel}" />
             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" RowSpacing="12">
-                <Label Grid.Column="0" Text="Speak Japanese aloud" VerticalOptions="Center" />
+                <Label Grid.Column="0" Text="Speak target language aloud" VerticalOptions="Center" />
                 <Switch Grid.Column="1" IsToggled="{Binding TtsEnabled}" HorizontalOptions="End" WidthRequest="50" />
             </Grid>
 

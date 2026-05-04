@@ -119,6 +119,7 @@ public sealed class QuizViewModel : BaseViewModel
 
     private string _lastSeenFilterKey = string.Empty;
     private string? _lastSeenDisplayFingerprint;
+    private string _lastSeenBaseLanguageId = string.Empty;
 
     /// <summary>
     /// Called from the page's OnAppearing — picks up tag-filter, strategy, and display-mode
@@ -136,18 +137,21 @@ public sealed class QuizViewModel : BaseViewModel
 
         var currentStrategy = _settings.SelectedLearningStrategy;
         var currentDisplay = ActiveDisplayFingerprint();
+        var currentBaseLanguage = _settings.BaseLanguageId;
 
         var displayChanged = _lastSeenDisplayFingerprint is { } prev && prev != currentDisplay;
         var changed =
             !string.Equals(filterKey, _lastSeenFilterKey, StringComparison.Ordinal) ||
             currentStrategy != _selectedStrategy ||
-            displayChanged;
+            displayChanged ||
+            !string.Equals(currentBaseLanguage, _lastSeenBaseLanguageId, StringComparison.Ordinal);
 
         _lastSeenDisplayFingerprint = currentDisplay;
 
         if (changed)
         {
             _lastSeenFilterKey = filterKey;
+            _lastSeenBaseLanguageId = currentBaseLanguage;
             // Mirror SelectedStrategy without re-triggering its setter side-effects.
             if (_selectedStrategy != currentStrategy)
             {
@@ -209,8 +213,9 @@ public sealed class QuizViewModel : BaseViewModel
             _current = q;
             Prompt = q.Prompt;
             PromptFurigana = q.PromptFurigana;
-            // Always show the manual replay button — the user can always ask to hear the JP audio.
-            ShowPromptSpeakButton = true;
+            // Only show the replay button when the prompt is in the target language (TargetToBase).
+            // For BaseToTarget the prompt is already the base-language text, so TTS isn't useful.
+            ShowPromptSpeakButton = q.Direction == QuestionDirection.TargetToBase;
 
             var optionsAreInTargetLanguage = q.Direction == QuestionDirection.BaseToTarget;
             Options.Clear();
