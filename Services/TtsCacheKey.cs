@@ -19,10 +19,13 @@ internal static class TtsCacheKey
     internal static string For(string provider, string voice, string lang, string text) =>
         $"{provider}|{lang}|{voice}|{text}";
 
-    /// <summary>Returns the uppercase hex SHA-256 digest of the given cache key.</summary>
+    /// <summary>Returns the lowercase hex SHA-256 digest of the given cache key.
+    /// Lowercase is required because the MAUI Android build lowercases all MauiAsset
+    /// filenames, so an uppercase hash would not be found by the case-sensitive Android
+    /// AssetManager. Windows is case-insensitive, so lowercase works there too.</summary>
     internal static string HashHex(string key)
     {
         var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(key));
-        return Convert.ToHexString(bytes);
+        return Convert.ToHexString(bytes).ToLowerInvariant();
     }
 }

@@ -259,7 +259,9 @@ return totalFailed > 0 ? 2 : 0;
 static string CacheFileName(string cacheKey, string extension)
 {
     var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(cacheKey));
-    return Convert.ToHexString(bytes) + extension;
+    // Use lowercase to match the MAUI Android build, which lowercases all MauiAsset
+    // filenames. The runtime lookup in BundledTtsAssets also uses lowercase.
+    return Convert.ToHexString(bytes).ToLowerInvariant() + extension;
 }
 
 /// <summary>Derives a file extension from an Azure TTS output-format string.
