@@ -226,15 +226,15 @@ foreach (var sourceFile in sourceFiles)
 
         kept.Sort((a, b) => string.Compare(a.Id, b.Id, StringComparison.Ordinal));
 
-        string J2(object? v) => JsonSerializer.Serialize(v);
-        string IdTok2(GenericWord w)   => $"\"id\": \"{w.Id}\"";
-        string WordTok2(GenericWord w) => $"\"word\": \"{w.Word}\"";
-        string PosTok2(GenericWord w)  => $"\"pos\": \"{w.PartOfSpeech}\"";
-        int Wmax2(Func<GenericWord, string> sel) => kept.Count > 0 ? kept.Max(w => sel(w).Length) : 0;
-        int idW2   = Wmax2(IdTok2);
-        int wordW2 = Wmax2(WordTok2);
-        int posW2  = Wmax2(PosTok2);
-        string PadOut2(string s, int n) => s + new string(' ', Math.Max(0, n - s.Length));
+        string J(object? v) => JsonSerializer.Serialize(v);
+        string IdTok(GenericWord w)   => $"\"id\": \"{w.Id}\"";
+        string WordTok(GenericWord w) => $"\"word\": \"{w.Word}\"";
+        string PosTok(GenericWord w)  => $"\"pos\": \"{w.PartOfSpeech}\"";
+        int Wmax(Func<GenericWord, string> sel) => kept.Count > 0 ? kept.Max(w => sel(w).Length) : 0;
+        int idW   = Wmax(IdTok);
+        int wordW = Wmax(WordTok);
+        int posW  = Wmax(PosTok);
+        string PadOut(string s, int n) => s + new string(' ', Math.Max(0, n - s.Length));
 
         var sb = new StringBuilder(kept.Count * 120);
         sb.Append('[').Append('\n');
@@ -242,10 +242,10 @@ foreach (var sourceFile in sourceFiles)
         {
             var w = kept[i];
             sb.Append("  { ")
-              .Append(PadOut2(IdTok2(w),   idW2)).Append(", ")
-              .Append(PadOut2(WordTok2(w), wordW2)).Append(", ")
-              .Append(PadOut2(PosTok2(w),  posW2)).Append(", ")
-              .Append("\"tags\": ").Append(J2(w.Tags)).Append(", ")
+              .Append(PadOut(IdTok(w),   idW)).Append(", ")
+              .Append(PadOut(WordTok(w), wordW)).Append(", ")
+              .Append(PadOut(PosTok(w),  posW)).Append(", ")
+              .Append("\"tags\": ").Append(J(w.Tags)).Append(", ")
               .Append("\"frequencyRank\": ").Append(w.FrequencyRank)
               .Append(" }").Append(i < kept.Count - 1 ? "," : "").Append('\n');
         }
