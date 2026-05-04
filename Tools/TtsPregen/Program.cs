@@ -183,15 +183,15 @@ foreach (var (pack, words) in packs)
     {
         if (string.IsNullOrWhiteSpace(word.Id)) continue;
 
-        // Resolve TTS text: for Japanese packs use kanji (or kana fallback) because that
-        // produces the most accurate pronunciation from Azure TTS. For all other languages
+        // Resolve TTS text: for Japanese packs use kana (or kanji fallback) because kana
+        // guarantees unambiguous pronunciation from Azure TTS. For all other languages
         // use the primary form (forms[0]).
         string ttsText;
         if (isJapanese)
         {
-            var kanji = kanjiIdx >= 0 ? word.FormAt(kanjiIdx, formKeys) : string.Empty;
             var kana  = kanaIdx  >= 0 ? word.FormAt(kanaIdx,  formKeys) : string.Empty;
-            ttsText = string.IsNullOrWhiteSpace(kanji) ? kana : kanji;
+            var kanji = kanjiIdx >= 0 ? word.FormAt(kanjiIdx, formKeys) : string.Empty;
+            ttsText = string.IsNullOrWhiteSpace(kana) ? kanji : kana;
         }
         else
         {
