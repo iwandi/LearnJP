@@ -1,6 +1,4 @@
 using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace LearnJP.Services;
 
@@ -24,20 +22,11 @@ public sealed class BundledTtsAssets : IBundledTtsAssets
     private readonly Dictionary<string, byte[]?> _memory = new(StringComparer.Ordinal);
     private readonly SemaphoreSlim _gate = new(1, 1);
 
-    private static string KeyFor(string provider, string voice, string lang, string text) =>
-        $"{provider}|{lang}|{voice}|{text}";
-
-    private static string HashHex(string key)
-    {
-        var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(key));
-        return Convert.ToHexString(bytes);
-    }
-
     public async Task<byte[]?> GetAsync(string provider, string voice, string lang, string text, CancellationToken ct = default)
     {
         if (string.IsNullOrWhiteSpace(text)) return null;
 
-        var key = KeyFor(provider, voice, lang, text);
+        var key = TtsCacheKey.For(provider, voice, lang, text);
 
         // Fast path: already resolved (hit or confirmed miss).
         if (_memory.TryGetValue(key, out var cached)) return cached;
@@ -47,7 +36,7 @@ public sealed class BundledTtsAssets : IBundledTtsAssets
         {
             if (_memory.TryGetValue(key, out cached)) return cached;
 
-            var result = await TryReadFromBundleAsync(HashHex(key), ct);
+            var result = await TryReadFromBundleAsync(TtsCacheKey.HashHex(key), ct);
             _memory[key] = result; // store null for misses so we skip the I/O next time
             return result;
         }
@@ -65,7 +54,7 @@ public sealed class BundledTtsAssets : IBundledTtsAssets
                 using var ms = new MemoryStream();
                 await stream.CopyToAsync(ms, ct);
                 var bytes = ms.ToArray();
-                if (bytes.Length > 64)
+                if (bytes.Length > TtsCacheKey.MinAudioBytes)
                 {
                     Debug.WriteLine($"[BundledTtsAssets] hit: {assetPath} ({bytes.Length} bytes)");
                     return bytes;

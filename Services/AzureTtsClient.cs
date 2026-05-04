@@ -34,11 +34,11 @@ public sealed class AzureTtsClient : IDisposable
 
         // 1. Bundled assets — fastest, no network or writable-storage I/O.
         var bundled = await _bundled.GetAsync(ProviderName, voiceName, languageTag, text, ct);
-        if (bundled is { Length: > 64 }) return bundled;
+        if (bundled is { Length: > TtsCacheKey.MinAudioBytes }) return bundled;
 
         // 2. Mutable file cache — previously synthesized audio stored on device.
         var cached = await _cache.GetAsync(ProviderName, voiceName, languageTag, text, ct);
-        if (cached is { Length: > 64 }) return cached;
+        if (cached is { Length: > TtsCacheKey.MinAudioBytes }) return cached;
 
         var key = _settings.AzureSpeechKey;
         var region = _settings.AzureSpeechRegion;
@@ -59,7 +59,7 @@ public sealed class AzureTtsClient : IDisposable
         {
             using var req = new HttpRequestMessage(HttpMethod.Post, endpoint);
             req.Headers.Add("Ocp-Apim-Subscription-Key", key);
-            req.Headers.Add("X-Microsoft-OutputFormat", "audio-24khz-96kbitrate-mono-mp3");
+            req.Headers.Add("X-Microsoft-OutputFormat", "audio-24khz-96kbitrate-mono-mp3"); // MP3: universally supported on all platforms including iOS/macOS
             req.Headers.Add("User-Agent", "LearnJP/1.0");
             req.Content = new StringContent(ssml, Encoding.UTF8, "application/ssml+xml");
 
@@ -72,7 +72,7 @@ public sealed class AzureTtsClient : IDisposable
             }
 
             var bytes = await resp.Content.ReadAsByteArrayAsync(ct);
-            if (bytes.Length > 64)
+            if (bytes.Length > TtsCacheKey.MinAudioBytes)
                 await _cache.SetAsync(ProviderName, voiceName, languageTag, text, bytes, ct);
             return bytes;
         }
