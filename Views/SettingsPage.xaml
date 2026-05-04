@@ -36,7 +36,7 @@
 
             <Label Text="{Binding Loc[settings_audio]}" Style="{StaticResource HeadlineLabel}" />
             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" RowSpacing="12">
-                <Label Grid.Column="0" Text="{Binding Loc[settings_speak_japanese]}" VerticalOptions="Center" />
+                <Label Grid.Column="0" Text="{Binding Loc[settings_speak_question]}" VerticalOptions="Center" />
                 <Switch Grid.Column="1" IsToggled="{Binding TtsEnabled}" HorizontalOptions="End" WidthRequest="50" />
             </Grid>
 

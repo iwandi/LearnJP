@@ -119,7 +119,7 @@ public sealed class LocalizationService : ILocalizationService
             ["settings_language"]              = "Language",
 
             // Settings page — fields
-            ["settings_speak_japanese"]        = "Speak Japanese aloud",
+            ["settings_speak_question"]        = "Autoplay vocal",
             ["settings_tts_provider"]          = "TTS provider",
             ["settings_system_volume"]         = "System TTS volume",
             ["settings_azure_volume"]          = "Azure TTS volume",
@@ -193,7 +193,7 @@ public sealed class LocalizationService : ILocalizationService
             ["settings_language"]              = "Sprache",
 
             // Settings page — fields
-            ["settings_speak_japanese"]        = "Japanisch laut sprechen",
+            ["settings_speak_question"]        = "Automatich sprache abspielen",
             ["settings_tts_provider"]          = "TTS-Anbieter",
             ["settings_system_volume"]         = "System-TTS-Lautstärke",
             ["settings_azure_volume"]          = "Azure-TTS-Lautstärke",
