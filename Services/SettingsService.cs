@@ -51,7 +51,7 @@ public sealed class SettingsService : ISettingsService
 
     public TtsProvider TtsProvider
     {
-        get => (TtsProvider)Read(KeyTtsProvider, (int)TtsProvider.System);
+        get => (TtsProvider)Read(KeyTtsProvider, (int)TtsProvider.Azure);
         set => Write(KeyTtsProvider, (int)value);
     }
 
