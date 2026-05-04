@@ -37,7 +37,7 @@
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
 	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningKeyAlias>release2</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyAlias>release4</AndroidSigningKeyAlias>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
@@ -60,7 +60,7 @@
 	  <ApplicationTitle>Vocab Meister</ApplicationTitle>
 	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningKeyAlias>release2</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyAlias>release4</AndroidSigningKeyAlias>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
