@@ -176,22 +176,44 @@ public sealed class TtsService : ITtsService
         }
     }
 
-    /// <summary>Returns the duration of a canonical PCM WAV in milliseconds, or 0 on parse failure.</summary>
-    private static int EstimateWavDurationMs(byte[] wav)
+    /// <summary>Returns the approximate duration in milliseconds of an audio buffer, or 0 on
+    /// parse failure. Handles RIFF/WAV (exact, via header), MP3 (approximate at 96 kbps),
+    /// and WebM/OGG (approximate at 64 kbps — the Opus rate Azure uses).</summary>
+    private static int EstimateWavDurationMs(byte[] audio)
     {
         try
         {
-            if (wav.Length < 44) return 0;
-            // sampleRate at offset 24 (little-endian uint32), channels at 22 (uint16), bitsPerSample at 34 (uint16),
-            // data chunk size at offset 40 (uint32). This is the canonical RIFF/WAV layout Azure returns.
-            var sampleRate = BitConverter.ToUInt32(wav, 24);
-            var channels   = BitConverter.ToUInt16(wav, 22);
-            var bps        = BitConverter.ToUInt16(wav, 34);
-            var dataBytes  = BitConverter.ToUInt32(wav, 40);
-            if (sampleRate == 0 || channels == 0 || bps == 0) return 0;
-            var bytesPerSecond = sampleRate * channels * (bps / 8u);
-            if (bytesPerSecond == 0) return 0;
-            return (int)(dataBytes * 1000 / bytesPerSecond);
+            if (audio.Length < 8) return 0;
+
+            // RIFF/WAV: parse the standard header for an exact value.
+            if (audio[0] == 'R' && audio[1] == 'I' && audio[2] == 'F' && audio[3] == 'F'
+                && audio.Length >= 44)
+            {
+                var sampleRate = BitConverter.ToUInt32(audio, 24);
+                var channels   = BitConverter.ToUInt16(audio, 22);
+                var bps        = BitConverter.ToUInt16(audio, 34);
+                var dataBytes  = BitConverter.ToUInt32(audio, 40);
+                if (sampleRate == 0 || channels == 0 || bps == 0) return 0;
+                var bytesPerSecond = sampleRate * channels * (bps / 8u);
+                if (bytesPerSecond == 0) return 0;
+                return (int)(dataBytes * 1000 / bytesPerSecond);
+            }
+
+            if (audio.Length <= 64) return 0;
+
+            // WebM (starts with 0x1A 0x45 0xDF 0xA3 — EBML magic) or OGG (starts with "OggS"):
+            // Azure Opus streams are ~64 kbps. duration_ms ≈ bytes * 8 / 64 = bytes / 8
+            if ((audio[0] == 0x1A && audio[1] == 0x45 && audio[2] == 0xDF && audio[3] == 0xA3)
+                || (audio[0] == 'O' && audio[1] == 'g' && audio[2] == 'g' && audio[3] == 'S'))
+            {
+                return audio.Length / 8;
+            }
+
+            // Fallback: assume MP3 at 96 kbps (the rate Azure uses for audio-24khz-96kbitrate-mono-mp3).
+            // Unknown or unsupported formats will produce an imprecise estimate, but that is
+            // acceptable — the caller only needs a rough delay so speech isn't cut off early.
+            // duration_ms = bytes * 8 / kbps = bytes * 8 / 96 = bytes / 12
+            return audio.Length / 12;
         }
         catch { return 0; }
     }

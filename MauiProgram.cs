@@ -22,6 +22,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<ISoundService, SoundService>();
         builder.Services.AddSingleton<ISettingsService, SettingsService>();
         builder.Services.AddSingleton<ITtsCache, FileTtsCache>();
+        builder.Services.AddSingleton<IBundledTtsAssets, BundledTtsAssets>();
         builder.Services.AddSingleton<AzureTtsClient>();
 
         builder.Services.AddSingleton<QuizViewModel>();
