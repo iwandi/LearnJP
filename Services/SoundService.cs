@@ -13,6 +13,43 @@ public sealed class SoundService : ISoundService
 
     public SoundService(IAudioManager audioManager) { _audioManager = audioManager; }
 
+    /// <summary>Standard RIFF/WAV header size in bytes.</summary>
+    private const int WavHeaderSize = 44;
+
+    // Sounds loaded from Resources/Raw/sounds/ (correct.wav, wrong.wav).
+    // Written once by PreloadAsync before Play is first called; read without a lock because
+    // the reference assignment is atomic and PreloadAsync completes before Play is ever called.
+    private volatile Dictionary<SoundEffect, byte[]>? _rawSounds;
+
+    private static readonly IReadOnlyDictionary<SoundEffect, string> RawSoundFiles =
+        new Dictionary<SoundEffect, string>
+        {
+            { SoundEffect.Correct, "sounds/correct.wav" },
+            { SoundEffect.Wrong,   "sounds/wrong.wav"   },
+        };
+
+    public async Task PreloadAsync()
+    {
+        var loaded = new Dictionary<SoundEffect, byte[]>();
+        foreach (var (effect, filename) in RawSoundFiles)
+        {
+            try
+            {
+                await using var stream = await FileSystem.OpenAppPackageFileAsync(filename);
+                using var ms = new MemoryStream();
+                await stream.CopyToAsync(ms);
+                var bytes = ms.ToArray();
+                if (bytes.Length > WavHeaderSize) // sanity-check: must be longer than the WAV header
+                    loaded[effect] = bytes;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[Sound] PreloadAsync({filename}) skipped: {ex.Message}");
+            }
+        }
+        _rawSounds = loaded;
+    }
+
     public TimeSpan Play(SoundEffect effect)
     {
         try
@@ -85,6 +122,15 @@ public sealed class SoundService : ISoundService
     private byte[] GetOrBuildWav(SoundEffect effect)
     {
         if (_wavCache.TryGetValue(effect, out var cached)) return cached;
+
+        // Prefer the sound loaded from Resources/Raw/sounds/ so users can swap files.
+        var rawSounds = _rawSounds;
+        if (rawSounds is not null && rawSounds.TryGetValue(effect, out var rawWav))
+        {
+            _wavCache[effect] = rawWav;
+            return rawWav;
+        }
+
         var wav = effect switch
         {
             SoundEffect.Click   => BuildTone(880, 60,  0.30, 0.005),
@@ -116,7 +162,7 @@ public sealed class SoundService : ISoundService
 
     private static short[] ExtractMonoSamples(byte[] wav)
     {
-        const int header = 44;
+        const int header = WavHeaderSize;
         var len = (wav.Length - header) / 2;
         var samples = new short[len];
         Buffer.BlockCopy(wav, header, samples, 0, len * sizeof(short));
@@ -152,7 +198,7 @@ public sealed class SoundService : ISoundService
         var byteRate = sampleRate * channels * bitsPerSample / 8;
         var dataSize = samples.Length * sizeof(short);
 
-        using var ms = new MemoryStream(44 + dataSize);
+        using var ms = new MemoryStream(WavHeaderSize + dataSize);
         using var bw = new BinaryWriter(ms);
         bw.Write(System.Text.Encoding.ASCII.GetBytes("RIFF"));
         bw.Write(36 + dataSize);

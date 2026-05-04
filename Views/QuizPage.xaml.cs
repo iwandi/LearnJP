@@ -1,3 +1,4 @@
+using LearnJP.Services;
 using LearnJP.ViewModels;
 
 namespace LearnJP.Views;
@@ -5,12 +6,14 @@ namespace LearnJP.Views;
 public partial class QuizPage : ContentPage
 {
     private readonly QuizViewModel _vm;
+    private readonly ISoundService _sounds;
     private bool _firstLoad = true;
 
-    public QuizPage(QuizViewModel vm)
+    public QuizPage(QuizViewModel vm, ISoundService sounds)
     {
         InitializeComponent();
         _vm = vm;
+        _sounds = sounds;
         BindingContext = _vm;
     }
 
@@ -20,6 +23,7 @@ public partial class QuizPage : ContentPage
         if (_firstLoad)
         {
             _firstLoad = false;
+            await _sounds.PreloadAsync();
             await _vm.LoadNextAsync();
         }
         await _vm.SyncActiveFilterAsync();
