@@ -34,20 +34,37 @@
                             StrokeShape="RoundRectangle 12"
                             BackgroundColor="{Binding BackgroundColor}"
                             Padding="14">
-                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
-                            <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
-                                <Label Text="{Binding DisplayName}" FontSize="18" FontAttributes="Bold" />
-                                <Label Text="{Binding Subtitle}" FontSize="12"
-                                       TextColor="{Binding MutedTextColor}" />
-                            </VerticalStackLayout>
-                            <Button Grid.Column="1"
-                                    Text="{Binding SelectButtonText}"
-                                    Clicked="OnSelectClicked"
-                                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"
-                                    TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
-                                    CornerRadius="10"
-                                    HeightRequest="40"
-                                    Padding="16,0" />
+                        <Grid RowDefinitions="Auto,Auto" RowSpacing="8">
+                            <!-- Row 0: language name + subtitle on the left, select/active button on the right -->
+                            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                                    <Label Text="{Binding DisplayName}" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding Subtitle}" FontSize="12"
+                                           TextColor="{Binding MutedTextColor}" />
+                                </VerticalStackLayout>
+                                <Button Grid.Column="1"
+                                        Text="{Binding SelectButtonText}"
+                                        Clicked="OnSelectClicked"
+                                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"
+                                        TextColor="{AppThemeBinding Light=#1A1A2E, Dark=White}"
+                                        CornerRadius="10"
+                                        HeightRequest="40"
+                                        Padding="16,0" />
+                            </Grid>
+                            <!-- Row 1: Learn Kana toggle — only shown for the active language that supports it -->
+                            <Grid Grid.Row="1"
+                                  ColumnDefinitions="*,Auto"
+                                  IsVisible="{Binding HasLearnKanaFlag}">
+                                <Label Grid.Column="0"
+                                       Text="{Binding Loc[lang_learn_kana]}"
+                                       TextColor="{Binding MutedTextColor}"
+                                       VerticalOptions="Center" />
+                                <Switch Grid.Column="1"
+                                        IsToggled="{Binding LearnKanaFlag.Value, Mode=TwoWay}"
+                                        HorizontalOptions="End"
+                                        WidthRequest="50"
+                                        VerticalOptions="Center" />
+                            </Grid>
                         </Grid>
                     </Border>
                 </DataTemplate>

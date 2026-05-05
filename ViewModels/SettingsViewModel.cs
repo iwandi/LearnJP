@@ -32,8 +32,12 @@ public sealed class DisplayFlagVm : BaseViewModel
         get => _value;
         set
         {
-            if (!SetProperty(ref _value, value)) return;
+            if (_value == value) return;
+            _value = value;
+            // Persist FIRST so that any PropertyChanged subscriber that immediately reads
+            // settings (e.g. RebuildProgressionStages) sees the new value.
             _settings.SetDisplayFlag(_packId, Key, value);
+            OnPropertyChanged();
         }
     }
 }
