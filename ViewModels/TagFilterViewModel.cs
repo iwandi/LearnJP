@@ -52,10 +52,11 @@ public sealed class ProgressionStageRow : BaseViewModel
     public required int KnownWords { get; init; }
     public required double UnlockThreshold { get; init; }
     public required bool IsUnlocked { get; init; }
+    /// <summary>Localized accessibility label (e.g. "Unlocked" / "Locked").</summary>
+    public required string StatusLabel { get; init; }
 
     public bool IsLocked => !IsUnlocked;
     public string StatusIcon  => IsUnlocked ? "🔓" : "🔒";
-    public string StatusLabel => IsUnlocked ? "Unlocked" : "Locked";
     public string ProgressText => $"{KnownWords}/{TotalWords}";
     public double KnownFraction => TotalWords > 0 ? (double)KnownWords / TotalWords : 0;
     public string ThresholdText => IsUnlocked ? string.Empty : $"Need {UnlockThreshold:P0} of previous stage";
@@ -271,6 +272,9 @@ public sealed class TagFilterViewModel : BaseViewModel
                     KnownWords = known,
                     UnlockThreshold = i == 0 ? 0.0 : stage.UnlockThreshold,
                     IsUnlocked = unlockedSet.Contains(stage.Tag),
+                    StatusLabel = unlockedSet.Contains(stage.Tag)
+                        ? _loc["filter_progression_unlocked"]
+                        : _loc["filter_progression_locked"],
                 });
             }
         }
@@ -333,7 +337,8 @@ public sealed class TagFilterViewModel : BaseViewModel
         OnPropertyChanged(nameof(ActiveFilterDisplay));
     }
 
-    // Reads IsKnown from the store's in-memory cache synchronously (store.LoadAsync already
-    // called by RefreshAsync before this is used).
+    // Reads IsKnown from the store's in-memory cache synchronously. Callers MUST await
+    // store.LoadAsync() before invoking this method — RefreshAsync() enforces that contract
+    // by loading the store before iterating words.
     private bool IsWordKnown(string wordId) => _store.Get(wordId).IsKnown;
 }

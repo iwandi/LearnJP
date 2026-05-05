@@ -89,7 +89,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
         // Glyphs (kana, jamo, …) are included only when the user explicitly enables them
         // via the language-behavior display flag, regardless of filter mode.
         var activePack = _packs?.Active;
-        bool glyphAllowed = activePack is not null
+        bool glyphsEnabled = activePack is not null
             && activePack.GlyphTags.Count > 0
             && _settings.GetDisplayFlag(activePack.Id, LanguageBehavior.FlagIncludeGlyphs, false);
 
@@ -98,7 +98,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
             filteredEnum = filteredEnum.Where(w => w.Tags.Any(t => includeSet.Contains(t)));
         if (excludeSet.Count > 0)
             filteredEnum = filteredEnum.Where(w => !w.Tags.Any(t => excludeSet.Contains(t)));
-        if (!glyphAllowed)
+        if (!glyphsEnabled)
             filteredEnum = filteredEnum.Where(w => CategoryOf(w) != WordCategory.Glyph);
 
         var filtered = filteredEnum.ToList();

@@ -119,6 +119,8 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_mode_no_filter"]          = "No Filter",
             ["filter_mode_manual"]             = "Manual",
             ["filter_active_auto_prefix"]      = "Auto: ",
+            ["filter_progression_locked"]      = "Locked",
+            ["filter_progression_unlocked"]    = "Unlocked",
 
             // Customize tab
             ["customize_display_options"]      = "Language settings",
@@ -205,6 +207,8 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_mode_no_filter"]          = "Kein Filter",
             ["filter_mode_manual"]             = "Manuell",
             ["filter_active_auto_prefix"]      = "Auto: ",
+            ["filter_progression_locked"]      = "Gesperrt",
+            ["filter_progression_unlocked"]    = "Entsperrt",
 
             // Customize tab
             ["customize_display_options"]      = "Spracheinstellungen",
