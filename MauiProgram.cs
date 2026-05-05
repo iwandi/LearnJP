@@ -21,6 +21,7 @@ public static class MauiProgram
         builder.Services.AddSingleton(AudioManager.Current);
         builder.Services.AddSingleton<ITtsService, TtsService>();
         builder.Services.AddSingleton<ISoundService, SoundService>();
+        builder.Services.AddSingleton<IPreferenceBackend, MauiPreferenceBackend>();
         builder.Services.AddSingleton<ISettingsService, SettingsService>();
         builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
         builder.Services.AddSingleton<ITtsCache, FileTtsCache>();

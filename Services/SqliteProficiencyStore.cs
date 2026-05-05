@@ -32,12 +32,28 @@ public sealed class SqliteProficiencyStore : IProficiencyStore
 
     public int TurnsAsked => _turnsAsked;
 
+    public SqliteProficiencyStore() { }
+
+    /// <summary>Test seam: pin the database to an explicit file instead of resolving via <see cref="FileSystem.AppDataDirectory"/>.</summary>
+    public SqliteProficiencyStore(string dbPath)
+    {
+        if (string.IsNullOrWhiteSpace(dbPath)) throw new ArgumentException("dbPath required", nameof(dbPath));
+        var dir = Path.GetDirectoryName(dbPath);
+        if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
+        _dbPath = dbPath;
+    }
+
     private string GetDbPath()
     {
         if (_dbPath is not null) return _dbPath;
         string dir;
+#if ANDROID || IOS || MACCATALYST || WINDOWS
         try { dir = FileSystem.AppDataDirectory; }
         catch { dir = Path.Combine(Path.GetTempPath(), "LearnJP"); }
+#else
+        // Non-MAUI host (test runner, tooling): MAUI's FileSystem isn't available.
+        dir = Path.Combine(Path.GetTempPath(), "LearnJP");
+#endif
         try { Directory.CreateDirectory(dir); } catch { /* ignore */ }
         _dbPath = Path.Combine(dir, "proficiency.db");
         return _dbPath;

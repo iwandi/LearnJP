@@ -92,6 +92,11 @@
 		<MauiAsset Remove="Tools\**" />
 		<MauiXaml Remove="Tools\**" />
 		<None Remove="Tools\**" />
+		<!-- Unit tests live under Tests\ as a separate net9.0 project; same exclusion. -->
+		<Compile Remove="Tests\**" />
+		<MauiAsset Remove="Tests\**" />
+		<MauiXaml Remove="Tests\**" />
+		<None Remove="Tests\**" />
 	</ItemGroup>
 
 	<ItemGroup>

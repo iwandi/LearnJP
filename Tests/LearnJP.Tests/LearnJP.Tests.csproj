@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>LearnJP.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
+  </ItemGroup>
+
+  <!--
+    Link the production sources we exercise. Same pattern as Tools\StrategySim:
+    keeps the tests in lockstep with the real code without needing the MAUI runtime.
+    MAUI-only files (the FileSystem-backed path resolution, MauiPreferenceBackend) are
+    intentionally omitted — tests inject explicit paths and an in-memory IPreferenceBackend.
+  -->
+  <ItemGroup>
+    <!-- Models -->
+    <Compile Include="..\..\Models\WordProficiency.cs"          Link="_Linked\Models\WordProficiency.cs" />
+    <Compile Include="..\..\Models\ProficiencyCriterion.cs"     Link="_Linked\Models\ProficiencyCriterion.cs" />
+    <Compile Include="..\..\Models\LearningStrategy.cs"         Link="_Linked\Models\LearningStrategy.cs" />
+    <Compile Include="..\..\Models\TtsProvider.cs"              Link="_Linked\Models\TtsProvider.cs" />
+    <Compile Include="..\..\Models\TagFilterMode.cs"            Link="_Linked\Models\TagFilterMode.cs" />
+    <Compile Include="..\..\Models\Word.cs"                     Link="_Linked\Models\Word.cs" />
+    <Compile Include="..\..\Models\Question.cs"                 Link="_Linked\Models\Question.cs" />
+    <Compile Include="..\..\Models\LanguagePack.cs"             Link="_Linked\Models\LanguagePack.cs" />
+    <Compile Include="..\..\Models\LanguageBehavior.cs"         Link="_Linked\Models\LanguageBehavior.cs" />
+    <Compile Include="..\..\Models\ProgressionStage.cs"         Link="_Linked\Models\ProgressionStage.cs" />
+
+    <!-- Services under test -->
+    <Compile Include="..\..\Services\IProficiencyStore.cs"      Link="_Linked\Services\IProficiencyStore.cs" />
+    <Compile Include="..\..\Services\SqliteProficiencyStore.cs" Link="_Linked\Services\SqliteProficiencyStore.cs" />
+    <Compile Include="..\..\Services\Fsrs.cs"                   Link="_Linked\Services\Fsrs.cs" />
+    <Compile Include="..\..\Services\ISettingsService.cs"       Link="_Linked\Services\ISettingsService.cs" />
+    <Compile Include="..\..\Services\SettingsService.cs"        Link="_Linked\Services\SettingsService.cs" />
+    <Compile Include="..\..\Services\IPreferenceBackend.cs"     Link="_Linked\Services\IPreferenceBackend.cs" />
+  </ItemGroup>
+
+  <!-- Ship the golden fixture(s) next to the test binaries. -->
+  <ItemGroup>
+    <None Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

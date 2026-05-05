@@ -24,28 +24,15 @@ public sealed class SettingsService : ISettingsService
     // stays self-describing and per-pack values don't collide.
     private const string DisplayPrefix    = "settings.display.";
 
-    private readonly Dictionary<string, object> _fallback = new();
-    private bool _preferencesAvailable = true;
+    private readonly IPreferenceBackend _backend;
 
-    private T Read<T>(string key, T defaultValue)
+    public SettingsService(IPreferenceBackend backend)
     {
-        if (_preferencesAvailable)
-        {
-            try { return Preferences.Default.Get(key, defaultValue); }
-            catch { _preferencesAvailable = false; }
-        }
-        return _fallback.TryGetValue(key, out var v) && v is T t ? t : defaultValue;
+        _backend = backend ?? throw new ArgumentNullException(nameof(backend));
     }
 
-    private void Write<T>(string key, T value)
-    {
-        if (_preferencesAvailable)
-        {
-            try { Preferences.Default.Set(key, value); return; }
-            catch { _preferencesAvailable = false; }
-        }
-        _fallback[key] = value!;
-    }
+    private T Read<T>(string key, T defaultValue) => _backend.Get(key, defaultValue);
+    private void Write<T>(string key, T value) => _backend.Set(key, value);
 
     public bool TtsEnabled      { get => Read(KeyTts,      true);  set => Write(KeyTts,      value); }
     public double TtsRate       { get => Read(KeyRate,     0.9);   set => Write(KeyRate,     value); }
