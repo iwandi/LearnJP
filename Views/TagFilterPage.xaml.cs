@@ -20,7 +20,6 @@ public partial class TagFilterPage : ContentPage
     }
 
     private void OnAutoModeClicked(object? sender, EventArgs e)  => _vm.SelectAutoProgression();
-    private void OnNoFilterClicked(object? sender, EventArgs e)  => _vm.SelectNoFilter();
     private void OnManualClicked(object? sender, EventArgs e)    => _vm.SelectManual();
 
     private void OnIncludeClicked(object? sender, EventArgs e)

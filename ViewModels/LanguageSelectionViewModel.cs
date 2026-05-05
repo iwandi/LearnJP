@@ -68,6 +68,22 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         _packs = packs;
         _settings = settings;
         _loc = loc;
+
+        // Rebuild the active-language display flags whenever the pack changes.
+        _packs.ActiveChanged += (_, _) => RebuildDisplayFlags();
+    }
+
+    public ObservableCollection<DisplayFlagVm> DisplayFlags { get; } = new();
+    public bool HasDisplayFlags => DisplayFlags.Count > 0;
+
+    public void RebuildDisplayFlags()
+    {
+        DisplayFlags.Clear();
+        var pack = _packs.Active;
+        if (pack is null) { OnPropertyChanged(nameof(HasDisplayFlags)); return; }
+        foreach (var opt in pack.Behavior.DisplayOptions)
+            DisplayFlags.Add(new DisplayFlagVm(_settings, pack.Id, opt));
+        OnPropertyChanged(nameof(HasDisplayFlags));
     }
 
     public async Task RefreshAsync()
@@ -96,6 +112,7 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         _suppressBaseChange = false;
 
         RefreshTargetList();
+        RebuildDisplayFlags();
     }
 
     private void RefreshTargetList()

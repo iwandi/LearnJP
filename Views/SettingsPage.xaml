@@ -10,30 +10,6 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="18">
 
-            <Label Text="{Binding Loc[settings_display]}" Style="{StaticResource HeadlineLabel}"
-                   IsVisible="{Binding HasDisplayFlags}" />
-            <!-- Toggles are sourced from the active language pack's behaviour. Languages
-                 that don't expose any (e.g. Italian) hide this whole section. -->
-            <CollectionView ItemsSource="{Binding DisplayFlags}"
-                            IsVisible="{Binding HasDisplayFlags}"
-                            SelectionMode="None">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="12" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="vm:DisplayFlagVm">
-                        <Grid ColumnDefinitions="*,Auto">
-                            <Label Grid.Column="0" Text="{Binding Display}" VerticalOptions="Center" />
-                            <Switch Grid.Column="1" IsToggled="{Binding Value, Mode=TwoWay}"
-                                    HorizontalOptions="End" WidthRequest="50" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <BoxView HeightRequest="1" Color="{StaticResource MutedText}" Opacity="0.2"
-                     IsVisible="{Binding HasDisplayFlags}" />
-
             <Label Text="{Binding Loc[settings_audio]}" Style="{StaticResource HeadlineLabel}" />
             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto" RowSpacing="12">
                 <Label Grid.Column="0" Text="{Binding Loc[settings_speak_question]}" VerticalOptions="Center" />

@@ -4,13 +4,41 @@
              xmlns:vm="clr-namespace:LearnJP.ViewModels"
              x:Class="LearnJP.Views.TagFilterPage"
              x:DataType="vm:TagFilterViewModel"
-             Title="Mode">
+             Title="{Binding Loc[tab_customize]}">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" RowSpacing="10">
+    <ScrollView>
+      <VerticalStackLayout Padding="16" Spacing="10">
+
+        <!-- Language display flags (e.g. Include kana, Romaji-only) — only shown when the
+             active language has at least one display option. -->
+        <Border StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 12"
+                Padding="14"
+                IsVisible="{Binding HasDisplayFlags}">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="{Binding Loc[customize_display_options]}"
+                       Style="{StaticResource HeadlineLabel}" />
+                <CollectionView ItemsSource="{Binding DisplayFlags}"
+                                SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:DisplayFlagVm">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="{Binding Display}" VerticalOptions="Center" />
+                                <Switch Grid.Column="1" IsToggled="{Binding Value, Mode=TwoWay}"
+                                        HorizontalOptions="End" WidthRequest="50" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Border>
 
         <!-- Strategy picker -->
-        <Border Grid.Row="0"
-                StrokeThickness="0"
+        <Border StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 12"
                 Padding="14">
@@ -22,13 +50,12 @@
             </Grid>
         </Border>
 
-        <!-- Filter mode selector: Auto Progression | No Filter | Manual -->
-        <Border Grid.Row="1"
-                StrokeThickness="0"
+        <!-- Filter mode selector: Auto Progression | Manual -->
+        <Border StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 12"
                 Padding="10">
-            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="6">
                 <Button Grid.Column="0"
                         Text="{Binding Loc[filter_mode_auto]}"
                         BackgroundColor="{Binding AutoModeButtonColor}"
@@ -39,15 +66,6 @@
                         Padding="4,0"
                         Clicked="OnAutoModeClicked" />
                 <Button Grid.Column="1"
-                        Text="{Binding Loc[filter_mode_no_filter]}"
-                        BackgroundColor="{Binding NoFilterButtonColor}"
-                        TextColor="{Binding NoFilterButtonTextColor}"
-                        CornerRadius="10"
-                        FontSize="13"
-                        HeightRequest="40"
-                        Padding="4,0"
-                        Clicked="OnNoFilterClicked" />
-                <Button Grid.Column="2"
                         Text="{Binding Loc[filter_mode_manual]}"
                         BackgroundColor="{Binding ManualButtonColor}"
                         TextColor="{Binding ManualButtonTextColor}"
@@ -60,8 +78,7 @@
         </Border>
 
         <!-- Active filter summary -->
-        <Border Grid.Row="2"
-                StrokeThickness="0"
+        <Border StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 12"
                 Padding="14">
@@ -69,8 +86,7 @@
         </Border>
 
         <!-- Progression ladder (visible in Auto Progression mode) -->
-        <CollectionView Grid.Row="3"
-                        ItemsSource="{Binding ProgressionStages}"
+        <CollectionView ItemsSource="{Binding ProgressionStages}"
                         SelectionMode="None"
                         IsVisible="{Binding IsAutoProgression}">
             <CollectionView.ItemsLayout>
@@ -120,8 +136,7 @@
         </CollectionView>
 
         <!-- Manual tag include/exclude list (visible in Manual mode only) -->
-        <CollectionView Grid.Row="3"
-                        ItemsSource="{Binding Tags}"
+        <CollectionView ItemsSource="{Binding Tags}"
                         SelectionMode="None"
                         IsVisible="{Binding IsManualFilter}">
             <CollectionView.ItemsLayout>
@@ -177,5 +192,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-    </Grid>
+      </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

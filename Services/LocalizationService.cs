@@ -65,7 +65,8 @@ public sealed class LocalizationService : ILocalizationService
             // Tab bar
             ["tab_language"]                   = "Language",
             ["tab_quiz"]                       = "Quiz",
-            ["tab_mode"]                       = "Mode",
+            ["tab_mode"]                       = "Customize",
+            ["tab_customize"]                  = "Customize",
             ["tab_progress"]                   = "Progress",
             ["tab_settings"]                   = "Settings",
 
@@ -119,6 +120,9 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_mode_manual"]             = "Manual",
             ["filter_active_auto_prefix"]      = "Auto: ",
 
+            // Customize tab
+            ["customize_display_options"]      = "Language settings",
+
             // Settings page — sections
             ["settings_display"]               = "Display",
             ["settings_audio"]                 = "Audio",
@@ -148,7 +152,8 @@ public sealed class LocalizationService : ILocalizationService
             // Tab bar
             ["tab_language"]                   = "Sprache",
             ["tab_quiz"]                       = "Quiz",
-            ["tab_mode"]                       = "Modus",
+            ["tab_mode"]                       = "Anpassen",
+            ["tab_customize"]                  = "Anpassen",
             ["tab_progress"]                   = "Fortschritt",
             ["tab_settings"]                   = "Einstellungen",
 
@@ -200,6 +205,9 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_mode_no_filter"]          = "Kein Filter",
             ["filter_mode_manual"]             = "Manuell",
             ["filter_active_auto_prefix"]      = "Auto: ",
+
+            // Customize tab
+            ["customize_display_options"]      = "Spracheinstellungen",
 
             // Settings page — sections
             ["settings_display"]               = "Anzeige",

@@ -86,10 +86,12 @@ public sealed class QuestionGenerator : IQuestionGenerator
             excludeSet = new HashSet<string>(exclude, StringComparer.OrdinalIgnoreCase);
         }
 
-        // Kana stays excluded from general practice unless the user explicitly opts in via
-        // the include list — matches the prior "no filter excludes kana" behaviour.
-        bool glyphAllowed = includeSet.Count > 0 && (_packs?.Active?.GlyphTags
-            .Any(gt => includeSet.Contains(gt)) ?? false);
+        // Glyphs (kana, jamo, …) are included only when the user explicitly enables them
+        // via the language-behavior display flag, regardless of filter mode.
+        var activePack = _packs?.Active;
+        bool glyphAllowed = activePack is not null
+            && activePack.GlyphTags.Count > 0
+            && _settings.GetDisplayFlag(activePack.Id, LanguageBehavior.FlagIncludeGlyphs, false);
 
         IEnumerable<Word> filteredEnum = pool;
         if (includeSet.Count > 0)

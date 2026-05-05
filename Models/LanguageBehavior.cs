@@ -36,6 +36,15 @@ public abstract class LanguageBehavior
         return w.FormAt(idx);
     }
 
+    /// <summary>
+    /// Well-known display-flag key that controls whether words tagged with the pack's
+    /// <see cref="LanguagePack.GlyphTags"/> are included in the quiz pool. Behaviours that
+    /// have a glyph sub-system (e.g. Japanese) declare this in their
+    /// <see cref="DisplayOptions"/> with <c>defaultValue: false</c>. The question generator
+    /// reads it so the toggle wires directly to pool filtering without any extra glue code.
+    /// </summary>
+    public const string FlagIncludeGlyphs = "includeGlyphs";
+
     /// <summary>True when the entry represents a single character / atomic glyph (e.g. one
     /// hiragana). These are excluded from general practice unless explicitly opted in.</summary>
     public virtual bool IsGlyphEntry(Word w, IReadOnlyList<string> glyphTags) =>
@@ -142,6 +151,7 @@ public sealed class JapaneseBehavior : LanguageBehavior
     public override IReadOnlyList<DisplayOption> DisplayOptions => _options;
     private static readonly DisplayOption[] _options =
     {
+        new(FlagIncludeGlyphs,  "Include hiragana/katakana", false),
         new(FlagRomajiOnly,    "Romaji-only mode"),
         new(FlagForceFurigana, "Always show furigana"),
     };

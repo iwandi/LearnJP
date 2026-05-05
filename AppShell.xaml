@@ -10,7 +10,7 @@
     <TabBar>
         <ShellContent x:Name="TabLanguage" Title="Language" ContentTemplate="{DataTemplate views:LanguageSelectionPage}" Route="language" />
         <ShellContent x:Name="TabQuiz"     Title="Quiz"     ContentTemplate="{DataTemplate views:QuizPage}"              Route="quiz" />
-        <ShellContent x:Name="TabMode"     Title="Mode"     ContentTemplate="{DataTemplate views:TagFilterPage}"         Route="mode" />
+        <ShellContent x:Name="TabMode"     Title="Customize" ContentTemplate="{DataTemplate views:TagFilterPage}"         Route="customize" />
         <ShellContent x:Name="TabProgress" Title="Progress" ContentTemplate="{DataTemplate views:ProgressPage}"          Route="progress" />
         <ShellContent x:Name="TabSettings" Title="Settings" ContentTemplate="{DataTemplate views:SettingsPage}"          Route="settings" />
     </TabBar>

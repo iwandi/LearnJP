@@ -74,6 +74,12 @@ public sealed class TagFilterViewModel : BaseViewModel
     public ObservableCollection<TagOption> Tags { get; } = new();
     public ObservableCollection<ProgressionStageRow> ProgressionStages { get; } = new();
 
+    /// <summary>Language-behavior display flags (e.g. Include kana, Romaji-only mode).
+    /// Mirrors the same logic as SettingsViewModel but hosted here so users find all
+    /// language-specific customisation in one place.</summary>
+    public ObservableCollection<DisplayFlagVm> DisplayFlags { get; } = new();
+    public bool HasDisplayFlags => DisplayFlags.Count > 0;
+
     // ── Filter mode ────────────────────────────────────────────────────────────
     public TagFilterMode FilterMode
     {
@@ -84,21 +90,19 @@ public sealed class TagFilterViewModel : BaseViewModel
             _settings.TagFilterMode = value;
             OnPropertyChanged();
             OnPropertyChanged(nameof(IsAutoProgression));
-            OnPropertyChanged(nameof(IsNoFilter));
             OnPropertyChanged(nameof(IsManualFilter));
             OnPropertyChanged(nameof(ActiveFilterDisplay));
             OnPropertyChanged(nameof(AutoModeButtonColor));
-            OnPropertyChanged(nameof(NoFilterButtonColor));
             OnPropertyChanged(nameof(ManualButtonColor));
             OnPropertyChanged(nameof(AutoModeButtonTextColor));
-            OnPropertyChanged(nameof(NoFilterButtonTextColor));
             OnPropertyChanged(nameof(ManualButtonTextColor));
         }
     }
 
     public bool IsAutoProgression => FilterMode == TagFilterMode.AutoProgression;
-    public bool IsNoFilter        => FilterMode == TagFilterMode.NoFilter;
-    public bool IsManualFilter    => FilterMode == TagFilterMode.Manual;
+    // NoFilter is treated as Manual in the UI (legacy packs that stored NoFilter keep
+    // the no-tags-selected Manual behaviour; new users only see Auto / Manual).
+    public bool IsManualFilter    => FilterMode == TagFilterMode.Manual || FilterMode == TagFilterMode.NoFilter;
 
     // Mode button colours — active mode uses accent colour.
     private Color ActiveButtonBg   => Color.FromArgb("#5B6BF5");
@@ -110,8 +114,6 @@ public sealed class TagFilterViewModel : BaseViewModel
 
     public Color AutoModeButtonColor     => IsAutoProgression ? ActiveButtonBg   : InactiveButtonBg;
     public Color AutoModeButtonTextColor => IsAutoProgression ? ActiveButtonFg   : InactiveButtonFg;
-    public Color NoFilterButtonColor     => IsNoFilter        ? ActiveButtonBg   : InactiveButtonBg;
-    public Color NoFilterButtonTextColor => IsNoFilter        ? ActiveButtonFg   : InactiveButtonFg;
     public Color ManualButtonColor       => IsManualFilter    ? ActiveButtonBg   : InactiveButtonBg;
     public Color ManualButtonTextColor   => IsManualFilter    ? ActiveButtonFg   : InactiveButtonFg;
 
@@ -120,28 +122,21 @@ public sealed class TagFilterViewModel : BaseViewModel
     {
         get
         {
-            switch (FilterMode)
+            if (IsAutoProgression)
             {
-                case TagFilterMode.AutoProgression:
-                {
-                    var tags = _progression.GetUnlockedTags();
-                    return tags.Count == 0
-                        ? _loc["filter_active_no_filter"]
-                        : _loc["filter_active_auto_prefix"] + string.Join(", ", tags);
-                }
-                case TagFilterMode.NoFilter:
-                    return _loc["filter_active_no_filter"];
-                default:
-                {
-                    var inc = _settings.ActiveIncludeTags;
-                    var exc = _settings.ActiveExcludeTags;
-                    if (inc.Count == 0 && exc.Count == 0) return _loc["filter_active_no_filter"];
-                    var parts = new List<string>();
-                    if (inc.Count > 0) parts.Add("+ " + string.Join(", ", inc));
-                    if (exc.Count > 0) parts.Add("− " + string.Join(", ", exc));
-                    return _loc["filter_active_prefix"] + string.Join("   ", parts);
-                }
+                var tags = _progression.GetUnlockedTags();
+                return tags.Count == 0
+                    ? _loc["filter_active_no_filter"]
+                    : _loc["filter_active_auto_prefix"] + string.Join(", ", tags);
             }
+            // Manual / NoFilter
+            var inc = _settings.ActiveIncludeTags;
+            var exc = _settings.ActiveExcludeTags;
+            if (inc.Count == 0 && exc.Count == 0) return _loc["filter_active_no_filter"];
+            var parts = new List<string>();
+            if (inc.Count > 0) parts.Add("+ " + string.Join(", ", inc));
+            if (exc.Count > 0) parts.Add("− " + string.Join(", ", exc));
+            return _loc["filter_active_prefix"] + string.Join("   ", parts);
         }
     }
 
@@ -168,12 +163,29 @@ public sealed class TagFilterViewModel : BaseViewModel
         _loc = loc;
         _progression = progression;
         _store = store;
+
+        // Rebuild language display flags whenever the active pack changes.
+        _packs.ActiveChanged += (_, _) => RebuildDisplayFlags();
     }
 
     // ── Mode selection helpers called from code-behind ──────────────────────────
     public void SelectAutoProgression() => FilterMode = TagFilterMode.AutoProgression;
-    public void SelectNoFilter()        => FilterMode = TagFilterMode.NoFilter;
     public void SelectManual()          => FilterMode = TagFilterMode.Manual;
+
+    // ── Language display flags ───────────────────────────────────────────────────
+    public void RebuildDisplayFlags()
+    {
+        DisplayFlags.Clear();
+        var pack = _packs.Active;
+        if (pack is null)
+        {
+            OnPropertyChanged(nameof(HasDisplayFlags));
+            return;
+        }
+        foreach (var opt in pack.Behavior.DisplayOptions)
+            DisplayFlags.Add(new DisplayFlagVm(_settings, pack.Id, opt));
+        OnPropertyChanged(nameof(HasDisplayFlags));
+    }
 
     // ── Manual tag include/exclude ───────────────────────────────────────────────
     public void ToggleInclude(TagOption opt)
@@ -212,6 +224,8 @@ public sealed class TagFilterViewModel : BaseViewModel
     {
         await _vocab.EnsureLoadedAsync();
         await _store.LoadAsync();
+
+        RebuildDisplayFlags();
 
         // ── Rebuild progression ladder ──────────────────────────────────────────
         var pack = _packs.Active;
