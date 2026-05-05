@@ -83,12 +83,13 @@
                             BackgroundColor="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}"
                             Padding="14,10"
                             Margin="0,2">
-                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="4" ColumnSpacing="10">
-                            <!-- Lock/unlock icon -->
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="4" ColumnSpacing="10">
+                            <!-- Lock/unlock icon with accessibility label -->
                             <Label Grid.Row="0" Grid.Column="0"
                                    Text="{Binding StatusIcon}"
                                    FontSize="20"
-                                   VerticalOptions="Center" />
+                                   VerticalOptions="Center"
+                                   SemanticProperties.Description="{Binding StatusLabel}" />
                             <!-- Tag name -->
                             <Label Grid.Row="0" Grid.Column="1"
                                    Text="{Binding Tag}"
@@ -106,6 +107,12 @@
                                          Progress="{Binding KnownFraction}"
                                          ProgressColor="#4CAF7A"
                                          HeightRequest="6" />
+                            <!-- Unlock requirement (only shown when stage is locked) -->
+                            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                                   Text="{Binding ThresholdText}"
+                                   FontSize="12"
+                                   Style="{StaticResource MutedLabel}"
+                                   IsVisible="{Binding IsLocked}" />
                         </Grid>
                     </Border>
                 </DataTemplate>

@@ -53,7 +53,9 @@ public sealed class ProgressionStageRow : BaseViewModel
     public required double UnlockThreshold { get; init; }
     public required bool IsUnlocked { get; init; }
 
-    public string StatusIcon => IsUnlocked ? "🔓" : "🔒";
+    public bool IsLocked => !IsUnlocked;
+    public string StatusIcon  => IsUnlocked ? "🔓" : "🔒";
+    public string StatusLabel => IsUnlocked ? "Unlocked" : "Locked";
     public string ProgressText => $"{KnownWords}/{TotalWords}";
     public double KnownFraction => TotalWords > 0 ? (double)KnownWords / TotalWords : 0;
     public string ThresholdText => IsUnlocked ? string.Empty : $"Need {UnlockThreshold:P0} of previous stage";
