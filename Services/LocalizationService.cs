@@ -114,6 +114,10 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_no_filter"]               = "(no filter — clear all)",
             ["filter_active_no_filter"]        = "No filter — drawing from the full vocabulary.",
             ["filter_active_prefix"]           = "Filter: ",
+            ["filter_mode_auto"]               = "Auto Progression",
+            ["filter_mode_no_filter"]          = "No Filter",
+            ["filter_mode_manual"]             = "Manual",
+            ["filter_active_auto_prefix"]      = "Auto: ",
 
             // Settings page — sections
             ["settings_display"]               = "Display",
@@ -192,6 +196,10 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_no_filter"]               = "(kein Filter — alles löschen)",
             ["filter_active_no_filter"]        = "Kein Filter — aus dem gesamten Vokabular.",
             ["filter_active_prefix"]           = "Filter: ",
+            ["filter_mode_auto"]               = "Auto-Progression",
+            ["filter_mode_no_filter"]          = "Kein Filter",
+            ["filter_mode_manual"]             = "Manuell",
+            ["filter_active_auto_prefix"]      = "Auto: ",
 
             // Settings page — sections
             ["settings_display"]               = "Anzeige",

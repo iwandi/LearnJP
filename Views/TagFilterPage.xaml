@@ -6,8 +6,9 @@
              x:DataType="vm:TagFilterViewModel"
              Title="Mode">
 
-    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="10">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" RowSpacing="10">
 
+        <!-- Strategy picker -->
         <Border Grid.Row="0"
                 StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
@@ -21,7 +22,45 @@
             </Grid>
         </Border>
 
+        <!-- Filter mode selector: Auto Progression | No Filter | Manual -->
         <Border Grid.Row="1"
+                StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 12"
+                Padding="10">
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6">
+                <Button Grid.Column="0"
+                        Text="{Binding Loc[filter_mode_auto]}"
+                        BackgroundColor="{Binding AutoModeButtonColor}"
+                        TextColor="{Binding AutoModeButtonTextColor}"
+                        CornerRadius="10"
+                        FontSize="13"
+                        HeightRequest="40"
+                        Padding="4,0"
+                        Clicked="OnAutoModeClicked" />
+                <Button Grid.Column="1"
+                        Text="{Binding Loc[filter_mode_no_filter]}"
+                        BackgroundColor="{Binding NoFilterButtonColor}"
+                        TextColor="{Binding NoFilterButtonTextColor}"
+                        CornerRadius="10"
+                        FontSize="13"
+                        HeightRequest="40"
+                        Padding="4,0"
+                        Clicked="OnNoFilterClicked" />
+                <Button Grid.Column="2"
+                        Text="{Binding Loc[filter_mode_manual]}"
+                        BackgroundColor="{Binding ManualButtonColor}"
+                        TextColor="{Binding ManualButtonTextColor}"
+                        CornerRadius="10"
+                        FontSize="13"
+                        HeightRequest="40"
+                        Padding="4,0"
+                        Clicked="OnManualClicked" />
+            </Grid>
+        </Border>
+
+        <!-- Active filter summary -->
+        <Border Grid.Row="2"
                 StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 12"
@@ -29,9 +68,55 @@
             <Label Text="{Binding ActiveFilterDisplay}" />
         </Border>
 
-        <CollectionView Grid.Row="2"
+        <!-- Progression ladder (visible in Auto Progression mode) -->
+        <CollectionView Grid.Row="3"
+                        ItemsSource="{Binding ProgressionStages}"
+                        SelectionMode="None"
+                        IsVisible="{Binding IsAutoProgression}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="4" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ProgressionStageRow">
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10"
+                            BackgroundColor="{AppThemeBinding Light=#FAFAFE, Dark=#1A1A2A}"
+                            Padding="14,10"
+                            Margin="0,2">
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="4" ColumnSpacing="10">
+                            <!-- Lock/unlock icon -->
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   Text="{Binding StatusIcon}"
+                                   FontSize="20"
+                                   VerticalOptions="Center" />
+                            <!-- Tag name -->
+                            <Label Grid.Row="0" Grid.Column="1"
+                                   Text="{Binding Tag}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                            <!-- known/total -->
+                            <Label Grid.Row="0" Grid.Column="2"
+                                   Text="{Binding ProgressText}"
+                                   FontSize="14"
+                                   Style="{StaticResource MutedLabel}"
+                                   VerticalOptions="Center" />
+                            <!-- Progress bar -->
+                            <ProgressBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                                         Progress="{Binding KnownFraction}"
+                                         ProgressColor="#4CAF7A"
+                                         HeightRequest="6" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Manual tag include/exclude list (visible in Manual mode only) -->
+        <CollectionView Grid.Row="3"
                         ItemsSource="{Binding Tags}"
-                        SelectionMode="None">
+                        SelectionMode="None"
+                        IsVisible="{Binding IsManualFilter}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="4" />
             </CollectionView.ItemsLayout>
@@ -84,5 +169,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
     </Grid>
 </ContentPage>

@@ -22,6 +22,9 @@ public interface ISettingsService
     /// <summary>Tags that disqualify a word from the pool (any-of). Empty = no exclude constraint.</summary>
     IReadOnlyList<string> ActiveExcludeTags { get; set; }
 
+    /// <summary>How the quiz word pool is filtered. Defaults to <see cref="TagFilterMode.AutoProgression"/>.</summary>
+    TagFilterMode TagFilterMode { get; set; }
+
     /// <summary>Persisted target-picking strategy.</summary>
     LearningStrategy SelectedLearningStrategy { get; set; }
 

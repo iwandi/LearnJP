@@ -8,6 +8,7 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private readonly IProficiencyStore _store;
     private readonly ISettingsService _settings;
     private readonly ILanguagePackService? _packs;
+    private readonly IProgressionService? _progression;
     private readonly Random _rng = new();
     private string? _lastWordId;
 
@@ -41,12 +42,13 @@ public sealed class QuestionGenerator : IQuestionGenerator
     /// </summary>
     private static int FrequencyOrderKey(int rank) => rank <= 0 ? int.MaxValue : rank;
 
-    public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings, ILanguagePackService? packs = null)
+    public QuestionGenerator(IVocabularyService vocab, IProficiencyStore store, ISettingsService settings, ILanguagePackService? packs = null, IProgressionService? progression = null)
     {
         _vocab = vocab;
         _store = store;
         _settings = settings;
         _packs = packs;
+        _progression = progression;
     }
 
     public async Task<Question?> NextAsync(LearningStrategy strategy = LearningStrategy.Fsrs)
@@ -55,14 +57,39 @@ public sealed class QuestionGenerator : IQuestionGenerator
         await _store.LoadAsync();
 
         IReadOnlyList<Word> pool = _vocab.All;
-        var include = _settings.ActiveIncludeTags ?? Array.Empty<string>();
-        var exclude = _settings.ActiveExcludeTags ?? Array.Empty<string>();
-        var includeSet = new HashSet<string>(include, StringComparer.OrdinalIgnoreCase);
-        var excludeSet = new HashSet<string>(exclude, StringComparer.OrdinalIgnoreCase);
+        var filterMode = _settings.TagFilterMode;
+
+        // Resolve the effective include/exclude sets based on the active filter mode.
+        HashSet<string> includeSet;
+        HashSet<string> excludeSet;
+
+        if (filterMode == TagFilterMode.AutoProgression)
+        {
+            var unlockedTags = _progression?.GetUnlockedTags() ?? Array.Empty<string>();
+            // If the pack has no progression defined, unlocked is empty → treat as no filter.
+            includeSet = unlockedTags.Count > 0
+                ? new HashSet<string>(unlockedTags, StringComparer.OrdinalIgnoreCase)
+                : new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            excludeSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        }
+        else if (filterMode == TagFilterMode.NoFilter)
+        {
+            includeSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            excludeSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        }
+        else
+        {
+            // Manual: use stored tag lists.
+            var include = _settings.ActiveIncludeTags ?? Array.Empty<string>();
+            var exclude = _settings.ActiveExcludeTags ?? Array.Empty<string>();
+            includeSet = new HashSet<string>(include, StringComparer.OrdinalIgnoreCase);
+            excludeSet = new HashSet<string>(exclude, StringComparer.OrdinalIgnoreCase);
+        }
 
         // Kana stays excluded from general practice unless the user explicitly opts in via
         // the include list — matches the prior "no filter excludes kana" behaviour.
-        bool glyphAllowed = _packs?.Active?.GlyphTags.Any() ?? false;
+        bool glyphAllowed = includeSet.Count > 0 && (_packs?.Active?.GlyphTags
+            .Any(gt => includeSet.Contains(gt)) ?? false);
 
         IEnumerable<Word> filteredEnum = pool;
         if (includeSet.Count > 0)

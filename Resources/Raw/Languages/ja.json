@@ -12,5 +12,11 @@
     "de": "vocabulary_ja-de.json"
   },
   "glyphTags": ["hiragana", "katakana"],
-  "behaviorType": "Japanese"
+  "behaviorType": "Japanese",
+  "progression": [
+    { "tag": "hiragana", "unlockThreshold": 0.0 },
+    { "tag": "katakana", "unlockThreshold": 0.9 },
+    { "tag": "n5",       "unlockThreshold": 0.9 },
+    { "tag": "n4",       "unlockThreshold": 0.8 }
+  ]
 }

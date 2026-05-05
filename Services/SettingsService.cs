@@ -13,6 +13,7 @@ public sealed class SettingsService : ISettingsService
     private const string KeyAzureVolume   = "settings.azure_volume";
     private const string KeyIncludeTags   = "settings.include_tags";
     private const string KeyExcludeTags   = "settings.exclude_tags";
+    private const string KeyFilterMode    = "settings.tag_filter_mode";
     private const string KeyStrategy      = "settings.learning_strategy";
     private const string KeyTrackProf     = "settings.count_for_proficiency";
     private const string KeyActiveLang    = "settings.active_language_id";
@@ -89,6 +90,12 @@ public sealed class SettingsService : ISettingsService
     {
         get => DecodeTagList(Read(KeyExcludeTags, string.Empty));
         set => Write(KeyExcludeTags, EncodeTagList(value));
+    }
+
+    public TagFilterMode TagFilterMode
+    {
+        get => (TagFilterMode)Read(KeyFilterMode, (int)TagFilterMode.AutoProgression);
+        set => Write(KeyFilterMode, (int)value);
     }
 
     private static IReadOnlyList<string> DecodeTagList(string raw)

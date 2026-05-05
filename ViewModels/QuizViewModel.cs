@@ -130,10 +130,11 @@ public sealed class QuizViewModel : BaseViewModel
     /// </summary>
     public async Task SyncActiveFilterAsync()
     {
+        var filterMode = _settings.TagFilterMode;
         var include = _settings.ActiveIncludeTags;
         var exclude = _settings.ActiveExcludeTags;
-        ActiveFilterDisplay = BuildFilterDisplay(include, exclude, Loc);
-        var filterKey = string.Join("|", include) + "::" + string.Join("|", exclude);
+        ActiveFilterDisplay = BuildFilterDisplay(filterMode, include, exclude, _progression, Loc);
+        var filterKey = filterMode.ToString() + "::" + string.Join("|", include) + "::" + string.Join("|", exclude);
 
         var currentStrategy = _settings.SelectedLearningStrategy;
         var currentDisplay = ActiveDisplayFingerprint();
@@ -175,8 +176,18 @@ public sealed class QuizViewModel : BaseViewModel
         return string.Join("|", parts);
     }
 
-    private static string BuildFilterDisplay(IReadOnlyList<string> include, IReadOnlyList<string> exclude, ILocalizationService loc)
+    private static string BuildFilterDisplay(TagFilterMode filterMode, IReadOnlyList<string> include, IReadOnlyList<string> exclude, IProgressionService progression, ILocalizationService loc)
     {
+        if (filterMode == TagFilterMode.AutoProgression)
+        {
+            var tags = progression.GetUnlockedTags();
+            return tags.Count == 0
+                ? string.Empty
+                : loc["quiz_filter_prefix"] + loc["filter_active_auto_prefix"] + string.Join(", ", tags);
+        }
+        if (filterMode == TagFilterMode.NoFilter)
+            return string.Empty;
+        // Manual
         if (include.Count == 0 && exclude.Count == 0) return string.Empty;
         var parts = new List<string>();
         if (include.Count > 0) parts.Add("+" + string.Join(",", include));
@@ -185,10 +196,11 @@ public sealed class QuizViewModel : BaseViewModel
     }
 
     private readonly ILanguagePackService _packs;
+    private readonly IProgressionService _progression;
 
     public ILocalizationService Loc { get; }
 
-    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds, ILanguagePackService packs, ILocalizationService loc)
+    public QuizViewModel(IQuestionGenerator gen, IProficiencyStore store, ITtsService tts, ISettingsService settings, ISoundService sounds, ILanguagePackService packs, ILocalizationService loc, IProgressionService progression)
     {
         _gen = gen;
         _store = store;
@@ -197,6 +209,7 @@ public sealed class QuizViewModel : BaseViewModel
         _sounds = sounds;
         _packs = packs;
         Loc = loc;
+        _progression = progression;
         try { _selectedStrategy = settings.SelectedLearningStrategy; } catch { _selectedStrategy = LearningStrategy.Fsrs; }
     }
 

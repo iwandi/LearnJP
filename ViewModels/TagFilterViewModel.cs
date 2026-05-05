@@ -44,30 +44,106 @@ public sealed class TagOption : BaseViewModel
         : (Application.Current?.RequestedTheme == AppTheme.Dark ? Colors.White : Color.FromArgb("#1A1A2E"));
 }
 
+/// <summary>Display row for one stage in the progression ladder.</summary>
+public sealed class ProgressionStageRow : BaseViewModel
+{
+    public required string Tag { get; init; }
+    public required int TotalWords { get; init; }
+    public required int KnownWords { get; init; }
+    public required double UnlockThreshold { get; init; }
+    public required bool IsUnlocked { get; init; }
+
+    public string StatusIcon => IsUnlocked ? "🔓" : "🔒";
+    public string ProgressText => $"{KnownWords}/{TotalWords}";
+    public double KnownFraction => TotalWords > 0 ? (double)KnownWords / TotalWords : 0;
+    public string ThresholdText => IsUnlocked ? string.Empty : $"Need {UnlockThreshold:P0} of previous stage";
+}
+
 public sealed class TagFilterViewModel : BaseViewModel
 {
     private readonly IVocabularyService _vocab;
     private readonly ISettingsService _settings;
     private readonly ILanguagePackService _packs;
     private readonly ILocalizationService _loc;
+    private readonly IProgressionService _progression;
+    private readonly IProficiencyStore _store;
 
     public ILocalizationService Loc => _loc;
     public ObservableCollection<TagOption> Tags { get; } = new();
+    public ObservableCollection<ProgressionStageRow> ProgressionStages { get; } = new();
 
+    // ── Filter mode ────────────────────────────────────────────────────────────
+    public TagFilterMode FilterMode
+    {
+        get => _settings.TagFilterMode;
+        set
+        {
+            if (_settings.TagFilterMode == value) return;
+            _settings.TagFilterMode = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(IsAutoProgression));
+            OnPropertyChanged(nameof(IsNoFilter));
+            OnPropertyChanged(nameof(IsManualFilter));
+            OnPropertyChanged(nameof(ActiveFilterDisplay));
+            OnPropertyChanged(nameof(AutoModeButtonColor));
+            OnPropertyChanged(nameof(NoFilterButtonColor));
+            OnPropertyChanged(nameof(ManualButtonColor));
+            OnPropertyChanged(nameof(AutoModeButtonTextColor));
+            OnPropertyChanged(nameof(NoFilterButtonTextColor));
+            OnPropertyChanged(nameof(ManualButtonTextColor));
+        }
+    }
+
+    public bool IsAutoProgression => FilterMode == TagFilterMode.AutoProgression;
+    public bool IsNoFilter        => FilterMode == TagFilterMode.NoFilter;
+    public bool IsManualFilter    => FilterMode == TagFilterMode.Manual;
+
+    // Mode button colours — active mode uses accent colour.
+    private Color ActiveButtonBg   => Color.FromArgb("#5B6BF5");
+    private Color InactiveButtonBg => Application.Current?.RequestedTheme == AppTheme.Dark
+        ? Color.FromArgb("#2A2A40") : Color.FromArgb("#E2E4F0");
+    private Color ActiveButtonFg   => Colors.White;
+    private Color InactiveButtonFg => Application.Current?.RequestedTheme == AppTheme.Dark
+        ? Colors.White : Color.FromArgb("#1A1A2E");
+
+    public Color AutoModeButtonColor     => IsAutoProgression ? ActiveButtonBg   : InactiveButtonBg;
+    public Color AutoModeButtonTextColor => IsAutoProgression ? ActiveButtonFg   : InactiveButtonFg;
+    public Color NoFilterButtonColor     => IsNoFilter        ? ActiveButtonBg   : InactiveButtonBg;
+    public Color NoFilterButtonTextColor => IsNoFilter        ? ActiveButtonFg   : InactiveButtonFg;
+    public Color ManualButtonColor       => IsManualFilter    ? ActiveButtonBg   : InactiveButtonBg;
+    public Color ManualButtonTextColor   => IsManualFilter    ? ActiveButtonFg   : InactiveButtonFg;
+
+    // ── Active filter summary ───────────────────────────────────────────────────
     public string ActiveFilterDisplay
     {
         get
         {
-            var inc = _settings.ActiveIncludeTags;
-            var exc = _settings.ActiveExcludeTags;
-            if (inc.Count == 0 && exc.Count == 0) return _loc["filter_active_no_filter"];
-            var parts = new List<string>();
-            if (inc.Count > 0) parts.Add("+ " + string.Join(", ", inc));
-            if (exc.Count > 0) parts.Add("− " + string.Join(", ", exc));
-            return _loc["filter_active_prefix"] + string.Join("   ", parts);
+            switch (FilterMode)
+            {
+                case TagFilterMode.AutoProgression:
+                {
+                    var tags = _progression.GetUnlockedTags();
+                    return tags.Count == 0
+                        ? _loc["filter_active_no_filter"]
+                        : _loc["filter_active_auto_prefix"] + string.Join(", ", tags);
+                }
+                case TagFilterMode.NoFilter:
+                    return _loc["filter_active_no_filter"];
+                default:
+                {
+                    var inc = _settings.ActiveIncludeTags;
+                    var exc = _settings.ActiveExcludeTags;
+                    if (inc.Count == 0 && exc.Count == 0) return _loc["filter_active_no_filter"];
+                    var parts = new List<string>();
+                    if (inc.Count > 0) parts.Add("+ " + string.Join(", ", inc));
+                    if (exc.Count > 0) parts.Add("− " + string.Join(", ", exc));
+                    return _loc["filter_active_prefix"] + string.Join("   ", parts);
+                }
+            }
         }
     }
 
+    // ── Strategy picker ─────────────────────────────────────────────────────────
     public ObservableCollection<LearningStrategy> Strategies { get; } =
         new(Enum.GetValues<LearningStrategy>());
 
@@ -82,18 +158,25 @@ public sealed class TagFilterViewModel : BaseViewModel
         }
     }
 
-    public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings, ILanguagePackService packs, ILocalizationService loc)
+    public TagFilterViewModel(IVocabularyService vocab, ISettingsService settings, ILanguagePackService packs, ILocalizationService loc, IProgressionService progression, IProficiencyStore store)
     {
         _vocab = vocab;
         _settings = settings;
         _packs = packs;
         _loc = loc;
+        _progression = progression;
+        _store = store;
     }
 
+    // ── Mode selection helpers called from code-behind ──────────────────────────
+    public void SelectAutoProgression() => FilterMode = TagFilterMode.AutoProgression;
+    public void SelectNoFilter()        => FilterMode = TagFilterMode.NoFilter;
+    public void SelectManual()          => FilterMode = TagFilterMode.Manual;
+
+    // ── Manual tag include/exclude ───────────────────────────────────────────────
     public void ToggleInclude(TagOption opt)
     {
         if (opt.IsNoFilter) { ClearAll(); return; }
-        // Include and exclude are mutually exclusive: turning one on disables the other.
         opt.IsIncluded = !opt.IsIncluded;
         if (opt.IsIncluded) opt.IsExcluded = false;
         Persist();
@@ -122,10 +205,61 @@ public sealed class TagFilterViewModel : BaseViewModel
         OnPropertyChanged(nameof(ActiveFilterDisplay));
     }
 
+    // ── Refresh ──────────────────────────────────────────────────────────────────
     public async Task RefreshAsync()
     {
         await _vocab.EnsureLoadedAsync();
+        await _store.LoadAsync();
 
+        // ── Rebuild progression ladder ──────────────────────────────────────────
+        var pack = _packs.Active;
+        ProgressionStages.Clear();
+        if (pack is not null && pack.Progression.Count > 0)
+        {
+            // Count total and known words per tag.
+            var totalByTag = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            var knownByTag = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            foreach (var w in _vocab.All)
+            {
+                foreach (var tag in w.Tags)
+                {
+                    if (string.IsNullOrEmpty(tag)) continue;
+                    totalByTag[tag] = totalByTag.TryGetValue(tag, out var t) ? t + 1 : 1;
+                }
+            }
+            // GetUnlockedTags already queries the store; replicate known-count logic here for display.
+            var unlockedSet = new HashSet<string>(_progression.GetUnlockedTags(), StringComparer.OrdinalIgnoreCase);
+
+            foreach (var w in _vocab.All)
+            {
+                // Accessing proficiency synchronously is fine — store is already loaded.
+                bool isKnown = IsWordKnown(w.Id);
+                foreach (var tag in w.Tags)
+                {
+                    if (string.IsNullOrEmpty(tag)) continue;
+                    if (isKnown)
+                        knownByTag[tag] = knownByTag.TryGetValue(tag, out var k) ? k + 1 : 1;
+                }
+            }
+
+            for (int i = 0; i < pack.Progression.Count; i++)
+            {
+                var stage = pack.Progression[i];
+                if (string.IsNullOrEmpty(stage.Tag)) continue;
+                totalByTag.TryGetValue(stage.Tag, out var total);
+                knownByTag.TryGetValue(stage.Tag, out var known);
+                ProgressionStages.Add(new ProgressionStageRow
+                {
+                    Tag = stage.Tag,
+                    TotalWords = total,
+                    KnownWords = known,
+                    UnlockThreshold = i == 0 ? 0.0 : stage.UnlockThreshold,
+                    IsUnlocked = unlockedSet.Contains(stage.Tag),
+                });
+            }
+        }
+
+        // ── Rebuild manual tag list ─────────────────────────────────────────────
         var counts = new Dictionary<string, int>(StringComparer.Ordinal);
         foreach (var w in _vocab.All)
         {
@@ -136,8 +270,7 @@ public sealed class TagFilterViewModel : BaseViewModel
             }
         }
 
-        // Tags pinned to the top of the list (after "no filter") regardless of count.
-        var pinned = _packs.Active?.GlyphTags;
+        var pinned = _packs.Active?.GlyphTags ?? new List<string>();
         var rest = counts
             .Where(kv => !pinned.Contains(kv.Key, StringComparer.OrdinalIgnoreCase))
             .OrderByDescending(kv => kv.Value)
@@ -183,4 +316,8 @@ public sealed class TagFilterViewModel : BaseViewModel
 
         OnPropertyChanged(nameof(ActiveFilterDisplay));
     }
+
+    // Reads IsKnown from the store's in-memory cache synchronously (store.LoadAsync already
+    // called by RefreshAsync before this is used).
+    private bool IsWordKnown(string wordId) => _store.Get(wordId).IsKnown;
 }

@@ -115,6 +115,16 @@ public sealed class LanguagePack
     public List<string> GlyphTags { get; set; } = new();
 
     /// <summary>
+    /// Ordered progression ladder for this language. Stage 0 is always unlocked. Each
+    /// subsequent stage unlocks when the fraction of <see cref="WordProficiency.IsKnown"/>
+    /// words in the previous stage reaches the stage's <see cref="ProgressionStage.UnlockThreshold"/>.
+    /// When empty, <see cref="TagFilterMode.AutoProgression"/> behaves identically to
+    /// <see cref="TagFilterMode.NoFilter"/>.
+    /// </summary>
+    [JsonPropertyName("progression")]
+    public List<ProgressionStage> Progression { get; set; } = new();
+
+    /// <summary>
     /// Behavior module the algorithm should call into for language-specific decisions.
     /// Resolved via switch-case (see <see cref="LanguageBehavior.Create"/>). Defaults to
     /// <see cref="LanguageBehaviorType.Generic"/> when omitted or unrecognised.
