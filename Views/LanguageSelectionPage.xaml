@@ -6,7 +6,7 @@
              x:DataType="vm:LanguageSelectionViewModel"
              Title="{Binding Loc[tab_language]}">
 
-    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="10">
+    <Grid RowDefinitions="Auto,*" Padding="16" RowSpacing="10">
 
         <Border Grid.Row="0"
                 StrokeThickness="0"
@@ -22,36 +22,7 @@
             </Grid>
         </Border>
 
-        <!-- Active language card — includes the Learn Kana toggle when the language supports it. -->
-        <Border Grid.Row="1"
-                StrokeThickness="0"
-                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
-                StrokeShape="RoundRectangle 12"
-                Padding="14">
-            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
-                <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
-                    <Label Text="{Binding Loc[lang_active_target]}" Style="{StaticResource MutedLabel}" />
-                    <Label Text="{Binding ActiveName}" FontSize="20" FontAttributes="Bold" />
-                </VerticalStackLayout>
-                <!-- Learn Kana toggle — only shown when the active language exposes it. -->
-                <Grid Grid.Column="1"
-                      ColumnDefinitions="Auto,Auto" ColumnSpacing="6"
-                      VerticalOptions="Center"
-                      IsVisible="{Binding HasLearnKanaFlag}">
-                    <Label Grid.Column="0"
-                           Text="{Binding Loc[lang_learn_kana]}"
-                           Style="{StaticResource MutedLabel}"
-                           VerticalOptions="Center" />
-                    <Switch Grid.Column="1"
-                            IsToggled="{Binding LearnKanaFlag.Value, Mode=TwoWay}"
-                            HorizontalOptions="End"
-                            WidthRequest="50"
-                            VerticalOptions="Center" />
-                </Grid>
-            </Grid>
-        </Border>
-
-        <CollectionView Grid.Row="2"
+        <CollectionView Grid.Row="1"
                         ItemsSource="{Binding Languages}"
                         SelectionMode="None">
             <CollectionView.ItemsLayout>
@@ -63,12 +34,27 @@
                             StrokeShape="RoundRectangle 12"
                             BackgroundColor="{Binding BackgroundColor}"
                             Padding="14">
-                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
                             <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
                                 <Label Text="{Binding DisplayName}" FontSize="18" FontAttributes="Bold" />
                                 <Label Text="{Binding Subtitle}" FontSize="12" Style="{StaticResource MutedLabel}" />
                             </VerticalStackLayout>
-                            <Button Grid.Column="1"
+                            <!-- Learn Kana toggle — only shown for the active language that supports it. -->
+                            <Grid Grid.Column="1"
+                                  ColumnDefinitions="Auto,Auto" ColumnSpacing="6"
+                                  VerticalOptions="Center"
+                                  IsVisible="{Binding HasLearnKanaFlag}">
+                                <Label Grid.Column="0"
+                                       Text="{Binding Loc[lang_learn_kana]}"
+                                       Style="{StaticResource MutedLabel}"
+                                       VerticalOptions="Center" />
+                                <Switch Grid.Column="1"
+                                        IsToggled="{Binding LearnKanaFlag.Value, Mode=TwoWay}"
+                                        HorizontalOptions="End"
+                                        WidthRequest="50"
+                                        VerticalOptions="Center" />
+                            </Grid>
+                            <Button Grid.Column="2"
                                     Text="{Binding SelectButtonText}"
                                     Clicked="OnSelectClicked"
                                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"

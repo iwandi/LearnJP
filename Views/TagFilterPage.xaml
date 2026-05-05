@@ -77,11 +77,12 @@
             </Grid>
         </Border>
 
-        <!-- Active filter summary -->
+        <!-- Active filter summary — hidden in Auto Progression mode (the ladder is self-explanatory). -->
         <Border StrokeThickness="0"
                 BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
                 StrokeShape="RoundRectangle 12"
-                Padding="12,8">
+                Padding="12,8"
+                IsVisible="{Binding IsManualFilter}">
             <Label Text="{Binding ActiveFilterDisplay}" />
         </Border>
 
@@ -100,7 +101,7 @@
                             Padding="14,10"
                             Margin="0,2">
                         <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" RowSpacing="4" ColumnSpacing="10">
-                            <!-- Lock/unlock icon with accessibility label -->
+                            <!-- Lock/unlock/skip icon with accessibility label -->
                             <Label Grid.Row="0" Grid.Column="0"
                                    Text="{Binding StatusIcon}"
                                    FontSize="20"
@@ -112,17 +113,19 @@
                                    FontSize="16"
                                    FontAttributes="Bold"
                                    VerticalOptions="Center" />
-                            <!-- known/total -->
+                            <!-- known/total (hidden for skipped stages) -->
                             <Label Grid.Row="0" Grid.Column="2"
                                    Text="{Binding ProgressText}"
                                    FontSize="14"
                                    Style="{StaticResource MutedLabel}"
-                                   VerticalOptions="Center" />
-                            <!-- Progress bar -->
+                                   VerticalOptions="Center"
+                                   IsVisible="{Binding IsNotSkipped}" />
+                            <!-- Progress bar (hidden for skipped stages) -->
                             <ProgressBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                                          Progress="{Binding KnownFraction}"
                                          ProgressColor="#4CAF7A"
-                                         HeightRequest="6" />
+                                         HeightRequest="6"
+                                         IsVisible="{Binding IsNotSkipped}" />
                             <!-- Unlock requirement (only shown when stage is locked) -->
                             <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                                    Text="{Binding ThresholdText}"

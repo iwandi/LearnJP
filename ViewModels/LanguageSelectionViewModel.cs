@@ -7,9 +7,12 @@ namespace LearnJP.ViewModels;
 public sealed class LanguageOption : BaseViewModel
 {
     private bool _isActive;
+    private DisplayFlagVm? _learnKanaFlag;
+    private bool _learnKanaFlagInitialized;
 
     public required LanguagePack Pack { get; init; }
     public required ILocalizationService Loc { get; init; }
+    public required ISettingsService Settings { get; init; }
     public string Id => Pack.Id;
     public string DisplayName => Pack.DisplayName;
     public string Subtitle => Pack.TtsLocale;
@@ -17,7 +20,15 @@ public sealed class LanguageOption : BaseViewModel
     public bool IsActive
     {
         get => _isActive;
-        set { if (SetProperty(ref _isActive, value)) { OnPropertyChanged(nameof(BackgroundColor)); OnPropertyChanged(nameof(SelectButtonText)); } }
+        set
+        {
+            if (SetProperty(ref _isActive, value))
+            {
+                OnPropertyChanged(nameof(BackgroundColor));
+                OnPropertyChanged(nameof(SelectButtonText));
+                OnPropertyChanged(nameof(HasLearnKanaFlag));
+            }
+        }
     }
 
     public Color BackgroundColor => _isActive
@@ -25,6 +36,24 @@ public sealed class LanguageOption : BaseViewModel
         : (Application.Current?.RequestedTheme == AppTheme.Dark ? Color.FromArgb("#1B1B2E") : Color.FromArgb("#F7F8FF"));
 
     public string SelectButtonText => _isActive ? Loc["lang_active_button"] : Loc["lang_select_button"];
+
+    /// <summary>Toggle VM for the "Learn Kana" flag, or null when the pack doesn't expose it.</summary>
+    public DisplayFlagVm? LearnKanaFlag => GetOrBuildLearnKanaFlag();
+
+    /// <summary>True only for the active language that exposes a <see cref="LanguageBehavior.FlagIncludeGlyphs"/> option.</summary>
+    public bool HasLearnKanaFlag => _isActive && GetOrBuildLearnKanaFlag() is not null;
+
+    private DisplayFlagVm? GetOrBuildLearnKanaFlag()
+    {
+        if (!_learnKanaFlagInitialized)
+        {
+            _learnKanaFlagInitialized = true;
+            var opt = Pack.Behavior.DisplayOptions
+                .FirstOrDefault(o => o.Key == LanguageBehavior.FlagIncludeGlyphs);
+            _learnKanaFlag = opt is not null ? new DisplayFlagVm(Settings, Pack.Id, opt) : null;
+        }
+        return _learnKanaFlag;
+    }
 }
 
 public sealed class BaseLanguageOption
@@ -38,15 +67,12 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
     private readonly ILanguagePackService _packs;
     private readonly ISettingsService _settings;
     private readonly ILocalizationService _loc;
-    private string _activeName = string.Empty;
     private BaseLanguageOption? _selectedBase;
     private bool _suppressBaseChange;
 
     public ILocalizationService Loc => _loc;
     public ObservableCollection<LanguageOption> Languages { get; } = new();
     public ObservableCollection<BaseLanguageOption> BaseLanguages { get; } = new();
-
-    public string ActiveName { get => _activeName; private set => SetProperty(ref _activeName, value); }
 
     /// <summary>Two-way binding target for the base-language Picker.</summary>
     public BaseLanguageOption? SelectedBase
@@ -68,30 +94,6 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         _packs = packs;
         _settings = settings;
         _loc = loc;
-
-        // Rebuild the Learn Kana flag whenever the active pack changes.
-        _packs.ActiveChanged += (_, _) => RebuildLearnKanaFlag();
-    }
-
-    /// <summary>The "Learn Kana" toggle for the active pack, or null when the pack doesn't
-    /// expose a <see cref="LanguageBehavior.FlagIncludeGlyphs"/> option.</summary>
-    public DisplayFlagVm? LearnKanaFlag { get; private set; }
-    public bool HasLearnKanaFlag => LearnKanaFlag is not null;
-
-    public void RebuildLearnKanaFlag()
-    {
-        var pack = _packs.Active;
-        DisplayFlagVm? flag = null;
-        if (pack is not null)
-        {
-            var opt = pack.Behavior.DisplayOptions
-                .FirstOrDefault(o => o.Key == LanguageBehavior.FlagIncludeGlyphs);
-            if (opt is not null)
-                flag = new DisplayFlagVm(_settings, pack.Id, opt);
-        }
-        LearnKanaFlag = flag;
-        OnPropertyChanged(nameof(LearnKanaFlag));
-        OnPropertyChanged(nameof(HasLearnKanaFlag));
     }
 
     public async Task RefreshAsync()
@@ -120,7 +122,6 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         _suppressBaseChange = false;
 
         RefreshTargetList();
-        RebuildLearnKanaFlag();
     }
 
     private void RefreshTargetList()
@@ -138,10 +139,10 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
             {
                 Pack = p,
                 Loc = _loc,
+                Settings = _settings,
                 IsActive = string.Equals(p.Id, activeId, StringComparison.OrdinalIgnoreCase)
             });
         }
-        ActiveName = _packs.Active?.DisplayName ?? "(none)";
     }
 
     public async Task SelectAsync(LanguageOption option)
@@ -149,7 +150,6 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         if (option.IsActive) return;
         await _packs.SetActiveAsync(option.Id);
         foreach (var lang in Languages) lang.IsActive = string.Equals(lang.Id, option.Id, StringComparison.OrdinalIgnoreCase);
-        ActiveName = option.DisplayName;
     }
 
     /// <summary>Human-readable name for a base-language code; falls back to the code itself.</summary>

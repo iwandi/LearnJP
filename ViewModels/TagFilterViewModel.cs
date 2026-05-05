@@ -52,11 +52,15 @@ public sealed class ProgressionStageRow : BaseViewModel
     public required int KnownWords { get; init; }
     public required double UnlockThreshold { get; init; }
     public required bool IsUnlocked { get; init; }
+    /// <summary>True when this stage's tag is a glyph tag and Learn Kana is currently disabled.
+    /// Skipped stages are treated as auto-passed and rendered differently in the ladder.</summary>
+    public required bool IsSkipped { get; init; }
     /// <summary>Localized accessibility label (e.g. "Unlocked" / "Locked").</summary>
     public required string StatusLabel { get; init; }
 
-    public bool IsLocked => !IsUnlocked;
-    public string StatusIcon  => IsUnlocked ? "🔓" : "🔒";
+    public bool IsLocked => !IsUnlocked && !IsSkipped;
+    public bool IsNotSkipped => !IsSkipped;
+    public string StatusIcon  => IsSkipped ? "⏭" : (IsUnlocked ? "🔓" : "🔒");
     public string ProgressText => $"{KnownWords}/{TotalWords}";
     public double KnownFraction => TotalWords > 0 ? (double)KnownWords / TotalWords : 0;
     public string ThresholdText => IsUnlocked ? string.Empty : $"Need {UnlockThreshold:P0} of previous stage";
@@ -259,10 +263,15 @@ public sealed class TagFilterViewModel : BaseViewModel
                 }
             }
 
+            var glyphTags = pack.GlyphTags;
+            bool glyphsEnabled = _settings.GetDisplayFlag(pack.Id, LanguageBehavior.FlagIncludeGlyphs, false);
+
             for (int i = 0; i < pack.Progression.Count; i++)
             {
                 var stage = pack.Progression[i];
                 if (string.IsNullOrEmpty(stage.Tag)) continue;
+                bool isSkipped = !glyphsEnabled &&
+                    glyphTags.Contains(stage.Tag, StringComparer.OrdinalIgnoreCase);
                 totalByTag.TryGetValue(stage.Tag, out var total);
                 knownByTag.TryGetValue(stage.Tag, out var known);
                 ProgressionStages.Add(new ProgressionStageRow
@@ -271,10 +280,13 @@ public sealed class TagFilterViewModel : BaseViewModel
                     TotalWords = total,
                     KnownWords = known,
                     UnlockThreshold = i == 0 ? 0.0 : stage.UnlockThreshold,
-                    IsUnlocked = unlockedSet.Contains(stage.Tag),
-                    StatusLabel = unlockedSet.Contains(stage.Tag)
-                        ? _loc["filter_progression_unlocked"]
-                        : _loc["filter_progression_locked"],
+                    IsUnlocked = !isSkipped && unlockedSet.Contains(stage.Tag),
+                    IsSkipped = isSkipped,
+                    StatusLabel = isSkipped
+                        ? _loc["filter_progression_skipped"]
+                        : (unlockedSet.Contains(stage.Tag)
+                            ? _loc["filter_progression_unlocked"]
+                            : _loc["filter_progression_locked"]),
                 });
             }
         }

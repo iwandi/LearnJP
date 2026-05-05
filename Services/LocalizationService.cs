@@ -122,6 +122,7 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_active_auto_prefix"]      = "Auto: ",
             ["filter_progression_locked"]      = "Locked",
             ["filter_progression_unlocked"]    = "Unlocked",
+            ["filter_progression_skipped"]     = "Skipped",
 
             // Customize tab
             ["customize_display_options"]      = "Language settings",
@@ -211,6 +212,7 @@ public sealed class LocalizationService : ILocalizationService
             ["filter_active_auto_prefix"]      = "Auto: ",
             ["filter_progression_locked"]      = "Gesperrt",
             ["filter_progression_unlocked"]    = "Entsperrt",
+            ["filter_progression_skipped"]     = "Übersprungen",
 
             // Customize tab
             ["customize_display_options"]      = "Spracheinstellungen",
