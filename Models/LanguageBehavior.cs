@@ -151,7 +151,7 @@ public sealed class JapaneseBehavior : LanguageBehavior
     public override IReadOnlyList<DisplayOption> DisplayOptions => _options;
     private static readonly DisplayOption[] _options =
     {
-        new(FlagIncludeGlyphs,  "Include hiragana/katakana", false),
+        new(FlagIncludeGlyphs,  "Learn Kana", false),
         new(FlagRomajiOnly,    "Romaji-only mode"),
         new(FlagForceFurigana, "Always show furigana"),
     };

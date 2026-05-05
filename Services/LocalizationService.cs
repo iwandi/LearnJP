@@ -75,6 +75,7 @@ public sealed class LocalizationService : ILocalizationService
             ["lang_active_target"]             = "Active target language",
             ["lang_select_button"]             = "Select",
             ["lang_active_button"]             = "Active",
+            ["lang_learn_kana"]                = "Learn Kana",
 
             // Language names (shown in base-language picker)
             ["lang_english"]                   = "English",
@@ -164,6 +165,7 @@ public sealed class LocalizationService : ILocalizationService
             ["lang_active_target"]             = "Aktive Zielsprache",
             ["lang_select_button"]             = "Auswählen",
             ["lang_active_button"]             = "Aktiv",
+            ["lang_learn_kana"]                = "Kana lernen",
 
             // Language names
             ["lang_english"]                   = "Englisch",

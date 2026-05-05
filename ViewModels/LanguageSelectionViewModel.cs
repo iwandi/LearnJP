@@ -69,21 +69,23 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         _settings = settings;
         _loc = loc;
 
-        // Rebuild the active-language display flags whenever the pack changes.
-        _packs.ActiveChanged += (_, _) => RebuildDisplayFlags();
+        // Rebuild the Learn Kana flag whenever the active pack changes.
+        _packs.ActiveChanged += (_, _) => RebuildLearnKanaFlag();
     }
 
-    public ObservableCollection<DisplayFlagVm> DisplayFlags { get; } = new();
-    public bool HasDisplayFlags => DisplayFlags.Count > 0;
+    /// <summary>The "Learn Kana" toggle for the active pack, or null when the pack doesn't
+    /// expose a <see cref="LanguageBehavior.FlagIncludeGlyphs"/> option.</summary>
+    public DisplayFlagVm? LearnKanaFlag { get; private set; }
+    public bool HasLearnKanaFlag => LearnKanaFlag is not null;
 
-    public void RebuildDisplayFlags()
+    public void RebuildLearnKanaFlag()
     {
-        DisplayFlags.Clear();
         var pack = _packs.Active;
-        if (pack is null) { OnPropertyChanged(nameof(HasDisplayFlags)); return; }
-        foreach (var opt in pack.Behavior.DisplayOptions)
-            DisplayFlags.Add(new DisplayFlagVm(_settings, pack.Id, opt));
-        OnPropertyChanged(nameof(HasDisplayFlags));
+        var opt = pack?.Behavior.DisplayOptions
+            .FirstOrDefault(o => o.Key == LanguageBehavior.FlagIncludeGlyphs);
+        LearnKanaFlag = opt is not null ? new DisplayFlagVm(_settings, pack!.Id, opt) : null;
+        OnPropertyChanged(nameof(LearnKanaFlag));
+        OnPropertyChanged(nameof(HasLearnKanaFlag));
     }
 
     public async Task RefreshAsync()
@@ -112,7 +114,7 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
         _suppressBaseChange = false;
 
         RefreshTargetList();
-        RebuildDisplayFlags();
+        RebuildLearnKanaFlag();
     }
 
     private void RefreshTargetList()
