@@ -75,13 +75,19 @@ public sealed class TagFilterViewModel : BaseViewModel
     private readonly IProgressionService _progression;
     private readonly IProficiencyStore _store;
 
+    private DisplayFlagVm? _learnKanaFlag;
+
     public ILocalizationService Loc => _loc;
     public ObservableCollection<TagOption> Tags { get; } = new();
     public ObservableCollection<ProgressionStageRow> ProgressionStages { get; } = new();
 
-    /// <summary>Language-behavior display flags (e.g. Include kana, Romaji-only mode).
-    /// Mirrors the same logic as SettingsViewModel but hosted here so users find all
-    /// language-specific customisation in one place.</summary>
+    /// <summary>The "Learn Kana" (include-glyphs) toggle for the active pack, or null when
+    /// the pack doesn't expose <see cref="LanguageBehavior.FlagIncludeGlyphs"/>.</summary>
+    public DisplayFlagVm? LearnKanaFlag => _learnKanaFlag;
+    public bool HasLearnKanaFlag => _learnKanaFlag is not null;
+
+    /// <summary>Language-behavior display flags except <see cref="LanguageBehavior.FlagIncludeGlyphs"/>
+    /// (e.g. Romaji-only). Hidden when empty.</summary>
     public ObservableCollection<DisplayFlagVm> DisplayFlags { get; } = new();
     public bool HasDisplayFlags => DisplayFlags.Count > 0;
 
@@ -180,19 +186,104 @@ public sealed class TagFilterViewModel : BaseViewModel
     // ── Language display flags ───────────────────────────────────────────────────
     public void RebuildDisplayFlags()
     {
+        // Unsubscribe from the old glyph flag before discarding it.
+        if (_learnKanaFlag is not null)
+            _learnKanaFlag.PropertyChanged -= OnLearnKanaFlagChanged;
+
         DisplayFlags.Clear();
+        _learnKanaFlag = null;
+
         var pack = _packs.Active;
-        if (pack is null)
+        if (pack is not null)
         {
-            OnPropertyChanged(nameof(HasDisplayFlags));
-            return;
+            foreach (var opt in pack.Behavior.DisplayOptions)
+            {
+                if (opt.Key == LanguageBehavior.FlagIncludeGlyphs)
+                {
+                    _learnKanaFlag = new DisplayFlagVm(_settings, pack.Id, opt);
+                    _learnKanaFlag.PropertyChanged += OnLearnKanaFlagChanged;
+                }
+                else
+                {
+                    DisplayFlags.Add(new DisplayFlagVm(_settings, pack.Id, opt));
+                }
+            }
         }
-        foreach (var opt in pack.Behavior.DisplayOptions)
-            DisplayFlags.Add(new DisplayFlagVm(_settings, pack.Id, opt));
+
         OnPropertyChanged(nameof(HasDisplayFlags));
+        OnPropertyChanged(nameof(LearnKanaFlag));
+        OnPropertyChanged(nameof(HasLearnKanaFlag));
     }
 
-    // ── Manual tag include/exclude ───────────────────────────────────────────────
+    private void OnLearnKanaFlagChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(DisplayFlagVm.Value))
+            RebuildProgressionStages();
+    }
+
+    // ── Progression ladder ───────────────────────────────────────────────────────
+    private void RebuildProgressionStages()
+    {
+        var pack = _packs.Active;
+        ProgressionStages.Clear();
+        if (pack is null || pack.Progression.Count == 0) return;
+
+        // Count total and known words per tag.
+        var totalByTag = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        var knownByTag = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        foreach (var w in _vocab.All)
+        {
+            foreach (var tag in w.Tags)
+            {
+                if (string.IsNullOrEmpty(tag)) continue;
+                totalByTag[tag] = totalByTag.TryGetValue(tag, out var t) ? t + 1 : 1;
+            }
+        }
+
+        // GetUnlockedTags already queries the store; replicate known-count logic here for display.
+        var unlockedSet = new HashSet<string>(_progression.GetUnlockedTags(), StringComparer.OrdinalIgnoreCase);
+
+        foreach (var w in _vocab.All)
+        {
+            // Accessing proficiency synchronously is fine — store is already loaded.
+            bool isKnown = IsWordKnown(w.Id);
+            foreach (var tag in w.Tags)
+            {
+                if (string.IsNullOrEmpty(tag)) continue;
+                if (isKnown)
+                    knownByTag[tag] = knownByTag.TryGetValue(tag, out var k) ? k + 1 : 1;
+            }
+        }
+
+        var glyphTags = pack.GlyphTags;
+        bool glyphsEnabled = _settings.GetDisplayFlag(pack.Id, LanguageBehavior.FlagIncludeGlyphs, false);
+
+        for (int i = 0; i < pack.Progression.Count; i++)
+        {
+            var stage = pack.Progression[i];
+            if (string.IsNullOrEmpty(stage.Tag)) continue;
+            bool isSkipped = !glyphsEnabled &&
+                glyphTags.Contains(stage.Tag, StringComparer.OrdinalIgnoreCase);
+            totalByTag.TryGetValue(stage.Tag, out var total);
+            knownByTag.TryGetValue(stage.Tag, out var known);
+            ProgressionStages.Add(new ProgressionStageRow
+            {
+                Tag = stage.Tag,
+                TotalWords = total,
+                KnownWords = known,
+                UnlockThreshold = i == 0 ? 0.0 : stage.UnlockThreshold,
+                IsUnlocked = !isSkipped && unlockedSet.Contains(stage.Tag),
+                IsSkipped = isSkipped,
+                StatusLabel = isSkipped
+                    ? _loc["filter_progression_skipped"]
+                    : (unlockedSet.Contains(stage.Tag)
+                        ? _loc["filter_progression_unlocked"]
+                        : _loc["filter_progression_locked"]),
+            });
+        }
+    }
+
+
     public void ToggleInclude(TagOption opt)
     {
         if (opt.IsNoFilter) { ClearAll(); return; }
@@ -231,65 +322,7 @@ public sealed class TagFilterViewModel : BaseViewModel
         await _store.LoadAsync();
 
         RebuildDisplayFlags();
-
-        // ── Rebuild progression ladder ──────────────────────────────────────────
-        var pack = _packs.Active;
-        ProgressionStages.Clear();
-        if (pack is not null && pack.Progression.Count > 0)
-        {
-            // Count total and known words per tag.
-            var totalByTag = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-            var knownByTag = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-            foreach (var w in _vocab.All)
-            {
-                foreach (var tag in w.Tags)
-                {
-                    if (string.IsNullOrEmpty(tag)) continue;
-                    totalByTag[tag] = totalByTag.TryGetValue(tag, out var t) ? t + 1 : 1;
-                }
-            }
-            // GetUnlockedTags already queries the store; replicate known-count logic here for display.
-            var unlockedSet = new HashSet<string>(_progression.GetUnlockedTags(), StringComparer.OrdinalIgnoreCase);
-
-            foreach (var w in _vocab.All)
-            {
-                // Accessing proficiency synchronously is fine — store is already loaded.
-                bool isKnown = IsWordKnown(w.Id);
-                foreach (var tag in w.Tags)
-                {
-                    if (string.IsNullOrEmpty(tag)) continue;
-                    if (isKnown)
-                        knownByTag[tag] = knownByTag.TryGetValue(tag, out var k) ? k + 1 : 1;
-                }
-            }
-
-            var glyphTags = pack.GlyphTags;
-            bool glyphsEnabled = _settings.GetDisplayFlag(pack.Id, LanguageBehavior.FlagIncludeGlyphs, false);
-
-            for (int i = 0; i < pack.Progression.Count; i++)
-            {
-                var stage = pack.Progression[i];
-                if (string.IsNullOrEmpty(stage.Tag)) continue;
-                bool isSkipped = !glyphsEnabled &&
-                    glyphTags.Contains(stage.Tag, StringComparer.OrdinalIgnoreCase);
-                totalByTag.TryGetValue(stage.Tag, out var total);
-                knownByTag.TryGetValue(stage.Tag, out var known);
-                ProgressionStages.Add(new ProgressionStageRow
-                {
-                    Tag = stage.Tag,
-                    TotalWords = total,
-                    KnownWords = known,
-                    UnlockThreshold = i == 0 ? 0.0 : stage.UnlockThreshold,
-                    IsUnlocked = !isSkipped && unlockedSet.Contains(stage.Tag),
-                    IsSkipped = isSkipped,
-                    StatusLabel = isSkipped
-                        ? _loc["filter_progression_skipped"]
-                        : (unlockedSet.Contains(stage.Tag)
-                            ? _loc["filter_progression_unlocked"]
-                            : _loc["filter_progression_locked"]),
-                });
-            }
-        }
+        RebuildProgressionStages();
 
         // ── Rebuild manual tag list ─────────────────────────────────────────────
         var counts = new Dictionary<string, int>(StringComparer.Ordinal);

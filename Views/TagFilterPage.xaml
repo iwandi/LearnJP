@@ -86,6 +86,20 @@
             <Label Text="{Binding ActiveFilterDisplay}" />
         </Border>
 
+        <!-- Learn Kana — shown when the active language exposes the include-glyphs flag.
+             Lives here because toggling it directly affects the progression ladder. -->
+        <Border StrokeThickness="0"
+                BackgroundColor="{AppThemeBinding Light=#F7F8FF, Dark=#1B1B2E}"
+                StrokeShape="RoundRectangle 12"
+                Padding="12,8"
+                IsVisible="{Binding HasLearnKanaFlag}">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0" Text="{Binding Loc[lang_learn_kana]}" VerticalOptions="Center" />
+                <Switch Grid.Column="1" IsToggled="{Binding LearnKanaFlag.Value, Mode=TwoWay}"
+                        HorizontalOptions="End" WidthRequest="50" />
+            </Grid>
+        </Border>
+
         <!-- Progression ladder (visible in Auto Progression mode) -->
         <CollectionView ItemsSource="{Binding ProgressionStages}"
                         SelectionMode="None"

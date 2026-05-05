@@ -34,27 +34,13 @@
                             StrokeShape="RoundRectangle 12"
                             BackgroundColor="{Binding BackgroundColor}"
                             Padding="14">
-                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
                             <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
                                 <Label Text="{Binding DisplayName}" FontSize="18" FontAttributes="Bold" />
-                                <Label Text="{Binding Subtitle}" FontSize="12" Style="{StaticResource MutedLabel}" />
+                                <Label Text="{Binding Subtitle}" FontSize="12"
+                                       TextColor="{Binding MutedTextColor}" />
                             </VerticalStackLayout>
-                            <!-- Learn Kana toggle — only shown for the active language that supports it. -->
-                            <Grid Grid.Column="1"
-                                  ColumnDefinitions="Auto,Auto" ColumnSpacing="6"
-                                  VerticalOptions="Center"
-                                  IsVisible="{Binding HasLearnKanaFlag}">
-                                <Label Grid.Column="0"
-                                       Text="{Binding Loc[lang_learn_kana]}"
-                                       Style="{StaticResource MutedLabel}"
-                                       VerticalOptions="Center" />
-                                <Switch Grid.Column="1"
-                                        IsToggled="{Binding LearnKanaFlag.Value, Mode=TwoWay}"
-                                        HorizontalOptions="End"
-                                        WidthRequest="50"
-                                        VerticalOptions="Center" />
-                            </Grid>
-                            <Button Grid.Column="2"
+                            <Button Grid.Column="1"
                                     Text="{Binding SelectButtonText}"
                                     Clicked="OnSelectClicked"
                                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#23233A}"

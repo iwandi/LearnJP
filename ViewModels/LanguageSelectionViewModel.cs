@@ -7,12 +7,9 @@ namespace LearnJP.ViewModels;
 public sealed class LanguageOption : BaseViewModel
 {
     private bool _isActive;
-    private DisplayFlagVm? _learnKanaFlag;
-    private bool _learnKanaFlagInitialized;
 
     public required LanguagePack Pack { get; init; }
     public required ILocalizationService Loc { get; init; }
-    public required ISettingsService Settings { get; init; }
     public string Id => Pack.Id;
     public string DisplayName => Pack.DisplayName;
     public string Subtitle => Pack.TtsLocale;
@@ -26,7 +23,7 @@ public sealed class LanguageOption : BaseViewModel
             {
                 OnPropertyChanged(nameof(BackgroundColor));
                 OnPropertyChanged(nameof(SelectButtonText));
-                OnPropertyChanged(nameof(HasLearnKanaFlag));
+                OnPropertyChanged(nameof(MutedTextColor));
             }
         }
     }
@@ -35,25 +32,13 @@ public sealed class LanguageOption : BaseViewModel
         ? Color.FromArgb("#4CAF7A")
         : (Application.Current?.RequestedTheme == AppTheme.Dark ? Color.FromArgb("#1B1B2E") : Color.FromArgb("#F7F8FF"));
 
+    /// <summary>Text colour for secondary/muted labels (subtitle, etc.). White on the green
+    /// active background so they remain legible; otherwise the normal muted grey.</summary>
+    public Color MutedTextColor => _isActive
+        ? Colors.White
+        : Color.FromArgb("#7A7A8C");
+
     public string SelectButtonText => _isActive ? Loc["lang_active_button"] : Loc["lang_select_button"];
-
-    /// <summary>Toggle VM for the "Learn Kana" flag, or null when the pack doesn't expose it.</summary>
-    public DisplayFlagVm? LearnKanaFlag => GetOrBuildLearnKanaFlag();
-
-    /// <summary>True only for the active language that exposes a <see cref="LanguageBehavior.FlagIncludeGlyphs"/> option.</summary>
-    public bool HasLearnKanaFlag => _isActive && GetOrBuildLearnKanaFlag() is not null;
-
-    private DisplayFlagVm? GetOrBuildLearnKanaFlag()
-    {
-        if (!_learnKanaFlagInitialized)
-        {
-            _learnKanaFlagInitialized = true;
-            var opt = Pack.Behavior.DisplayOptions
-                .FirstOrDefault(o => o.Key == LanguageBehavior.FlagIncludeGlyphs);
-            _learnKanaFlag = opt is not null ? new DisplayFlagVm(Settings, Pack.Id, opt) : null;
-        }
-        return _learnKanaFlag;
-    }
 }
 
 public sealed class BaseLanguageOption
@@ -139,7 +124,6 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
             {
                 Pack = p,
                 Loc = _loc,
-                Settings = _settings,
                 IsActive = string.Equals(p.Id, activeId, StringComparison.OrdinalIgnoreCase)
             });
         }
