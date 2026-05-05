@@ -44,10 +44,10 @@ public sealed class QuizOptionVm : BaseViewModel
 
 public sealed class QuizViewModel : BaseViewModel
 {
-    private static readonly TimeSpan FeedbackCorrect = TimeSpan.FromMilliseconds(700);
-    private static readonly TimeSpan FeedbackWrong   = TimeSpan.FromMilliseconds(1600);
+    private static readonly TimeSpan FeedbackCorrect = TimeSpan.FromMilliseconds(0);
+    private static readonly TimeSpan FeedbackWrong   = TimeSpan.FromMilliseconds(1000);
     // Small silent gap between an effect ending and TTS starting so they don't blur.
-    private static readonly TimeSpan PostEffectPause = TimeSpan.FromMilliseconds(120);
+    private static readonly TimeSpan PostEffectPause = TimeSpan.FromMilliseconds(-150);
 
     private readonly IQuestionGenerator _gen;
     private readonly IProficiencyStore _store;
@@ -373,9 +373,17 @@ public sealed class QuizViewModel : BaseViewModel
         try
         {
             // Wait for both the visual feedback delay and the queued TTS to finish.
-            var feedback = Task.Delay(delay, token);
-            try { await Task.WhenAll(feedback, _ttsTask); }
-            catch (OperationCanceledException) { return; }
+            if (delay > TimeSpan.Zero)
+            {
+                var feedback = Task.Delay(delay, token);
+                try { await Task.WhenAll(feedback, _ttsTask); }
+                catch (OperationCanceledException) { return; }
+            }
+            else
+            {
+                try { await Task.WhenAll(_ttsTask); }
+                catch (OperationCanceledException) { return; }
+            }
 
             if (!token.IsCancellationRequested)
                 await LoadNextAsync();

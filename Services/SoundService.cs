@@ -24,8 +24,8 @@ public sealed class SoundService : ISoundService
     private static readonly IReadOnlyDictionary<SoundEffect, string> RawSoundFiles =
         new Dictionary<SoundEffect, string>
         {
-            { SoundEffect.Correct, "sounds/correct.wav" },
-            { SoundEffect.Wrong,   "sounds/wrong.wav"   },
+            { SoundEffect.Correct, "sounds/correct.mp3" },
+            { SoundEffect.Wrong,   "sounds/wrong.mp3"   },
         };
 
     public async Task PreloadAsync()
