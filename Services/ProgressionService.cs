@@ -54,12 +54,7 @@ public sealed class ProgressionService : IProgressionService
             var stage = pack.Progression[i];
             if (string.IsNullOrEmpty(stage.Tag)) continue;
 
-            // When Learn Kana is disabled, glyph stages are treated as auto-passed so they
-            // don't block the rest of the progression ladder.
-            bool isSkippedGlyph = !glyphsEnabled &&
-                glyphTags.Contains(stage.Tag, StringComparer.OrdinalIgnoreCase);
-
-            if (i == 0 || isSkippedGlyph)
+            if (i == 0 || IsSkippedGlyph(stage.Tag, glyphsEnabled, glyphTags))
             {
                 // First stage is always unlocked; skipped glyph stages are auto-passed.
                 unlocked.Add(stage.Tag);
@@ -72,9 +67,7 @@ public sealed class ProgressionService : IProgressionService
 
             // If the immediately-preceding stage was a skipped glyph stage, treat it as
             // fully mastered so it doesn't block this stage.
-            bool prevIsSkippedGlyph = !glyphsEnabled &&
-                glyphTags.Contains(prevTag, StringComparer.OrdinalIgnoreCase);
-            if (prevIsSkippedGlyph)
+            if (IsSkippedGlyph(prevTag, glyphsEnabled, glyphTags))
             {
                 unlocked.Add(stage.Tag);
                 continue;
@@ -99,4 +92,9 @@ public sealed class ProgressionService : IProgressionService
 
         return unlocked;
     }
+
+    /// <summary>Returns true when Learn Kana is disabled and <paramref name="tag"/> is a
+    /// glyph tag. Such stages are treated as auto-passed in the unlock ladder.</summary>
+    private static bool IsSkippedGlyph(string tag, bool glyphsEnabled, IReadOnlyList<string> glyphTags)
+        => !glyphsEnabled && glyphTags.Contains(tag, StringComparer.OrdinalIgnoreCase);
 }
