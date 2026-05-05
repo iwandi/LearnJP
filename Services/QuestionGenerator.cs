@@ -160,8 +160,13 @@ public sealed class QuestionGenerator : IQuestionGenerator
     private Word? PickTargetFsrs(IReadOnlyList<Word> pool)
     {
         var now = DateTime.UtcNow;
+        // bestDue   — word that has already crossed below the retrievability target (gap > 0).
+        // nextDue   — closest-to-threshold word when nothing is overdue yet; used as a
+        //             tiebreak fallback so we don't pick completely at random in a mature deck.
         Word? bestDue = null;
         double bestGap = double.NegativeInfinity;
+        Word? nextDue = null;
+        double nextDueGap = double.NegativeInfinity;
         var unseen = new List<Word>();
 
         foreach (var w in pool)
@@ -170,18 +175,28 @@ public sealed class QuestionGenerator : IQuestionGenerator
             var s = _store.GetFsrsState(w.Id);
             if (!s.HasState) { unseen.Add(w); continue; }
             var r = Fsrs.Retrievability(s, now);
-            // Words below target are "due" — prefer the one furthest below (largest gap).
             var gap = Fsrs.TargetRetrievability - r;
-            if (gap > bestGap) { bestGap = gap; bestDue = w; }
+            if (gap > 0)
+            {
+                // Word is overdue: prefer the one furthest below threshold (largest positive gap).
+                if (gap > bestGap) { bestGap = gap; bestDue = w; }
+            }
+            else
+            {
+                // Word is not yet due: track the one closest to threshold (largest negative gap)
+                // so it surfaces next once the deck has no overdue items.
+                if (gap > nextDueGap) { nextDueGap = gap; nextDue = w; }
+            }
         }
 
         // Pull a frontier-new word about a quarter of the time so vocabulary keeps unlocking.
+        // When nothing is overdue (bestDue is null), always pick a new word from the frontier.
         if (unseen.Count > 0 && (bestDue is null || _rng.NextDouble() < 0.25))
         {
             var frontier = unseen.OrderBy(w => FrequencyOrderKey(w.FrequencyRank)).Take(NewTermFrontierSize).ToList();
             return frontier[_rng.Next(frontier.Count)];
         }
-        return bestDue ?? (pool.Count > 0 ? pool[_rng.Next(pool.Count)] : null);
+        return bestDue ?? nextDue ?? (pool.Count > 0 ? pool[_rng.Next(pool.Count)] : null);
     }
 
     /// <summary>
