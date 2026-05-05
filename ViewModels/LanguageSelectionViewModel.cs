@@ -81,9 +81,15 @@ public sealed class LanguageSelectionViewModel : BaseViewModel
     public void RebuildLearnKanaFlag()
     {
         var pack = _packs.Active;
-        var opt = pack?.Behavior.DisplayOptions
-            .FirstOrDefault(o => o.Key == LanguageBehavior.FlagIncludeGlyphs);
-        LearnKanaFlag = opt is not null ? new DisplayFlagVm(_settings, pack!.Id, opt) : null;
+        DisplayFlagVm? flag = null;
+        if (pack is not null)
+        {
+            var opt = pack.Behavior.DisplayOptions
+                .FirstOrDefault(o => o.Key == LanguageBehavior.FlagIncludeGlyphs);
+            if (opt is not null)
+                flag = new DisplayFlagVm(_settings, pack.Id, opt);
+        }
+        LearnKanaFlag = flag;
         OnPropertyChanged(nameof(LearnKanaFlag));
         OnPropertyChanged(nameof(HasLearnKanaFlag));
     }
