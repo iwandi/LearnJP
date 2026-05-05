@@ -43,6 +43,7 @@
     <Compile Include="..\..\Services\ISettingsService.cs"       Link="_Linked\Services\ISettingsService.cs" />
     <Compile Include="..\..\Services\SettingsService.cs"        Link="_Linked\Services\SettingsService.cs" />
     <Compile Include="..\..\Services\IPreferenceBackend.cs"     Link="_Linked\Services\IPreferenceBackend.cs" />
+    <Compile Include="..\..\Services\MauiPreferenceBackend.cs"  Link="_Linked\Services\MauiPreferenceBackend.cs" />
   </ItemGroup>
 
   <!-- Ship the golden fixture(s) next to the test binaries. -->

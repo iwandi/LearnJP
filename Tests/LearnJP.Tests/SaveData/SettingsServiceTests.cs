@@ -87,12 +87,48 @@ public sealed class SettingsServiceTests
     [Fact]
     public void Roundtrip_TagLists_TrimAndDropEmpty()
     {
-        // The encoder splits on commas and trims; intentional, so users / migration code
-        // that pastes whitespace doesn't accidentally produce blank tags. This is a
-        // load-bearing detail of how settings get persisted, so pin it.
+        // Trim+drop-empty behaviour on encode: load-bearing because users / migration code
+        // that pastes whitespace shouldn't produce blank tags.
         var (s, _) = NewService();
         s.ActiveIncludeTags = new[] { " a ", "", "b" };
         Assert.Equal(new[] { "a", "b" }, s.ActiveIncludeTags);
+    }
+
+    [Fact]
+    public void Roundtrip_TagLists_PreservesCommas()
+    {
+        // The pre-JSON encoder joined with "," and silently corrupted any tag containing a
+        // comma. Pin the new behaviour: tags survive round-trip with their bytes intact.
+        var (s, _) = NewService();
+        s.ActiveIncludeTags = new[] { "hello, world", "fine" };
+        Assert.Equal(new[] { "hello, world", "fine" }, s.ActiveIncludeTags);
+    }
+
+    [Fact]
+    public void DecodeTagList_AcceptsLegacyCommaFormat()
+    {
+        // Existing users have settings.include_tags stored as bare "n5,n4" strings — the
+        // JSON-aware decoder must still read them, otherwise the upgrade loses tags.
+        var legacyDecoded = SettingsService.DecodeTagList("n5,n4, n3 ");
+        Assert.Equal(new[] { "n5", "n4", "n3" }, legacyDecoded);
+    }
+
+    [Fact]
+    public void DecodeTagList_AcceptsJsonFormat()
+    {
+        var jsonDecoded = SettingsService.DecodeTagList("[\"n5\",\"n4\"]");
+        Assert.Equal(new[] { "n5", "n4" }, jsonDecoded);
+    }
+
+    [Fact]
+    public void EncodeTagList_EmitsJson()
+    {
+        var encoded = SettingsService.EncodeTagList(new[] { "a", "b" });
+        Assert.StartsWith("[", encoded);
+        // Round-trip through System.Text.Json directly to prove the encoder produces
+        // canonical JSON, not just any string the decoder happens to accept.
+        var arr = System.Text.Json.JsonSerializer.Deserialize<string[]>(encoded);
+        Assert.Equal(new[] { "a", "b" }, arr);
     }
 
     [Fact]

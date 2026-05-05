@@ -85,16 +85,40 @@ public sealed class SettingsService : ISettingsService
         set => Write(KeyFilterMode, (int)value);
     }
 
-    private static IReadOnlyList<string> DecodeTagList(string raw)
+    /// <summary>
+    /// Decodes a stored tag list. The current format is a JSON array string; older saves used
+    /// a bare comma-separated string. We sniff for the JSON shape (leading "[") and fall back
+    /// to the legacy splitter so existing users don't lose their tags on upgrade.
+    ///
+    /// JSON was chosen because the legacy comma format silently corrupts any tag containing
+    /// a comma — the user's tag <c>"foo,bar"</c> would round-trip as two distinct tags.
+    /// </summary>
+    internal static IReadOnlyList<string> DecodeTagList(string raw)
     {
         if (string.IsNullOrWhiteSpace(raw)) return Array.Empty<string>();
+        var trimmed = raw.TrimStart();
+        if (trimmed.StartsWith('['))
+        {
+            try
+            {
+                var arr = System.Text.Json.JsonSerializer.Deserialize<string[]>(trimmed);
+                if (arr is null) return Array.Empty<string>();
+                return arr.Where(t => !string.IsNullOrWhiteSpace(t)).Select(t => t.Trim()).ToArray();
+            }
+            catch { /* malformed JSON — fall through to legacy decode */ }
+        }
         return raw.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
     }
 
-    private static string EncodeTagList(IReadOnlyList<string>? tags)
+    internal static string EncodeTagList(IReadOnlyList<string>? tags)
     {
         if (tags is null || tags.Count == 0) return string.Empty;
-        return string.Join(",", tags.Where(t => !string.IsNullOrWhiteSpace(t)).Select(t => t.Trim()));
+        var cleaned = tags
+            .Where(t => !string.IsNullOrWhiteSpace(t))
+            .Select(t => t.Trim())
+            .ToArray();
+        if (cleaned.Length == 0) return string.Empty;
+        return System.Text.Json.JsonSerializer.Serialize(cleaned);
     }
 
     public LearningStrategy SelectedLearningStrategy

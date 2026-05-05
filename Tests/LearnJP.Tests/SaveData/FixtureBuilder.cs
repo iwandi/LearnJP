@@ -4,22 +4,22 @@ using Microsoft.Data.Sqlite;
 namespace LearnJP.Tests.SaveData;
 
 /// <summary>
-/// Writes the exact contents of <see cref="FixtureSpec"/> into a SQLite database the
-/// production store can later open. The build sequence is intentionally low-level (raw
-/// INSERTs against the schema declared in <see cref="LearnJP.Services.SqliteProficiencyStore"/>)
-/// so the result is bit-for-bit deterministic — call sites can assert on equality without
-/// having to round to wall-clock or random-jitter.
+/// Writes the exact contents of a <see cref="GoldenFixture"/> into a SQLite database the
+/// production store can later open. Build steps are intentionally low-level (raw INSERTs
+/// against the schema declared in <see cref="LearnJP.Services.SqliteProficiencyStore"/>)
+/// so the result is bit-for-bit deterministic — call sites can assert on equality
+/// without rounding around wall-clock time or random jitter.
 /// </summary>
 internal static class FixtureBuilder
 {
-    public static Task WriteAsync(string dbPath)
+    public static Task WriteAsync(string dbPath, GoldenFixture spec)
     {
         using var conn = new SqliteConnection($"Data Source={dbPath}");
         conn.Open();
         using var tx = conn.BeginTransaction();
 
         // proficiency_meta + proficiency_scores
-        foreach (var (id, snap) in FixtureSpec.Words)
+        foreach (var (id, snap) in spec.Words)
         {
             using (var cmd = conn.CreateCommand())
             {
@@ -52,7 +52,7 @@ internal static class FixtureBuilder
         }
 
         // confusions
-        foreach (var (target, picks) in FixtureSpec.ConfusersByTarget)
+        foreach (var (target, picks) in spec.ConfusersByTarget)
         foreach (var (picked, count) in picks)
         {
             using var cmd = conn.CreateCommand();
@@ -66,7 +66,7 @@ internal static class FixtureBuilder
         }
 
         // fsrs_state
-        foreach (var (id, state) in FixtureSpec.FsrsStates)
+        foreach (var (id, state) in spec.FsrsStates)
         {
             using var cmd = conn.CreateCommand();
             cmd.Transaction = tx;
@@ -80,7 +80,8 @@ internal static class FixtureBuilder
             cmd.ExecuteNonQuery();
         }
 
-        // meta — turns_asked + time aggregates
+        // meta — turns_asked + time aggregates (kept hard-coded since they aren't part of the
+        // per-fixture spec; if a future schema breaks here, regenerate the fixture).
         void SetMeta(string key, string value)
         {
             using var cmd = conn.CreateCommand();
@@ -92,7 +93,7 @@ internal static class FixtureBuilder
             cmd.Parameters.AddWithValue("$v", value);
             cmd.ExecuteNonQuery();
         }
-        SetMeta("turns_asked", FixtureSpec.TurnsAsked.ToString());
+        SetMeta("turns_asked", spec.TurnsAsked.ToString());
         SetMeta("time_count",  "12");
         SetMeta("time_sum",    "14400");
         SetMeta("time_sumsq",  "21600000");
